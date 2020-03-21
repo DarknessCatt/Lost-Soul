@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+#Info
+onready var body : Node2D = $Body
+
 #Movement
 var speed : Vector2 = Vector2(0,0)
 
@@ -16,3 +19,6 @@ func _change_state(new_state : Node):
 	cur_state.exit(self)
 	cur_state = new_state
 	cur_state.enter(self)
+
+func _change_anim(new_anim : String):
+	$Animations.play(new_anim)
