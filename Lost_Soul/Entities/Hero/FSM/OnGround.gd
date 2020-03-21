@@ -2,7 +2,7 @@ extends Node
 
 const NORMAL : Vector2 = Vector2(0, -1)
 const ACCEL : int = 3000
-const MAX_SPEED : int = 400
+const MAX_SPEED : int = 300
 const FRICTION : float = 0.75
 
 #Direction Enum FSM
@@ -54,6 +54,9 @@ func update(_Player: KinematicBody2D, delta : float) -> void:
 		_Player._change_state($"../Falling")
 
 func input(_Player: KinematicBody2D, event : InputEvent) -> void:
+
+	if event.is_action_pressed("hero_jump"):
+		_Player._change_state($"../Jumping")
 
 	match(direction):
 
