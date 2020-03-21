@@ -2,7 +2,7 @@ extends Node
 
 const NORMAL : Vector2 = Vector2(0, -1)
 const ACCEL : int = 3000
-const MAX_SPEED : int = 300
+const MAX_SPEED : int = 400
 const FRICTION : float = 0.75
 
 #Direction Enum FSM
