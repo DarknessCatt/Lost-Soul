@@ -12,12 +12,17 @@ var direction : int = NONE
 func enter(_Player : KinematicBody2D) -> void:
 	if Input.is_action_pressed("hero_left"):
 		direction = LEFT
+		_Player.body.scale.x = -1
+		_Player._change_anim("Walking")
 
 	elif Input.is_action_pressed("hero_right"):
 		direction = RIGHT
+		_Player.body.scale.x = 1
+		_Player._change_anim("Walking")
 
 	else:
 		direction = NONE
+		_Player._change_anim("Rest")
 
 func exit(_Player : KinematicBody2D) -> void:
 	_Player._change_anim("Rest")
