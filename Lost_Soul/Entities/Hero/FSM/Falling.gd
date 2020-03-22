@@ -1,7 +1,7 @@
 extends "BasicMove.gd"
 
-const GRAV : int = 5000
-const MAX_GRAV : int = 500
+const GRAV : int = 3500
+const MAX_GRAV : int = 1500
 
 func _ready():
 	#Overridable Vars
@@ -26,6 +26,7 @@ func exit(_Player : KinematicBody2D) -> void:
 
 func update(_Player: KinematicBody2D, delta : float) -> void:
 	_Player.speed.y += GRAV*delta
+	if _Player.speed.y > MAX_GRAV: _Player.speed.y = MAX_GRAV
 
 	.update(_Player, delta)
 

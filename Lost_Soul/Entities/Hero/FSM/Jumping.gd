@@ -1,7 +1,6 @@
 extends "BasicMove.gd"
 
 const GRAV : int = 4000
-const MAX_GRAV : int = 1000
 
 const JUMP_FORCE = 1200
 
