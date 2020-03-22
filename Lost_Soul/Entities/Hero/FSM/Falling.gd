@@ -1,7 +1,7 @@
 extends "BasicMove.gd"
 
 const GRAV : int = 5000
-const MAX_GRAV : int = 1000
+const MAX_GRAV : int = 500
 
 func _ready():
 	#Overridable Vars
@@ -9,8 +9,8 @@ func _ready():
 	FRICTION = 0.9
 
 	##Animation Vars
-	MOVE_ANIMATION = "Walking"
-	REST_ANIMATION = "Rest"
+	MOVE_ANIMATION = "Falling"
+	REST_ANIMATION = "Falling"
 
 func enter(_Player : KinematicBody2D) -> void:
 
