@@ -21,4 +21,5 @@ func _change_state(new_state : Node):
 	cur_state.enter(self)
 
 func _change_anim(new_anim : String):
-	$Animations.play(new_anim)
+	if $Animations.current_animation != new_anim:
+		$Animations.play(new_anim)
