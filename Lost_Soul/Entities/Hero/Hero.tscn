@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Hero/FSM/Falling.gd" type="Script" id=2]
 [ext_resource path="res://Entities/Hero/FSM/OnGround.gd" type="Script" id=3]
 [ext_resource path="res://Entities/Hero/FSM/Jumping.gd" type="Script" id=4]
+[ext_resource path="res://Entities/Hero/FSM/Buffer.gd" type="Script" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Falling"
@@ -985,6 +986,19 @@ script = ExtResource( 2 )
 [node name="Jumping" type="Node" parent="States"]
 script = ExtResource( 4 )
 
+[node name="Buffer" type="Node" parent="States"]
+script = ExtResource( 5 )
+
+[node name="Jump_Buffer" type="Timer" parent="States/Buffer"]
+process_mode = 0
+wait_time = 0.2
+one_shot = true
+
+[node name="Coyote_Timer" type="Timer" parent="States/Buffer"]
+process_mode = 0
+wait_time = 0.1
+one_shot = true
+
 [node name="Body" type="Node2D" parent="."]
 
 [node name="Right_Arm" type="Polygon2D" parent="Body"]
@@ -1161,3 +1175,5 @@ shape = SubResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
+[connection signal="timeout" from="States/Buffer/Jump_Buffer" to="States/Buffer" method="_on_Jump_Buffer_timeout"]
+[connection signal="timeout" from="States/Buffer/Coyote_Timer" to="States/Buffer" method="_on_Coyote_Timer_timeout"]

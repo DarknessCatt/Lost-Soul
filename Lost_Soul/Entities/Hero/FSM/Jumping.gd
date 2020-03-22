@@ -18,7 +18,7 @@ func enter(_Player : KinematicBody2D) -> void:
 	_Player.speed.y -= JUMP_FORCE
 	_Player._change_anim("Jumping")
 	if not Input.is_action_pressed("hero_jump"):
-		_Player._change_state($"../Falling")
+		_Player.speed.y /= 1.5
 
 	.enter(_Player)
 

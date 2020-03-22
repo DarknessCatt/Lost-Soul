@@ -33,4 +33,11 @@ func update(_Player: KinematicBody2D, delta : float) -> void:
 		_Player._change_state($"../OnGround")
 
 func input(_Player: KinematicBody2D, event : InputEvent) -> void:
-	.input(_Player, event)
+	if event.is_action_pressed("hero_jump"):
+		if $"../Buffer".can_coyote:
+			_Player._change_state($"../Jumping")
+		else:
+			$"../Buffer"._buffer_jump()
+
+	else:
+		.input(_Player, event)
