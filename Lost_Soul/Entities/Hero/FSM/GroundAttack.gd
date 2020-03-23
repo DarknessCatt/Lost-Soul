@@ -1,10 +1,10 @@
 extends "State.gd"
 
 const NORMAL : Vector2 = Vector2(0, -1)
-const MOVE_SPEED : int = 900
+const MOVE_SPEED : int = 800
 
 var attacking : bool = false
-var attack_buffered : bool = false
+var can_cancel : bool = false
 
 onready var buffer : Node = $"../Buffer"
 onready var combo_info : Array = [["Jab1", $Jab1], ["Jab2", $Jab2], ["Jab3", $Jab3]]
@@ -14,27 +14,20 @@ func enter(_Player : KinematicBody2D) -> void:
 	self.attack(_Player)
 
 func update(_Player: KinematicBody2D, delta : float) -> void:
-	var speed = 0
 
-	if Input.is_action_pressed("hero_right"):
-		speed += MOVE_SPEED*delta
-
-	if Input.is_action_pressed("hero_left"):
-		speed -= MOVE_SPEED*delta
-
-	_Player.speed.x = speed
+	_Player.speed.x = MOVE_SPEED*delta*sign(_Player.body.scale.x)
 
 	_Player.move_and_slide(_Player.speed, NORMAL)
 
 	if not attacking:
-		if attack_buffered:
-			attack(_Player)
-			attack_buffered = false
-		else:
-			buffer._attack_end()
-			_Player._change_state($"../OnGround")
+		buffer._attack_end()
+		_Player._change_state($"../OnGround")
 
 func attack(_Player : KinematicBody2D):
+	$cancel.stop()
+
+	can_cancel = false
+
 	var num = buffer.attack_num
 	var attack = combo_info[num]
 
@@ -49,13 +42,13 @@ func attack(_Player : KinematicBody2D):
 
 func input(_Player: KinematicBody2D, event : InputEvent) -> void:
 	if event.is_action_pressed("hero_attack"):
-		attack_buffered = true
+		if can_cancel:
+			attack(_Player)
 
-func _on_Jab1_timeout():
-	attacking = false
+func _on_Attack_timeout():
+	can_cancel = true
+	$cancel.start()
 
-func _on_Jab2_timeout():
+func _on_cancel_timeout():
 	attacking = false
-
-func _on_Jab3_timeout():
-	attacking = false
+	can_cancel = false

@@ -27,6 +27,7 @@ var attack_num : int = 0
 
 func _register_attack(num : int):
 	attack_num = num
+	$Combo_Timer.stop()
 
 func _attack_end():
 	$Combo_Timer.start()
