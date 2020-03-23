@@ -7,7 +7,7 @@ var attacking : bool = false
 var attack_buffered : bool = false
 
 onready var buffer : Node = $"../Buffer"
-onready var combo_info : Array = [["Jab1", $Jab1], ["Jab2", $Jab2]]
+onready var combo_info : Array = [["Jab1", $Jab1], ["Jab2", $Jab2], ["Jab3", $Jab3]]
 
 func enter(_Player : KinematicBody2D) -> void:
 	_Player.speed.x = 0
@@ -55,4 +55,7 @@ func _on_Jab1_timeout():
 	attacking = false
 
 func _on_Jab2_timeout():
+	attacking = false
+
+func _on_Jab3_timeout():
 	attacking = false
