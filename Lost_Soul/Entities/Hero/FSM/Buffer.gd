@@ -21,3 +21,15 @@ func _coyote_timer():
 
 func _on_Coyote_Timer_timeout():
 	can_coyote = false
+
+#Combo Counter
+var attack_num : int = 0
+
+func _register_attack(num : int):
+	attack_num = num
+
+func _attack_end():
+	$Combo_Timer.start()
+
+func _on_Combo_Timer_timeout():
+	attack_num = 0
