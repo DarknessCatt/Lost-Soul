@@ -1,4 +1,4 @@
-extends Node
+extends "State.gd"
 
 const NORMAL : Vector2 = Vector2(0, -1)
 
@@ -41,9 +41,6 @@ func enter(_Player : KinematicBody2D) -> void:
 	else:
 		direction = NONE
 		_Player._change_anim(REST_ANIMATION)
-
-func exit(_Player : KinematicBody2D) -> void:
-	pass
 
 func update(_Player: KinematicBody2D, delta : float) -> void:
 	var spdx : float = _Player.speed.x + direction*ACCEL*delta
