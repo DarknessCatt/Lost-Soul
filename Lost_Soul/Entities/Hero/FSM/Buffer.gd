@@ -22,7 +22,7 @@ func _coyote_timer():
 func _on_Coyote_Timer_timeout():
 	can_coyote = false
 
-#Combo Counter
+#Ground Combo Counter
 var attack_num : int = 0
 
 func _register_attack(num : int):
@@ -34,3 +34,13 @@ func _attack_end():
 
 func _on_Combo_Timer_timeout():
 	attack_num = 0
+
+#Ground Combo Counter
+var air_attack_num : int = 0
+
+func _register_air_attack(num : int):
+	air_attack_num = num
+	$Combo_Timer.stop()
+
+func _air_attack_end():
+	$Combo_Timer.start()

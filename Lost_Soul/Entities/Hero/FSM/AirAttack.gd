@@ -8,7 +8,7 @@ var can_cancel : bool = false
 var attack_buffered : bool = false
 
 onready var buffer : Node = $"../Buffer"
-onready var combo_info : Array = [["AirJab1", $Jab1]]
+onready var combo_info : Array = [["AirJab1", $Jab1], ["AirJab2", $Jab2]]
 
 func enter(_Player : KinematicBody2D) -> void:
 	$attack_input.stop()
@@ -45,7 +45,7 @@ func attack(_Player : KinematicBody2D):
 	attack_buffered = false
 	can_cancel = false
 
-	var num = buffer.attack_num
+	var num = buffer.air_attack_num
 
 #	if Input.is_action_pressed("hero_up"):
 #		num = 3
@@ -56,10 +56,10 @@ func attack(_Player : KinematicBody2D):
 	attack[1].start()
 	attacking = true
 
-#	if num+1 >= 3:
-#		num = -1
+	if num+1 >= 2:
+		num = -1
 
-#	buffer._register_attack(num+1)
+	buffer._register_air_attack(num+1)
 
 func input(_Player: KinematicBody2D, event : InputEvent) -> void:
 	if event.is_action_pressed("hero_attack"):
