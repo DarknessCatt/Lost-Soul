@@ -11,7 +11,7 @@ var speed : Vector2 = Vector2(0,0)
 
 func _hit(_damage : int, force : int, direction : Vector2):
 	#print("Hit " + str(direction) + " * " + str(force))
-	self.speed += direction.normalized()*force
+	self.speed = direction.normalized()*force
 
 func _physics_process(delta):
 

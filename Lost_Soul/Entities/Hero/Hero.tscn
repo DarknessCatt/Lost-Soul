@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Hero/FSM/Falling.gd" type="Script" id=2]
@@ -7,6 +7,204 @@
 [ext_resource path="res://Entities/Hero/FSM/Buffer.gd" type="Script" id=5]
 [ext_resource path="res://Entities/Hero/FSM/GroundAttack.gd" type="Script" id=6]
 [ext_resource path="res://Entities/Combat/Hitbox/Hitbox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Hero/FSM/AirAttack.gd" type="Script" id=8]
+
+[sub_resource type="Animation" id=16]
+resource_name = "AirJab1"
+length = 0.28
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Hip:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.28 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Hip/Torso:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.1, 0.18, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 13.418, 5.0, 5.0, 13.418, 13.418 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Hip/Torso/Head:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.04, 0.1, 0.18, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -15.0, -5.0, -5.0, -15.0, -15.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Hip/Torso/Left_Arm:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.04, 0.1, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 30.0, 30.0, 16.6666 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Hip/Torso/Left_Arm/Left_Hand:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.04, 0.1, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -120.0, -89.9999, -89.9999, -103.333 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body/Hip/Torso/Right_Arm:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.04, 0.1, 0.18 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -30.0, -95.0, -95.0, -30.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Body/Hip/Torso/Right_Arm/Right_Hand:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.04, 0.1, 0.18 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -105.0, 0.0, 0.0, -105.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Body/Hip/Left_Leg:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.14, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -30.0, -3.00001, -30.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Body/Hip/Left_Leg/Left_Shin:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.14, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 67.4999, 44.9999, 67.4999 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Body/Hip/Left_Leg/Left_Shin/Left_Foot:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.14, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -5.0, 16.0, -5.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Body/Hip/Right_Leg:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.14, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -59.9999, -68.9999, -59.9999 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Body/Hip/Right_Leg/Right_Shin:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.14, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 102.656, 86.0624, 102.656 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Body/Hip/Right_Leg/Right_Shin/Right_Foot:rotation_degrees")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.14, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 8.99999, 0.0 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Body/Hip/Torso/Right_Arm/Right_Hand/Right_Weapon:polygon")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.01, 0.02, 0.04, 0.1, 0.16, 0.17, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array(  ), PoolVector2Array(  ), PoolVector2Array( -4.08448, 20.6074, 3.94883, 20.5109, 3.92067, 23.9873, 0.226427, 27.7119, -4.13323, 24.2323 ), PoolVector2Array( -3.33718, 15.8715, 3.55753, 8.97679, 7.45454, 28.6117, -0.639254, 40.3027, -8.43327, 33.1083 ), PoolVector2Array( -3.78683, 9.88014, 3.70741, 4.18451, 11.0518, 27.5666, -0.339481, 42.7049, -11.1312, 33.8617 ), PoolVector2Array( -4.08448, 20.6074, 3.94883, 20.5109, 3.92067, 23.9873, 0.226427, 27.7119, -4.13323, 24.2323 ), PoolVector2Array(  ), PoolVector2Array(  ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Body/Hip/Torso/Left_Arm/Left_Hand/Left_Weapon:polygon")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.28 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ PoolVector2Array(  ), PoolVector2Array(  ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Body/Hitboxes/AirJab1/AirJab1_Hitbox/AirJab1_Hitbox:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.04, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "Falling"
@@ -1596,7 +1794,7 @@ tracks/54/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=7]
 resource_name = "UpTilt"
 length = 0.5
 step = 0.01
@@ -1817,7 +2015,7 @@ tracks/17/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.6
 loop = true
 step = 0.05
@@ -2005,10 +2203,13 @@ radius = 36.2215
 [sub_resource type="CircleShape2D" id=13]
 radius = 56.1427
 
-[sub_resource type="CircleShape2D" id=15]
+[sub_resource type="CircleShape2D" id=14]
 radius = 38.7591
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=17]
+radius = 23.4164
+
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 20, 45.1426 )
 
 [node name="Hero" type="KinematicBody2D"]
@@ -2017,14 +2218,15 @@ script = ExtResource( 1 )
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 autoplay = "Rest"
+anims/AirJab1 = SubResource( 16 )
 anims/Falling = SubResource( 1 )
 anims/Jab1 = SubResource( 2 )
 anims/Jab2 = SubResource( 3 )
 anims/Jab3 = SubResource( 4 )
 anims/Jumping = SubResource( 5 )
 anims/Rest = SubResource( 6 )
-anims/UpTilt = SubResource( 14 )
-anims/Walking = SubResource( 7 )
+anims/UpTilt = SubResource( 7 )
+anims/Walking = SubResource( 8 )
 next/Jumping = "Falling"
 
 [node name="States" type="Node" parent="."]
@@ -2073,6 +2275,24 @@ script = ExtResource( 2 )
 
 [node name="Jumping" type="Node" parent="States"]
 script = ExtResource( 4 )
+
+[node name="AirAttack" type="Node" parent="States"]
+script = ExtResource( 8 )
+
+[node name="Jab1" type="Timer" parent="States/AirAttack"]
+process_mode = 0
+wait_time = 0.18
+one_shot = true
+
+[node name="cancel" type="Timer" parent="States/AirAttack"]
+process_mode = 0
+wait_time = 0.1
+one_shot = true
+
+[node name="attack_input" type="Timer" parent="States/AirAttack"]
+process_mode = 0
+wait_time = 0.1
+one_shot = true
 
 [node name="Buffer" type="Node" parent="States"]
 script = ExtResource( 5 )
@@ -2134,8 +2354,8 @@ position = Vector2( 56, -40 )
 Body = NodePath("../../..")
 Id = 1
 Damage = 5
-Force = 100
-Direction = Vector2( 1, 0 )
+Force = 500
+Direction = Vector2( 0.1, -1 )
 
 [node name="Jab2_Hitbox2" type="CollisionShape2D" parent="Body/Hitboxes/Jab2/Jab2_Hitbox2"]
 shape = SubResource( 11 )
@@ -2180,7 +2400,22 @@ Force = 1200
 Direction = Vector2( 0.1, -1.5 )
 
 [node name="UpTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/UpTilt/UpTilt_Hitbox"]
-shape = SubResource( 15 )
+shape = SubResource( 14 )
+disabled = true
+
+[node name="AirJab1" type="Node2D" parent="Body/Hitboxes"]
+visible = false
+
+[node name="AirJab1_Hitbox" parent="Body/Hitboxes/AirJab1" instance=ExtResource( 7 )]
+position = Vector2( 56, -27.8782 )
+Body = NodePath("../../..")
+Id = 1
+Damage = 5
+Force = 250
+Direction = Vector2( 0, -1 )
+
+[node name="AirJab1_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/AirJab1/AirJab1_Hitbox"]
+shape = SubResource( 17 )
 disabled = true
 
 [node name="Right_Arm" type="Polygon2D" parent="Body"]
@@ -2363,7 +2598,7 @@ color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
-shape = SubResource( 8 )
+shape = SubResource( 15 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2374,6 +2609,9 @@ __meta__ = {
 [connection signal="timeout" from="States/GroundAttack/cancel" to="States/GroundAttack" method="_on_cancel_timeout"]
 [connection signal="timeout" from="States/GroundAttack/attack_input" to="States/GroundAttack" method="_on_attack_input_timeout"]
 [connection signal="timeout" from="States/GroundAttack/jump_input" to="States/GroundAttack" method="_on_jump_input_timeout"]
+[connection signal="timeout" from="States/AirAttack/Jab1" to="States/AirAttack" method="_on_Attack_timeout"]
+[connection signal="timeout" from="States/AirAttack/cancel" to="States/AirAttack" method="_on_cancel_timeout"]
+[connection signal="timeout" from="States/AirAttack/attack_input" to="States/AirAttack" method="_on_attack_input_timeout"]
 [connection signal="timeout" from="States/Buffer/Jump_Buffer" to="States/Buffer" method="_on_Jump_Buffer_timeout"]
 [connection signal="timeout" from="States/Buffer/Coyote_Timer" to="States/Buffer" method="_on_Coyote_Timer_timeout"]
 [connection signal="timeout" from="States/Buffer/Combo_Timer" to="States/Buffer" method="_on_Combo_Timer_timeout"]

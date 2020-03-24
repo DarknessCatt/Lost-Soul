@@ -35,10 +35,14 @@ func update(_Player: KinematicBody2D, delta : float) -> void:
 
 func input(_Player: KinematicBody2D, event : InputEvent) -> void:
 	if event.is_action_pressed("hero_jump"):
+
 		if $"../Buffer".can_coyote:
 			_Player._change_state($"../Jumping")
 		else:
 			$"../Buffer"._buffer_jump()
+
+	elif event.is_action_pressed("hero_attack"):
+		_Player._change_state($"../AirAttack")
 
 	else:
 		.input(_Player, event)
