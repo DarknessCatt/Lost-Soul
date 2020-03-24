@@ -25,3 +25,6 @@ func _physics_process(delta):
 	else:
 		self.speed.x *= FRICTION
 		self.speed.y = 20
+
+	if self.is_on_wall():
+		self.speed.x *= -0.8
