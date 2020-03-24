@@ -5,6 +5,7 @@ const MOVE_SPEED : int = 800
 
 var attacking : bool = false
 var can_cancel : bool = false
+var attack_buffered : bool = false
 
 onready var buffer : Node = $"../Buffer"
 onready var combo_info : Array = [["Jab1", $Jab1], ["Jab2", $Jab2], ["Jab3", $Jab3]]
@@ -19,13 +20,24 @@ func update(_Player: KinematicBody2D, delta : float) -> void:
 
 	_Player.move_and_slide(_Player.speed, NORMAL)
 
-	if not attacking:
+	if can_cancel:
+
+		if attack_buffered:
+			attack(_Player)
+
+		elif Input.is_action_pressed("hero_left") \
+			or Input.is_action_pressed("hero_right"):
+			_Player._change_state($"../OnGround")
+
+	elif not attacking:
 		buffer._attack_end()
 		_Player._change_state($"../OnGround")
 
 func attack(_Player : KinematicBody2D):
 	$cancel.stop()
+	$attack_input.stop()
 
+	attack_buffered = false
 	can_cancel = false
 
 	var num = buffer.attack_num
@@ -44,6 +56,9 @@ func input(_Player: KinematicBody2D, event : InputEvent) -> void:
 	if event.is_action_pressed("hero_attack"):
 		if can_cancel:
 			attack(_Player)
+		else:
+			attack_buffered = true
+			$attack_input.start()
 
 func _on_Attack_timeout():
 	can_cancel = true
@@ -52,3 +67,6 @@ func _on_Attack_timeout():
 func _on_cancel_timeout():
 	attacking = false
 	can_cancel = false
+
+func _on_attack_input_timeout():
+	attack_buffered = false
