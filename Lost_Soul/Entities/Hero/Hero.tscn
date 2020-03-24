@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Hero/FSM/Falling.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Entities/Hero/FSM/Jumping.gd" type="Script" id=4]
 [ext_resource path="res://Entities/Hero/FSM/Buffer.gd" type="Script" id=5]
 [ext_resource path="res://Entities/Hero/FSM/GroundAttack.gd" type="Script" id=6]
+[ext_resource path="res://Entities/Combat/Hitbox/Hitbox.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Falling"
@@ -317,6 +318,18 @@ tracks/15/keys = {
 "update": 1,
 "values": [ PoolVector2Array(  ) ]
 }
+tracks/16/type = "value"
+tracks/16/path = NodePath("Body/Hitboxes/Jab1/Jab1_Hitbox/Jab1_Hitbox:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.04, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Jab2"
@@ -501,6 +514,30 @@ tracks/14/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ PoolVector2Array(  ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Body/Hitboxes/Jab2/Jab2_Hitbox/Jab2_Hitbox1:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.09, 0.13 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Body/Hitboxes/Jab2/Jab2_Hitbox2/Jab2_Hitbox2:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.12, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -698,6 +735,30 @@ tracks/15/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ PoolVector2Array(  ), PoolVector2Array(  ), PoolVector2Array( 4.55569, 22.3854, -3.62131, 22.5638, -2.29406, 24.0253, -1.06327, 25.0839, 0.0393181, 26.5491, 1.90375, 25.1253, 2.91959, 24.0301 ), PoolVector2Array( 4.51016, 19.7858, -3.46727, 17.3667, -9.7196, 28.2178, -10.286, 39.6608, -1.39271, 48.2521, 7.24661, 41.1156, 9.68878, 30.7642 ), PoolVector2Array( 5.75906, 22.6267, -3.62131, 22.5638, -9.06932, 27.8406, 0.704243, 39.2693, 26.9383, 40.9983, 9.6725, 35.5857, 0.356272, 29.0451 ), PoolVector2Array( 4.55569, 22.3854, -3.62131, 22.5638, -4.24668, 45.8514, 27.6953, 37.4664, 68.6522, -8.40553, 32.2798, 21.0658, 9.16474, 32.0203 ), PoolVector2Array( 4.27866, 11.2714, -4.33703, 7.50967, -1.60295, 70.7737, 66.1355, 41.0625, 46.5681, -64.1663, 43.3794, -15.8938, 26.4292, 22.1278 ), PoolVector2Array( 3.22488, 11.7505, -3.95855, 15.1655, -0.314781, 60.4849, 50.367, 72.8414, 100.654, -16.6545, 53.0336, 32.9691, 23.4148, 33.8534 ), PoolVector2Array( 3.62545, 15.9335, -4.72125, 10.4105, -4.42873, 26.6799, 36.578, 45.6781, 67.8836, 87.1025, 41.9343, 36.2212, 18.1775, 29.9384 ), PoolVector2Array( 4.55569, 22.3854, -3.62131, 22.5638, 8.94847, 45.7046, 22.0533, 49.706, 46.8753, 40.8446, 19.7284, 41.1673, 10.9781, 34.6986 ), PoolVector2Array( 4.55569, 22.3854, -3.62131, 22.5638, 2.02445, 27.8781, 3.77902, 32.8014, 1.84421, 43.3765, 8.24179, 35.045, 7.17905, 29.3912 ), PoolVector2Array( 4.55569, 22.3854, -3.62131, 22.5638, -2.92553, 23.6116, -1.59674, 24.718, 0.528225, 26.4372, 1.99866, 25.0352, 3.08146, 23.6135 ), PoolVector2Array(  ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Body/Hitboxes/Jab3/Jab3_Hitbox/Jab3_Hitbox:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Body/Hitboxes/Jab3/Jab3_Hitbox2/Jab3_Hitbox2:disabled")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.33, 0.38 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -1588,8 +1649,23 @@ tracks/13/keys = {
 "values": [ PoolVector2Array(  ) ]
 }
 
+[sub_resource type="CircleShape2D" id=9]
+radius = 25.0
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 48.0
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 36.2215
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 56.1427
+
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 12, 45.1426 )
+extents = Vector2( 20, 45.1426 )
 
 [node name="Hero" type="KinematicBody2D"]
 collision_mask = 18
@@ -1631,7 +1707,7 @@ one_shot = true
 
 [node name="cancel" type="Timer" parent="States/GroundAttack"]
 process_mode = 0
-wait_time = 0.18
+wait_time = 0.1
 one_shot = true
 
 [node name="attack_input" type="Timer" parent="States/GroundAttack"]
@@ -1663,6 +1739,79 @@ wait_time = 0.3
 one_shot = true
 
 [node name="Body" type="Node2D" parent="."]
+
+[node name="Hitboxes" type="Node2D" parent="Body"]
+visible = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Jab1" type="Node2D" parent="Body/Hitboxes"]
+
+[node name="Jab1_Hitbox" parent="Body/Hitboxes/Jab1" instance=ExtResource( 7 )]
+position = Vector2( 59, -28 )
+Body = NodePath("../../..")
+Id = 1
+Damage = 5
+Force = 100
+Direction = Vector2( 1, -0.1 )
+
+[node name="Jab1_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Jab1/Jab1_Hitbox"]
+shape = SubResource( 9 )
+disabled = true
+
+[node name="Jab2" type="Node2D" parent="Body/Hitboxes"]
+
+[node name="Jab2_Hitbox" parent="Body/Hitboxes/Jab2" instance=ExtResource( 7 )]
+position = Vector2( 48, 24 )
+Body = NodePath("../../..")
+Id = 1
+Damage = 5
+Force = 500
+Direction = Vector2( 0, -1 )
+
+[node name="Jab2_Hitbox1" type="CollisionShape2D" parent="Body/Hitboxes/Jab2/Jab2_Hitbox"]
+shape = SubResource( 10 )
+disabled = true
+
+[node name="Jab2_Hitbox2" parent="Body/Hitboxes/Jab2" instance=ExtResource( 7 )]
+position = Vector2( 56, -40 )
+Body = NodePath("../../..")
+Id = 1
+Damage = 5
+Force = 300
+Direction = Vector2( 1, 0 )
+
+[node name="Jab2_Hitbox2" type="CollisionShape2D" parent="Body/Hitboxes/Jab2/Jab2_Hitbox2"]
+shape = SubResource( 11 )
+disabled = true
+
+[node name="Jab3" type="Node2D" parent="Body/Hitboxes"]
+
+[node name="Jab3_Hitbox" parent="Body/Hitboxes/Jab3" instance=ExtResource( 7 )]
+position = Vector2( 68, -36 )
+Body = NodePath("../../..")
+Id = 1
+Damage = 5
+Force = 100
+Direction = Vector2( 0.2, 1 )
+
+[node name="Jab3_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Jab3/Jab3_Hitbox"]
+shape = SubResource( 12 )
+disabled = true
+
+[node name="Jab3_Hitbox2" parent="Body/Hitboxes/Jab3" instance=ExtResource( 7 )]
+position = Vector2( 92, 32 )
+Body = NodePath("../../..")
+Id = 1
+Damage = 10
+Force = 1500
+Direction = Vector2( 1, -0.1 )
+
+[node name="Jab3_Hitbox2" type="CollisionShape2D" parent="Body/Hitboxes/Jab3/Jab3_Hitbox2"]
+position = Vector2( 0, -24 )
+shape = SubResource( 13 )
+disabled = true
 
 [node name="Right_Arm" type="Polygon2D" parent="Body"]
 position = Vector2( 12, -28 )
