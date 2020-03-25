@@ -19,7 +19,7 @@ func enter(_Player : KinematicBody2D) -> void:
 	can_cancel = false
 
 	_Player.speed.x = 0
-	_Player.speed.y = 10
+	_Player.speed.y = 0
 
 	self.attack(_Player)
 
