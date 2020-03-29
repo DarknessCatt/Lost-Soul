@@ -34,6 +34,7 @@ func _attack_end():
 
 func _on_Combo_Timer_timeout():
 	attack_num = 0
+	air_attack_num = 0
 
 #Ground Combo Counter
 var air_attack_num : int = 0

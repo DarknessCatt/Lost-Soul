@@ -9,7 +9,7 @@ var attack_buffered : bool = false
 
 onready var buffer : Node = $"../Buffer"
 onready var combo_info : Array = [["AirJab1", $Jab1], ["AirJab2", $Jab2],
-								["AirJab3", $Jab3]]
+								["AirJab3", $Jab3], ["DownAir", $DownAir]]
 
 func enter(_Player : KinematicBody2D) -> void:
 	$attack_input.stop()
@@ -36,7 +36,7 @@ func update(_Player: KinematicBody2D, delta : float) -> void:
 			attack(_Player)
 
 	elif not attacking:
-		buffer._attack_end()
+		buffer._air_attack_end()
 		_Player._change_state($"../Falling")
 
 func attack(_Player : KinematicBody2D):
