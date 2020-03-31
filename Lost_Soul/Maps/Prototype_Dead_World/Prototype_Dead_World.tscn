@@ -4,7 +4,7 @@
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/BG_Music/Someting-Freaky-This-Way-Comes.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Entities/Information/Textbox/Textbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Maps/Prototype_Map/Prototype_Map.gd" type="Script" id=5]
+[ext_resource path="res://Maps/Prototype_Dead_World/Prototype_Dead_World.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Fonts/BasaltRegular-Jx3o.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -19,10 +19,10 @@ extents = Vector2( 69.7646, 146.222 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 215.694, 282.712 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 40.2529, 39.5746 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=6]
 emission_shape = 1
 emission_sphere_radius = 14.0
 flag_disable_z = true
@@ -35,14 +35,14 @@ scale = 20.0
 scale_random = 0.5
 color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=8]
 size = 350
 font_data = ExtResource( 6 )
 
-[node name="Prototype_Map" type="Node2D"]
+[node name="Prototype_Dead_World" type="Node2D"]
 script = ExtResource( 5 )
 
 [node name="Intro" type="Timer" parent="."]
@@ -189,7 +189,7 @@ position = Vector2( -5341.19, 640.273 )
 
 [node name="Area" type="CollisionShape2D" parent="Chaos"]
 position = Vector2( -2.81348, -0.272827 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Chaos"]
 position = Vector2( -2.81348, -0.272827 )
@@ -200,7 +200,7 @@ polygon = PoolVector2Array( -24, 0, -16, -16, 0, -24, 16, -16, 24, 0, 16, 16, 0,
 amount = 40
 lifetime = 5.0
 explosiveness = 1.0
-process_material = SubResource( 8 )
+process_material = SubResource( 6 )
 
 [node name="BG" type="Panel" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -210,7 +210,7 @@ margin_left = 2943.02
 margin_top = -203.987
 margin_right = 5443.02
 margin_bottom = 796.013
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -228,7 +228,7 @@ margin_left = -100.0
 margin_top = -170.0
 margin_right = 2025.0
 margin_bottom = 635.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 text = "Texto aqui"
 Autostart = false
