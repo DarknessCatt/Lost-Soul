@@ -2,7 +2,7 @@ extends "BasicMove.gd"
 
 const GRAV : int = 4000
 
-const JUMP_FORCE = 1200
+const JUMP_FORCE = 1300
 
 func _ready():
 	#Overridable Vars
