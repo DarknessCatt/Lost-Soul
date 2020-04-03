@@ -10,10 +10,10 @@ var health : int = max_health
 var max_crystal_heart : int = 0
 var crystal_heart : int = max_crystal_heart
 
-#Movement
-var speed : Vector2 = Vector2(0,0)
+##Signals
+signal heart_collected()
 
-#Attributes
+##Functions
 func _crystal_heart_collected():
 	max_crystal_heart += 1
 	crystal_heart += 1
@@ -23,6 +23,7 @@ func _crystal_heart_collected():
 	_change_anim("PowerUp")
 
 	on_cutscene = true
+	emit_signal("heart_collected")
 
 func _use_heart():
 	if crystal_heart > 0:
@@ -33,10 +34,15 @@ func _use_heart():
 func _powerup_end():
 	on_cutscene = false
 
+
+#Movement
+var speed : Vector2 = Vector2(0,0)
+
 #FSM
 onready var cur_state : Node  = $States/Falling
 export(bool) var on_cutscene : bool = false
 
+##Functions
 func _input(event):
 	if not on_cutscene:
 

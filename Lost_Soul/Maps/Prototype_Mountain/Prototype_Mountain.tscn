@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Rock/Rock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tilesets/Mountain_Tileset/Mountain_Tileset.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Crystal_Heart/Crystal_Heart.tscn" type="PackedScene" id=4]
+[ext_resource path="res://HUD/Player_Status/Player_Status.tscn" type="PackedScene" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.635294, 0.905882, 0.909804, 1 )
@@ -43,6 +44,12 @@ position = Vector2( 1594.77, -214.259 )
 position = Vector2( 1588.31, 742.112 )
 
 [node name="Camera2D" type="Camera2D" parent="Hero"]
-visible = false
 position = Vector2( 0, -75 )
 current = true
+
+[node name="Player_Status" parent="Hero/Camera2D" instance=ExtResource( 5 )]
+margin_left = -450.0
+margin_top = -270.0
+margin_right = -250.0
+margin_bottom = -228.0
+[connection signal="heart_collected" from="Hero" to="Hero/Camera2D/Player_Status" method="_increase_hearts"]
