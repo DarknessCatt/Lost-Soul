@@ -24,6 +24,12 @@ func _crystal_heart_collected():
 
 	on_cutscene = true
 
+func _use_heart():
+	if crystal_heart > 0:
+		crystal_heart -= 1
+		health = max_health
+		$Misc_Animations.play("Use_Heart")
+
 func _powerup_end():
 	on_cutscene = false
 
@@ -33,7 +39,11 @@ export(bool) var on_cutscene : bool = false
 
 func _input(event):
 	if not on_cutscene:
-		cur_state.input(self, event)
+
+		if event.is_action_pressed("hero_heart"):
+			self._use_heart()
+		else:
+			cur_state.input(self, event)
 
 func _physics_process(delta):
 	if not on_cutscene:
@@ -45,7 +55,7 @@ func _change_state(new_state : Node):
 	cur_state.enter(self)
 
 func _change_anim(new_anim : String):
-	if $Animations.current_animation == new_anim:
-		$Animations.stop()
+	if $Body_Animations.current_animation == new_anim:
+		$Body_Animations.stop()
 
-	$Animations.play(new_anim)
+	$Body_Animations.play(new_anim)
