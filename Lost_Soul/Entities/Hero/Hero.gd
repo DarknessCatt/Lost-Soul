@@ -13,6 +13,20 @@ var crystal_heart : int = max_crystal_heart
 #Movement
 var speed : Vector2 = Vector2(0,0)
 
+#Attributes
+func _crystal_heart_collected():
+	max_crystal_heart += 1
+	crystal_heart += 1
+
+	self.speed = Vector2(0,0)
+	_change_state($States/OnGround)
+	_change_anim("PowerUp")
+
+	on_cutscene = true
+
+func _powerup_end():
+	on_cutscene = false
+
 #FSM
 onready var cur_state : Node  = $States/Falling
 export(bool) var on_cutscene : bool = false
