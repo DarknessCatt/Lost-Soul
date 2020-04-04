@@ -53,3 +53,4 @@ margin_top = -270.0
 margin_right = -250.0
 margin_bottom = -228.0
 [connection signal="heart_collected" from="Hero" to="Hero/Camera2D/Player_Status" method="_increase_hearts"]
+[connection signal="heart_used" from="Hero" to="Hero/Camera2D/Player_Status" method="_use_hearts"]

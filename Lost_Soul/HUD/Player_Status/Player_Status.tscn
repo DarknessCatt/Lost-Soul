@@ -30,7 +30,6 @@ margin_bottom = 10.0
 rect_min_size = Vector2( 200, 10 )
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
-max_value = 100.0
 value = 100.0
 percent_visible = false
 __meta__ = {

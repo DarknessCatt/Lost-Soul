@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Hero/FSM/Falling.gd" type="Script" id=2]
@@ -3192,35 +3192,6 @@ tracks/15/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=27]
-resource_name = "Use_Heart"
-length = 0.25
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Heart:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Heart:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
-"transitions": PoolRealArray( 0.5, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.1, 0.1 ), Vector2( 3, 3 ), Vector2( 1, 1 ), Vector2( 3, 3 ), Vector2( 1, 1 ), Vector2( 3, 3 ) ]
-}
-
 [sub_resource type="CircleShape2D" id=15]
 radius = 25.0
 
@@ -3257,6 +3228,27 @@ radius = 59.3227
 [sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 20, 45.1426 )
 
+[sub_resource type="Gradient" id=28]
+offsets = PoolRealArray( 0, 0.219251, 0.385027, 0.73262, 0.941176 )
+colors = PoolColorArray( 1, 1, 1, 0.478431, 1, 0.61, 0.61, 1, 1, 0.57, 0.57, 1, 1, 0, 0, 1, 1, 0, 0, 0.0117647 )
+
+[sub_resource type="GradientTexture" id=29]
+gradient = SubResource( 28 )
+
+[sub_resource type="ParticlesMaterial" id=27]
+emission_shape = 1
+emission_sphere_radius = 100.0
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 10.0
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = -300.0
+scale = 6.0
+scale_random = 0.3
+color_ramp = SubResource( 29 )
+
 [node name="Hero" type="KinematicBody2D"]
 collision_mask = 16
 script = ExtResource( 1 )
@@ -3278,9 +3270,6 @@ anims/StandingUp = SubResource( 12 )
 anims/UpTilt = SubResource( 13 )
 anims/Walking = SubResource( 14 )
 next/Jumping = "Falling"
-
-[node name="Misc_Animations" type="AnimationPlayer" parent="."]
-anims/Use_Heart = SubResource( 27 )
 
 [node name="States" type="Node" parent="."]
 
@@ -3721,13 +3710,6 @@ __meta__ = {
 [node name="Right_Foot_Weapon" type="Polygon2D" parent="Body/Hip/Right_Leg/Right_Shin/Right_Foot"]
 color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
-[node name="Heart" type="Polygon2D" parent="."]
-visible = false
-position = Vector2( 0, -10 )
-scale = Vector2( 3, 3 )
-color = Color( 1, 0, 0, 0.490196 )
-polygon = PoolVector2Array( -16, 0, -16, -8, -8, -16, 0, -8, 8, -16, 16, -8, 16, 0, 0, 16 )
-
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 8 )
@@ -3735,6 +3717,14 @@ shape = SubResource( 26 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Heart_Particles" type="Particles2D" parent="."]
+position = Vector2( 1.90735e-06, -11.8787 )
+emitting = false
+amount = 40
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 27 )
 [connection signal="timeout" from="States/GroundAttack/Jab1" to="States/GroundAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/GroundAttack/Jab2" to="States/GroundAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/GroundAttack/Jab3" to="States/GroundAttack" method="_on_Attack_timeout"]

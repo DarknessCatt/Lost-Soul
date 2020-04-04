@@ -12,6 +12,7 @@ var crystal_heart : int = max_crystal_heart
 
 ##Signals
 signal heart_collected()
+signal heart_used(num)
 
 ##Functions
 func _crystal_heart_collected():
@@ -29,7 +30,8 @@ func _use_heart():
 	if crystal_heart > 0:
 		crystal_heart -= 1
 		health = max_health
-		$Misc_Animations.play("Use_Heart")
+		$Heart_Particles.restart()
+		emit_signal("heart_used", crystal_heart)
 
 func _powerup_end():
 	on_cutscene = false
