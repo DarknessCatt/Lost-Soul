@@ -3226,23 +3226,23 @@ radius = 50.6913
 [sub_resource type="CircleShape2D" id=25]
 radius = 59.3227
 
-[sub_resource type="CircleShape2D" id=30]
+[sub_resource type="CircleShape2D" id=26]
 radius = 15.2725
 
-[sub_resource type="CircleShape2D" id=31]
+[sub_resource type="CircleShape2D" id=27]
 radius = 13.5073
 
-[sub_resource type="RectangleShape2D" id=26]
+[sub_resource type="RectangleShape2D" id=28]
 extents = Vector2( 20, 45.1426 )
 
-[sub_resource type="Gradient" id=27]
+[sub_resource type="Gradient" id=29]
 offsets = PoolRealArray( 0, 0.219251, 0.385027, 0.73262, 0.941176 )
 colors = PoolColorArray( 1, 1, 1, 0.478431, 1, 0.61, 0.61, 1, 1, 0.57, 0.57, 1, 1, 0, 0, 1, 1, 0, 0, 0.0117647 )
 
-[sub_resource type="GradientTexture" id=28]
-gradient = SubResource( 27 )
+[sub_resource type="GradientTexture" id=30]
+gradient = SubResource( 29 )
 
-[sub_resource type="ParticlesMaterial" id=29]
+[sub_resource type="ParticlesMaterial" id=31]
 emission_shape = 1
 emission_sphere_radius = 100.0
 flag_disable_z = true
@@ -3254,7 +3254,7 @@ orbit_velocity_random = 0.0
 radial_accel = -300.0
 scale = 6.0
 scale_random = 0.3
-color_ramp = SubResource( 28 )
+color_ramp = SubResource( 30 )
 
 [node name="Hero" type="KinematicBody2D"]
 collision_mask = 16
@@ -3595,15 +3595,15 @@ polygon = PoolVector2Array( -7.99883, 16.1367, 7.99883, 15.8633, 16, -8, 16, -12
 visible = false
 position = Vector2( 1.90735e-06, -12 )
 Id = 1
-Character = NodePath("../../..")
+Character = NodePath("../../../..")
 
 [node name="Upper" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox"]
 position = Vector2( 0, -6.11535 )
-shape = SubResource( 30 )
+shape = SubResource( 26 )
 
 [node name="Lower" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox"]
 position = Vector2( 0, 20 )
-shape = SubResource( 31 )
+shape = SubResource( 27 )
 
 [node name="Head" type="Polygon2D" parent="Body/Hip/Torso"]
 position = Vector2( 0, -32 )
@@ -3734,7 +3734,7 @@ color = Color( 0.976471, 0.376471, 0.376471, 1 )
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 8 )
-shape = SubResource( 26 )
+shape = SubResource( 28 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -3745,7 +3745,7 @@ emitting = false
 amount = 40
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 29 )
+process_material = SubResource( 31 )
 [connection signal="timeout" from="States/GroundAttack/Jab1" to="States/GroundAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/GroundAttack/Jab2" to="States/GroundAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/GroundAttack/Jab3" to="States/GroundAttack" method="_on_Attack_timeout"]

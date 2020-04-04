@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Rock/Rock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tilesets/Mountain_Tileset/Mountain_Tileset.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Crystal_Heart/Crystal_Heart.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/Player_Status/Player_Status.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Hazards/Poison_Mist/Poison_Mist.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.635294, 0.905882, 0.909804, 1 )
@@ -16,10 +17,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -5500.0
-margin_top = -800.0
-margin_right = 6500.0
-margin_bottom = 1200.0
+margin_left = -5504.0
+margin_top = -808.0
+margin_right = 6496.0
+margin_bottom = 1192.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -53,5 +54,16 @@ margin_top = -270.0
 margin_right = -250.0
 margin_bottom = -228.0
 Character = NodePath("../..")
+
+[node name="Hazards" type="Node2D" parent="."]
+position = Vector2( 1588.31, 742.112 )
+
+[node name="Poison_Mist" parent="Hazards" instance=ExtResource( 6 )]
+position = Vector2( -4561.59, 31.9999 )
+scale = Vector2( 13.0409, 2.58988 )
+
+[node name="mist" type="Polygon2D" parent="Hazards/Poison_Mist"]
+color = Color( 0, 0, 0, 0.545098 )
+polygon = PoolVector2Array( -64.0073, 59.4189, -64.0073, 9.99585, 24.3299, 9.99585, 24.3299, -2.35992, 29.2375, -2.35992, 29.2375, -27.0714, 31.6913, -27.0714, 31.6913, -39.4272, 36.599, -39.4272, 36.599, -51.783, 39.0528, -51.783, 39.0528, -64.1387, 56.2295, -64.1387, 56.2295, -51.783, 58.6833, -51.783, 58.6833, -39.4272, 61.1371, -39.4272, 61.1371, -27.0714, 63.5909, -27.0714, 63.5909, 34.7074, 51.3219, 34.7074, 51.3219, 47.0631, 31.6913, 47.0631, 31.6913, 59.4189 )
 [connection signal="heart_collected" from="Hero" to="Hero/Camera2D/Player_Status" method="_increase_hearts"]
 [connection signal="heart_used" from="Hero" to="Hero/Camera2D/Player_Status" method="_use_hearts"]
