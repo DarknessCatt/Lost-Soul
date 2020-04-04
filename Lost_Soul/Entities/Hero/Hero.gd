@@ -11,10 +11,20 @@ var max_crystal_heart : int = 0
 var crystal_heart : int = max_crystal_heart
 
 ##Signals
+signal dead()
 signal heart_collected()
 signal heart_used(num)
 
 ##Functions
+func _hit(damage : int, force : int, _direction : Vector2):
+	health -= damage
+
+	if health <= 0:
+		emit_signal("dead")
+
+	if force > 0:
+		self.speed += _direction.normalized()*force
+
 func _crystal_heart_collected():
 	max_crystal_heart += 1
 	crystal_heart += 1

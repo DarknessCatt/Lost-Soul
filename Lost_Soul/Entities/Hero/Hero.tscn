@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Hero/FSM/Falling.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Entities/Hero/FSM/GroundAttack.gd" type="Script" id=6]
 [ext_resource path="res://Entities/Combat/Hitbox/Hitbox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Entities/Hero/FSM/AirAttack.gd" type="Script" id=8]
+[ext_resource path="res://Entities/Combat/Hurtbox/Hurtbox.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "AirJab1"
@@ -3225,17 +3226,23 @@ radius = 50.6913
 [sub_resource type="CircleShape2D" id=25]
 radius = 59.3227
 
+[sub_resource type="CircleShape2D" id=30]
+radius = 15.2725
+
+[sub_resource type="CircleShape2D" id=31]
+radius = 13.5073
+
 [sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 20, 45.1426 )
 
-[sub_resource type="Gradient" id=28]
+[sub_resource type="Gradient" id=27]
 offsets = PoolRealArray( 0, 0.219251, 0.385027, 0.73262, 0.941176 )
 colors = PoolColorArray( 1, 1, 1, 0.478431, 1, 0.61, 0.61, 1, 1, 0.57, 0.57, 1, 1, 0, 0, 1, 1, 0, 0, 0.0117647 )
 
-[sub_resource type="GradientTexture" id=29]
-gradient = SubResource( 28 )
+[sub_resource type="GradientTexture" id=28]
+gradient = SubResource( 27 )
 
-[sub_resource type="ParticlesMaterial" id=27]
+[sub_resource type="ParticlesMaterial" id=29]
 emission_shape = 1
 emission_sphere_radius = 100.0
 flag_disable_z = true
@@ -3247,7 +3254,7 @@ orbit_velocity_random = 0.0
 radial_accel = -300.0
 scale = 6.0
 scale_random = 0.3
-color_ramp = SubResource( 29 )
+color_ramp = SubResource( 28 )
 
 [node name="Hero" type="KinematicBody2D"]
 collision_mask = 16
@@ -3584,6 +3591,20 @@ color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 0, -16 )
 polygon = PoolVector2Array( -7.99883, 16.1367, 7.99883, 15.8633, 16, -8, 16, -12, 12, -16, -12, -16, -16, -12, -16, -8 )
 
+[node name="Hurtbox" parent="Body/Hip/Torso" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 1.90735e-06, -12 )
+Id = 1
+Character = NodePath("../../..")
+
+[node name="Upper" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox"]
+position = Vector2( 0, -6.11535 )
+shape = SubResource( 30 )
+
+[node name="Lower" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox"]
+position = Vector2( 0, 20 )
+shape = SubResource( 31 )
+
 [node name="Head" type="Polygon2D" parent="Body/Hip/Torso"]
 position = Vector2( 0, -32 )
 offset = Vector2( 0, -16 )
@@ -3724,7 +3745,7 @@ emitting = false
 amount = 40
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 27 )
+process_material = SubResource( 29 )
 [connection signal="timeout" from="States/GroundAttack/Jab1" to="States/GroundAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/GroundAttack/Jab2" to="States/GroundAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/GroundAttack/Jab3" to="States/GroundAttack" method="_on_Attack_timeout"]
