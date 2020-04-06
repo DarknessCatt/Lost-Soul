@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Entities/Checkpoint/Checkpoint.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 139.449
+
+[sub_resource type="Animation" id=3]
+resource_name = "Activated"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flame:polygon")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.6, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( -17.0937, -6.03157, -15.1871, -10.1353, -11.2014, -13.2653, -7.12334, -15.0101, -1.21485, -14.0134, 2.88717, -9.66289, -2.65172, -11.2664, -5.35295, -11.0234, -8.14513, -9.11152, -8.09727, -6.35398, -6.42661, -4.77, -3.05238, -3.60482, -0.738901, -0.51297, -1.61037, 2.93504, -4.42106, 6.49953, -9.81324, 6.9883, -13.8247, 4.89968, -16.0141, 1.65182, -17.51, -1.83305 ), PoolVector2Array( -16.3313, 5.98611, -16.738, 2.5968, -16.1957, -3.50397, -13.6198, -9.06245, -10.3661, -14.2142, -3.58745, -19.9083, -4.94317, -11.7739, -7.7902, -7.57115, -9.55264, -4.58855, -10.7728, -0.385799, -9.95936, 2.86794, -8.46806, 6.39283, -5.62104, 9.37543, -5.21432, 14.256, -5.34989, 17.2386, -10.5016, 17.3742, -12.8064, 16.8319, -14.0265, 13.8493, -15.5178, 9.23986 ), PoolVector2Array( -27.6084, 15.8644, -20.407, 14.0301, -15.5835, 11.992, -13.8171, 11.2447, -12.5263, 8.66305, -12.0507, 2.0052, -10.2164, 6.42112, -10.4882, 9.95386, -8.92562, 12.5355, -6.00431, 13.6904, -1.31664, 14.6415, 4.25421, 15.5247, 12.067, 17.359, 0.145144, 17.6024, -5.34989, 17.2386, -10.5016, 17.3742, -13.953, 17.6308, -23.8039, 17.427, -30.5976, 17.2231 ), PoolVector2Array( -29.1122, 16.3923, -26.4251, 14.8995, -22.9169, 15.1981, -18.9124, 15.5926, -12.798, 14.9133, -9.40678, 14.0038, -6.41194, 14.8453, -2.06396, 14.9812, 0.744477, 14.6756, 4.62584, 15.422, 8.95505, 15.6459, 11.7952, 15.9323, 14.6486, 17.4949, 0.145144, 17.6024, -5.34989, 17.2386, -10.5016, 17.3742, -13.953, 17.6308, -23.8039, 17.427, -30.5976, 17.2231 ), PoolVector2Array( -28.6466, 16.7734, -26.4611, 16.7238, -22.7357, 16.7238, -18.8614, 16.8231, -13.8446, 16.5251, -9.32455, 16.5251, -6.09593, 16.2767, -1.97324, 16.3264, 1.15604, 16.4257, 4.68268, 16.6244, 8.85505, 16.7734, 11.885, 16.7734, 14.6486, 17.4949, 0.145144, 17.6024, -5.34989, 17.2386, -10.5016, 17.3742, -13.953, 17.6308, -23.8039, 17.427, -30.5976, 17.2231 ), PoolVector2Array( -29.1122, 16.3923, -26.4251, 14.8995, -22.9169, 15.1981, -18.9124, 15.5926, -12.798, 14.9133, -9.40678, 14.0038, -6.41194, 14.8453, -2.06396, 14.9812, 0.744477, 14.6756, 4.62584, 15.422, 8.95505, 15.6459, 11.7952, 15.9323, 14.6486, 17.4949, 0.145144, 17.6024, -5.34989, 17.2386, -10.5016, 17.3742, -13.953, 17.6308, -23.8039, 17.427, -30.5976, 17.2231 ), PoolVector2Array( -21.2083, 14.0286, -16.3837, 9.91872, -13.7927, 5.80885, -13.2566, 1.87767, -11.9164, -2.94697, -8.96805, -10.72, -9.41477, -3.39369, -9.59347, -0.802687, -10.3082, 3.75391, -9.41478, 7.6851, -7.71722, 10.0081, -3.87539, 12.4204, 1.0386, 15.4581, 0.145144, 17.6024, -5.34989, 17.2386, -10.5016, 17.3742, -12.9886, 17.0663, -16.5624, 17.4237, -22.9952, 17.3344 ), PoolVector2Array( -17.0937, -6.03157, -15.1871, -10.1353, -11.2014, -13.2653, -7.12334, -15.0101, -1.21485, -14.0134, 2.88717, -9.66289, -2.65172, -11.2664, -5.35295, -11.0234, -8.14513, -9.11152, -8.09727, -6.35398, -6.42661, -4.77, -3.05238, -3.60482, -0.738901, -0.51297, -1.61037, 2.93504, -4.42106, 6.49953, -9.81324, 6.9883, -13.8247, 4.89968, -16.0141, 1.65182, -17.51, -1.83305 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Altar/Deco:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.87, 0.87, 0.87, 1 ), Color( 0.87, 0.522, 0.522, 1 ), Color( 0.71, 0.1278, 0.1278, 1 ), Color( 1, 0, 0, 1 ), Color( 0.71, 0.1278, 0.1278, 1 ), Color( 0.87, 0.87, 0.87, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Flame:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Altar:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.57, 0.57, 0.57, 1 ), Color( 0.57, 0.57, 0.57, 1 ), Color( 0.57, 0.1596, 0.1596, 1 ), Color( 0.568627, 0.568627, 0.568627, 1 ), Color( 0.57, 0.57, 0.57, 1 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 1.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flame:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+
+[node name="Checkpoint" type="Area2D"]
+monitorable = false
+collision_layer = 0
+script = ExtResource( 1 )
+
+[node name="Area" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 5.08171 )
+shape = SubResource( 2 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Activated = SubResource( 3 )
+anims/Idle = SubResource( 1 )
+next/Activated = "Idle"
+
+[node name="Flame" type="Polygon2D" parent="."]
+position = Vector2( -2.84217e-14, -27.4175 )
+scale = Vector2( 1.7, 1.7 )
+color = Color( 0.976471, 0.376471, 0.376471, 1 )
+offset = Vector2( 8.55457, -1.13488 )
+polygon = PoolVector2Array( -17.0937, -6.03157, -15.1871, -10.1353, -11.2014, -13.2653, -7.12334, -15.0101, -1.21485, -14.0134, 2.88717, -9.66289, -2.65172, -11.2664, -5.35295, -11.0234, -8.14513, -9.11152, -8.09727, -6.35398, -6.42661, -4.77, -3.05238, -3.60482, -0.738901, -0.51297, -1.61037, 2.93504, -4.42106, 6.49953, -9.81324, 6.9883, -13.8247, 4.89968, -16.0141, 1.65182, -17.51, -1.83305 )
+
+[node name="Altar" type="Polygon2D" parent="."]
+color = Color( 0.57, 0.57, 0.57, 1 )
+polygon = PoolVector2Array( -16, 56, -32, 56, -32, 48, -24, 48, -24, 40, -40, 40, -40, 64, 40, 64, 40, 40, 24, 40, 24, 48, 32, 48, 32, 56, 16, 56, 16, 8, 32, 8, 32, 16, 24, 16, 24, 24, 40, 24, 40, 0, -40, 0, -40, 24, -24, 24, -24, 16, -32, 16, -32, 8, -16, 8 )
+
+[node name="Deco" type="Polygon2D" parent="Altar"]
+color = Color( 0.87, 0.87, 0.87, 1 )
+polygon = PoolVector2Array( -32, 56, -8, 56, -8, 8, -32, 8, -40, 0, 40, 0, 32, 8, 8, 8, 8, 56, 32, 56, 40, 64, -40, 64 )
+[connection signal="body_entered" from="." to="." method="_on_Checkpoint_body_entered"]

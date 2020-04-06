@@ -16,6 +16,10 @@ signal heart_collected()
 signal heart_used(num)
 
 ##Functions
+func _refresh():
+	self.health = max_health
+	self.crystal_heart = max_crystal_heart
+
 func _hit(damage : int, force : int, _direction : Vector2):
 	if health > 0:
 		health -= damage
