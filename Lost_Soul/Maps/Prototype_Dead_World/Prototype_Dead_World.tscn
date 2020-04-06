@@ -45,9 +45,9 @@ font_data = ExtResource( 6 )
 [node name="Prototype_Dead_World" type="Node2D"]
 script = ExtResource( 5 )
 
-[node name="Intro" type="Timer" parent="."]
+[node name="Outro" type="Timer" parent="."]
 process_mode = 0
-wait_time = 17.0
+wait_time = 2.0
 one_shot = true
 
 [node name="Tween" type="Tween" parent="."]
@@ -187,6 +187,8 @@ polygon = PoolVector2Array( -24.0695, 22.326, 55.9305, 22.326, 55.9305, 38.326, 
 
 [node name="Chaos" type="Area2D" parent="."]
 position = Vector2( -5341.19, 640.273 )
+monitorable = false
+collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Chaos"]
 position = Vector2( -2.81348, -0.272827 )
@@ -255,6 +257,20 @@ position = Vector2( 3465.43, 522.71 )
 [node name="Camera" type="Camera2D" parent="Hero"]
 position = Vector2( 0, -75 )
 current = true
+
+[node name="BG_Outro" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -6606.68
+margin_top = -24.4492
+margin_right = -4106.68
+margin_bottom = 975.551
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="Outro" to="." method="_on_Outro_timeout"]
 [connection signal="ended" from="Characters/DeadManager/Manager_Text" to="." method="_on_Manager_Text_ended"]
 [connection signal="body_entered" from="Church" to="." method="_on_Church_body_entered"]
 [connection signal="body_exited" from="Church" to="." method="_on_Church_body_exited"]
@@ -262,4 +278,5 @@ current = true
 [connection signal="body_exited" from="Line" to="." method="_on_Line_body_exited"]
 [connection signal="body_entered" from="Jump" to="." method="_on_Jump_body_entered"]
 [connection signal="body_exited" from="Jump" to="." method="_on_Jump_body_exited"]
+[connection signal="body_entered" from="Chaos" to="." method="_on_Chaos_body_entered"]
 [connection signal="ended" from="Jump_Dialogue" to="." method="_on_Jump_Dialogue_ended"]
