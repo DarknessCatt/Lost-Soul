@@ -63,9 +63,11 @@ func _on_Church_body_exited(_body):
 
 func _on_Chaos_body_entered(_body):
 	$Tween.stop_all()
-	$Tween.interpolate_property($BG_Outro, "modulate:a", 0, 1, 1, Tween.TRANS_SINE, Tween.EASE_IN)
+	$Tween.interpolate_property($BG_Outro, "modulate:a", 0, 1, 2.5, Tween.TRANS_SINE, Tween.EASE_IN)
 	$Tween.start()
 	$Outro.start()
+	$Hero.on_cutscene = true
+	$Hero._change_anim("Death")
 
 func _on_Outro_timeout():
 	get_tree().change_scene("res://Maps/Prototype_Mountain/Prototype_Mountain.tscn")
