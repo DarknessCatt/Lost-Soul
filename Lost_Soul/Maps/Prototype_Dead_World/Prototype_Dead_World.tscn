@@ -75,15 +75,16 @@ tile_data = PoolIntArray( -2293846, 0, 0, -2228310, 0, 0, -2162945, 0, 0, -21629
 position = Vector2( 3533.43, 360 )
 polygon = PoolVector2Array( 256, 16, 248, 24, 248, 32, 256, 40, 248, 56, 264, 80, 264, 56, 272, 40, 272, 32, 272, 24, 264, 16 )
 
-[node name="Textbox" parent="Characters/DeadManager" instance=ExtResource( 4 )]
+[node name="Manager_Text" parent="Characters/DeadManager" instance=ExtResource( 4 )]
 margin_left = -200.0
 margin_top = -151.0
 margin_right = 4119.0
 margin_bottom = 1612.0
-text = "          
-Ei...          
-Tudo bem?
-       "
+text = "Introdução"
+dialogue = [ "Ei...         
+Tudo bem?", "Sua morte deve
+ter sido traumatica...", "Você está no mundo dos mortos agora.", "Siga para [->]
+onde está a fila da ressureição." ]
 
 [node name="Line" type="StaticBody2D" parent="Characters"]
 position = Vector2( 4857.33, 353.674 )
@@ -216,29 +217,49 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Line_Dialogue" parent="." instance=ExtResource( 4 )]
+margin_left = 4673.6
+margin_top = 341.766
+margin_right = 6798.6
+margin_bottom = 1146.77
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
+text = "Texto aqui"
+Autostart = false
+Sentence_Delay = 1.2
+dialogue = [ "                  
+...", "Então, é isso?", "Vai desistir
+fácil assim?", "Acredito que
+tenhas assuntos
+inacabados.", "Eu posso te
+ajudar a voltar.", "Saia desta fila,
+me encontre." ]
+
+[node name="Jump_Dialogue" parent="." instance=ExtResource( 4 )]
+margin_left = 1432.94
+margin_top = 361.724
+margin_right = 3557.94
+margin_bottom = 1166.72
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
+text = "Concentre
+tua mente"
+Autostart = false
+Sentence_Delay = 1.2
+dialogue = [ "Concentre
+tua mente." ]
+
 [node name="Hero" parent="." instance=ExtResource( 2 )]
 position = Vector2( 3465.43, 522.71 )
 
 [node name="Camera" type="Camera2D" parent="Hero"]
 position = Vector2( 0, -75 )
 current = true
-
-[node name="Textbox" parent="Hero" instance=ExtResource( 4 )]
-margin_left = -100.0
-margin_top = -170.0
-margin_right = 2025.0
-margin_bottom = 635.0
-custom_fonts/font = SubResource( 8 )
-custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
-text = "Texto aqui"
-Autostart = false
-[connection signal="timeout" from="Intro" to="." method="_on_Intro_timeout"]
-[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
-[connection signal="ended" from="Characters/DeadManager/Textbox" to="." method="_on_Textbox_ended"]
+[connection signal="ended" from="Characters/DeadManager/Manager_Text" to="." method="_on_Manager_Text_ended"]
 [connection signal="body_entered" from="Church" to="." method="_on_Church_body_entered"]
 [connection signal="body_exited" from="Church" to="." method="_on_Church_body_exited"]
 [connection signal="body_entered" from="Line" to="." method="_on_Line_body_entered"]
 [connection signal="body_exited" from="Line" to="." method="_on_Line_body_exited"]
 [connection signal="body_entered" from="Jump" to="." method="_on_Jump_body_entered"]
 [connection signal="body_exited" from="Jump" to="." method="_on_Jump_body_exited"]
-[connection signal="ended" from="Hero/Textbox" to="." method="_on_Textbox_ended"]
+[connection signal="ended" from="Jump_Dialogue" to="." method="_on_Jump_Dialogue_ended"]
