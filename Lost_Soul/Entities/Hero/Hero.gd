@@ -19,6 +19,7 @@ signal heart_used(num)
 func _refresh():
 	self.health = max_health
 	self.crystal_heart = max_crystal_heart
+	$Heart_Particles.restart()
 
 func _hit(damage : int, force : int, _direction : Vector2):
 	if health > 0:

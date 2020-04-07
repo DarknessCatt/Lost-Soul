@@ -1,7 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/Combat/Hurtbox/Hurtbox.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Entities/Rock/Rock.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Props/Rock/Rock.gd" type="Script" id=2]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 56.0707

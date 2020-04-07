@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Entities/Checkpoint/Checkpoint.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Props/Checkpoint/Checkpoint.gd" type="Script" id=1]
+
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 139.449

@@ -2,7 +2,8 @@
 
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilesets/Placeholder_White/Placeholder_White.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Entities/Sandbag/Sandbag.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Props/Sandbag/Sandbag.tscn" type="PackedScene" id=3]
+
 
 [node name="Debug_Map" type="Node2D"]
 

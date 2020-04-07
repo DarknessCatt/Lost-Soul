@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Entities/Rock/Rock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Props/Rock/Rock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tilesets/Mountain_Tileset/Mountain_Tileset.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Crystal_Heart/Crystal_Heart.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/Player_Status/Player_Status.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/Hazards/Poison_Mist/Poison_Mist.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Maps/Prototype_Mountain/Prototype_Mountain.gd" type="Script" id=7]
-[ext_resource path="res://Entities/Checkpoint/Checkpoint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Props/Checkpoint/Checkpoint.tscn" type="PackedScene" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.635294, 0.905882, 0.909804, 1 )
