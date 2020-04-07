@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Entities/Enemy/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Combat/Hitbox/Hitbox.tscn" type="PackedScene" id=7]
@@ -831,28 +831,16 @@ tracks/15/keys = {
 "values": [ PoolVector2Array(  ), PoolVector2Array(  ), PoolVector2Array( 4.55569, 22.3854, -3.62131, 22.5638, -2.29406, 24.0253, -1.06327, 25.0839, 0.0393181, 26.5491, 1.90375, 25.1253, 2.91959, 24.0301 ), PoolVector2Array( 4.51016, 19.7858, -3.46727, 17.3667, -5.32221, 29.7882, 0.661648, 41.1301, 8.96396, 47.9168, 12.2179, 40.105, 9.68878, 30.7642 ), PoolVector2Array( 5.75906, 22.6267, -3.62131, 22.5638, -4.30948, 32.2679, 9.78951, 35.9178, 36.1087, 30.7024, 11.9264, 30.9957, 4.30874, 27.2851 ), PoolVector2Array( 4.55569, 22.3854, -3.62131, 22.5638, 1.61198, 38.0637, 27.6953, 37.4664, 68.6522, -8.40553, 32.2798, 21.0658, 9.16474, 32.0203 ), PoolVector2Array( 4.27866, 11.2714, -4.33703, 7.50967, 0.408823, 48.2164, 52.0003, 20.9571, 46.5681, -64.1663, 43.3794, -15.8938, 16.0834, 27.3181 ), PoolVector2Array( 3.43564, 11.6547, -4.03425, 13.6343, 0.683563, 43.8471, 46.1452, 46.5106, 56.1572, -24.5512, 35.864, 28.1777, 19.3872, 30.689 ), PoolVector2Array( 3.62545, 15.9335, -4.72125, 10.4105, -4.42873, 26.6799, 36.578, 45.6781, 67.8836, 87.1025, 41.9343, 36.2212, 18.1775, 29.9384 ), PoolVector2Array( 4.55569, 22.3854, -3.62131, 22.5638, 8.94847, 45.7046, 22.0533, 49.706, 46.8753, 40.8446, 19.7284, 41.1673, 10.9781, 34.6986 ), PoolVector2Array( 4.55569, 22.3854, -3.62131, 22.5638, 2.02445, 27.8781, 3.77902, 32.8014, 1.84421, 43.3765, 8.24179, 35.045, 7.17905, 29.3912 ), PoolVector2Array( 4.55569, 22.3854, -3.62131, 22.5638, -2.92553, 23.6116, -1.59674, 24.718, 0.528225, 26.4372, 1.99866, 25.0352, 3.08146, 23.6135 ), PoolVector2Array(  ) ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("Body/Hitboxes/Jab3/Jab3_Hitbox/Jab3_Hitbox:disabled")
+tracks/16/path = NodePath("Body/Hitboxes/Jab/Jab_Hitbox/Jab_Hitbox:disabled")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0, 0.4, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.47, 0.48, 0.55, 0.56, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, false, true ]
-}
-tracks/17/type = "value"
-tracks/17/path = NodePath("Body/Hitboxes/Jab3/Jab3_Hitbox2/Jab3_Hitbox2:disabled")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/keys = {
-"times": PoolRealArray( 0, 0.43, 0.48 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ true, false, true ]
+"values": [ true, true, false, false, true, true ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -1963,38 +1951,8 @@ tracks/13/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="CircleShape2D" id=16]
-radius = 25.0
-
-[sub_resource type="CircleShape2D" id=17]
-radius = 40.0
-
-[sub_resource type="CircleShape2D" id=18]
-radius = 40.0
-
 [sub_resource type="CircleShape2D" id=19]
-radius = 36.2215
-
-[sub_resource type="CircleShape2D" id=20]
-radius = 56.1427
-
-[sub_resource type="CircleShape2D" id=21]
-radius = 38.7591
-
-[sub_resource type="CircleShape2D" id=22]
-radius = 36.0421
-
-[sub_resource type="CircleShape2D" id=23]
-radius = 35.49
-
-[sub_resource type="CircleShape2D" id=24]
-radius = 46.0964
-
-[sub_resource type="CircleShape2D" id=25]
-radius = 50.6913
-
-[sub_resource type="CircleShape2D" id=26]
-radius = 59.3227
+radius = 47.3332
 
 [sub_resource type="CircleShape2D" id=27]
 radius = 15.2725
@@ -2122,159 +2080,19 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Jab1" type="Node2D" parent="Body/Hitboxes"]
-visible = false
+[node name="Jab" type="Node2D" parent="Body/Hitboxes"]
 
-[node name="Jab1_Hitbox" parent="Body/Hitboxes/Jab1" instance=ExtResource( 7 )]
-position = Vector2( 59, -28 )
-Body = NodePath("../../../../../Enemy/Body")
-Id = 1
-Damage = 5
-Force = 100
-Direction = Vector2( 1, -0.5 )
-
-[node name="Jab1_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Jab1/Jab1_Hitbox"]
-shape = SubResource( 16 )
-disabled = true
-
-[node name="Jab2" type="Node2D" parent="Body/Hitboxes"]
-visible = false
-
-[node name="Jab2_Hitbox" parent="Body/Hitboxes/Jab2" instance=ExtResource( 7 )]
-position = Vector2( 48, 24 )
+[node name="Jab_Hitbox" parent="Body/Hitboxes/Jab" instance=ExtResource( 7 )]
+position = Vector2( 82.8304, 2.43791 )
 Body = NodePath("../../../../../Enemy/Body")
 Id = 1
 Damage = 5
 Force = 500
-Direction = Vector2( 0, -1 )
-
-[node name="Jab2_Hitbox1" type="CollisionShape2D" parent="Body/Hitboxes/Jab2/Jab2_Hitbox"]
-shape = SubResource( 17 )
-disabled = true
-
-[node name="Jab2_Hitbox2" parent="Body/Hitboxes/Jab2" instance=ExtResource( 7 )]
-position = Vector2( 56, -40 )
-Body = NodePath("../../../../../Enemy/Body")
-Id = 1
-Damage = 5
-Force = 500
-Direction = Vector2( 0.1, -1 )
-
-[node name="Jab2_Hitbox2" type="CollisionShape2D" parent="Body/Hitboxes/Jab2/Jab2_Hitbox2"]
-shape = SubResource( 18 )
-disabled = true
-
-[node name="Jab3" type="Node2D" parent="Body/Hitboxes"]
-visible = false
-
-[node name="Jab3_Hitbox" parent="Body/Hitboxes/Jab3" instance=ExtResource( 7 )]
-position = Vector2( 68, -36 )
-Body = NodePath("../../../../../Enemy/Body")
-Id = 1
-Damage = 5
-Force = 500
-Direction = Vector2( 0, 1 )
-
-[node name="Jab3_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Jab3/Jab3_Hitbox"]
-shape = SubResource( 19 )
-disabled = true
-
-[node name="Jab3_Hitbox2" parent="Body/Hitboxes/Jab3" instance=ExtResource( 7 )]
-position = Vector2( 92, 10 )
-Body = NodePath("../../../../../Enemy/Body")
-Id = 1
-Damage = 10
-Force = 1000
-Direction = Vector2( 1, -0.1 )
-
-[node name="Jab3_Hitbox2" type="CollisionShape2D" parent="Body/Hitboxes/Jab3/Jab3_Hitbox2"]
-shape = SubResource( 20 )
-disabled = true
-
-[node name="UpTilt" type="Node2D" parent="Body/Hitboxes"]
-visible = false
-
-[node name="UpTilt_Hitbox" parent="Body/Hitboxes/UpTilt" instance=ExtResource( 7 )]
-position = Vector2( 68, 8 )
-Body = NodePath("../../../../../Enemy/Body")
-Id = 1
-Damage = 5
-Force = 1200
-Direction = Vector2( 0.1, -1.5 )
-
-[node name="UpTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/UpTilt/UpTilt_Hitbox"]
-shape = SubResource( 21 )
-disabled = true
-
-[node name="AirJab1" type="Node2D" parent="Body/Hitboxes"]
-visible = false
-
-[node name="AirJab1_Hitbox" parent="Body/Hitboxes/AirJab1" instance=ExtResource( 7 )]
-position = Vector2( 44.0478, -15.8782 )
-Body = NodePath("../../../../../Enemy/Body")
-Id = 1
-Damage = 5
-Force = 300
-Direction = Vector2( 0.2, -1 )
-
-[node name="AirJab1_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/AirJab1/AirJab1_Hitbox"]
-shape = SubResource( 22 )
-disabled = true
-
-[node name="AirJab2" type="Node2D" parent="Body/Hitboxes"]
-visible = false
-
-[node name="AirJab2_Hitbox1" parent="Body/Hitboxes/AirJab2" instance=ExtResource( 7 )]
-position = Vector2( 48, -15.8782 )
-Body = NodePath("../../../../../Enemy/Body")
-Id = 1
-Damage = 5
-Force = 200
-Direction = Vector2( -0.1, 1 )
-
-[node name="AirJab2_Hitbox1" type="CollisionShape2D" parent="Body/Hitboxes/AirJab2/AirJab2_Hitbox1"]
-position = Vector2( -3.9522, -12.1218 )
-shape = SubResource( 23 )
-disabled = true
-
-[node name="AirJab2_Hitbox2" parent="Body/Hitboxes/AirJab2" instance=ExtResource( 7 )]
-position = Vector2( 28.7628, 10 )
-Body = NodePath("../../../../../Enemy/Body")
-Id = 1
-Damage = 5
-Force = 400
-Direction = Vector2( 0.1, -1 )
-
-[node name="AirJab2_Hitbox2" type="CollisionShape2D" parent="Body/Hitboxes/AirJab2/AirJab2_Hitbox2"]
-position = Vector2( -5.03671, 0 )
-shape = SubResource( 24 )
-disabled = true
-
-[node name="AirJab3" type="Node2D" parent="Body/Hitboxes"]
-visible = false
-
-[node name="AirJab3_Hitbox1" parent="Body/Hitboxes/AirJab3" instance=ExtResource( 7 )]
-position = Vector2( 48, 8 )
-Body = NodePath("../../../../../Enemy/Body")
-Id = 1
-Damage = 5
-Force = 400
-Direction = Vector2( -0.2, -1 )
-
-[node name="AirJab3_Hitbox1" type="CollisionShape2D" parent="Body/Hitboxes/AirJab3/AirJab3_Hitbox1"]
-shape = SubResource( 25 )
-disabled = true
-
-[node name="AirJab3_Hitbox2" parent="Body/Hitboxes/AirJab3" instance=ExtResource( 7 )]
-position = Vector2( 37.7569, -36 )
-Body = NodePath("../../../../../Enemy/Body")
-Id = 1
-Damage = 10
-Force = 1200
 Direction = Vector2( 0.9, -0.1 )
 
-[node name="AirJab3_Hitbox2" type="CollisionShape2D" parent="Body/Hitboxes/AirJab3/AirJab3_Hitbox2"]
-shape = SubResource( 26 )
+[node name="Jab_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Jab/Jab_Hitbox"]
+position = Vector2( -16.041, 6.65853 )
+shape = SubResource( 19 )
 disabled = true
 
 [node name="Right_Arm" type="Polygon2D" parent="Body"]
@@ -2498,7 +2316,6 @@ __meta__ = {
 }
 
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 8 )
 shape = SubResource( 29 )
 __meta__ = {
