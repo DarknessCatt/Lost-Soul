@@ -25,7 +25,8 @@ func _hit(damage : int, force : int, _direction : Vector2):
 		health -= damage
 
 		if health <= 0:
-			emit_signal("dead")
+			#emit_signal("dead")
+			_die()
 
 		if force > 0:
 			self.speed += _direction.normalized()*force
