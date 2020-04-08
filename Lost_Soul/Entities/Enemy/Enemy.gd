@@ -1,5 +1,13 @@
 extends KinematicBody2D
 
+#Perception
+var Player : KinematicBody2D = null
+
+##Functions
+func _on_Player_Detected(body):
+	Player = body
+	$Perception/Eyes.call_deferred("set", "monitoring", false)
+
 #Info
 onready var body : Node2D = $Body
 
@@ -9,6 +17,7 @@ var health : int = max_health
 
 ##Signals
 signal dead()
+
 ##Functions
 
 func _hit(damage : int, force : int, _direction : Vector2):
@@ -25,12 +34,11 @@ func _die():
 	on_cutscene = true
 	self._change_anim("Death")
 
-
 #Movement
 var speed : Vector2 = Vector2(0,0)
 
 #FSM
-onready var cur_state : Node  = $States/Falling
+onready var cur_state : Node  = $States/Idle
 export(bool) var on_cutscene : bool = false
 
 ##Functions

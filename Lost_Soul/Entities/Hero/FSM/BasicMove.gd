@@ -4,13 +4,13 @@ const NORMAL : Vector2 = Vector2(0, -1)
 
 #Overridable Vars
 ##Movement Vars
-export(int) var ACCEL : int = 2000
-export(int) var MAX_SPEED : int = 400
-export(float) var FRICTION : float = 0.75
+var ACCEL : int = 2000
+var MAX_SPEED : int = 400
+var FRICTION : float = 0.75
 
 ##Animation Vars
-export(String) var MOVE_ANIMATION : String
-export(String) var REST_ANIMATION : String
+var MOVE_ANIMATION : String
+var REST_ANIMATION : String
 
 #Direction Enum FSM
 enum {LEFT = -1, NONE, RIGHT}

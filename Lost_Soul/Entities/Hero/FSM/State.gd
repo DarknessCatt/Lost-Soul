@@ -6,8 +6,8 @@ func enter(_Player : KinematicBody2D) -> void:
 func exit(_Player : KinematicBody2D) -> void:
 	pass
 
-func update(_Player: KinematicBody2D, delta : float) -> void:
+func update(_Player: KinematicBody2D, _delta : float) -> void:
 	pass
 
-func input(_Player: KinematicBody2D, event : InputEvent) -> void:
+func input(_Player: KinematicBody2D, _event : InputEvent) -> void:
 	pass
