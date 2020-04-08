@@ -26,9 +26,9 @@ enum {LEFT = -1, NONE, RIGHT}
 var direction : int = NONE
 
 func enter(Enemy : KinematicBody2D) -> void:
-	min_dist = 60 + int(rand_range(-30,+30))
-	max_dist = 150 + int(rand_range(-30,+30))
-	attack_dist = 100 + int(rand_range(-30,+30))
+	min_dist = 60 + int(rand_range(-20,+20))
+	max_dist = 150 + int(rand_range(-20,+20))
+	attack_dist = 100 + int(rand_range(-20,+20))
 
 	Enemy._change_anim("OnCombat")
 	Enemy.speed.y = 10
@@ -38,8 +38,8 @@ func update(_Enemy : KinematicBody2D, delta : float) -> void:
 
 	var player_dist = (_Enemy.Player.position - _Enemy.position).x
 
-	if abs(player_dist) <= 60: player_in_range = true
-	elif abs(player_dist) >= 150: player_in_range = false
+	if abs(player_dist) <= min_dist: player_in_range = true
+	elif abs(player_dist) >= max_dist: player_in_range = false
 
 	var spdx : float = _Enemy.speed.x
 
@@ -70,7 +70,7 @@ func update(_Enemy : KinematicBody2D, delta : float) -> void:
 
 	_Enemy.move_and_slide(_Enemy.speed, NORMAL)
 
-	if attack_ready and abs(player_dist) <= 100:
+	if attack_ready and abs(player_dist) <= attack_dist:
 		attack_ready = false
 		_Enemy._change_state($"../Attack")
 

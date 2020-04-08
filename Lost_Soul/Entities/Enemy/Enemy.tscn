@@ -2207,7 +2207,7 @@ __meta__ = {
 
 [node name="Jab_Hitbox" parent="Body/Hitboxes/Jab" instance=ExtResource( 7 )]
 position = Vector2( 53.0135, -11.1469 )
-Body = NodePath("../../../../../Enemy/Body")
+Body = NodePath("../../..")
 Id = 2
 Damage = 5
 Force = 1000
@@ -2218,8 +2218,8 @@ shape = SubResource( 11 )
 disabled = true
 
 [node name="Right_Arm" type="Polygon2D" parent="Body"]
-position = Vector2( 9.63712, -21.778 )
-rotation = -0.482152
+position = Vector2( 9.63713, -21.778 )
+rotation = -0.482151
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 30.2005, 27.966 )
 polygon = PoolVector2Array( -30.2005, -31.966, -26.2005, -27.966, -28.2005, -19.966, -26.2005, -11.966, -26.2005, -7.96604, -34.2005, -7.96604, -34.2005, -11.966, -32.2005, -19.966, -34.2005, -27.966 )
@@ -2228,7 +2228,7 @@ __meta__ = {
 }
 
 [node name="Right_Hand" type="Polygon2D" parent="Body"]
-position = Vector2( 17.0561, -7.60202 )
+position = Vector2( 17.0561, -7.60201 )
 rotation = -2.16981
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 31.8105, 42.7501 )
@@ -2238,8 +2238,8 @@ __meta__ = {
 }
 
 [node name="Right_Leg" type="Polygon2D" parent="Body"]
-position = Vector2( 1.08977, 11.5119 )
-rotation = -0.71243
+position = Vector2( 1.08978, 11.5119 )
+rotation = -0.712431
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 28.2005, 31.966 )
 polygon = PoolVector2Array( -30.2005, -35.966, -26.2005, -35.966, -24.2005, -31.966, -26.2005, -21.966, -24.2005, -7.966, -32.2005, -7.966, -30.2005, -21.966, -32.2005, -31.966 )
@@ -2249,7 +2249,8 @@ __meta__ = {
 
 [node name="Right_Shin" type="Polygon2D" parent="Body"]
 position = Vector2( 14.1633, 26.6474 )
-rotation = -0.0862029
+rotation = -0.0862031
+scale = Vector2( 1, 1 )
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 29.8696, 42.7614 )
 polygon = PoolVector2Array( -31.8696, -44.7614, -27.8696, -44.7614, -25.8696, -38.7614, -25.8696, -22.7614, -27.8696, -18.7614, -31.8696, -18.7614, -33.8696, -22.7614, -33.8696, -38.7614 )
@@ -2259,7 +2260,8 @@ __meta__ = {
 
 [node name="Right_Foot" type="Polygon2D" parent="Body"]
 position = Vector2( 16.0574, 48.5657 )
-rotation = -0.0464672
+rotation = -0.0464674
+scale = Vector2( 1, 1 )
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 29.9114, 20.7618 )
 polygon = PoolVector2Array( -25.9114, -22.7618, -23.9114, -20.7618, -21.9114, -14.7618, -31.9114, -14.7618, -33.9114, -16.7618, -33.9114, -22.7618, -31.9114, -26.7618 )
@@ -2287,7 +2289,7 @@ polygon = PoolVector2Array( -8, 18, 8, 18, 6, 12, 4, 6, 6, -4, 8, -8, 12, -4, 16
 visible = false
 position = Vector2( 1.90735e-06, -12 )
 Id = 2
-Character = NodePath("../../../../../Enemy")
+Character = NodePath("../../../..")
 
 [node name="Upper" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox"]
 position = Vector2( 0, -6.11535 )
