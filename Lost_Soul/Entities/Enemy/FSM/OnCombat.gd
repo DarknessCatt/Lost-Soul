@@ -6,6 +6,9 @@ var player_in_range : bool = false
 #Movement
 const NORMAL : Vector2 = Vector2(0, -1)
 
+const GRAV : int = 3500
+const MAX_GRAV : int = 1500
+
 const ACCEL : int = 900
 const MAX_SPEED : int = 500
 const FRICTION : float = 0.8
@@ -36,8 +39,7 @@ func enter(Enemy : KinematicBody2D) -> void:
 	else:
 		Enemy._change_anim("Walking")
 
-	Enemy.speed.y = 10
-	$Attack_Timer.wait_time = 1.5 + rand_range(-0.5, +0.5)
+	$Attack_Timer.wait_time = 1 + rand_range(-0.5, +0.5)
 	$Attack_Timer.start()
 
 func exit(_Enemy : KinematicBody2D) -> void:
@@ -76,6 +78,13 @@ func update(_Enemy : KinematicBody2D, delta : float) -> void:
 				_Enemy._change_anim("Walking")
 
 	_Enemy.speed.x = spdx
+
+	if _Enemy.is_on_floor():
+		_Enemy.speed.y = 10
+
+	else:
+		_Enemy.speed.y += GRAV*delta
+		if _Enemy.speed.y > MAX_GRAV: _Enemy.speed.y = MAX_GRAV
 
 	_Enemy.move_and_slide(_Enemy.speed, NORMAL)
 

@@ -872,7 +872,7 @@ tracks/16/keys = {
 "values": [ true, true, false, false, true, true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "OnCombat"
 loop = true
 tracks/0/type = "value"
@@ -1044,7 +1044,7 @@ tracks/13/keys = {
 "values": [ 4.37173, -15.7728 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=7]
 resource_name = "OnFallenDown"
 length = 0.2
 step = 0.01
@@ -2186,10 +2186,10 @@ tracks/13/keys = {
 radius = 61.2182
 
 [sub_resource type="CircleShape2D" id=12]
-radius = 15.2725
+radius = 24.5365
 
 [sub_resource type="CircleShape2D" id=13]
-radius = 13.5073
+radius = 25.4763
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 20, 45.1426 )
@@ -2210,8 +2210,8 @@ anims/DownAir = SubResource( 2 )
 anims/Falling = SubResource( 3 )
 anims/Idle = SubResource( 4 )
 anims/Jab = SubResource( 5 )
-anims/OnCombat = SubResource( 7 )
-anims/OnFallenDown = SubResource( 16 )
+anims/OnCombat = SubResource( 6 )
+anims/OnFallenDown = SubResource( 7 )
 anims/OnHit = SubResource( 8 )
 anims/Rest = SubResource( 9 )
 anims/Walking = SubResource( 10 )
@@ -2226,7 +2226,6 @@ script = ExtResource( 2 )
 
 [node name="Attack_Timer" type="Timer" parent="States/OnCombat"]
 process_mode = 0
-wait_time = 1.5
 one_shot = true
 
 [node name="Attack" type="Node" parent="States"]
@@ -2262,9 +2261,8 @@ shape = SubResource( 11 )
 disabled = true
 
 [node name="Right_Arm" type="Polygon2D" parent="Body"]
-position = Vector2( 57.131, 43.5972 )
-rotation = -1.13461
-scale = Vector2( 1, 1 )
+position = Vector2( 13.4381, -27.3389 )
+rotation = -0.209835
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 30.2005, 27.966 )
 polygon = PoolVector2Array( -30.2005, -31.966, -26.2005, -27.966, -28.2005, -19.966, -26.2005, -11.966, -26.2005, -7.96604, -34.2005, -7.96604, -34.2005, -11.966, -32.2005, -19.966, -34.2005, -27.966 )
@@ -2273,8 +2271,8 @@ __meta__ = {
 }
 
 [node name="Right_Hand" type="Polygon2D" parent="Body"]
-position = Vector2( 71.6329, 50.357 )
-rotation = -1.6561
+position = Vector2( 16.7709, -11.6899 )
+rotation = -1.78063
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 31.8105, 42.7501 )
 polygon = PoolVector2Array( -31.8105, -46.7501, -27.8105, -42.7501, -27.8105, -38.7501, -29.8105, -30.7501, -27.8105, -22.7501, -31.8105, -14.7501, -35.8105, -22.7501, -33.8105, -30.7501, -35.8105, -38.7501, -35.8105, -42.7501 )
@@ -2283,8 +2281,9 @@ __meta__ = {
 }
 
 [node name="Right_Leg" type="Polygon2D" parent="Body"]
-position = Vector2( 31.0242, 36.2299 )
-rotation = -0.952287
+position = Vector2( 7.0307, 7.1112 )
+rotation = -1.26624
+scale = Vector2( 1, 1 )
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 28.2005, 31.966 )
 polygon = PoolVector2Array( -30.2005, -35.966, -26.2005, -35.966, -24.2005, -31.966, -26.2005, -21.966, -24.2005, -7.966, -32.2005, -7.966, -30.2005, -21.966, -32.2005, -31.966 )
@@ -2293,8 +2292,8 @@ __meta__ = {
 }
 
 [node name="Right_Shin" type="Polygon2D" parent="Body"]
-position = Vector2( 47.3191, 47.8263 )
-rotation = 1.52866
+position = Vector2( 26.1103, 13.1087 )
+rotation = 0.544373
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 29.8696, 42.7614 )
 polygon = PoolVector2Array( -31.8696, -44.7614, -27.8696, -44.7614, -25.8696, -38.7614, -25.8696, -22.7614, -27.8696, -18.7614, -31.8696, -18.7614, -33.8696, -22.7614, -33.8696, -38.7614 )
@@ -2303,8 +2302,8 @@ __meta__ = {
 }
 
 [node name="Right_Foot" type="Polygon2D" parent="Body"]
-position = Vector2( 25.3386, 48.753 )
-rotation = 2.9767
+position = Vector2( 14.7169, 31.9286 )
+rotation = 0.584109
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 29.9114, 20.7618 )
 polygon = PoolVector2Array( -25.9114, -22.7618, -23.9114, -20.7618, -21.9114, -14.7618, -31.9114, -14.7618, -33.9114, -16.7618, -33.9114, -22.7618, -31.9114, -26.7618 )
@@ -2313,8 +2312,7 @@ __meta__ = {
 }
 
 [node name="Hip" type="Polygon2D" parent="Body"]
-position = Vector2( 32.0658, 26.2843 )
-rotation = 0.747849
+rotation = -0.136205
 color = Color( 0.470588, 0.470588, 0.470588, 1 )
 offset = Vector2( 0, -12 )
 polygon = PoolVector2Array( -8, 22, -4, 22, 0, 18, 4, 22, 8, 22, 10, 18, 6, 8, -6, 8, -10, 18 )
@@ -2323,7 +2321,7 @@ __meta__ = {
 }
 
 [node name="Torso" type="Polygon2D" parent="Body/Hip"]
-rotation = 1.02252
+rotation = 0.188168
 color = Color( 0.470588, 0.470588, 0.470588, 1 )
 offset = Vector2( 0, -16 )
 polygon = PoolVector2Array( -8, 18, 8, 18, 6, 12, 4, 6, 6, -4, 8, -8, 12, -4, 16, -8, 16, -12, 12, -16, -12, -16, -16, -12, -16, -8, -12, -4, -8, -8, -6, -4, -4, 6, -6, 12 )
@@ -2339,12 +2337,12 @@ position = Vector2( 0, -6.11535 )
 shape = SubResource( 12 )
 
 [node name="Lower" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox"]
-position = Vector2( 0, 20 )
+position = Vector2( 0, 31.3101 )
 shape = SubResource( 13 )
 
 [node name="Head" type="Polygon2D" parent="Body/Hip/Torso"]
 position = Vector2( 0, -32 )
-rotation = 0.431306
+rotation = -0.0607539
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 0, -16 )
 polygon = PoolVector2Array( -6, 16, 0, 18, 6, 16, 8, 8, 4, 1, -4, 1, -8, 8 )
@@ -2360,7 +2358,7 @@ __meta__ = {
 
 [node name="Left_Arm" type="Polygon2D" parent="Body/Hip/Torso"]
 position = Vector2( -12, -28 )
-rotation = -1.02
+rotation = 0.772103
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 30.2005, 27.966 )
 polygon = PoolVector2Array( -30.2005, -31.966, -26.2005, -27.966, -26.2005, -23.966, -28.2005, -19.966, -26.2005, -11.966, -26.2005, -7.96604, -34.2005, -7.96604, -34.2005, -11.966, -32.2005, -19.966, -34.2005, -23.966, -34.193, -27.5603 )
@@ -2370,7 +2368,7 @@ __meta__ = {
 
 [node name="Left_Hand" type="Polygon2D" parent="Body/Hip/Torso/Left_Arm"]
 position = Vector2( -2.35438e-06, 16 )
-rotation = -1.06345
+rotation = -0.772103
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 31.8105, 42.7501 )
 polygon = PoolVector2Array( -31.794, -46.6744, -27.7438, -42.7252, -27.7603, -38.8009, -29.6592, -30.7763, -27.5583, -22.8022, -31.39, -14.6769, -35.5577, -22.7012, -33.6588, -30.7258, -35.7597, -38.6999, -35.7432, -42.6242 )
@@ -2389,7 +2387,7 @@ color = Color( 0.980392, 0.215686, 0.215686, 1 )
 
 [node name="Right_Arm" type="RemoteTransform2D" parent="Body/Hip/Torso"]
 position = Vector2( 12, -28 )
-rotation = -2.90498
+rotation = -0.261798
 remote_path = NodePath("../../../Right_Arm")
 __meta__ = {
 "_edit_ik_": true
@@ -2397,7 +2395,7 @@ __meta__ = {
 
 [node name="Right_Hand" type="RemoteTransform2D" parent="Body/Hip/Torso/Right_Arm"]
 position = Vector2( 0, 16 )
-rotation = -0.521497
+rotation = -1.57079
 remote_path = NodePath("../../../../Right_Hand")
 __meta__ = {
 "_edit_bone_": true
@@ -2416,7 +2414,7 @@ color = Color( 0.980392, 0.215686, 0.215686, 1 )
 
 [node name="Left_Leg" type="Polygon2D" parent="Body/Hip"]
 position = Vector2( -6, 8 )
-rotation = -0.51235
+rotation = -0.614103
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 28.2005, 31.966 )
 polygon = PoolVector2Array( -30.2005, -35.966, -26.2005, -35.966, -24.2005, -31.9542, -26.2005, -21.966, -24.2005, -7.966, -32.2005, -7.966, -30.2005, -21.966, -32.2005, -31.9778 )
@@ -2426,7 +2424,7 @@ __meta__ = {
 
 [node name="Left_Shin" type="Polygon2D" parent="Body/Hip/Left_Leg"]
 position = Vector2( -0.0590348, 20.0132 )
-rotation = 1.36732
+rotation = 1.05844
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 29.8696, 42.7614 )
 polygon = PoolVector2Array( -31.889, -44.7552, -27.8892, -44.7939, -25.8312, -38.8136, -25.6764, -22.8143, -27.5079, -18.8025, -31.5075, -18.752, -33.676, -22.7369, -33.8308, -38.7362 )
@@ -2436,7 +2434,7 @@ __meta__ = {
 
 [node name="Left_Foot" type="Polygon2D" parent="Body/Hip/Left_Leg/Left_Shin"]
 position = Vector2( -0.0418882, 21.9996 )
-rotation = 0.497679
+rotation = -0.725313
 color = Color( 0.8, 0.8, 0.8, 1 )
 offset = Vector2( 29.9114, 20.7618 )
 polygon = PoolVector2Array( -25.6763, -22.8143, -23.6571, -20.8338, -21.5991, -14.8534, -25.5989, -14.8147, -31.5986, -14.7567, -33.6179, -16.7372, -33.676, -22.7369, -31.6085, -26.7513 )
@@ -2452,7 +2450,7 @@ __meta__ = {
 
 [node name="Right_Leg" type="RemoteTransform2D" parent="Body/Hip"]
 position = Vector2( 6, 8 )
-rotation = -1.70014
+rotation = -1.13003
 remote_path = NodePath("../../Right_Leg")
 __meta__ = {
 "_edit_ik_": true
@@ -2460,7 +2458,7 @@ __meta__ = {
 
 [node name="Right_Shin" type="RemoteTransform2D" parent="Body/Hip/Right_Leg"]
 position = Vector2( 0, 20 )
-rotation = 2.48095
+rotation = 1.81061
 remote_path = NodePath("../../../Right_Shin")
 __meta__ = {
 "_edit_bone_": true
@@ -2468,7 +2466,7 @@ __meta__ = {
 
 [node name="Right_Foot" type="RemoteTransform2D" parent="Body/Hip/Right_Leg/Right_Shin"]
 position = Vector2( 0, 22 )
-rotation = 1.44804
+rotation = 0.0397359
 remote_path = NodePath("../../../../Right_Foot")
 __meta__ = {
 "_edit_bone_": true

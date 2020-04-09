@@ -3617,7 +3617,7 @@ Body = NodePath("../../..")
 Id = 1
 Damage = 10
 Force = 1200
-Direction = Vector2( 1, -0.3 )
+Direction = Vector2( 1, -0.1 )
 
 [node name="Jab3_Hitbox2" type="CollisionShape2D" parent="Body/Hitboxes/Jab3/Jab3_Hitbox2"]
 shape = SubResource( 20 )
@@ -3646,8 +3646,8 @@ position = Vector2( 44.0478, -15.8782 )
 Body = NodePath("../../..")
 Id = 1
 Damage = 5
-Force = 300
-Direction = Vector2( 0.2, -1 )
+Force = 200
+Direction = Vector2( 0, -1 )
 
 [node name="AirJab1_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/AirJab1/AirJab1_Hitbox"]
 shape = SubResource( 22 )
@@ -3661,8 +3661,6 @@ position = Vector2( 48, -15.8782 )
 Body = NodePath("../../..")
 Id = 1
 Damage = 5
-Force = 200
-Direction = Vector2( -0.1, 1 )
 
 [node name="AirJab2_Hitbox1" type="CollisionShape2D" parent="Body/Hitboxes/AirJab2/AirJab2_Hitbox1"]
 position = Vector2( -3.9522, -12.1218 )
@@ -3674,8 +3672,8 @@ position = Vector2( 28.7628, 10 )
 Body = NodePath("../../..")
 Id = 1
 Damage = 5
-Force = 400
-Direction = Vector2( 0.1, -1 )
+Force = 200
+Direction = Vector2( 0, -1 )
 
 [node name="AirJab2_Hitbox2" type="CollisionShape2D" parent="Body/Hitboxes/AirJab2/AirJab2_Hitbox2"]
 position = Vector2( -5.03671, 0 )
@@ -3690,8 +3688,8 @@ position = Vector2( 48, 8 )
 Body = NodePath("../../..")
 Id = 1
 Damage = 5
-Force = 400
-Direction = Vector2( -0.2, -1 )
+Force = 1000
+Direction = Vector2( 0, -1 )
 
 [node name="AirJab3_Hitbox1" type="CollisionShape2D" parent="Body/Hitboxes/AirJab3/AirJab3_Hitbox1"]
 shape = SubResource( 25 )
@@ -3703,7 +3701,7 @@ Body = NodePath("../../..")
 Id = 1
 Damage = 10
 Force = 1200
-Direction = Vector2( 0.9, -0.1 )
+Direction = Vector2( 1, -0.5 )
 
 [node name="AirJab3_Hitbox2" type="CollisionShape2D" parent="Body/Hitboxes/AirJab3/AirJab3_Hitbox2"]
 shape = SubResource( 26 )
