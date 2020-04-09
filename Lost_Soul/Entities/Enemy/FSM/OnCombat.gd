@@ -8,12 +8,13 @@ const NORMAL : Vector2 = Vector2(0, -1)
 
 const ACCEL : int = 900
 const MAX_SPEED : int = 500
-const FRICTION : float = 0.6
+const FRICTION : float = 0.8
 
 #Combat
-var min_dist : int = 60
-var max_dist : int = 150
-var attack_dist : int = 100
+var min_dist : int
+var max_dist : int
+var attack_dist : int
+var attack_timer : float
 
 var attack_ready : bool = false
 
@@ -30,9 +31,17 @@ func enter(Enemy : KinematicBody2D) -> void:
 	max_dist = 150 + int(rand_range(-20,+20))
 	attack_dist = 100 + int(rand_range(-20,+20))
 
-	Enemy._change_anim("OnCombat")
+	if Enemy.speed.x == 0:
+		Enemy._change_anim("OnCombat")
+	else:
+		Enemy._change_anim("Walking")
+
 	Enemy.speed.y = 10
+	$Attack_Timer.wait_time = 1.5 + rand_range(-0.5, +0.5)
 	$Attack_Timer.start()
+
+func exit(_Enemy : KinematicBody2D) -> void:
+	$Attack_Timer.stop()
 
 func update(_Enemy : KinematicBody2D, delta : float) -> void:
 
@@ -43,7 +52,7 @@ func update(_Enemy : KinematicBody2D, delta : float) -> void:
 
 	var spdx : float = _Enemy.speed.x
 
-	if player_in_range:
+	if player_in_range and sign(player_dist) == sign(_Enemy.body.scale.x):
 		direction = NONE
 
 	else:

@@ -24,12 +24,16 @@ func _hit(damage : int, force : int, _direction : Vector2):
 	if health > 0:
 		health -= damage
 
+		if force > 0:
+			self.speed = _direction.normalized()*force
+
 		if health <= 0:
 			#emit_signal("dead")
 			_die()
 
-		if force > 0:
-			self.speed += _direction.normalized()*force
+		else:
+			self._change_state($States/Knockback)
+
 
 func _die():
 	on_cutscene = true
@@ -43,6 +47,10 @@ onready var cur_state : Node  = $States/Idle
 export(bool) var on_cutscene : bool = false
 
 ##Functions
+func _clear_attack_polys():
+	$Body/Hip/Torso/Left_Arm/Left_Hand/Left_Weapon.polygon = PoolVector2Array()
+	$Body/Hip/Torso/Right_Arm/Right_Hand/Right_Weapon.polygon = PoolVector2Array()
+
 func _physics_process(delta):
 	if not on_cutscene:
 		cur_state.update(self, delta)

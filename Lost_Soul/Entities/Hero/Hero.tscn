@@ -3563,7 +3563,7 @@ Body = NodePath("../../..")
 Id = 1
 Damage = 5
 Force = 100
-Direction = Vector2( 1, -0.5 )
+Direction = Vector2( 1, 0 )
 
 [node name="Jab1_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Jab1/Jab1_Hitbox"]
 shape = SubResource( 16 )
@@ -3616,8 +3616,8 @@ position = Vector2( 92, 10 )
 Body = NodePath("../../..")
 Id = 1
 Damage = 10
-Force = 1000
-Direction = Vector2( 1, -0.1 )
+Force = 1200
+Direction = Vector2( 1, -0.3 )
 
 [node name="Jab3_Hitbox2" type="CollisionShape2D" parent="Body/Hitboxes/Jab3/Jab3_Hitbox2"]
 shape = SubResource( 20 )

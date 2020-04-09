@@ -14,8 +14,7 @@ func update(Enemy: KinematicBody2D, _delta : float) -> void:
 		Enemy._change_state($"../OnCombat")
 
 func exit(_Enemy : KinematicBody2D) -> void:
-	#clear attack_polygons
-	pass
+	_Enemy._clear_attack_polys()
 
 func _on_Attack_timeout():
 	attack_ended = true
