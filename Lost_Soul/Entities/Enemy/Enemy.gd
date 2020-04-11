@@ -14,6 +14,7 @@ onready var body : Node2D = $Body
 #Attributes
 var max_health : int = 100
 var health : int = max_health
+var speed : Vector2 = Vector2(0,0)
 
 ##Signals
 signal dead()
@@ -38,9 +39,6 @@ func _hit(damage : int, force : int, _direction : Vector2):
 func _die():
 	on_cutscene = true
 	self._change_anim("Death")
-
-#Movement
-var speed : Vector2 = Vector2(0,0)
 
 #FSM
 onready var cur_state : Node  = $States/Idle

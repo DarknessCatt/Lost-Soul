@@ -2,16 +2,47 @@ extends "EnemyState.gd"
 
 var attack_ended : bool = false
 
+#Movement
+const NORMAL : Vector2 = Vector2(0, -1)
+
+const GRAV : int = 3500
+const MAX_GRAV : int = 1500
+
+const FRICTION : float = 0.7
+
+#Moving Attacks
+var attack_dir : float = 0.0
+var speed : Vector2 = Vector2(0, 10)
+
+func impulse(direction : Vector2):
+	self.speed = Vector2(direction.x*attack_dir, direction.y)
+
 func enter(Enemy : KinematicBody2D) -> void:
 	Enemy.speed = Vector2(0,0)
+	self.speed = Vector2(0,0)
 	attack_ended = false
 
+	attack_dir = Enemy.body.scale.x
 	Enemy._change_anim("Jab")
 	$Jab.start()
 
-func update(Enemy: KinematicBody2D, _delta : float) -> void:
+func update(_Enemy: KinematicBody2D, delta : float) -> void:
+
 	if attack_ended:
-		Enemy._change_state($"../OnCombat")
+		_Enemy._change_state($"../OnCombat")
+
+	if speed.x != 0:
+		speed.x *= FRICTION
+		if abs(speed.x) < 10 : speed.x = 0
+
+	_Enemy.move_and_slide(speed, NORMAL)
+
+	if _Enemy.is_on_floor():
+		speed.y = 10
+
+	else:
+		speed.y += GRAV*delta
+		if speed.y > MAX_GRAV: speed.y = MAX_GRAV
 
 func exit(_Enemy : KinematicBody2D) -> void:
 	_Enemy._clear_attack_polys()
