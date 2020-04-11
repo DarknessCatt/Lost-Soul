@@ -26,6 +26,10 @@ func enter(Enemy : KinematicBody2D) -> void:
 	Enemy._change_anim("Jab")
 	$Jab.start()
 
+func exit(_Enemy : KinematicBody2D) -> void:
+	_Enemy._clear_attack_polys()
+	_Enemy._disable_hitboxes()
+
 func update(_Enemy: KinematicBody2D, delta : float) -> void:
 
 	if attack_ended:
@@ -43,9 +47,6 @@ func update(_Enemy: KinematicBody2D, delta : float) -> void:
 	else:
 		speed.y += GRAV*delta
 		if speed.y > MAX_GRAV: speed.y = MAX_GRAV
-
-func exit(_Enemy : KinematicBody2D) -> void:
-	_Enemy._clear_attack_polys()
 
 func _on_Attack_timeout():
 	attack_ended = true

@@ -24,6 +24,10 @@ func enter(_Player : KinematicBody2D) -> void:
 	_Player.speed.x = 0
 	self.attack(_Player)
 
+func exit(_Player: KinematicBody2D) -> void:
+	_Player._clear_attack_polys()
+	_Player._disable_hitboxes()
+
 func update(_Player: KinematicBody2D, delta : float) -> void:
 
 	_Player.speed.x = MOVE_SPEED*delta*sign(_Player.body.scale.x)

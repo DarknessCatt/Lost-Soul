@@ -22,6 +22,10 @@ func enter(_Player : KinematicBody2D) -> void:
 
 	self.attack(_Player)
 
+func exit(_Player: KinematicBody2D) -> void:
+	_Player._clear_attack_polys()
+	_Player._disable_hitboxes()
+
 func update(_Player: KinematicBody2D, _delta : float) -> void:
 
 	_Player.move_and_slide(_Player.speed, NORMAL)

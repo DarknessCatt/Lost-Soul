@@ -69,6 +69,17 @@ onready var cur_state : Node  = $States/Falling
 export(bool) var on_cutscene : bool = false
 
 ##Functions
+func _clear_attack_polys():
+	$Body/Hip/Torso/Left_Arm/Left_Hand/Left_Weapon.polygon = PoolVector2Array()
+	$Body/Hip/Torso/Right_Arm/Right_Hand/Right_Weapon.polygon = PoolVector2Array()
+	$Body/Hip/Right_Leg/Right_Shin/Right_Foot/Right_Foot_Weapon.polygon = PoolVector2Array()
+
+func _disable_hitboxes():
+	for atk in $Body/Hitboxes.get_children():
+		for hitbox in atk.get_children():
+			for collision in hitbox.get_children():
+				collision.call_deferred("set", "disabled", true)
+
 func _input(event):
 	if not on_cutscene:
 
