@@ -1,7 +1,6 @@
 extends "State.gd"
 
 const NORMAL : Vector2 = Vector2(0, -1)
-const MOVE_SPEED : int = 800
 
 var attacking : bool = false
 var can_cancel : bool = false
@@ -23,9 +22,7 @@ func enter(_Player : KinematicBody2D) -> void:
 
 	self.attack(_Player)
 
-func update(_Player: KinematicBody2D, delta : float) -> void:
-
-	_Player.speed.x = MOVE_SPEED*delta*sign(_Player.body.scale.x)
+func update(_Player: KinematicBody2D, _delta : float) -> void:
 
 	_Player.move_and_slide(_Player.speed, NORMAL)
 

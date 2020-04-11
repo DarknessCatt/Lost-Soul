@@ -8,7 +8,7 @@
 [node name="Debug_Map" type="Node2D"]
 
 [node name="Sandbag" parent="." instance=ExtResource( 3 )]
-position = Vector2( 962.909, 207.348 )
+position = Vector2( 958.795, 224.122 )
 
 [node name="Hero" parent="." instance=ExtResource( 1 )]
 position = Vector2( 72, 504 )

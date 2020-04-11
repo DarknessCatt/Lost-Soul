@@ -30,9 +30,9 @@ enum {LEFT = -1, NONE, RIGHT}
 var direction : int = NONE
 
 func enter(Enemy : KinematicBody2D) -> void:
-	min_dist = 60 + int(rand_range(-20,+20))
-	max_dist = 150 + int(rand_range(-20,+20))
-	attack_dist = 100 + int(rand_range(-20,+20))
+	min_dist = 130 + int(rand_range(-10,+40))
+	max_dist = 180 + int(rand_range(-20,+20))
+	attack_dist = 200 + int(rand_range(-10,+10))
 
 	if Enemy.speed.x == 0:
 		Enemy._change_anim("OnCombat")

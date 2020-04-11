@@ -4,8 +4,8 @@ extends KinematicBody2D
 var Player : KinematicBody2D = null
 
 ##Functions
-func _on_Player_Detected(body):
-	Player = body
+func _on_Player_Detected(p_body):
+	Player = p_body
 	$Perception/Eyes.call_deferred("set", "monitoring", false)
 
 #Info
@@ -29,7 +29,7 @@ func _hit(damage : int, force : int, _direction : Vector2):
 			self.speed = _direction.normalized()*force
 
 		if health <= 0:
-			#emit_signal("dead")
+			emit_signal("dead")
 			_die()
 
 		else:

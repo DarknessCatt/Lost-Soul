@@ -10,6 +10,8 @@ var health : int = max_health
 var max_crystal_heart : int = 0
 var crystal_heart : int = max_crystal_heart
 
+var invencible : bool = false
+
 ##Signals
 signal dead()
 signal heart_collected()
@@ -22,14 +24,16 @@ func _refresh():
 	$Heart_Particles.restart()
 
 func _hit(damage : int, force : int, _direction : Vector2):
-	if health > 0:
-		health -= damage
+	if not invencible:
+		if health > 0:
+			health -= damage
 
-		if health <= 0:
-			emit_signal("dead")
+			if health <= 0:
+				emit_signal("dead")
 
-		if force > 0:
-			self.speed += _direction.normalized()*force
+			elif force > 0:
+				self.speed += _direction.normalized()*force
+				self._change_state($States/Knockback)
 
 func _die():
 	on_cutscene = true
