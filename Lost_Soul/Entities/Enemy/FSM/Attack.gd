@@ -24,12 +24,12 @@ func enter(Enemy : KinematicBody2D) -> void:
 
 	attack_dir = Enemy.body.scale.x
 
-	if rand_range(0,1) < 0.60:
-		Enemy._change_anim("Jab")
-		$Jab.start()
-	else:
+	if (Enemy.position.y -  Enemy.Player.position.y) > 30 or rand_range(0, 1) >= 0.7:
 		Enemy._change_anim("UpTilt")
 		$UpTilt.start()
+	else:
+		Enemy._change_anim("Jab")
+		$Jab.start()
 
 func exit(_Enemy : KinematicBody2D) -> void:
 	_Enemy._clear_attack_polys()
