@@ -27,6 +27,7 @@ func enter(_Player : KinematicBody2D) -> void:
 
 func exit(_Player: KinematicBody2D) -> void:
 	_Player.invencible = false
+	_Player.speed = Vector2(0,0)
 
 func update(_Player: KinematicBody2D, delta : float) -> void:
 	if state == DONE:

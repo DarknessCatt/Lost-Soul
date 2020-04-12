@@ -5,6 +5,7 @@ var Player : KinematicBody2D = null
 
 ##Functions
 func _on_Player_Detected(p_body):
+	randomize()
 	Player = p_body
 	$Perception/Eyes.call_deferred("set", "monitoring", false)
 

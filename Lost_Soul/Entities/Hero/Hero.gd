@@ -32,7 +32,7 @@ func _hit(damage : int, force : int, _direction : Vector2):
 				emit_signal("dead")
 
 			elif force > 0:
-				self.speed += _direction.normalized()*force
+				self.speed = _direction.normalized()*force
 				self._change_state($States/Knockback)
 
 func _die():
