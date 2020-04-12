@@ -39,7 +39,7 @@ func enter(Enemy : KinematicBody2D) -> void:
 	else:
 		Enemy._change_anim("Walking")
 
-	$Attack_Timer.wait_time = 1 + rand_range(-0.5, +0.5)
+	$Attack_Timer.wait_time = 0.7 + rand_range(-0.5, +0.5)
 	$Attack_Timer.start()
 
 func exit(_Enemy : KinematicBody2D) -> void:

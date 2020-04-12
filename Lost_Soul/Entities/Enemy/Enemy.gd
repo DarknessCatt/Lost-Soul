@@ -5,7 +5,6 @@ var Player : KinematicBody2D = null
 
 ##Functions
 func _on_Player_Detected(p_body):
-	randomize()
 	Player = p_body
 	$Perception/Eyes.call_deferred("set", "monitoring", false)
 
@@ -36,8 +35,8 @@ func _hit(damage : int, force : int, _direction : Vector2):
 		else:
 			self._change_state($States/Knockback)
 
-
 func _die():
+	cur_state.exit(self)
 	on_cutscene = true
 	self._change_anim("Death")
 
@@ -70,3 +69,19 @@ func _change_anim(new_anim : String):
 		$Body_Animations.stop()
 
 	$Body_Animations.play(new_anim)
+
+#(Re)Spawning
+var original_pos : Vector2
+
+func _ready():
+	randomize()
+	self.original_pos = self.position
+
+func _respawn():
+	Player = null
+	self.position = self.original_pos
+	self.health = self.max_health
+	on_cutscene = false
+	self._change_state($States/Idle)
+	$Perception/Eyes.call_deferred("set", "monitoring", true)
+	$Body.modulate.a = 1.0
