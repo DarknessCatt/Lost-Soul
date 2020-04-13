@@ -3,10 +3,14 @@ extends KinematicBody2D
 #Perception
 var Player : KinematicBody2D = null
 
+##Signals
+signal alert(Player)
+
 ##Functions
 func _on_Player_Detected(p_body):
 	Player = p_body
 	$Perception/Eyes.call_deferred("set", "monitoring", false)
+	emit_signal("alert", p_body)
 
 #Info
 onready var body : Node2D = $Body
