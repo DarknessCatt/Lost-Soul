@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Props/Rock/Rock.tscn" type="PackedScene" id=2]
@@ -17,7 +17,7 @@
 
 [sub_resource type="Animation" id=5]
 resource_name = "Attack_Tutorial"
-length = 8.0
+length = 9.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hero/Camera2D:zoom")
 tracks/0/interp = 1
@@ -25,7 +25,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 7.2, 7.3 ),
+"times": PoolRealArray( 0, 8.2, 8.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0.4, 0.4 ), Vector2( 1, 1 ) ]
@@ -37,7 +37,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 7.2, 7.3 ),
+"times": PoolRealArray( 0, 8.2, 8.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -75 ), Vector2( 0, -25 ), Vector2( 0, -75 ) ]
@@ -49,7 +49,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 7.3, 7.4, 8 ),
+"times": PoolRealArray( 0, 8.3, 8.4, 9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ true, true, false, false ]
@@ -61,7 +61,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 6.1 ),
+"times": PoolRealArray( 0, 0.1, 7.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
 "args": [ "Rest" ],
@@ -81,10 +81,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 7.2, 8 ),
+"times": PoolRealArray( 0, 8.2, 9 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 48.1553, -31.9014 ), Vector2( 30, -40 ), Vector2( -73, -200 ) ]
+"values": [ Vector2( 48.1553, -31.9014 ), Vector2( 30, -40 ), Vector2( -70, -70 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Events/Attacking_Tutorial/Tutorial:visible")
@@ -93,7 +93,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 7.1, 7.2, 8 ),
+"times": PoolRealArray( 0, 8.1, 8.2, 9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ false, false, true, true ]
@@ -162,7 +162,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 1.9, 2.1, 4.3, 4.5, 8.5, 8.6, 12.2, 12.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 44.0479, -87.8203 ), Vector2( 44.0479, -87.8203 ), Vector2( 0, -53.125 ), Vector2( 0, -53.125 ), Vector2( -141.364, -74.4722 ), Vector2( -141.364, -74.4722 ), Vector2( 67.999, -101.791 ), Vector2( 67.999, -101.791 ), Vector2( -73, -200 ) ]
+"values": [ Vector2( 44.0479, -87.8203 ), Vector2( 44.0479, -87.8203 ), Vector2( 0, -53.125 ), Vector2( 0, -53.125 ), Vector2( -141.364, -74.4722 ), Vector2( -141.364, -74.4722 ), Vector2( 67.999, -101.791 ), Vector2( 67.999, -101.791 ), Vector2( -73, -50 ) ]
 }
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -174,6 +174,9 @@ font_data = ExtResource( 14 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 34.7859, 83.0082 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 23.5264, 149.839 )
 
 [node name="Prototype_Mountain" type="Node2D"]
 script = ExtResource( 7 )
@@ -242,9 +245,9 @@ Character = NodePath("../..")
 
 [node name="Chaos" parent="Hero/Camera2D" instance=ExtResource( 13 )]
 margin_left = -73.0
-margin_top = -200.0
+margin_top = -50.0
 margin_right = 1392.0
-margin_bottom = 679.0
+margin_bottom = 829.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 Letter_Delay = 0.07
@@ -321,6 +324,14 @@ custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 text = "C
 para atacar."
 script = null
+
+[node name="Checkpoint_Tutorial" type="Area2D" parent="Events"]
+position = Vector2( -681.417, 616.155 )
+monitorable = false
+collision_layer = 0
+
+[node name="Trigger_Area" type="CollisionShape2D" parent="Events/Checkpoint_Tutorial"]
+shape = SubResource( 6 )
 [connection signal="timeout" from="respawn_timer" to="." method="respawn"]
 [connection signal="checkpoint_reached" from="Props/Checkpoint" to="." method="_on_Checkpoint_checkpoint_reached"]
 [connection signal="dead" from="Hero" to="." method="_hero_died"]
@@ -329,5 +340,6 @@ script = null
 [connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy3" method="_on_Player_Detected"]
 [connection signal="dead" from="Enemies/Boss" to="Hazards/Arena" method="_ended"]
 [connection signal="body_entered" from="Events/Attacking_Tutorial" to="." method="_on_Attacking_Tutorial_entered"]
+[connection signal="body_entered" from="Events/Checkpoint_Tutorial" to="." method="_on_Checkpoint_Tutorial_entered"]
 
 [editable path="Hazards/Arena"]
