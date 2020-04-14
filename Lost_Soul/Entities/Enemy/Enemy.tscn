@@ -2718,9 +2718,9 @@ __meta__ = {
 }
 
 [node name="Perception" type="Node2D" parent="."]
+visible = false
 
 [node name="Eyes" type="Area2D" parent="Perception"]
-visible = false
 position = Vector2( -2.17743, -17.0565 )
 monitorable = false
 collision_layer = 0

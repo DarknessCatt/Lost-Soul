@@ -26,18 +26,19 @@ func _ready():
 	self.hide()
 
 func _restart():
-	self.hide()
+	if triggered:
+		self.hide()
 
-	self.triggered = false
-	$Trigger.call_deferred("set", "monitoring", true)
+		self.triggered = false
+		$Trigger.call_deferred("set", "monitoring", true)
 
-	$Placeholder_White.set_collision_layer_bit(4, false)
+		$Placeholder_White.set_collision_layer_bit(4, false)
 
-	var player_cam : Camera2D = player.get_node("Camera2D")
+		var player_cam : Camera2D = player.get_node("Camera2D")
 
-	player_cam.show()
-	player_cam.current = true
-	player_cam.position = Vector2(0,-75)
+		player_cam.show()
+		player_cam.current = true
+		player_cam.position = Vector2(0,-75)
 
 func _ended():
 	self.hide()
