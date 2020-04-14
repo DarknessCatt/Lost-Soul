@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Props/Rock/Rock.tscn" type="PackedScene" id=2]
@@ -15,7 +15,91 @@
 [ext_resource path="res://Entities/Information/Textbox/Textbox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Assets/Fonts/XenopyreRegular-qd8V.ttf" type="DynamicFontData" id=14]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
+resource_name = "Attack_Tutorial"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hero/Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 7.2, 7.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.4, 0.4 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hero/Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 7.2, 7.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -75 ), Vector2( 0, -25 ), Vector2( 0, -75 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hero:on_cutscene")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 7.3, 7.4, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false, false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("Hero")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 6.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ "Rest" ],
+"method": "_change_anim"
+}, {
+"args": [ "speed", Vector2( 0, 0 ) ],
+"method": "set"
+}, {
+"args": [ "PowerUp" ],
+"method": "_change_anim"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hero/Camera2D/Chaos:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 7.2, 8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 48.1553, -31.9014 ), Vector2( 30, -40 ), Vector2( -73, -200 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Events/Attacking_Tutorial/Tutorial:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 7.1, 7.2, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, true ]
+}
+
+[sub_resource type="Animation" id=1]
 resource_name = "Intro"
 length = 17.0
 tracks/0/type = "value"
@@ -69,7 +153,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 10 ), Vector2( 0, -28 ), Vector2( 0, -75 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Hero/Chaos:rect_position")
+tracks/4/path = NodePath("Hero/Camera2D/Chaos:rect_position")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -81,19 +165,22 @@ tracks/4/keys = {
 "values": [ Vector2( 44.0479, -87.8203 ), Vector2( 44.0479, -87.8203 ), Vector2( 0, -53.125 ), Vector2( 0, -53.125 ), Vector2( -141.364, -74.4722 ), Vector2( -141.364, -74.4722 ), Vector2( 67.999, -101.791 ), Vector2( 67.999, -101.791 ), Vector2( -73, -200 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.635294, 0.905882, 0.909804, 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 350
 font_data = ExtResource( 14 )
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 34.7859, 83.0082 )
+
 [node name="Prototype_Mountain" type="Node2D"]
 script = ExtResource( 7 )
 
 [node name="Cutscene" type="AnimationPlayer" parent="."]
-autoplay = "Intro"
-anims/Intro = SubResource( 2 )
+anims/Attack_Tutorial = SubResource( 5 )
+anims/Intro = SubResource( 1 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
@@ -114,7 +201,7 @@ margin_left = -5504.0
 margin_top = -808.0
 margin_right = 6496.0
 margin_bottom = 1192.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -139,14 +226,12 @@ position = Vector2( 1595.77, -214.259 )
 position = Vector2( -3400, 60 )
 
 [node name="Hero" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1588.31, 746.965 )
-on_cutscene = true
+position = Vector2( 1588.49, 746.217 )
 
 [node name="Camera2D" type="Camera2D" parent="Hero"]
-position = Vector2( 0, 10 )
+position = Vector2( 0, -75 )
 z_index = 1
 current = true
-zoom = Vector2( 0.2, 0.2 )
 
 [node name="Player_Status" parent="Hero/Camera2D" instance=ExtResource( 5 )]
 margin_left = -450.0
@@ -155,11 +240,11 @@ margin_right = -250.0
 margin_bottom = -228.0
 Character = NodePath("../..")
 
-[node name="Chaos" parent="Hero" instance=ExtResource( 13 )]
-margin_left = 44.0479
-margin_top = -87.8203
-margin_right = 1509.05
-margin_bottom = 791.18
+[node name="Chaos" parent="Hero/Camera2D" instance=ExtResource( 13 )]
+margin_left = -73.0
+margin_top = -200.0
+margin_right = 1392.0
+margin_bottom = 679.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 Letter_Delay = 0.07
@@ -214,12 +299,35 @@ position = Vector2( 2778.95, -543.937 )
 
 [node name="Player_Status" parent="Hazards/Arena" index="4"]
 Character = NodePath("../../../Hero")
+
+[node name="Events" type="Node2D" parent="."]
+
+[node name="Attacking_Tutorial" type="Area2D" parent="Events"]
+position = Vector2( -19.4118, 845.38 )
+monitorable = false
+collision_layer = 0
+
+[node name="Trigger_Area" type="CollisionShape2D" parent="Events/Attacking_Tutorial"]
+shape = SubResource( 4 )
+
+[node name="Tutorial" parent="Events/Attacking_Tutorial" instance=ExtResource( 13 )]
+visible = false
+margin_left = -71.1241
+margin_top = -197.111
+margin_right = 1393.88
+margin_bottom = 681.89
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
+text = "C
+para atacar."
+script = null
 [connection signal="timeout" from="respawn_timer" to="." method="respawn"]
 [connection signal="checkpoint_reached" from="Props/Checkpoint" to="." method="_on_Checkpoint_checkpoint_reached"]
 [connection signal="dead" from="Hero" to="." method="_hero_died"]
-[connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy5" method="_on_Player_Detected"]
 [connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy4" method="_on_Player_Detected"]
+[connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy5" method="_on_Player_Detected"]
 [connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy3" method="_on_Player_Detected"]
 [connection signal="dead" from="Enemies/Boss" to="Hazards/Arena" method="_ended"]
+[connection signal="body_entered" from="Events/Attacking_Tutorial" to="." method="_on_Attacking_Tutorial_entered"]
 
 [editable path="Hazards/Arena"]

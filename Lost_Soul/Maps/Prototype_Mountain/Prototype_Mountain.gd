@@ -17,3 +17,14 @@ func _on_Checkpoint_checkpoint_reached(checkpoint : Area2D):
 	for enemy in $Enemies.get_children():
 		enemy._respawn()
 	$Hazards/Arena._restart()
+
+var attack_dialogue : Array = ["Seu corpo ainda\nesta fraco.",
+							  "Eu irei te\nconceder um pouco\ndo meu poder.",
+							  ""]
+
+func _on_Attacking_Tutorial_entered(area):
+	$Hero/Camera2D/Chaos.change_dialogue(attack_dialogue)
+	$Hero/Camera2D/Chaos.begin()
+	$Events/Attacking_Tutorial.call_deferred("set", "monitoring", false)
+	$Cutscene.play("Attack_Tutorial")
+
