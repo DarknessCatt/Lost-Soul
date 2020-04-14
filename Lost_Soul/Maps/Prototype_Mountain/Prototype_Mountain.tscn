@@ -57,7 +57,7 @@ position = Vector2( 1595.77, -214.259 )
 position = Vector2( -3400, 60 )
 
 [node name="Hero" parent="." instance=ExtResource( 1 )]
-position = Vector2( 5143.04, 742.112 )
+position = Vector2( 1588.31, 742.112 )
 
 [node name="Camera2D" type="Camera2D" parent="Hero"]
 position = Vector2( 0, -75 )
@@ -88,7 +88,7 @@ position = Vector2( 4277.68, 910.112 )
 [node name="Enemy5" parent="Enemies" instance=ExtResource( 9 )]
 position = Vector2( 4390.6, 902.112 )
 
-[node name="Enemy6" parent="Enemies" instance=ExtResource( 11 )]
+[node name="Boss" parent="Enemies" instance=ExtResource( 11 )]
 position = Vector2( 3983.25, 411.811 )
 
 [node name="Mountain_FG" parent="." instance=ExtResource( 3 )]
@@ -113,8 +113,9 @@ Character = NodePath("../../../Hero")
 [connection signal="timeout" from="respawn_timer" to="." method="respawn"]
 [connection signal="checkpoint_reached" from="Props/Checkpoint" to="." method="_on_Checkpoint_checkpoint_reached"]
 [connection signal="dead" from="Hero" to="." method="_hero_died"]
-[connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy5" method="_on_Player_Detected"]
-[connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy4" method="_on_Player_Detected"]
 [connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy3" method="_on_Player_Detected"]
+[connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy4" method="_on_Player_Detected"]
+[connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy5" method="_on_Player_Detected"]
+[connection signal="dead" from="Enemies/Boss" to="Hazards/Arena" method="_ended"]
 
 [editable path="Hazards/Arena"]

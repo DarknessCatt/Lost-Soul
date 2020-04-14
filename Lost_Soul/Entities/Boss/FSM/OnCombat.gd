@@ -43,7 +43,7 @@ func enter(Enemy : KinematicBody2D) -> void:
 	if sign(player_dist) != sign(Enemy.body.scale.x):
 		Enemy.body.scale.x *= -1
 
-	$Attack_Timer.wait_time = 0.5 + rand_range(-0.3, +0.3)
+	$Attack_Timer.wait_time = 0.3 + rand_range(-0.2, +0.2)
 	$Attack_Timer.start()
 
 func exit(_Enemy : KinematicBody2D) -> void:

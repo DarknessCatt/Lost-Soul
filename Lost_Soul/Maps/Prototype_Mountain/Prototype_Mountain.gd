@@ -16,3 +16,4 @@ func _on_Checkpoint_checkpoint_reached(checkpoint : Area2D):
 	respawn_point = checkpoint.global_position
 	for enemy in $Enemies.get_children():
 		enemy._respawn()
+	$Hazards/Arena._restart()

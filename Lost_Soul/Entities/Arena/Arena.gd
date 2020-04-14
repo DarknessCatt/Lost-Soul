@@ -24,3 +24,31 @@ func _on_Trigger_body_entered(body):
 
 func _ready():
 	self.hide()
+
+func _restart():
+	self.hide()
+
+	self.triggered = false
+	$Trigger.call_deferred("set", "monitoring", true)
+
+	$Placeholder_White.set_collision_layer_bit(4, false)
+
+	var player_cam : Camera2D = player.get_node("Camera2D")
+
+	player_cam.show()
+	player_cam.current = true
+	player_cam.position = Vector2(0,-75)
+
+func _ended():
+	self.hide()
+	$Placeholder_White.set_collision_layer_bit(4, false)
+
+	var player_cam : Camera2D = player.get_node("Camera2D")
+
+	player_cam.show()
+	player_cam.current = true
+	player_cam.global_position = $Arena_Camera.global_position
+	$Tween.interpolate_property(player_cam, "position",
+							   player_cam.position, Vector2(0,-75),
+							   0.2, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
