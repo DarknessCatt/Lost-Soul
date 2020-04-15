@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Props/Rock/Rock.tscn" type="PackedScene" id=2]
@@ -15,7 +15,7 @@
 [ext_resource path="res://Entities/Information/Textbox/Textbox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Assets/Fonts/XenopyreRegular-qd8V.ttf" type="DynamicFontData" id=14]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=1]
 resource_name = "Attack_Tutorial"
 length = 9.0
 tracks/0/type = "value"
@@ -99,9 +99,49 @@ tracks/5/keys = {
 "values": [ false, false, true, true ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Intro"
-length = 17.0
+[sub_resource type="Animation" id=7]
+resource_name = "Crystal_Tutorial"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hero/Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.4, 0.4 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hero/Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -75 ), Vector2( 0, -25 ), Vector2( 0, -75 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Events/Crystal_Tutorial:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Ending"
+length = 11.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hero:on_cutscene")
 tracks/0/interp = 1
@@ -109,7 +149,108 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 16.2, 16.3, 17 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Hero")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "Rest" ],
+"method": "_change_anim"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Fundo:custom_styles/panel:bg_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 10.1, 11.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.635294, 0.905882, 0.909804, 1 ), Color( 0.635294, 0.905882, 0.909804, 1 ), Color( 0.976471, 0.376471, 0.376471, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hero/Camera2D:zoom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 6.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hero/Camera2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 6.6, 7.1, 9.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -75 ), Vector2( 0, -37.1304 ), Vector2( 0, -37.1304 ), Vector2( 0, -500 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hero/Camera2D/Player_Status:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 6.1, 6.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hero/Camera2D/Chaos:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 6.6, 7.1, 7.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -70, -70 ), Vector2( -70, -100 ), Vector2( -70, -100 ), Vector2( -70, -50 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Hero/Camera2D/Chaos:custom_colors/font_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 11.1, 11.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.976471, 0.376471, 0.376471, 1 ), Color( 0.976471, 0.376471, 0.376471, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 17.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hero:on_cutscene")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 16.7, 16.8, 17.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ true, true, false, false ]
@@ -135,7 +276,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 8, 14 ),
+"times": PoolRealArray( 0, 8.5, 14.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.2, 0.2 ), Vector2( 0.5, 0.5 ), Vector2( 1, 1 ) ]
@@ -147,7 +288,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 8, 14 ),
+"times": PoolRealArray( 0, 8.5, 14.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 10 ), Vector2( 0, -28 ), Vector2( 0, -75 ) ]
@@ -159,31 +300,49 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 1.9, 2.1, 4.3, 4.5, 8.5, 8.6, 12.2, 12.4 ),
+"times": PoolRealArray( 0, 2.4, 2.6, 4.8, 5, 9, 9.1, 12.7, 12.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 44.0479, -87.8203 ), Vector2( 44.0479, -87.8203 ), Vector2( 0, -53.125 ), Vector2( 0, -53.125 ), Vector2( -141.364, -74.4722 ), Vector2( -141.364, -74.4722 ), Vector2( 67.999, -101.791 ), Vector2( 67.999, -101.791 ), Vector2( -73, -50 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.635294, 0.905882, 0.909804, 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 350
 font_data = ExtResource( 14 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 34.7859, 83.0082 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 23.5264, 149.839 )
 
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 10, 187.427 )
+
 [node name="Prototype_Mountain" type="Node2D"]
 script = ExtResource( 7 )
 
 [node name="Cutscene" type="AnimationPlayer" parent="."]
-anims/Attack_Tutorial = SubResource( 5 )
-anims/Intro = SubResource( 1 )
+autoplay = "Intro"
+anims/Attack_Tutorial = SubResource( 1 )
+anims/Crystal_Tutorial = SubResource( 7 )
+anims/Ending = SubResource( 8 )
+anims/Intro = SubResource( 2 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
@@ -204,7 +363,7 @@ margin_left = -5504.0
 margin_top = -808.0
 margin_right = 6496.0
 margin_bottom = 1192.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -229,7 +388,7 @@ position = Vector2( 1595.77, -214.259 )
 position = Vector2( -3400, 60 )
 
 [node name="Hero" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1588.49, 746.217 )
+position = Vector2( 1621.4, 747.827 )
 
 [node name="Camera2D" type="Camera2D" parent="Hero"]
 position = Vector2( 0, -75 )
@@ -248,7 +407,7 @@ margin_left = -73.0
 margin_top = -50.0
 margin_right = 1392.0
 margin_bottom = 829.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 Letter_Delay = 0.07
 dialogue = [ "
@@ -259,7 +418,7 @@ para o mundo dos vivos.", "Em troca,
 eu vou precisar
 da tua ajuda.", "Eu estou preso
 entre a vida
-e a morte.", "Me tire
+", "e a morte.", "Me tire
 daqui...
     ", "" ]
 
@@ -311,7 +470,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="Trigger_Area" type="CollisionShape2D" parent="Events/Attacking_Tutorial"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="Tutorial" parent="Events/Attacking_Tutorial" instance=ExtResource( 13 )]
 visible = false
@@ -319,7 +478,7 @@ margin_left = -71.1241
 margin_top = -197.111
 margin_right = 1393.88
 margin_bottom = 681.89
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 text = "C
 para atacar."
@@ -332,14 +491,38 @@ collision_layer = 0
 
 [node name="Trigger_Area" type="CollisionShape2D" parent="Events/Checkpoint_Tutorial"]
 shape = SubResource( 6 )
+
+[node name="Crystal_Tutorial" parent="Events" instance=ExtResource( 13 )]
+visible = false
+margin_left = 3076.12
+margin_top = 298.856
+margin_right = 5068.12
+margin_bottom = 1177.86
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
+text = "D
+para consumir."
+align = 1
+script = null
+
+[node name="Ending" type="Area2D" parent="Events"]
+position = Vector2( -4544.77, 927.95 )
+monitorable = false
+collision_layer = 0
+
+[node name="Trigger" type="CollisionShape2D" parent="Events/Ending"]
+position = Vector2( -25.1284, -59.1268 )
+shape = SubResource( 9 )
 [connection signal="timeout" from="respawn_timer" to="." method="respawn"]
+[connection signal="body_entered" from="Props/Crystal_Heart" to="." method="_on_Crystal_Heart_collected"]
 [connection signal="checkpoint_reached" from="Props/Checkpoint" to="." method="_on_Checkpoint_checkpoint_reached"]
 [connection signal="dead" from="Hero" to="." method="_hero_died"]
-[connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy4" method="_on_Player_Detected"]
 [connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy5" method="_on_Player_Detected"]
 [connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy3" method="_on_Player_Detected"]
+[connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy4" method="_on_Player_Detected"]
 [connection signal="dead" from="Enemies/Boss" to="Hazards/Arena" method="_ended"]
 [connection signal="body_entered" from="Events/Attacking_Tutorial" to="." method="_on_Attacking_Tutorial_entered"]
 [connection signal="body_entered" from="Events/Checkpoint_Tutorial" to="." method="_on_Checkpoint_Tutorial_entered"]
+[connection signal="body_entered" from="Events/Ending" to="." method="_on_Ending"]
 
 [editable path="Hazards/Arena"]

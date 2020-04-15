@@ -2499,7 +2499,7 @@ visible = false
 position = Vector2( 33.9498, -11.1469 )
 Body = NodePath("../../..")
 Id = 2
-Damage = 7
+Damage = 5
 Force = 2000
 Direction = Vector2( 1, -0.1 )
 
@@ -2514,7 +2514,7 @@ visible = false
 position = Vector2( 33.9498, -11.1469 )
 Body = NodePath("../../..")
 Id = 2
-Damage = 12
+Damage = 10
 Force = 2000
 Direction = Vector2( 0.1, -1 )
 
