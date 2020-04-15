@@ -20,6 +20,10 @@ run/main_scene="res://Maps/Prototype_Dead_World/Prototype_Dead_World.tscn"
 boot_splash/bg_color=Color( 0.01, 0.01, 0.01, 1 )
 config/icon="res://icon.png"
 
+[display]
+
+window/size/resizable=false
+
 [input]
 
 hero_left={

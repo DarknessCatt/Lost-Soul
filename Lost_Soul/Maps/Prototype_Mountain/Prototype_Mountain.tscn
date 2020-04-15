@@ -13,7 +13,7 @@
 [ext_resource path="res://Entities/Boss/Boss.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/BG_Music/Aventura/Coruscate_-_Aventura_.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Entities/Information/Textbox/Textbox.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Assets/Fonts/XenopyreRegular-qd8V.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Assets/Fonts/BasaltRegular-Jx3o.ttf" type="DynamicFontData" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Attack_Tutorial"
@@ -99,7 +99,7 @@ tracks/5/keys = {
 "values": [ false, false, true, true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 resource_name = "Crystal_Tutorial"
 length = 2.0
 tracks/0/type = "value"
@@ -139,7 +139,7 @@ tracks/2/keys = {
 "values": [ false, false, true ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=3]
 resource_name = "Ending"
 length = 11.2
 tracks/0/type = "value"
@@ -241,7 +241,7 @@ tracks/7/keys = {
 "values": [ Color( 0.976471, 0.376471, 0.376471, 1 ), Color( 0.976471, 0.376471, 0.376471, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 length = 17.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hero:on_cutscene")
@@ -318,17 +318,17 @@ tracks/5/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.635294, 0.905882, 0.909804, 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
 size = 350
 font_data = ExtResource( 14 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 34.7859, 83.0082 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 23.5264, 149.839 )
 
 [sub_resource type="RectangleShape2D" id=9]
@@ -340,9 +340,9 @@ script = ExtResource( 7 )
 [node name="Cutscene" type="AnimationPlayer" parent="."]
 autoplay = "Intro"
 anims/Attack_Tutorial = SubResource( 1 )
-anims/Crystal_Tutorial = SubResource( 7 )
-anims/Ending = SubResource( 8 )
-anims/Intro = SubResource( 2 )
+anims/Crystal_Tutorial = SubResource( 2 )
+anims/Ending = SubResource( 3 )
+anims/Intro = SubResource( 4 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
@@ -363,7 +363,7 @@ margin_left = -5504.0
 margin_top = -808.0
 margin_right = 6496.0
 margin_bottom = 1192.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -407,7 +407,7 @@ margin_left = -73.0
 margin_top = -50.0
 margin_right = 1392.0
 margin_bottom = 829.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 Letter_Delay = 0.07
 dialogue = [ "
@@ -470,7 +470,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="Trigger_Area" type="CollisionShape2D" parent="Events/Attacking_Tutorial"]
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="Tutorial" parent="Events/Attacking_Tutorial" instance=ExtResource( 13 )]
 visible = false
@@ -478,7 +478,7 @@ margin_left = -71.1241
 margin_top = -197.111
 margin_right = 1393.88
 margin_bottom = 681.89
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 text = "C
 para atacar."
@@ -490,7 +490,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="Trigger_Area" type="CollisionShape2D" parent="Events/Checkpoint_Tutorial"]
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 
 [node name="Crystal_Tutorial" parent="Events" instance=ExtResource( 13 )]
 visible = false
@@ -498,7 +498,7 @@ margin_left = 3076.12
 margin_top = 298.856
 margin_right = 5068.12
 margin_bottom = 1177.86
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 text = "D
 para consumir."
@@ -517,9 +517,9 @@ shape = SubResource( 9 )
 [connection signal="body_entered" from="Props/Crystal_Heart" to="." method="_on_Crystal_Heart_collected"]
 [connection signal="checkpoint_reached" from="Props/Checkpoint" to="." method="_on_Checkpoint_checkpoint_reached"]
 [connection signal="dead" from="Hero" to="." method="_hero_died"]
-[connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy5" method="_on_Player_Detected"]
 [connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy3" method="_on_Player_Detected"]
 [connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy4" method="_on_Player_Detected"]
+[connection signal="alert" from="Enemies/Enemy2" to="Enemies/Enemy5" method="_on_Player_Detected"]
 [connection signal="dead" from="Enemies/Boss" to="Hazards/Arena" method="_ended"]
 [connection signal="body_entered" from="Events/Attacking_Tutorial" to="." method="_on_Attacking_Tutorial_entered"]
 [connection signal="body_entered" from="Events/Checkpoint_Tutorial" to="." method="_on_Checkpoint_Tutorial_entered"]
