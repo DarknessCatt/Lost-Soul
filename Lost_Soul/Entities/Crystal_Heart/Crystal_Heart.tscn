@@ -1,0 +1,132 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Entities/Crystal_Heart/Crystal_Heart.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 28.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Collected"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Exterior/Center:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 2, 1.9 ), Vector2( 0.8, 0.8 ), Vector2( 1.8, 1.8 ), Vector2( 0.4, 0.4 ), Vector2( 1.8, 1.8 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Exterior:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ), Vector2( 0.4, 0.4 ), Vector2( 0.8, 0.8 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_Collected_Finished"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Exterior/Center:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 2, 1.9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Exterior:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.7, 1.6 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "Collected"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "idle"
+
+[sub_resource type="AnimationNodeTransition" id=6]
+input_count = 2
+xfade_time = 0.1
+input_0/name = "Idle"
+input_0/auto_advance = false
+input_1/name = "Collected"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeBlendTree" id=7]
+graph_offset = Vector2( 15.0555, 44.0878 )
+nodes/Collected/node = SubResource( 4 )
+nodes/Collected/position = Vector2( 300, 360 )
+nodes/Idle/node = SubResource( 5 )
+nodes/Idle/position = Vector2( 300, 120 )
+nodes/Transition/node = SubResource( 6 )
+nodes/Transition/position = Vector2( 560, 220 )
+nodes/output/position = Vector2( 840, 220 )
+node_connections = [ "output", 0, "Transition", "Transition", 0, "Idle", "Transition", 1, "Collected" ]
+
+[node name="Crystal_Heart" type="Area2D"]
+monitorable = false
+collision_layer = 0
+script = ExtResource( 1 )
+
+[node name="Exterior" type="Polygon2D" parent="."]
+scale = Vector2( 1.23276, 1.19951 )
+color = Color( 1, 0, 0, 1 )
+polygon = PoolVector2Array( -16, 0, -16, -8, -8, -16, 0, -8, 8, -16, 16, -8, 16, 0, 0, 16 )
+
+[node name="Center" type="Polygon2D" parent="Exterior"]
+scale = Vector2( 1.12049, 1.10844 )
+color = Color( 1, 0.388235, 0.388235, 1 )
+polygon = PoolVector2Array( -6, 1, -6, -4, -4, -6, 0, -2, 4, -6, 6, -4, 6, 1, 0, 7 )
+
+[node name="Collect_Area" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/Collected = SubResource( 2 )
+anims/idle = SubResource( 3 )
+
+[node name="AnimationTree" type="AnimationTree" parent="Animation"]
+tree_root = SubResource( 7 )
+anim_player = NodePath("..")
+active = true
+process_mode = 0
+parameters/Transition/current = 0
+[connection signal="body_entered" from="." to="." method="_on_Crystal_Heart_body_entered"]

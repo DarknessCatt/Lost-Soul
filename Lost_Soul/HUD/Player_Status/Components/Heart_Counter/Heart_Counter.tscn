@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Available"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Heart:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.3, 1.3 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Heart:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.996078, 0.0313726, 0.00784314, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Used"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Heart:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1.2, 1.2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Heart:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.996078, 0.0313726, 0.00784314, 1 ), Color( 0.996078, 0.0313726, 0.00784314, 1 ), Color( 0.64, 0.4512, 0.448, 1 ) ]
+}
+
+[node name="Heart_Counter" type="Control"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+autoplay = "Available"
+anims/Available = SubResource( 1 )
+anims/Used = SubResource( 2 )
+
+[node name="Heart" type="Polygon2D" parent="."]
+position = Vector2( 16, 16 )
+scale = Vector2( 1.2, 1.2 )
+color = Color( 0.64, 0.4512, 0.448, 1 )
+polygon = PoolVector2Array( 0, -4, 4, -8, 8, -4, 8, 0, 0, 8, -8, 0, -8, -4, -4, -8 )

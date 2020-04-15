@@ -16,7 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Lost Soul"
+run/main_scene="res://Maps/Prototype_Dead_World/Prototype_Dead_World.tscn"
+boot_splash/bg_color=Color( 0.01, 0.01, 0.01, 1 )
 config/icon="res://icon.png"
+
+[display]
+
+window/size/resizable=false
 
 [input]
 
@@ -35,7 +41,31 @@ hero_jump={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"unicode":0,"echo":false,"script":null)
  ]
 }
+hero_attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":67,"unicode":0,"echo":false,"script":null)
+ ]
+}
+hero_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+hero_heart={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemies"
+2d_physics/layer_3="Hurtbox"
+2d_physics/layer_4="Hitbox"
+2d_physics/layer_5="Walls"
 
 [rendering]
 
+environment/default_clear_color=Color( 0.05, 0.05, 0.05, 1 )
 environment/default_environment="res://default_env.tres"
