@@ -4,11 +4,6 @@ const GRAV : int = 3500
 const MAX_GRAV : int = 1500
 
 func _ready():
-	#Overridable Vars
-	##Movement Vars
-	#FRICTION = 0.9
-
-	##Animation Vars
 	MOVE_ANIMATION = "Falling"
 	REST_ANIMATION = "Falling"
 

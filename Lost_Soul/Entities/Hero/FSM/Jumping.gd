@@ -5,11 +5,6 @@ const GRAV : int = 2300
 const JUMP_FORCE = 1100
 
 func _ready():
-	#Overridable Vars
-	##Movement Vars
-	#FRICTION = 0.9
-
-	##Animation Vars
 	MOVE_ANIMATION = "Jumping"
 	REST_ANIMATION = "Jumping"
 
