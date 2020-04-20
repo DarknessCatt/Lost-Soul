@@ -98,7 +98,6 @@ func _change_state(new_state : Node):
 	cur_state.enter(self)
 
 func _change_anim(new_anim : String):
-	if $Body_Animations.current_animation == new_anim:
-		$Body_Animations.stop()
-
+#	if $Body_Animations.current_animation == new_anim:
+#		$Body_Animations.stop()
 	$Body_Animations.play(new_anim)

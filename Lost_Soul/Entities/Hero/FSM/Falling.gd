@@ -6,7 +6,7 @@ const MAX_GRAV : int = 1500
 func _ready():
 	#Overridable Vars
 	##Movement Vars
-	FRICTION = 0.9
+	#FRICTION = 0.9
 
 	##Animation Vars
 	MOVE_ANIMATION = "Falling"
@@ -17,9 +17,9 @@ func enter(_Player : KinematicBody2D) -> void:
 	.enter(_Player)
 
 	if _Player.speed.y < 0:
-		_Player.speed.y /= 2
+		_Player.speed.y /= 1.5
 	else:
-		_Player.speed.y = 20
+		_Player.speed.y = 0
 
 func exit(_Player : KinematicBody2D) -> void:
 	_Player.speed.y = 10

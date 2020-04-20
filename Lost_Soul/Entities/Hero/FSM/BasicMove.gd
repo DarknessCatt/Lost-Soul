@@ -54,12 +54,8 @@ func update(_Player: KinematicBody2D, delta : float) -> void:
 		match sign(spdx):
 			-1.0:
 				_Player.body.scale.x = -1
-				_Player._change_anim(MOVE_ANIMATION)
-			0.0:
-				_Player._change_anim(REST_ANIMATION)
 			1.0:
 				_Player.body.scale.x = 1
-				_Player._change_anim(MOVE_ANIMATION)
 
 	_Player.speed.x = spdx
 
@@ -72,20 +68,30 @@ func input(_Player: KinematicBody2D, event : InputEvent) -> void:
 		NONE:
 			if event.is_action_pressed("hero_left"):
 				direction = LEFT
+				_Player._change_anim(MOVE_ANIMATION)
 
 			elif event.is_action_pressed("hero_right"):
 				direction = RIGHT
+				_Player._change_anim(MOVE_ANIMATION)
 
 		LEFT:
 			if event.is_action_pressed("hero_right"):
 				direction = RIGHT
 
 			elif event.is_action_released("hero_left"):
-				direction = NONE
+				if Input.is_action_pressed("hero_right"):
+					direction = RIGHT
+				else:
+					direction = NONE
+					_Player._change_anim(REST_ANIMATION)
 
 		RIGHT:
 			if event.is_action_pressed("hero_left"):
 				direction = LEFT
 
 			elif event.is_action_released("hero_right"):
-				direction = NONE
+				if Input.is_action_pressed("hero_left"):
+					direction = LEFT
+				else:
+					direction = NONE
+					_Player._change_anim(REST_ANIMATION)
