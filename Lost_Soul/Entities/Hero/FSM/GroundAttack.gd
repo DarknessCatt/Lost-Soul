@@ -32,6 +32,10 @@ func enter(_Player : KinematicBody2D) -> void:
 		attack = "Jab_Down"
 		timer = $DownTilt
 
+	elif Input.is_action_pressed("hero_up"):
+		attack = "Jab_Up"
+		timer = $UpTilt
+
 	else:
 		attack = "Jab_Right"
 		timer = $Jab
