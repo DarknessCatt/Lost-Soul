@@ -22,7 +22,17 @@ func _coyote_timer():
 func _on_Coyote_Timer_timeout():
 	can_coyote = false
 
-#Ground Combo Counter
+#Attack Buffer
+var attack_buffered = false
+
+func _buffer_attack():
+	attack_buffered = true
+	$Attack_Buffer.start()
+
+func _on_Attack_Buffer_timeout():
+	attack_buffered = false
+
+#Ground Attack Delay
 var can_attack : bool = true
 
 func _attack_end():

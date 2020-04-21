@@ -4414,7 +4414,7 @@ tracks/15/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=19]
-radius = 39.3895
+radius = 42.0766
 
 [sub_resource type="CircleShape2D" id=20]
 radius = 40.0
@@ -4572,6 +4572,9 @@ process_mode = 0
 wait_time = 0.1
 one_shot = true
 
+[node name="Knockback" type="Node" parent="States"]
+script = ExtResource( 10 )
+
 [node name="Buffer" type="Node" parent="States"]
 script = ExtResource( 5 )
 
@@ -4585,13 +4588,15 @@ process_mode = 0
 wait_time = 0.1
 one_shot = true
 
-[node name="Attack_Timer" type="Timer" parent="States/Buffer"]
+[node name="Attack_Buffer" type="Timer" parent="States/Buffer"]
 process_mode = 0
 wait_time = 0.05
 one_shot = true
 
-[node name="Knockback" type="Node" parent="States"]
-script = ExtResource( 10 )
+[node name="Attack_Timer" type="Timer" parent="States/Buffer"]
+process_mode = 0
+wait_time = 0.05
+one_shot = true
 
 [node name="Body" type="Node2D" parent="."]
 
@@ -4604,15 +4609,14 @@ __meta__ = {
 visible = false
 
 [node name="Jab_Hitbox" parent="Body/Hitboxes/Jab" instance=ExtResource( 7 )]
-position = Vector2( 59, -28 )
+position = Vector2( 59, -2.86522 )
 Body = NodePath("../../..")
 Id = 1
 Damage = 5
-Force = 100
+Force = 800
 Direction = Vector2( 1, 0 )
 
 [node name="Jab_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Jab/Jab_Hitbox"]
-position = Vector2( 3.33508, 19.7073 )
 shape = SubResource( 19 )
 disabled = true
 
@@ -4954,6 +4958,7 @@ __meta__ = {
 color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 8 )
 shape = SubResource( 32 )
 __meta__ = {
@@ -4979,4 +4984,5 @@ process_material = SubResource( 35 )
 [connection signal="timeout" from="States/AirAttack/attack_input" to="States/AirAttack" method="_on_attack_input_timeout"]
 [connection signal="timeout" from="States/Buffer/Jump_Buffer" to="States/Buffer" method="_on_Jump_Buffer_timeout"]
 [connection signal="timeout" from="States/Buffer/Coyote_Timer" to="States/Buffer" method="_on_Coyote_Timer_timeout"]
+[connection signal="timeout" from="States/Buffer/Attack_Buffer" to="States/Buffer" method="_on_Attack_Buffer_timeout"]
 [connection signal="timeout" from="States/Buffer/Attack_Timer" to="States/Buffer" method="_on_Attack_Timer_timeout"]

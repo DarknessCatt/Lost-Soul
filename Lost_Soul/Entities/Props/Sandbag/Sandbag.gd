@@ -6,7 +6,7 @@ const NORMAL : Vector2 = Vector2(0, -1)
 const GRAV : int = 3000
 const MAX_GRAV : int = 1500
 
-const FRICTION : float = 0.7
+const FRICTION : float = 0.8
 var speed : Vector2 = Vector2(0,0)
 
 func _hit(_damage : int, force : int, direction : Vector2):
