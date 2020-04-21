@@ -25,17 +25,22 @@ func enter(_Player : KinematicBody2D) -> void:
 
 	attack_finished = false
 
-	if Input.is_action_pressed("hero_up"):
-		attack_finished = true
+	var attack : String
+	var timer : Timer
+
+	if Input.is_action_pressed("hero_down"):
+		attack = "Jab_Down"
+		timer = $DownTilt
 
 	else:
-		var attack = "Jab_Right"
-		if left_attack: attack = "Jab_Left"
+		attack = "Jab_Right"
+		timer = $Jab
 
+		if left_attack: attack = "Jab_Left"
 		left_attack = not left_attack
 
-		_Player._change_anim(attack)
-		$Jab.start()
+	_Player._change_anim(attack)
+	timer.start()
 
 func exit(_Player: KinematicBody2D) -> void:
 	_Player._clear_attack_polys()
