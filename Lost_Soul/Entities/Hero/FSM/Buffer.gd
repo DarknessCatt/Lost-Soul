@@ -32,7 +32,7 @@ func _buffer_attack():
 func _on_Attack_Buffer_timeout():
 	attack_buffered = false
 
-#Ground Attack Delay
+#Attack Delay
 var can_attack : bool = true
 
 func _attack_end():
@@ -41,14 +41,3 @@ func _attack_end():
 
 func _on_Attack_Timer_timeout():
 	can_attack = true
-	air_attack_num = 0
-
-#air Combo Counter
-var air_attack_num : int = 0
-
-func _register_air_attack(num : int):
-	air_attack_num = num
-	$Attack_Timer.stop()
-
-func _air_attack_end():
-	$Attack_Timer.start()

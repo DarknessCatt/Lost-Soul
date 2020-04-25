@@ -14,14 +14,9 @@ func enter(_Player : KinematicBody2D) -> void:
 
 	if _Player.speed.y < 0:
 		_Player.speed.y /= 1.5
-	else:
-		_Player.speed.y = 0
 
 	if buffer.attack_buffered and buffer.can_attack:
 		_Player._change_state($"../AirAttack")
-
-func exit(_Player : KinematicBody2D) -> void:
-	_Player.speed.y = 10
 
 func update(_Player: KinematicBody2D, delta : float) -> void:
 	_Player.speed.y += GRAV*delta

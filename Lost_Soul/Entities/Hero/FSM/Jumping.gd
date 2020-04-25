@@ -13,7 +13,7 @@ func _ready():
 func enter(_Player : KinematicBody2D) -> void:
 	.enter(_Player)
 
-	_Player.speed.y -= JUMP_FORCE
+	_Player.speed.y = -JUMP_FORCE
 
 	if buffer.attack_buffered and buffer.can_attack:
 		_Player._change_state($"../AirAttack")
