@@ -6,11 +6,11 @@ func enter(_Player : KinematicBody2D) -> void:
 	var attack : String
 	var timer : Timer
 
-#	if Input.is_action_pressed("hero_down"):
-#		attack = "Jab_Down"
-#		timer = $DownTilt
+	if Input.is_action_pressed("hero_down"):
+		attack = "Air_Jab_Down"
+		timer = $DownTilt
 
-	if Input.is_action_pressed("hero_up"):
+	elif Input.is_action_pressed("hero_up"):
 		attack = "Air_Jab_Up"
 		timer = $UpTilt
 
