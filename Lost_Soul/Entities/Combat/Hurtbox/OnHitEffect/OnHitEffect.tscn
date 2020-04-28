@@ -91,6 +91,7 @@ animations = [ {
 } ]
 
 [node name="OnHitEffect" type="AnimatedSprite"]
-scale = Vector2( 0.3, 0.3 )
+scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 17 )
 frame = 15
+speed_scale = 1.5

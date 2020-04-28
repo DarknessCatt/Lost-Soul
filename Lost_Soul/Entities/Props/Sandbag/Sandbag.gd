@@ -13,7 +13,13 @@ var invencible = false
 
 func _hit(_damage : int, force : int, direction : Vector2):
 	#print("Hit " + str(direction) + " * " + str(force))
+	invencible = true
 	self.speed = direction.normalized()*force
+	$Animation.play("Hit")
+
+
+func _on_Animation_finished(_anim_name):
+	invencible = false
 
 func _physics_process(delta):
 
