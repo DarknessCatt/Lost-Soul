@@ -4433,33 +4433,33 @@ radius = 56.1427
 [sub_resource type="CircleShape2D" id=24]
 radius = 48.0812
 
-[sub_resource type="CircleShape2D" id=33]
+[sub_resource type="CircleShape2D" id=25]
 radius = 51.7705
 
-[sub_resource type="CapsuleShape2D" id=25]
+[sub_resource type="CapsuleShape2D" id=26]
 radius = 34.671
 height = 81.2568
 
-[sub_resource type="CircleShape2D" id=26]
+[sub_resource type="CircleShape2D" id=27]
 radius = 36.0421
 
-[sub_resource type="CircleShape2D" id=27]
+[sub_resource type="CircleShape2D" id=28]
 radius = 15.2725
 
-[sub_resource type="CircleShape2D" id=28]
+[sub_resource type="CircleShape2D" id=29]
 radius = 13.5073
 
-[sub_resource type="RectangleShape2D" id=29]
+[sub_resource type="RectangleShape2D" id=30]
 extents = Vector2( 20, 45.1426 )
 
-[sub_resource type="Gradient" id=30]
+[sub_resource type="Gradient" id=31]
 offsets = PoolRealArray( 0, 0.219251, 0.385027, 0.73262, 0.941176 )
 colors = PoolColorArray( 1, 1, 1, 0.478431, 1, 0.61, 0.61, 1, 1, 0.57, 0.57, 1, 1, 0, 0, 1, 1, 0, 0, 0.0117647 )
 
-[sub_resource type="GradientTexture" id=31]
-gradient = SubResource( 30 )
+[sub_resource type="GradientTexture" id=32]
+gradient = SubResource( 31 )
 
-[sub_resource type="ParticlesMaterial" id=32]
+[sub_resource type="ParticlesMaterial" id=33]
 emission_shape = 1
 emission_sphere_radius = 100.0
 flag_disable_z = true
@@ -4471,7 +4471,7 @@ orbit_velocity_random = 0.0
 radial_accel = -300.0
 scale = 6.0
 scale_random = 0.3
-color_ramp = SubResource( 31 )
+color_ramp = SubResource( 32 )
 
 [node name="Hero" type="KinematicBody2D"]
 collision_mask = 16
@@ -4692,7 +4692,7 @@ Force = 1000
 Direction = Vector2( 0, 1 )
 
 [node name="Air_DownTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Air_DownTilt/Air_DownTilt_Hitbox"]
-shape = SubResource( 33 )
+shape = SubResource( 25 )
 disabled = true
 
 [node name="Air_Uptilt" type="Node2D" parent="Body/Hitboxes"]
@@ -4708,7 +4708,7 @@ Direction = Vector2( 0, -1 )
 
 [node name="Air_UpTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Air_Uptilt/Air_UpTilt_Hitbox"]
 rotation = 1.5708
-shape = SubResource( 25 )
+shape = SubResource( 26 )
 disabled = true
 
 [node name="AirJab1" type="Node2D" parent="Body/Hitboxes"]
@@ -4723,7 +4723,7 @@ Force = 200
 Direction = Vector2( 0, -1 )
 
 [node name="AirJab1_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/AirJab1/AirJab1_Hitbox"]
-shape = SubResource( 26 )
+shape = SubResource( 27 )
 disabled = true
 
 [node name="Right_Arm" type="Polygon2D" parent="Body"]
@@ -4792,11 +4792,11 @@ Character = NodePath("../../../..")
 
 [node name="Upper" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox"]
 position = Vector2( 0, -6.11535 )
-shape = SubResource( 27 )
+shape = SubResource( 28 )
 
 [node name="Lower" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox"]
 position = Vector2( 0, 20 )
-shape = SubResource( 28 )
+shape = SubResource( 29 )
 
 [node name="Head" type="Polygon2D" parent="Body/Hip/Torso"]
 position = Vector2( 0, -32 )
@@ -4926,7 +4926,7 @@ color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
-shape = SubResource( 29 )
+shape = SubResource( 30 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -4937,7 +4937,7 @@ emitting = false
 amount = 40
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 32 )
+process_material = SubResource( 33 )
 [connection signal="timeout" from="States/GroundAttack/Jab" to="States/GroundAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/GroundAttack/UpTilt" to="States/GroundAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/GroundAttack/DownTilt" to="States/GroundAttack" method="_on_Attack_timeout"]

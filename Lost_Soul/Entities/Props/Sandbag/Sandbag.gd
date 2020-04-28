@@ -9,6 +9,8 @@ const MAX_GRAV : int = 1500
 const FRICTION : float = 0.8
 var speed : Vector2 = Vector2(0,0)
 
+var invencible = false
+
 func _hit(_damage : int, force : int, direction : Vector2):
 	#print("Hit " + str(direction) + " * " + str(force))
 	self.speed = direction.normalized()*force
