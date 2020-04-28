@@ -4596,7 +4596,7 @@ __meta__ = {
 visible = false
 
 [node name="Jab_Hitbox" parent="Body/Hitboxes/Jab" instance=ExtResource( 7 )]
-position = Vector2( 59, -2.86522 )
+position = Vector2( 40, -28 )
 Body = NodePath("../../..")
 Id = 1
 Damage = 5
@@ -4604,6 +4604,7 @@ Force = 800
 Direction = Vector2( 1, 0 )
 
 [node name="Jab_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Jab/Jab_Hitbox"]
+position = Vector2( 20, 25 )
 shape = SubResource( 19 )
 disabled = true
 
@@ -4611,7 +4612,7 @@ disabled = true
 visible = false
 
 [node name="UpTilt_Hitbox" parent="Body/Hitboxes/UpTilt" instance=ExtResource( 7 )]
-position = Vector2( 64.4478, -9.76122 )
+position = Vector2( 40, 10 )
 Body = NodePath("../../..")
 Id = 1
 Damage = 5
@@ -4619,6 +4620,7 @@ Force = 1000
 Direction = Vector2( 0, -1 )
 
 [node name="UpTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/UpTilt/UpTilt_Hitbox"]
+position = Vector2( 20, -20 )
 shape = SubResource( 20 )
 disabled = true
 
@@ -4626,7 +4628,7 @@ disabled = true
 visible = false
 
 [node name="DownTilt_Hitbox" parent="Body/Hitboxes/DownTilt" instance=ExtResource( 7 )]
-position = Vector2( 97.5648, 26.3218 )
+position = Vector2( 50, 47 )
 Body = NodePath("../../..")
 Id = 1
 Damage = 5
@@ -4634,6 +4636,7 @@ Force = 1000
 Direction = Vector2( 0.5, -1 )
 
 [node name="DownTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/DownTilt/DownTilt_Hitbox"]
+position = Vector2( 50, -20 )
 rotation = 1.5708
 shape = SubResource( 21 )
 disabled = true
@@ -4669,7 +4672,7 @@ disabled = true
 visible = false
 
 [node name="Air_Jab_Hitbox" parent="Body/Hitboxes/Air_Jab" instance=ExtResource( 7 )]
-position = Vector2( 53.2548, -0.113723 )
+position = Vector2( 20, 0 )
 Body = NodePath("../../..")
 Id = 1
 Damage = 5
@@ -4677,6 +4680,7 @@ Force = 800
 Direction = Vector2( 1, 0 )
 
 [node name="Air_Jab_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Air_Jab/Air_Jab_Hitbox"]
+position = Vector2( 30, 0 )
 shape = SubResource( 24 )
 disabled = true
 
@@ -4684,7 +4688,7 @@ disabled = true
 visible = false
 
 [node name="Air_DownTilt_Hitbox" parent="Body/Hitboxes/Air_DownTilt" instance=ExtResource( 7 )]
-position = Vector2( 12.215, 47.8586 )
+position = Vector2( 12, 28 )
 Body = NodePath("../../..")
 Id = 1
 Damage = 5
@@ -4692,6 +4696,7 @@ Force = 1000
 Direction = Vector2( 0, 1 )
 
 [node name="Air_DownTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Air_DownTilt/Air_DownTilt_Hitbox"]
+position = Vector2( 0, 20 )
 shape = SubResource( 25 )
 disabled = true
 
@@ -4699,7 +4704,7 @@ disabled = true
 visible = false
 
 [node name="Air_UpTilt_Hitbox" parent="Body/Hitboxes/Air_Uptilt" instance=ExtResource( 7 )]
-position = Vector2( 9.40589, -48.5488 )
+position = Vector2( 9, -19 )
 Body = NodePath("../../..")
 Id = 1
 Damage = 5
@@ -4707,6 +4712,7 @@ Force = 1000
 Direction = Vector2( 0, -1 )
 
 [node name="Air_UpTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Air_Uptilt/Air_UpTilt_Hitbox"]
+position = Vector2( 0, -25 )
 rotation = 1.5708
 shape = SubResource( 26 )
 disabled = true
