@@ -22,7 +22,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "Falling Loop"
-length = 0.5
+length = 0.3
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Body:rotation_degrees")
@@ -31,7 +31,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 180.0 ]

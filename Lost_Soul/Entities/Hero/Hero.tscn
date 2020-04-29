@@ -4414,7 +4414,7 @@ tracks/15/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=19]
-radius = 42.0766
+radius = 32.0
 
 [sub_resource type="CapsuleShape2D" id=20]
 radius = 47.3882
@@ -4604,7 +4604,7 @@ Force = 800
 Direction = Vector2( 1, 0 )
 
 [node name="Jab_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Jab/Jab_Hitbox"]
-position = Vector2( 20, 25 )
+position = Vector2( 28, 12 )
 shape = SubResource( 19 )
 disabled = true
 
