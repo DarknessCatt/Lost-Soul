@@ -33,7 +33,7 @@ collision_mask = 16
 script = ExtResource( 2 )
 
 [node name="Body" type="Polygon2D" parent="."]
-color = Color( 0.91, 0.5005, 0.51415, 1 )
+color = Color( 0.909804, 0.768627, 0.772549, 1 )
 polygon = PoolVector2Array( 16, -48, -16, -48, -16, 56, 16, 56 )
 
 [node name="Top" parent="Body" instance=ExtResource( 1 )]

@@ -7,7 +7,9 @@
 [ext_resource path="res://Entities/Enemies/Wandering_Enemies/Test_Wanderer/Test_Wanderer.tscn" type="PackedScene" id=5]
 
 [node name="Debug_Map" type="Node2D"]
+position = Vector2( 1, 0 )
 script = ExtResource( 4 )
+status = NodePath("Hero")
 
 [node name="Sandbag" parent="." instance=ExtResource( 3 )]
 position = Vector2( 958.795, 224.122 )

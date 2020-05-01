@@ -4,7 +4,6 @@ class_name FSM
 
 #FSM
 onready var cur_state : Node
-export(bool) var on_cutscene : bool = false
 
 ##Functions
 func _input(event):

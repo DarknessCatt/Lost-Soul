@@ -4443,11 +4443,10 @@ height = 81.2568
 [sub_resource type="CircleShape2D" id=27]
 radius = 36.0421
 
-[sub_resource type="CircleShape2D" id=28]
-radius = 15.2725
+[sub_resource type="CapsuleShape2D" id=34]
 
-[sub_resource type="CircleShape2D" id=29]
-radius = 13.5073
+[sub_resource type="CapsuleShape2D" id=35]
+height = 16.4528
 
 [sub_resource type="RectangleShape2D" id=30]
 extents = Vector2( 20, 45.1426 )
@@ -4785,24 +4784,28 @@ __meta__ = {
 "_edit_ik_": true
 }
 
+[node name="Hurtbox_Hip" parent="Body/Hip" instance=ExtResource( 9 )]
+position = Vector2( 1.90735e-06, 23.0254 )
+Id = 1
+Character = NodePath("../../..")
+hit_effect_dist = 15
+
+[node name="Lower" type="CollisionShape2D" parent="Body/Hip/Hurtbox_Hip"]
+shape = SubResource( 34 )
+
 [node name="Torso" type="Polygon2D" parent="Body/Hip"]
 color = Color( 0.9, 0.9, 0.9, 1 )
 offset = Vector2( 0, -16 )
 polygon = PoolVector2Array( -7.99883, 16.1367, 7.99883, 15.8633, 14, -8, 14, -12, 10, -16, -10, -16, -14, -12, -14, -8 )
 
-[node name="Hurtbox" parent="Body/Hip/Torso" instance=ExtResource( 9 )]
-visible = false
-position = Vector2( 1.90735e-06, -12 )
+[node name="Hurtbox_Torso" parent="Body/Hip/Torso" instance=ExtResource( 9 )]
+position = Vector2( 1.90735e-06, -14.0862 )
 Id = 1
 Character = NodePath("../../../..")
+hit_effect_dist = 15
 
-[node name="Upper" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox"]
-position = Vector2( 0, -6.11535 )
-shape = SubResource( 28 )
-
-[node name="Lower" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox"]
-position = Vector2( 0, 20 )
-shape = SubResource( 29 )
+[node name="Upper" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox_Torso"]
+shape = SubResource( 35 )
 
 [node name="Head" type="Polygon2D" parent="Body/Hip/Torso"]
 position = Vector2( 0, -32 )
@@ -4931,6 +4934,7 @@ __meta__ = {
 color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 8 )
 shape = SubResource( 30 )
 __meta__ = {

@@ -5,7 +5,7 @@ onready var body : Node2D = $Body
 
 #Attributes
 var max_health : int = 100
-var health : int = 1 #max_health
+var health : int = max_health
 
 var max_crystal_heart : int = 0
 var crystal_heart : int = max_crystal_heart

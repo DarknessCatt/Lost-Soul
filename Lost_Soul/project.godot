@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "FSM",
 "class": "Base_Wanderer",
 "language": "GDScript",
-"path": "res://Entities/Enemies/Wandering_Enemies/Base_Wanderer/Base_Wanderer.gd"
+"path": "res://Entities/Enemies/Wandering_Enemies/Base_Wanderer.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "FSM",
