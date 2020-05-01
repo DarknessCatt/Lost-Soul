@@ -1,4 +1,4 @@
-extends "../Base_Wanderer.gd"
+extends Base_Wanderer
 
 var invencible = false
 

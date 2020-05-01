@@ -1,4 +1,4 @@
-extends "res://Classes/State.gd"
+extends State
 
 #State info
 export(String) var state_anim : String = "Walking"

@@ -4,7 +4,7 @@
 [ext_resource path="res://Entities/Enemies/Wandering_Enemies/Test_Wanderer/Test_Wanderer.gd" type="Script" id=2]
 [ext_resource path="res://Entities/Combat/Hurtbox/Hurtbox.tscn" type="PackedScene" id=3]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "Falling"
 length = 0.2
 tracks/0/type = "value"
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "values": [ PoolVector2Array( -16, -24, -8, -26, 0, -28, 8, -26, 16, -24, 32, -8, 32, 0, -32, 0, -32, -8 ), PoolVector2Array( -16, -24, -8, -32, 0, -32, 8, -32, 16, -24, 16, -8, 8, 0, -8, 0, -16, -8 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "Falling Loop"
 length = 0.3
 loop = true
@@ -37,8 +37,7 @@ tracks/0/keys = {
 "values": [ 0.0, 180.0 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Walking"
+[sub_resource type="Animation" id=3]
 length = 0.7
 loop = true
 step = 0.01
@@ -67,20 +66,20 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 14.0
 height = 38.0
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 32, 8 )
 
 [node name="Test_Wanderer" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Body_Animations" parent="." index="0"]
-anims/Falling = SubResource( 3 )
-"anims/Falling Loop" = SubResource( 4 )
-anims/Walking = SubResource( 1 )
+anims/Falling = SubResource( 1 )
+"anims/Falling Loop" = SubResource( 2 )
+anims/Walking = SubResource( 3 )
 next/Falling = "Falling Loop"
 
 [node name="Walking" parent="States" index="0"]
@@ -106,10 +105,10 @@ hit_effect_dist = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Hurtbox" index="1"]
 rotation = 1.5708
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="Collision" type="CollisionShape2D" parent="." index="3"]
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="Path_Checker" parent="Perception" index="0"]
 cast_to = Vector2( 0, 10 )

@@ -1,4 +1,6 @@
-extends "res://Classes/FSM.gd"
+extends FSM
+
+class_name Base_Wanderer
 
 #Information
 onready var body : Node2D = $Body

@@ -1,5 +1,7 @@
 extends Node
 
+class_name State
+
 func enter(_Player : KinematicBody2D) -> void:
 	pass
 

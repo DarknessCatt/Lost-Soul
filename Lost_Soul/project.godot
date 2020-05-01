@@ -8,9 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "FSM",
+"class": "Base_Wanderer",
+"language": "GDScript",
+"path": "res://Entities/Enemies/Wandering_Enemies/Base_Wanderer/Base_Wanderer.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "FSM",
+"language": "GDScript",
+"path": "res://Classes/FSM.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://Classes/State.gd"
+} ]
 _global_script_class_icons={
-
+"Base_Wanderer": "",
+"FSM": "",
+"State": ""
 }
 
 [application]
