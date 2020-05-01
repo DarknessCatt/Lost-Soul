@@ -23,10 +23,26 @@ func enter(_Player : KinematicBody2D) -> void:
 
 func update(_Player: KinematicBody2D, _delta : float) -> void:
 	if attack_finished:
-		_Player._change_state($"../Falling")
+		if _Player.is_on_floor():
+			if buffer.attack_buffered and buffer.can_attack:
+				_Player._change_state($"../GroundAttack")
+
+			else:
+				_Player._change_state($"../OnGround")
+
+		else:
+			if buffer.attack_buffered and buffer.can_attack:
+				_Player._change_state($"../AirAttack")
+
+			else:
+				_Player._change_state($"../Falling")
 
 	else:
 		.update(_Player, _delta)
 
 		if _Player.is_on_floor():
-			_Player._change_state($"../OnGround")
+			if buffer.attack_buffered and buffer.can_attack:
+				_Player._change_state($"../GroundAttack")
+
+			else:
+				_Player._change_state($"../OnGround")

@@ -18,6 +18,7 @@ func update(_Player: KinematicBody2D, delta : float) -> void:
 	if knockback_over:
 		if _Player.is_on_floor():
 			_Player._change_state($"../OnGround")
+
 		else:
 			_Player._change_state($"../Falling")
 

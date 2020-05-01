@@ -9,18 +9,8 @@ func _ready():
 	REST_ANIMATION = "Rest"
 
 func enter(_Player : KinematicBody2D) -> void:
-	if not _Player.is_on_floor():
-		_Player._change_state($"../Falling")
-
-	elif buffer.jump_buffered:
-		_Player._change_state($"../Jumping")
-
-	elif buffer.attack_buffered and buffer.can_attack:
-		_Player._change_state($"../GroundAttack")
-
-	else:
-		_Player.speed.y = 10
-		.enter(_Player)
+	_Player.speed.y = 10
+	.enter(_Player)
 
 func update(_Player: KinematicBody2D, delta : float) -> void:
 
