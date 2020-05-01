@@ -10,7 +10,8 @@ var health : int = max_health
 var max_crystal_heart : int = 0
 var crystal_heart : int = max_crystal_heart
 
-var invencible : bool = false
+var invencible : bool = false setget set_invencible
+const KNOCKBACK_STRENGH : int = 1200
 
 ##Signals
 signal dead()
@@ -23,7 +24,7 @@ func _refresh():
 	self.crystal_heart = max_crystal_heart
 	$Heart_Particles.restart()
 
-func _hit(damage : int, force : int, _direction : Vector2):
+func _hit(damage : int, _force : int, _direction : Vector2):
 	if not invencible:
 		if health > 0:
 			health -= damage
@@ -31,9 +32,31 @@ func _hit(damage : int, force : int, _direction : Vector2):
 			if health <= 0:
 				emit_signal("dead")
 
-			elif force > 0:
-				self.speed = _direction.normalized()*force
+			else:
+				var kb : Vector2 = Vector2(0,0)
+				var num : int = 0
+
+				for area  in $Body/Hip/Hurtbox_Hip.get_overlapping_areas():
+					kb += area.global_position
+					num +=1
+
+				for area  in $Body/Hip/Torso/Hurtbox_Torso.get_overlapping_areas():
+					kb += area.global_position
+					num +=1
+
+				var dir = self.global_position - (kb/num)
+
+				self.speed = dir.normalized()*KNOCKBACK_STRENGH
 				self._change_state($States/Knockback)
+
+func set_invencible(value : bool):
+	$Body/Hip/Hurtbox_Hip.call_deferred("set", "monitoring", not value)
+	$Body/Hip/Torso/Hurtbox_Torso.call_deferred("set", "monitoring", not value)
+	invencible = value
+	if value: $Misc_Animations.play("inv")
+
+func _on_Invencibility_timeout():
+	self.invencible = false
 
 func _die():
 	on_cutscene = true
@@ -59,7 +82,6 @@ func _use_heart():
 
 func _powerup_end():
 	on_cutscene = false
-
 
 #Movement
 var speed : Vector2 = Vector2(0,0)

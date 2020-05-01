@@ -7,8 +7,9 @@
 [ext_resource path="res://Entities/Enemies/Wandering_Enemies/Test_Wanderer/States/Dead.gd" type="Script" id=5]
 [ext_resource path="res://Entities/Combat/Hitbox/Hitbox.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=1]
 resource_name = "Dead"
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Hurtbox:monitoring")
 tracks/0/interp = 1
@@ -57,8 +58,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Hitbox:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.01 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "Falling"
 length = 0.2
 tracks/0/type = "value"
@@ -74,7 +87,7 @@ tracks/0/keys = {
 "values": [ PoolVector2Array( -16, -24, -8, -26, 0, -28, 8, -26, 16, -24, 32, -8, 32, 0, -32, 0, -32, -8 ), PoolVector2Array( -16, -24, -8, -32, 0, -32, 8, -32, 16, -24, 16, -8, 8, 0, -8, 0, -16, -8 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "Falling Loop"
 length = 0.3
 loop = true
@@ -91,7 +104,7 @@ tracks/0/keys = {
 "values": [ 0.0, 180.0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.7
 loop = true
 step = 0.01
@@ -120,7 +133,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 resource_name = "hit"
 length = 0.15
 step = 0.05
@@ -137,29 +150,29 @@ tracks/0/keys = {
 "values": [ Color( 1, 0.33, 0.33, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0.568627, 0.568627, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 14.0
 height = 38.0
 
-[sub_resource type="CapsuleShape2D" id=10]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 12.8843
 height = 29.5408
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 32, 8 )
 
 [node name="Test_Wanderer" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Body_Animations" parent="." index="0"]
-anims/Dead = SubResource( 9 )
-anims/Falling = SubResource( 6 )
-"anims/Falling Loop" = SubResource( 7 )
-anims/Walking = SubResource( 3 )
+anims/Dead = SubResource( 1 )
+anims/Falling = SubResource( 2 )
+"anims/Falling Loop" = SubResource( 3 )
+anims/Walking = SubResource( 4 )
 next/Falling = "Falling Loop"
 
 [node name="Misc_Animations" type="AnimationPlayer" parent="." index="1"]
-anims/hit = SubResource( 8 )
+anims/hit = SubResource( 5 )
 
 [node name="Walking" parent="States" index="0"]
 path_checker_dist = 32
@@ -196,7 +209,7 @@ hit_effect_dist = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Hurtbox" index="1"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Hitbox" parent="Body" index="2" instance=ExtResource( 6 )]
 position = Vector2( 0, -4.24618 )
@@ -208,11 +221,11 @@ Direction = Vector2( 1, -1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Hitbox" index="0"]
 rotation = 1.5708
-shape = SubResource( 10 )
+shape = SubResource( 7 )
 
 [node name="Collision" type="CollisionShape2D" parent="." index="4"]
 visible = false
-shape = SubResource( 5 )
+shape = SubResource( 8 )
 
 [node name="Path_Checker" parent="Perception" index="0"]
 cast_to = Vector2( 0, 10 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Hero/FSM/Falling.gd" type="Script" id=2]
@@ -4413,6 +4413,22 @@ tracks/15/keys = {
 "values": [ 0.0 ]
 }
 
+[sub_resource type="Animation" id=34]
+resource_name = "inv"
+length = 1.9
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [sub_resource type="CircleShape2D" id=19]
 radius = 32.0
 
@@ -4443,9 +4459,9 @@ height = 81.2568
 [sub_resource type="CircleShape2D" id=27]
 radius = 36.0421
 
-[sub_resource type="CapsuleShape2D" id=34]
+[sub_resource type="CapsuleShape2D" id=28]
 
-[sub_resource type="CapsuleShape2D" id=35]
+[sub_resource type="CapsuleShape2D" id=29]
 height = 16.4528
 
 [sub_resource type="RectangleShape2D" id=30]
@@ -4500,6 +4516,9 @@ anims/Rest = SubResource( 16 )
 anims/StandingUp = SubResource( 17 )
 anims/Walking = SubResource( 18 )
 next/Jumping = "Falling"
+
+[node name="Misc_Animations" type="AnimationPlayer" parent="."]
+anims/inv = SubResource( 34 )
 
 [node name="States" type="Node" parent="."]
 
@@ -4560,6 +4579,11 @@ one_shot = true
 
 [node name="Knockback" type="Node" parent="States"]
 script = ExtResource( 10 )
+
+[node name="Inv_Timer" type="Timer" parent="States/Knockback"]
+process_mode = 0
+wait_time = 2.0
+one_shot = true
 
 [node name="Buffer" type="Node" parent="States"]
 script = ExtResource( 5 )
@@ -4791,7 +4815,7 @@ Character = NodePath("../../..")
 hit_effect_dist = 15
 
 [node name="Lower" type="CollisionShape2D" parent="Body/Hip/Hurtbox_Hip"]
-shape = SubResource( 34 )
+shape = SubResource( 28 )
 
 [node name="Torso" type="Polygon2D" parent="Body/Hip"]
 color = Color( 0.9, 0.9, 0.9, 1 )
@@ -4805,7 +4829,7 @@ Character = NodePath("../../../..")
 hit_effect_dist = 15
 
 [node name="Upper" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox_Torso"]
-shape = SubResource( 35 )
+shape = SubResource( 29 )
 
 [node name="Head" type="Polygon2D" parent="Body/Hip/Torso"]
 position = Vector2( 0, -32 )
@@ -4956,6 +4980,7 @@ process_material = SubResource( 33 )
 [connection signal="timeout" from="States/AirAttack/Jab1" to="States/AirAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/AirAttack/UpTilt" to="States/AirAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/AirAttack/DownTilt" to="States/AirAttack" method="_on_Attack_timeout"]
+[connection signal="timeout" from="States/Knockback/Inv_Timer" to="." method="_on_Invencibility_timeout"]
 [connection signal="timeout" from="States/Buffer/Jump_Buffer" to="States/Buffer" method="_on_Jump_Buffer_timeout"]
 [connection signal="timeout" from="States/Buffer/Coyote_Timer" to="States/Buffer" method="_on_Coyote_Timer_timeout"]
 [connection signal="timeout" from="States/Buffer/Attack_Buffer" to="States/Buffer" method="_on_Attack_Buffer_timeout"]
