@@ -19,8 +19,6 @@ func update(_Player: KinematicBody2D, _delta : float) -> void:
 	if _Player.is_on_floor():
 		spdx *= FRICTION
 
-	if abs(spdx) < 10: spdx = 0
-
 	if sign(spdx) != sign(_Player.speed.x):
 		match sign(spdx):
 			-1.0:
@@ -41,5 +39,5 @@ func update(_Player: KinematicBody2D, _delta : float) -> void:
 	if _Player.is_on_ceiling():
 		_Player.speed.y = 0
 
-	if _Player.is_on_floor() and spdx == 0:
+	if _Player.is_on_floor() and spdx < 10:
 		_Player._change_state($"../Walking")
