@@ -4413,7 +4413,7 @@ tracks/15/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=34]
+[sub_resource type="Animation" id=19]
 resource_name = "inv"
 length = 1.9
 tracks/0/type = "value"
@@ -4429,52 +4429,52 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=19]
+[sub_resource type="CircleShape2D" id=20]
 radius = 32.0
 
-[sub_resource type="CapsuleShape2D" id=20]
+[sub_resource type="CapsuleShape2D" id=21]
 radius = 47.3882
 height = 39.7309
 
-[sub_resource type="CapsuleShape2D" id=21]
+[sub_resource type="CapsuleShape2D" id=22]
 radius = 29.1014
 height = 73.8508
 
-[sub_resource type="CircleShape2D" id=22]
+[sub_resource type="CircleShape2D" id=23]
 radius = 36.2215
 
-[sub_resource type="CircleShape2D" id=23]
+[sub_resource type="CircleShape2D" id=24]
 radius = 56.1427
 
-[sub_resource type="CircleShape2D" id=24]
+[sub_resource type="CircleShape2D" id=25]
 radius = 48.0812
 
-[sub_resource type="CircleShape2D" id=25]
+[sub_resource type="CircleShape2D" id=26]
 radius = 51.7705
 
-[sub_resource type="CapsuleShape2D" id=26]
+[sub_resource type="CapsuleShape2D" id=27]
 radius = 34.671
 height = 81.2568
 
-[sub_resource type="CircleShape2D" id=27]
+[sub_resource type="CircleShape2D" id=28]
 radius = 36.0421
 
-[sub_resource type="CapsuleShape2D" id=28]
-
 [sub_resource type="CapsuleShape2D" id=29]
+
+[sub_resource type="CapsuleShape2D" id=30]
 height = 16.4528
 
-[sub_resource type="RectangleShape2D" id=30]
+[sub_resource type="RectangleShape2D" id=31]
 extents = Vector2( 20, 45.1426 )
 
-[sub_resource type="Gradient" id=31]
+[sub_resource type="Gradient" id=32]
 offsets = PoolRealArray( 0, 0.219251, 0.385027, 0.73262, 0.941176 )
 colors = PoolColorArray( 1, 1, 1, 0.478431, 1, 0.61, 0.61, 1, 1, 0.57, 0.57, 1, 1, 0, 0, 1, 1, 0, 0, 0.0117647 )
 
-[sub_resource type="GradientTexture" id=32]
-gradient = SubResource( 31 )
+[sub_resource type="GradientTexture" id=33]
+gradient = SubResource( 32 )
 
-[sub_resource type="ParticlesMaterial" id=33]
+[sub_resource type="ParticlesMaterial" id=34]
 emission_shape = 1
 emission_sphere_radius = 100.0
 flag_disable_z = true
@@ -4486,7 +4486,7 @@ orbit_velocity_random = 0.0
 radial_accel = -300.0
 scale = 6.0
 scale_random = 0.3
-color_ramp = SubResource( 32 )
+color_ramp = SubResource( 33 )
 
 [node name="Hero" type="KinematicBody2D"]
 collision_mask = 16
@@ -4518,7 +4518,7 @@ anims/Walking = SubResource( 18 )
 next/Jumping = "Falling"
 
 [node name="Misc_Animations" type="AnimationPlayer" parent="."]
-anims/inv = SubResource( 34 )
+anims/inv = SubResource( 19 )
 
 [node name="States" type="Node" parent="."]
 
@@ -4628,7 +4628,7 @@ Direction = Vector2( 1, 0 )
 
 [node name="Jab_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Jab/Jab_Hitbox"]
 position = Vector2( 28, 12 )
-shape = SubResource( 19 )
+shape = SubResource( 20 )
 disabled = true
 
 [node name="UpTilt" type="Node2D" parent="Body/Hitboxes"]
@@ -4644,7 +4644,7 @@ Direction = Vector2( 0, -1 )
 
 [node name="UpTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/UpTilt/UpTilt_Hitbox"]
 position = Vector2( 20, -20 )
-shape = SubResource( 20 )
+shape = SubResource( 21 )
 disabled = true
 
 [node name="DownTilt" type="Node2D" parent="Body/Hitboxes"]
@@ -4661,7 +4661,7 @@ Direction = Vector2( 0.5, -1 )
 [node name="DownTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/DownTilt/DownTilt_Hitbox"]
 position = Vector2( 50, -20 )
 rotation = 1.5708
-shape = SubResource( 21 )
+shape = SubResource( 22 )
 disabled = true
 
 [node name="Jab3" type="Node2D" parent="Body/Hitboxes"]
@@ -4676,7 +4676,7 @@ Force = 500
 Direction = Vector2( 0, 1 )
 
 [node name="Jab3_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Jab3/Jab3_Hitbox"]
-shape = SubResource( 22 )
+shape = SubResource( 23 )
 disabled = true
 
 [node name="Jab3_Hitbox2" parent="Body/Hitboxes/Jab3" instance=ExtResource( 7 )]
@@ -4688,7 +4688,7 @@ Force = 1200
 Direction = Vector2( 1, -0.1 )
 
 [node name="Jab3_Hitbox2" type="CollisionShape2D" parent="Body/Hitboxes/Jab3/Jab3_Hitbox2"]
-shape = SubResource( 23 )
+shape = SubResource( 24 )
 disabled = true
 
 [node name="Air_Jab" type="Node2D" parent="Body/Hitboxes"]
@@ -4704,7 +4704,7 @@ Direction = Vector2( 1, 0 )
 
 [node name="Air_Jab_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Air_Jab/Air_Jab_Hitbox"]
 position = Vector2( 30, 0 )
-shape = SubResource( 24 )
+shape = SubResource( 25 )
 disabled = true
 
 [node name="Air_DownTilt" type="Node2D" parent="Body/Hitboxes"]
@@ -4720,7 +4720,7 @@ Direction = Vector2( 0, 1 )
 
 [node name="Air_DownTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Air_DownTilt/Air_DownTilt_Hitbox"]
 position = Vector2( 0, 20 )
-shape = SubResource( 25 )
+shape = SubResource( 26 )
 disabled = true
 
 [node name="Air_Uptilt" type="Node2D" parent="Body/Hitboxes"]
@@ -4737,7 +4737,7 @@ Direction = Vector2( 0, -1 )
 [node name="Air_UpTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Air_Uptilt/Air_UpTilt_Hitbox"]
 position = Vector2( 0, -25 )
 rotation = 1.5708
-shape = SubResource( 26 )
+shape = SubResource( 27 )
 disabled = true
 
 [node name="AirJab1" type="Node2D" parent="Body/Hitboxes"]
@@ -4752,7 +4752,7 @@ Force = 200
 Direction = Vector2( 0, -1 )
 
 [node name="AirJab1_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/AirJab1/AirJab1_Hitbox"]
-shape = SubResource( 27 )
+shape = SubResource( 28 )
 disabled = true
 
 [node name="Right_Arm" type="Polygon2D" parent="Body"]
@@ -4809,13 +4809,14 @@ __meta__ = {
 }
 
 [node name="Hurtbox_Hip" parent="Body/Hip" instance=ExtResource( 9 )]
+visible = false
 position = Vector2( 1.90735e-06, 23.0254 )
 Id = 1
 Character = NodePath("../../..")
 hit_effect_dist = 15
 
 [node name="Lower" type="CollisionShape2D" parent="Body/Hip/Hurtbox_Hip"]
-shape = SubResource( 28 )
+shape = SubResource( 29 )
 
 [node name="Torso" type="Polygon2D" parent="Body/Hip"]
 color = Color( 0.9, 0.9, 0.9, 1 )
@@ -4829,7 +4830,7 @@ Character = NodePath("../../../..")
 hit_effect_dist = 15
 
 [node name="Upper" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox_Torso"]
-shape = SubResource( 29 )
+shape = SubResource( 30 )
 
 [node name="Head" type="Polygon2D" parent="Body/Hip/Torso"]
 position = Vector2( 0, -32 )
@@ -4960,7 +4961,7 @@ color = Color( 0.976471, 0.376471, 0.376471, 1 )
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 8 )
-shape = SubResource( 30 )
+shape = SubResource( 31 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -4971,7 +4972,7 @@ emitting = false
 amount = 40
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 33 )
+process_material = SubResource( 34 )
 [connection signal="timeout" from="States/GroundAttack/Jab" to="States/GroundAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/GroundAttack/UpTilt" to="States/GroundAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/GroundAttack/DownTilt" to="States/GroundAttack" method="_on_Attack_timeout"]

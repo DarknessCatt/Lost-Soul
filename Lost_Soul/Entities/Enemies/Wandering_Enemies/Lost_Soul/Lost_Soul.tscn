@@ -1,0 +1,396 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Entities/Enemies/Wandering_Enemies/Base_Wanderer/Base_Wanderer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemies/Wandering_Enemies/Lost_Soul/Lost_Soul.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Enemies/Wandering_Enemies/Lost_Soul/States/Attacking.gd" type="Script" id=3]
+[ext_resource path="res://Entities/Enemies/Wandering_Enemies/Lost_Soul/States/Walking.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=5]
+resource_name = "Attacking"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Right_Leg:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -15.1542, 17.3905, -15.1542, 17.3905, -15.1542, 17.3905 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Torso/Head:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 28.5537, 20.7806, -3.91882, 20.7806, -3.91882, 28.5537 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Torso/Right_Arm:rotation_degrees")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3.00789, -52.8124, -105.228, -52.8124, -110.456, 3.00789 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Left_Leg:rotation_degrees")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 13.2564, -16.2605, 13.2564, -16.2605, 13.2564, -16.2605 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Torso/Left_Arm:rotation_degrees")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -6.80675, -101.233, -63.21, -101.233, -62.851, -6.80675 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("States/Attacking:MAX_SPEED")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 100, 70, 70, 130, 100 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Falling"
+length = 0.8
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Right_Leg:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -31.333, 3.78583 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Torso/Left_Arm:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -36.0289, -25.3055 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Torso:rotation_degrees")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Torso/Head:rotation_degrees")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 39.6009, 25.0717 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Torso/Right_Arm:rotation_degrees")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 31.2033, 16.6484 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body/Left_Leg:rotation_degrees")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 25.2923, -1.91433 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Right_Leg:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Torso:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Torso/Head:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Torso/Right_Arm:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Left_Leg:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body/Torso/Left_Arm:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Right_Leg:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 17.3905, -15.1542 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Torso:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Torso/Head:rotation_degrees")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 19.7944, 27.7889 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Torso/Right_Arm:rotation_degrees")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 16.3228, -32.777 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Left_Leg:rotation_degrees")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -16.2605, 13.2564 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body/Torso/Left_Arm:rotation_degrees")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -20.8855, 12.0519 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 12.6826, 34.2189 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 31.0305
+
+[node name="Lost_Soul" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Body_Animations" parent="." index="0"]
+anims/Attacking = SubResource( 5 )
+anims/Falling = SubResource( 1 )
+anims/Rest = SubResource( 2 )
+anims/Walking = SubResource( 3 )
+
+[node name="Walking" parent="States" index="0"]
+script = ExtResource( 4 )
+path_checker_dist = 22
+ACCEL = 1000
+MAX_SPEED = 50
+
+[node name="Attacking" type="Node" parent="States" index="2"]
+script = ExtResource( 3 )
+
+[node name="Left_Arm" type="Polygon2D" parent="Body" index="0"]
+position = Vector2( 16, -18 )
+color = Color( 0.709804, 0.709804, 0.709804, 1 )
+polygon = PoolVector2Array( -4, 0, -4, 16, 0, 28, 4, 16, 4, 0, 0, -4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Right_Leg" type="Polygon2D" parent="Body" index="1"]
+position = Vector2( 5, 8 )
+color = Color( 0.709804, 0.709804, 0.709804, 1 )
+offset = Vector2( 0, 4 )
+polygon = PoolVector2Array( -4, -4, -4, 20, 0, 24, 4, 20, 4, -4, 0, -8 )
+
+[node name="Torso" type="Polygon2D" parent="Body" index="2"]
+color = Color( 0.78, 0.78, 0.78, 1 )
+offset = Vector2( 0, 16 )
+polygon = PoolVector2Array( -8, -44, -18, -36, -12, -16, -8, -6, 8, -6, 12, -16, 18, -36, 8, -44 )
+
+[node name="Head" type="Polygon2D" parent="Body/Torso" index="0"]
+position = Vector2( 0, -20 )
+color = Color( 0.839216, 0.839216, 0.839216, 1 )
+offset = Vector2( 0, 32 )
+polygon = PoolVector2Array( -4, -28, 4, -28, 12, -32, 12, -48, 4, -52, -4, -52, -12, -48, -12, -32 )
+
+[node name="Eyes" type="RemoteTransform2D" parent="Body/Torso/Head" index="0"]
+position = Vector2( 44.4297, 21.2051 )
+remote_path = NodePath("../../../../Perception/Eyes")
+
+[node name="Right_Arm" type="Polygon2D" parent="Body/Torso" index="1"]
+position = Vector2( -16, -18 )
+color = Color( 0.839216, 0.839216, 0.839216, 1 )
+polygon = PoolVector2Array( -4, 0, -4, 16, 0, 28, 4, 16, 4, 0, 0, -4 )
+
+[node name="Left_Arm" type="RemoteTransform2D" parent="Body/Torso" index="2"]
+position = Vector2( 16, -18 )
+remote_path = NodePath("../../Left_Arm")
+
+[node name="Left_Leg" type="Polygon2D" parent="Body" index="3"]
+position = Vector2( -5, 8 )
+color = Color( 0.839216, 0.839216, 0.839216, 1 )
+offset = Vector2( 0, 4 )
+polygon = PoolVector2Array( -4, -4, -4, 20, 0, 24, 4, 20, 4, -4, 0, -8 )
+
+[node name="Collision" type="CollisionShape2D" parent="." index="3"]
+visible = false
+position = Vector2( 0, 1.11898 )
+shape = SubResource( 4 )
+
+[node name="Path_Checker" parent="Perception" index="0"]
+cast_to = Vector2( 0, 40 )
+
+[node name="Eyes" type="Area2D" parent="Perception" index="1"]
+position = Vector2( 44.4297, 1.20508 )
+monitoring = false
+monitorable = false
+collision_layer = 0
+
+[node name="FOV" type="CollisionShape2D" parent="Perception/Eyes" index="0"]
+shape = SubResource( 6 )
+[connection signal="animation_finished" from="Body_Animations" to="States/Attacking" method="_on_animation_finished"]
+[connection signal="body_entered" from="Perception/Eyes" to="States/Walking" method="_on_Enemy_detected"]
