@@ -24,6 +24,12 @@ func enter(_Player : KinematicBody2D) -> void:
 	dir = sign(_Player.speed.x)
 	if dir == 0: dir = 1
 
+	match sign(dir):
+		-1.0:
+			_Player.body.scale.x = -1
+		1.0:
+			_Player.body.scale.x = 1
+
 	enemy_detected = false
 
 	path_checker.position.x = path_checker_dist*dir
