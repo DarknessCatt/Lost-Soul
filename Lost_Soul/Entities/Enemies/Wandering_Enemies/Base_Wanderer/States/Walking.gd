@@ -37,7 +37,10 @@ func update(_Player: KinematicBody2D, _delta : float) -> void:
 
 	if sign(spdx) != dir : spdx *= FRICTION
 
-	if abs(spdx) > MAX_SPEED: spdx = MAX_SPEED*dir
+	if abs(spdx) > MAX_SPEED:
+		if abs(spdx) - MAX_SPEED < ACCEL/10 : spdx = MAX_SPEED*dir
+		else : spdx *= FRICTION
+
 	elif abs(spdx) < 10: spdx = 0
 
 	if sign(spdx) != sign(_Player.speed.x):

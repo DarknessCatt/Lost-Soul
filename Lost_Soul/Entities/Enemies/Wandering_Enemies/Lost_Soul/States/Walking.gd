@@ -36,19 +36,20 @@ func enter(_Player : KinematicBody2D) -> void:
 	path_checker.enabled = true
 
 	eyes.monitoring = true
-	#eyes.call_deferred("set", "monitoring", "true")
 
 func exit(_Player : KinematicBody2D) -> void:
 	path_checker.enabled = false
 	eyes.monitoring = false
-	#eyes.call_deferred("set", "monitoring", "false")
 
 func update(_Player: KinematicBody2D, _delta : float) -> void:
 	var spdx : float = _Player.speed.x + dir*ACCEL*_delta
 
 	if sign(spdx) != dir : spdx *= FRICTION
 
-	if abs(spdx) > MAX_SPEED: spdx = MAX_SPEED*dir
+	if abs(spdx) > MAX_SPEED:
+		if abs(spdx) - MAX_SPEED < ACCEL/10 : spdx = MAX_SPEED*dir
+		else : spdx *= FRICTION
+
 	elif abs(spdx) < 10: spdx = 0
 
 	if sign(spdx) != sign(_Player.speed.x):

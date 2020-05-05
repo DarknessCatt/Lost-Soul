@@ -6,7 +6,6 @@
 [ext_resource path="res://Entities/Enemies/Wandering_Enemies/Lost_Soul/States/Walking.gd" type="Script" id=4]
 [ext_resource path="res://Entities/Combat/Hitbox/Hitbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/Combat/Hurtbox/Hurtbox.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Entities/Enemies/Wandering_Enemies/Lost_Soul/States/Knockback.gd" type="Script" id=7]
 [ext_resource path="res://Entities/Enemies/Wandering_Enemies/Lost_Soul/States/Dead.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=1]
@@ -81,10 +80,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3, 0.7, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 100, 20, 20, 150, 10 ]
+"values": [ 100, 20, 20, 200, 10 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=2]
 resource_name = "Dead"
 step = 0.01
 tracks/0/type = "value"
@@ -208,7 +207,7 @@ tracks/9/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 0.8
 loop = true
 step = 0.05
@@ -285,7 +284,7 @@ tracks/5/keys = {
 "values": [ 25.2923, -1.91433 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=4]
 resource_name = "Knockback"
 length = 0.3
 step = 0.05
@@ -374,7 +373,7 @@ tracks/6/keys = {
 "values": [ 0.0, 18.5432, 18.5432, 0.0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 length = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Right_Leg:rotation_degrees")
@@ -449,7 +448,7 @@ tracks/5/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Right_Leg:rotation_degrees")
@@ -524,6 +523,23 @@ tracks/5/keys = {
 "values": [ -20.8855, 12.0519 ]
 }
 
+[sub_resource type="Animation" id=11]
+resource_name = "hit"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.75, 0.75, 1 ), Color( 1, 0.31, 0.31, 1 ), Color( 1, 0.31, 0.31, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [sub_resource type="CapsuleShape2D" id=7]
 radius = 17.3604
 height = 33.1042
@@ -532,10 +548,10 @@ height = 33.1042
 radius = 19.4993
 height = 31.2991
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 12.6826, 34.2189 )
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=10]
 radius = 27.6487
 
 [node name="Lost_Soul" instance=ExtResource( 1 )]
@@ -543,30 +559,31 @@ script = ExtResource( 2 )
 
 [node name="Body_Animations" parent="." index="0"]
 anims/Attacking = SubResource( 1 )
-anims/Dead = SubResource( 10 )
-anims/Falling = SubResource( 2 )
-anims/Knockback = SubResource( 9 )
-anims/Rest = SubResource( 3 )
-anims/Walking = SubResource( 4 )
+anims/Dead = SubResource( 2 )
+anims/Falling = SubResource( 3 )
+anims/Knockback = SubResource( 4 )
+anims/Rest = SubResource( 5 )
+anims/Walking = SubResource( 6 )
+
+[node name="Misc_Animations" type="AnimationPlayer" parent="." index="1"]
+anims/hit = SubResource( 11 )
 
 [node name="Walking" parent="States" index="0"]
 script = ExtResource( 4 )
 path_checker_dist = 22
 ACCEL = 1000
 MAX_SPEED = 50
+FRICTION = 0.5
 
 [node name="Falling" parent="States" index="1"]
+FRICTION = 0.8
 GRAVITY = 4000
 
 [node name="Attacking" type="Node" parent="States" index="2"]
 script = ExtResource( 3 )
-MAX_SPEED = 52
+FRICTION = 0.5
 
-[node name="Knockback" type="Node" parent="States" index="3"]
-script = ExtResource( 7 )
-GRAVITY = 8000
-
-[node name="Dead" type="Node" parent="States" index="4"]
+[node name="Dead" type="Node" parent="States" index="3"]
 script = ExtResource( 8 )
 
 [node name="Left_Arm" type="Polygon2D" parent="Body" index="0"]
@@ -623,7 +640,7 @@ Direction = Vector2( 1, -0.2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Hitbox" index="0"]
 shape = SubResource( 7 )
 
-[node name="Hurtbox" parent="." index="3" instance=ExtResource( 6 )]
+[node name="Hurtbox" parent="." index="4" instance=ExtResource( 6 )]
 Id = 2
 Character = NodePath("..")
 hit_effect_dist = 20
@@ -634,12 +651,12 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Collision" type="CollisionShape2D" parent="." index="4"]
+[node name="Collision" type="CollisionShape2D" parent="." index="5"]
 visible = false
 position = Vector2( 0, 1.11898 )
-shape = SubResource( 5 )
+shape = SubResource( 9 )
 
-[node name="Perception" parent="." index="5"]
+[node name="Perception" parent="." index="6"]
 visible = false
 
 [node name="Path_Checker" parent="Perception" index="0"]
@@ -652,7 +669,6 @@ monitorable = false
 collision_layer = 0
 
 [node name="FOV" type="CollisionShape2D" parent="Perception/Eyes" index="0"]
-shape = SubResource( 6 )
-[connection signal="animation_finished" from="Body_Animations" to="States/Knockback" method="_on_animation_finished"]
+shape = SubResource( 10 )
 [connection signal="animation_finished" from="Body_Animations" to="States/Attacking" method="_on_animation_finished"]
 [connection signal="body_entered" from="Perception/Eyes" to="States/Walking" method="_on_Enemy_detected"]

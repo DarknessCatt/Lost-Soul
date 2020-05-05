@@ -7,13 +7,15 @@ var health = max_health
 const invencible = false
 
 func _hit(_damage : int, force : int, direction : Vector2):
-	self.speed = force*direction.normalized()
 
-	health -= _damage
+	if direction.y != 0:
+		self.speed = force*direction.normalized()
+	else:
+		self.speed.x = force*direction.normalized().x
 
-	self._change_state($States/Knockback)
+	$Misc_Animations.play("hit")
+
+	#health -= _damage
 
 	if health < 0:
 		self._change_state($States/Dead)
-	else:
-		self._change_state($States/Knockback)
