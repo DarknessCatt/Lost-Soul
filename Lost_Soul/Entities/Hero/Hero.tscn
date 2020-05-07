@@ -4715,7 +4715,7 @@ position = Vector2( 12, 28 )
 Body = NodePath("../../..")
 Id = 1
 Damage = 5
-Force = 1000
+Force = 1400
 Direction = Vector2( 0, 1 )
 
 [node name="Air_DownTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Air_DownTilt/Air_DownTilt_Hitbox"]
