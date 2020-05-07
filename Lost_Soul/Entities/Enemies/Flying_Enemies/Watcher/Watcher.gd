@@ -1,7 +1,7 @@
 extends Base_Fly
 
 #Attributes
-export(int) var max_health : int = 7
+export(int) var max_health : int = 25
 var health : int = max_health
 
 var invencible : bool = false
