@@ -5,7 +5,7 @@
 [ext_resource path="res://Entities/Combat/Hurtbox/Hurtbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Enemies/Flying_Enemies/Fly_Test/Fly_Test.gd" type="Script" id=4]
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=1]
 resource_name = "Dead"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Wisp:rotation_degrees")
@@ -68,8 +68,7 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Flying"
+[sub_resource type="Animation" id=2]
 length = 0.5
 loop = true
 step = 0.05
@@ -86,8 +85,7 @@ tracks/0/keys = {
 "values": [ -10.0, 10.0 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Idle"
+[sub_resource type="Animation" id=3]
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -103,8 +101,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1.42323, 1.42323 ), Vector2( -1.42324, 1.82988 ), Vector2( -1.82988, -1.82986 ), Vector2( 2.14756, -2.09672 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Rest"
+[sub_resource type="Animation" id=4]
 length = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Wisp:position")
@@ -131,7 +128,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=5]
 resource_name = "hit"
 length = 0.2
 step = 0.05
@@ -148,7 +145,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 0.639216, 0.639216, 1 ), Color( 1, 0.41, 0.41, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "rest"
 length = 0.01
 tracks/0/type = "value"
@@ -164,30 +161,30 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=7]
 radius = 14.0
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=8]
 radius = 19.1029
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=9]
 radius = 16.0
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=10]
 radius = 200.0
 
 [node name="Fly_Test" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
 
 [node name="Body_Animations" parent="." index="0"]
-anims/Dead = SubResource( 10 )
-anims/Flying = SubResource( 1 )
-anims/Idle = SubResource( 2 )
-anims/Rest = SubResource( 3 )
+anims/Dead = SubResource( 1 )
+anims/Flying = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/Rest = SubResource( 4 )
 
 [node name="Misc_Animations" type="AnimationPlayer" parent="." index="1"]
-anims/hit = SubResource( 9 )
-anims/rest = SubResource( 8 )
+anims/hit = SubResource( 5 )
+anims/rest = SubResource( 6 )
 
 [node name="Wisp" type="Polygon2D" parent="Body" index="0"]
 color = Color( 0.69, 0.69, 0.69, 1 )
@@ -199,7 +196,7 @@ Id = 2
 Damage = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Wisp/Hitbox" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Hurtbox" parent="Body/Wisp" index="1" instance=ExtResource( 3 )]
 rotation = -1.58654
@@ -208,14 +205,14 @@ Character = NodePath("../../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Wisp/Hurtbox" index="1"]
 visible = false
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="Collision" type="CollisionShape2D" parent="." index="4"]
 visible = false
-shape = SubResource( 4 )
+shape = SubResource( 9 )
 
 [node name="Perception" parent="." index="5"]
 visible = false
 
 [node name="Area" type="CollisionShape2D" parent="Perception/Player_Detect" index="0"]
-shape = SubResource( 5 )
+shape = SubResource( 10 )

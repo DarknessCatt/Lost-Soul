@@ -12,7 +12,7 @@
 [node name="Debug_Map" type="Node2D"]
 position = Vector2( 1, 0 )
 script = ExtResource( 4 )
-status = NodePath("Fly_Test")
+status = NodePath("Watcher")
 
 [node name="Sandbag" parent="." instance=ExtResource( 3 )]
 position = Vector2( 958.795, 224.122 )
@@ -40,7 +40,7 @@ position = Vector2( 678.844, 456.011 )
 position = Vector2( 789.913, 225.227 )
 
 [node name="Fly_Test" parent="." instance=ExtResource( 7 )]
-position = Vector2( 340.543, 354.748 )
+position = Vector2( 792.319, 83.4266 )
 
 [node name="Watcher" parent="." instance=ExtResource( 8 )]
 position = Vector2( 340.581, 282.804 )

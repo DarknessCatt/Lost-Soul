@@ -17,3 +17,8 @@ func _hit(_damage : int, force : int, direction : Vector2):
 	if health <= 0:
 		self._change_state($States/Dead)
 
+func _physics_process(delta):
+	if cur_state.name == "Flying":
+		$States/Hero_Tracker.update(self, delta)
+
+	cur_state.update(self, delta)

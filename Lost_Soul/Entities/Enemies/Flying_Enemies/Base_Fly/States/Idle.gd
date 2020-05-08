@@ -26,5 +26,5 @@ func _on_Player_Detected(body):
 	hero = body
 	detected = true
 
-func _on_Player_Exited(body):
+func _on_Player_Exited(_body):
 	detected = false
