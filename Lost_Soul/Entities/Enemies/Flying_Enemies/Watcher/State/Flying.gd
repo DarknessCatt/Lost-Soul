@@ -2,6 +2,7 @@ extends State
 
 #State info
 export(String) var state_anim : String = "Flying"
+const BULLET_RES : Resource = preload("res://Entities/Enemies/Flying_Enemies/Watcher/Components/Watcher_Shoot.tscn")
 
 #Movement info
 const STOP_DIST : int = 10
@@ -11,6 +12,9 @@ export(int) var ACCEL : int = 500
 export(int) var MAX_SPEED : int = 200
 export(float) var FRICTION : float = 0.9
 export(Vector2) var Point_To_Seek : Vector2 = Vector2(0,0)
+
+#Attack FSM
+var atk : bool = false
 
 #Functions
 func enter(_Player : KinematicBody2D) -> void:
@@ -42,3 +46,15 @@ func update(_Player: KinematicBody2D, _delta : float) -> void:
 
 	if _Player.is_on_wall():
 		_Player.speed.x *= -1
+
+
+	if atk:
+		var bullet = BULLET_RES.instance()
+		bullet.global_position = _Player.body.get_node("Eye/Iris").global_position
+		bullet.rotation = _Player.body.rotation
+		_Player.get_parent().add_child(bullet)
+
+		atk = false
+
+func shoot():
+	atk = true

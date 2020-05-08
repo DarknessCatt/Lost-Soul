@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Entities/Combat/Hitbox/Hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemies/Flying_Enemies/Watcher/Components/Watcher_Shoot.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "default"
+length = 0.6
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shot:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 14, 6, 16, 0, 14, -8, 0, -14, -14, -10, -28, 2, -14, 4, 0, 10 ), PoolVector2Array( 14, 8, 16, 0, 14, -6, 0, -10, -14, -4, -28, -2, -14, 8, 0, 14 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "rest"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shot:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ PoolVector2Array( 16, 6, 16, 0, 16, -6, 0, -14, -14, -6, -26, 0, -14, 6, 0, 14 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 13.2645
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 14.9387
+
+[node name="Watcher_Shoot" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource( 2 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/default = SubResource( 3 )
+anims/rest = SubResource( 4 )
+
+[node name="Shot" type="Polygon2D" parent="."]
+color = Color( 0.82, 0.2378, 0.2378, 1 )
+polygon = PoolVector2Array( 16, 6, 16, 0, 16, -6, 0, -14, -14, -6, -26, 0, -14, 6, 0, 14 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 1 )]
+Body = NodePath("../Shot")
+Id = 2
+Damage = 5
+
+[node name="Area" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 1 )
+
+[node name="Area" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Self_Destruct" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+[connection signal="timeout" from="Self_Destruct" to="." method="_on_Self_Destruct_timeout"]
