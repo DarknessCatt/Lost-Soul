@@ -3,7 +3,7 @@
 [ext_resource path="res://Entities/Combat/Hitbox/Hitbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Enemies/Flying_Enemies/Watcher/Components/Watcher_Shoot.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "default"
 length = 0.6
 loop = true
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "values": [ PoolVector2Array( 14, 6, 16, 0, 14, -8, 0, -14, -14, -10, -28, 2, -14, 4, 0, 10 ), PoolVector2Array( 14, 8, 16, 0, 14, -6, 0, -10, -14, -4, -28, -2, -14, 8, 0, 14 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "rest"
 length = 0.01
 tracks/0/type = "value"
@@ -37,10 +37,10 @@ tracks/0/keys = {
 "values": [ PoolVector2Array( 16, 6, 16, 0, 16, -6, 0, -14, -14, -6, -26, 0, -14, 6, 0, 14 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=3]
 radius = 13.2645
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=4]
 radius = 14.9387
 
 [node name="Watcher_Shoot" type="KinematicBody2D"]
@@ -50,8 +50,8 @@ script = ExtResource( 2 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/default = SubResource( 3 )
-anims/rest = SubResource( 4 )
+anims/default = SubResource( 1 )
+anims/rest = SubResource( 2 )
 
 [node name="Shot" type="Polygon2D" parent="."]
 color = Color( 0.82, 0.2378, 0.2378, 1 )
@@ -63,10 +63,10 @@ Id = 2
 Damage = 5
 
 [node name="Area" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Area" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="Self_Destruct" type="Timer" parent="."]
 wait_time = 10.0

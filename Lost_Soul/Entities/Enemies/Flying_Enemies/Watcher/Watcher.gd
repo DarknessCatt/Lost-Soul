@@ -10,7 +10,7 @@ func _hit(_damage : int, force : int, direction : Vector2):
 
 	self.speed += force*direction.normalized()
 
-	$Body_Animations.play("hit")
+	$Misc_Animations.play("hit")
 
 	health -= _damage
 

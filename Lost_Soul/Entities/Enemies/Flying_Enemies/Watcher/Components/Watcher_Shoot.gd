@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const SPEED : int = 200
+const SPEED : int = 300
 var dir : Vector2 = Vector2(1,0)
 
 func _ready():
