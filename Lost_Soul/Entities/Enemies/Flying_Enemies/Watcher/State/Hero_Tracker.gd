@@ -15,14 +15,14 @@ func update(_Player: KinematicBody2D, _delta : float) -> void:
 
 	if swap:
 
-		if dir.x < dist/3:
+		if abs(dir.x) < dist/3:
 			Flying.Point_To_Seek = UP
 		elif sign(dir.x) > 0:
 			Flying.Point_To_Seek = LEFT
 		else:
 			Flying.Point_To_Seek = RIGHT
 
-		Flying.Point_To_Seek += Vector2(rand_range(-10,10),rand_range(-10,10))
+		Flying.Point_To_Seek += Vector2(rand_range(-20,20),rand_range(-20,20))
 
 		swap = false
 		$Seek_Swap.start()
