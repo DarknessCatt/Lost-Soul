@@ -16,7 +16,7 @@ script = ExtResource( 4 )
 status = NodePath("Watcher")
 
 [node name="Souls" parent="." instance=ExtResource( 9 )]
-position = Vector2( 352.68, 509.819 )
+position = Vector2( 349.74, 523.047 )
 
 [node name="Sandbag" parent="." instance=ExtResource( 3 )]
 position = Vector2( 958.795, 224.122 )
@@ -38,13 +38,13 @@ __meta__ = {
 }
 
 [node name="Test_Wanderer" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1196.99, 556.298 )
+position = Vector2( 1408.64, 356.404 )
 
 [node name="Lost_Soul" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1308.06, 524.696 )
+position = Vector2( 1196.35, 330.681 )
 
 [node name="Fly_Test" parent="." instance=ExtResource( 7 )]
-position = Vector2( 349.384, 311.859 )
+position = Vector2( 656.574, 514.693 )
 
 [node name="Watcher" parent="." instance=ExtResource( 8 )]
-position = Vector2( 793.266, 231.267 )
+position = Vector2( 362.612, 335.623 )

@@ -7,7 +7,7 @@
 [ext_resource path="res://Entities/Combat/Hitbox/Hitbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/Combat/Hurtbox/Hurtbox.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=1]
 resource_name = "Attack"
 length = 1.3
 step = 0.05
@@ -74,7 +74,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=2]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hurtbox:monitoring")
@@ -209,7 +209,7 @@ tracks/10/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=3]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Eye/Top_Lid:polygon")
@@ -260,7 +260,7 @@ tracks/3/keys = {
 "values": [ Vector2( -4.68948, -4.24286 ), Vector2( 6.25264, 4.9128 ), Vector2( -9.01355, 6.21205 ), Vector2( 4.26697, -3.72138 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=4]
 length = 6.0
 loop = true
 tracks/0/type = "value"
@@ -312,7 +312,7 @@ tracks/3/keys = {
 "values": [ Vector2( -4.29424, -3.38441 ), Vector2( 4.16328, 3.83932 ), Vector2( -5.08406, 4.06032 ), Vector2( 4.8131, -5.24423 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=5]
 length = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Eye:position")
@@ -387,7 +387,7 @@ tracks/5/keys = {
 "values": [ Vector2( 0.195031, 0.0315504 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=6]
 length = 0.3
 step = 0.01
 tracks/0/type = "value"
@@ -415,13 +415,13 @@ tracks/1/keys = {
 "values": [ false, true, true ]
 }
 
-[sub_resource type="CircleShape2D" id=17]
+[sub_resource type="CircleShape2D" id=7]
 radius = 23.2981
 
-[sub_resource type="CircleShape2D" id=18]
+[sub_resource type="CircleShape2D" id=8]
 radius = 35.7497
 
-[sub_resource type="CircleShape2D" id=19]
+[sub_resource type="CircleShape2D" id=9]
 radius = 32.255
 
 [sub_resource type="CircleShape2D" id=10]
@@ -429,19 +429,21 @@ radius = 250.0
 
 [node name="Watcher" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+max_health = 25
+souls = 3
 
 [node name="Body_Animations" parent="." index="0"]
 autoplay = "Rest"
-anims/Attack = SubResource( 11 )
-anims/Dead = SubResource( 12 )
-anims/Flying = SubResource( 13 )
-anims/Idle = SubResource( 14 )
-anims/Rest = SubResource( 15 )
+anims/Attack = SubResource( 1 )
+anims/Dead = SubResource( 2 )
+anims/Flying = SubResource( 3 )
+anims/Idle = SubResource( 4 )
+anims/Rest = SubResource( 5 )
 next/Attack = "Flying"
 next/Flying = "Attack"
 
 [node name="Misc_Animations" type="AnimationPlayer" parent="." index="1"]
-anims/hit = SubResource( 16 )
+anims/hit = SubResource( 6 )
 
 [node name="Flying" parent="States" index="1"]
 script = ExtResource( 4 )
@@ -484,7 +486,7 @@ Id = 2
 Damage = 2
 
 [node name="Area" type="CollisionShape2D" parent="Body/Eye/Hitbox" index="0"]
-shape = SubResource( 17 )
+shape = SubResource( 7 )
 
 [node name="Hurtbox" parent="." index="4" instance=ExtResource( 6 )]
 Id = 2
@@ -492,11 +494,11 @@ Character = NodePath("..")
 hit_effect_dist = 30
 
 [node name="Area" type="CollisionShape2D" parent="Hurtbox" index="1"]
-shape = SubResource( 18 )
+shape = SubResource( 8 )
 
 [node name="Collision" type="CollisionShape2D" parent="." index="5"]
 visible = false
-shape = SubResource( 19 )
+shape = SubResource( 9 )
 
 [node name="Perception" parent="." index="6"]
 visible = false

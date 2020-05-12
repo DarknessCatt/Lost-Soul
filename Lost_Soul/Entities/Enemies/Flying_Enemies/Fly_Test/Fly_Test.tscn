@@ -175,6 +175,8 @@ radius = 200.0
 
 [node name="Fly_Test" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
+max_health = 7
+souls = 1
 
 [node name="Body_Animations" parent="." index="0"]
 anims/Dead = SubResource( 1 )

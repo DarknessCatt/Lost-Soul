@@ -698,6 +698,8 @@ radius = 30.0
 
 [node name="Lost_Soul" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+max_health = 20
+souls = 2
 
 [node name="Body_Animations" parent="." index="0"]
 anims/Dead = SubResource( 1 )

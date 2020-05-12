@@ -9,15 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "FSM",
+"base": "Enemy_FSM",
 "class": "Base_Fly",
 "language": "GDScript",
 "path": "res://Entities/Enemies/Flying_Enemies/Base_Fly.gd"
 }, {
-"base": "FSM",
+"base": "Enemy_FSM",
 "class": "Base_Wanderer",
 "language": "GDScript",
 "path": "res://Entities/Enemies/Wandering_Enemies/Base_Wanderer.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Enemy_FSM",
+"language": "GDScript",
+"path": "res://Classes/Enemy_FSM.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "FSM",
@@ -32,6 +37,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Base_Fly": "",
 "Base_Wanderer": "",
+"Enemy_FSM": "",
 "FSM": "",
 "State": ""
 }

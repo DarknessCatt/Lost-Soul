@@ -211,6 +211,8 @@ extents = Vector2( 32, 8 )
 
 [node name="Test_Wanderer" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+max_health = 15
+souls = 1
 
 [node name="Body_Animations" parent="." index="0"]
 anims/Dead = SubResource( 1 )
