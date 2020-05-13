@@ -11,4 +11,3 @@ func _hit(_damage : int, force : int, direction : Vector2):
 
 	else:
 		self._change_state($States/Dead)
-		self.spawn_souls()

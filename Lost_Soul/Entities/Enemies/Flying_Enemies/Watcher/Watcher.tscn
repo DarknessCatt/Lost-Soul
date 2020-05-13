@@ -76,6 +76,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=2]
 length = 2.0
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hurtbox:monitoring")
 tracks/0/interp = 1
@@ -83,7 +84,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 2 ),
+"times": PoolRealArray( 0, 0.01, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, false ]
@@ -95,7 +96,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 2 ),
+"times": PoolRealArray( 0, 0.01, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, false ]
@@ -207,6 +208,20 @@ tracks/10/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 360.0 ]
+}
+tracks/11/type = "method"
+tracks/11/path = NodePath(".")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 1.06 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_souls"
+} ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -429,6 +444,7 @@ radius = 250.0
 
 [node name="Watcher" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+soul_x = 30.0
 max_health = 25
 souls = 3
 

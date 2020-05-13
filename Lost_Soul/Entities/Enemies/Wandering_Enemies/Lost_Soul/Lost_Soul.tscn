@@ -115,10 +115,10 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.02 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.02, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ true, false, false ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("Body/Hitbox:monitorable")
@@ -127,10 +127,24 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.02 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.02, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ true, false, false ]
+}
+tracks/10/type = "method"
+tracks/10/path = NodePath(".")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.28 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_souls"
+} ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -691,13 +705,14 @@ radius = 19.4993
 height = 31.2991
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 12.6826, 34.2189 )
+extents = Vector2( 12.6826, 31.9182 )
 
 [sub_resource type="CircleShape2D" id=13]
 radius = 30.0
 
 [node name="Lost_Soul" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+soul_x = 18.0
 max_health = 20
 souls = 2
 
