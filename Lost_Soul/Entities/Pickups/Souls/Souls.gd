@@ -7,8 +7,9 @@ func _ready():
 		$Body.polygon[point].x += rand_range(-5,5)
 		$Body.polygon[point].y += rand_range(-2,2)
 
-func _on_Souls_body_entered(_body):
+func _on_Souls_body_entered(body):
 	$Animation.play("collect")
+	body._soul_collected()
 
 func _on_Animation_finished(anim_name):
 	if anim_name == "spawned":

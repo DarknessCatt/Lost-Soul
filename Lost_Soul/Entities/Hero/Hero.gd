@@ -7,6 +7,8 @@ onready var body : Node2D = $Body
 var max_health : int = 100
 var health : int = max_health
 
+var souls : int = 0
+
 var max_crystal_heart : int = 0
 var crystal_heart : int = max_crystal_heart
 
@@ -15,16 +17,17 @@ const KNOCKBACK_STRENGH : int = 1200
 
 ##Signals
 signal dead()
+signal soul_collected()
 signal heart_collected()
 signal heart_used(num)
 
 ##Functions
-func _refresh():
+func _refresh() -> void:
 	self.health = max_health
 	self.crystal_heart = max_crystal_heart
 	$Heart_Particles.restart()
 
-func _hit(damage : int, _force : int, _direction : Vector2):
+func _hit(damage : int, _force : int, _direction : Vector2) -> void:
 	if not invencible:
 		if health > 0:
 			health -= damage
@@ -58,11 +61,15 @@ func set_invencible(value : bool):
 func _on_Invencibility_timeout():
 	self.invencible = false
 
-func _die():
+func _die() -> void:
 	on_cutscene = true
 	self._change_anim("Death")
 
-func _crystal_heart_collected():
+func _soul_collected() -> void:
+	self.souls += 1
+	emit_signal("soul_collected")
+
+func _crystal_heart_collected() -> void:
 	max_crystal_heart += 1
 	crystal_heart += 1
 
@@ -73,7 +80,7 @@ func _crystal_heart_collected():
 	on_cutscene = true
 	emit_signal("heart_collected")
 
-func _use_heart():
+func _use_heart() -> void:
 	if crystal_heart > 0:
 		crystal_heart -= 1
 		health = max_health
@@ -91,12 +98,12 @@ onready var cur_state : Node  = $States/Falling
 export(bool) var on_cutscene : bool = false
 
 ##Functions
-func _clear_attack_polys():
+func _clear_attack_polys() -> void:
 	$Body/Hip/Torso/Left_Arm/Left_Hand/Left_Weapon.polygon = PoolVector2Array()
 	$Body/Hip/Torso/Right_Arm/Right_Hand/Right_Weapon.polygon = PoolVector2Array()
 	$Body/Hip/Right_Leg/Right_Shin/Right_Foot/Right_Foot_Weapon.polygon = PoolVector2Array()
 
-func _disable_hitboxes():
+func _disable_hitboxes() -> void:
 	for atk in $Body/Hitboxes.get_children():
 		for hitbox in atk.get_children():
 			for collision in hitbox.get_children():
