@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilesets/Placeholder_White/Placeholder_White.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Entities/Enemies/Flying_Enemies/Fly_Test/Fly_Test.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Entities/Enemies/Flying_Enemies/Watcher/Watcher.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Entities/Pickups/Souls/Souls.tscn" type="PackedScene" id=9]
+[ext_resource path="res://HUD/Cameras/Player_Camera/Player_Camera.tscn" type="PackedScene" id=10]
 
 [node name="Debug_Map" type="Node2D"]
 position = Vector2( 1, 0 )
@@ -23,6 +24,13 @@ position = Vector2( 958.795, 224.122 )
 
 [node name="Hero" parent="." instance=ExtResource( 1 )]
 position = Vector2( 72, 504 )
+
+[node name="Player_Camera" parent="Hero" instance=ExtResource( 10 )]
+position = Vector2( 0, -75 )
+current = true
+
+[node name="Player_Status" parent="Hero/Player_Camera" index="0"]
+Character = NodePath("../..")
 
 [node name="Placeholder_White" parent="." instance=ExtResource( 2 )]
 tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 65536, 0, 0, 65567, 0, 0, 131072, 0, 0, 131103, 0, 0, 196608, 0, 0, 196639, 0, 0, 262144, 0, 0, 262175, 0, 0, 327680, 0, 0, 327711, 0, 0, 393216, 0, 0, 393247, 0, 0, 458752, 0, 0, 458783, 0, 0, 524288, 0, 0, 524319, 0, 0, 589824, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589855, 0, 0, 655360, 0, 0, 655391, 0, 0, 720896, 0, 0, 720927, 0, 0, 786432, 0, 0, 786437, 0, 0, 786438, 0, 0, 786439, 0, 0, 786440, 0, 0, 786441, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 786459, 0, 0, 786460, 0, 0, 786461, 0, 0, 786462, 0, 0, 786463, 0, 0, 786464, 0, 0, 786465, 0, 0, 786466, 0, 0, 786467, 0, 0, 786468, 0, 0, 786469, 0, 0, 786470, 0, 0, 786471, 0, 0, 786472, 0, 0, 786473, 0, 0, 786474, 0, 0, 786475, 0, 0, 786476, 0, 0, 786477, 0, 0, 851968, 0, 0, 851999, 0, 0, 852013, 0, 0, 917504, 0, 0, 917535, 0, 0, 917549, 0, 0, 983040, 0, 0, 983071, 0, 0, 983085, 0, 0, 1048576, 0, 0, 1048607, 0, 0, 1048621, 0, 0, 1114112, 0, 0, 1114131, 0, 0, 1114132, 0, 0, 1114133, 0, 0, 1114134, 0, 0, 1114143, 0, 0, 1114157, 0, 0, 1179648, 0, 0, 1179649, 0, 0, 1179650, 0, 0, 1179651, 0, 0, 1179652, 0, 0, 1179653, 0, 0, 1179654, 0, 0, 1179655, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 0, 0, 1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1179668, 0, 0, 1179669, 0, 0, 1179670, 0, 0, 1179671, 0, 0, 1179672, 0, 0, 1179673, 0, 0, 1179674, 0, 0, 1179675, 0, 0, 1179676, 0, 0, 1179677, 0, 0, 1179678, 0, 0, 1179679, 0, 0, 1179680, 0, 0, 1179681, 0, 0, 1179682, 0, 0, 1179683, 0, 0, 1179684, 0, 0, 1179685, 0, 0, 1179686, 0, 0, 1179687, 0, 0, 1179688, 0, 0, 1179689, 0, 0, 1179690, 0, 0, 1179691, 0, 0, 1179692, 0, 0, 1179693, 0, 0 )
@@ -48,3 +56,5 @@ position = Vector2( 458.15, 257.476 )
 
 [node name="Watcher" parent="." instance=ExtResource( 8 )]
 position = Vector2( 780.038, 218.038 )
+
+[editable path="Hero/Player_Camera"]
