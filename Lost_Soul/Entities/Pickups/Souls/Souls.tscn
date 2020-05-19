@@ -28,7 +28,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.05, 0.09, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.1, 0.1, 0.1, 1 ), Color( 2, 2, 2, 1 ), Color( 2, 2, 2, 1 ), Color( 0.98, 0.98, 0.98, 0 ) ]
+"values": [ Color( 0.1, 0.1, 0.1, 1 ), Color( 5, 5, 5, 1 ), Color( 5, 5, 5, 1 ), Color( 0.98, 0.98, 0.98, 0 ) ]
 }
 
 [sub_resource type="Animation" id=2]
