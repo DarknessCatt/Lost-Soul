@@ -28,7 +28,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.05, 0.09, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.67, 0.879, 1, 1 ), Color( 0.980392, 0.980392, 0.980392, 1 ), Color( 0.980392, 0.980392, 0.980392, 1 ), Color( 0.98, 0.98, 0.98, 0 ) ]
+"values": [ Color( 0.1, 0.1, 0.1, 1 ), Color( 2, 2, 2, 1 ), Color( 2, 2, 2, 1 ), Color( 0.98, 0.98, 0.98, 0 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -127,7 +127,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.670588, 0.878431, 1, 0 ), Color( 0.670588, 0.878431, 1, 1 ) ]
+"values": [ Color( 0.670588, 0.878431, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath(".:monitoring")
@@ -146,6 +146,7 @@ tracks/3/keys = {
 radius = 45.1468
 
 [node name="Souls" type="Area2D"]
+modulate = Color( 0.670588, 0.878431, 1, 1 )
 monitorable = false
 collision_layer = 0
 script = ExtResource( 1 )
@@ -161,7 +162,6 @@ anims/spawned = SubResource( 4 )
 shape = SubResource( 5 )
 
 [node name="Body" type="Polygon2D" parent="."]
-color = Color( 0.670588, 0.878431, 1, 1 )
 polygon = PoolVector2Array( 0, -12, 8, -4, 8, 4, 0, 12, -8, 4, -8, -4 )
 [connection signal="body_entered" from="." to="." method="_on_Souls_body_entered"]
 [connection signal="animation_finished" from="Animation" to="." method="_on_Animation_finished"]

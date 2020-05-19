@@ -17,7 +17,6 @@ const KNOCKBACK_STRENGH : int = 1200
 
 ##Signals
 signal dead()
-signal soul_collected()
 signal heart_collected()
 signal heart_used(num)
 
@@ -65,9 +64,8 @@ func _die() -> void:
 	on_cutscene = true
 	self._change_anim("Death")
 
-func _soul_collected() -> void:
-	self.souls += 1
-	emit_signal("soul_collected")
+func _soul_collected(quantity : int) -> void:
+	self.souls += quantity
 
 func _crystal_heart_collected() -> void:
 	max_crystal_heart += 1

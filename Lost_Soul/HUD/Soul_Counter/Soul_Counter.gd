@@ -23,7 +23,7 @@ func _ready():
 	Char_Node = get_node(Character)
 	self.total = Char_Node.souls
 
-func _process(delta):
+func _process(_delta):
 	var cur_souls = Char_Node.souls
 
 	if state == EQUAL:

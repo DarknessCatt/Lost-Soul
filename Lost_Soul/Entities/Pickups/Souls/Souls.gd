@@ -1,5 +1,7 @@
 extends Area2D
 
+export(int) var Soul_Value : int = 1
+
 func _ready():
 	randomize()
 
@@ -9,7 +11,7 @@ func _ready():
 
 func _on_Souls_body_entered(body):
 	$Animation.play("collect")
-	body._soul_collected()
+	body._soul_collected(Soul_Value)
 
 func _on_Animation_finished(anim_name):
 	if anim_name == "spawned":

@@ -21,7 +21,10 @@ script = ExtResource( 4 )
 status = NodePath("Watcher")
 
 [node name="Souls" parent="." instance=ExtResource( 9 )]
-position = Vector2( 349.74, 523.047 )
+modulate = Color( 0.992157, 1, 0, 1 )
+position = Vector2( 1345.17, 529.746 )
+scale = Vector2( 1.2, 1.2 )
+Soul_Value = 10
 
 [node name="Sandbag" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1059.81, 384.403 )
