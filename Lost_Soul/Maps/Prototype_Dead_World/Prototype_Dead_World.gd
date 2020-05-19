@@ -1,7 +1,12 @@
 extends Node2D
 
-const church_camera_pos : Vector2 = Vector2(-4690,-250)
+const church_camera_pos : Vector2 = Vector2(-3700,-250)
 const church_camera_zoom : Vector2 = Vector2(6,6)
+
+func _input(event):
+	if $Hero.on_cutscene == true and event.is_action_pressed("hero_jump"):
+		$Hero.on_cutscene = false
+		$Tween.seek(10)
 
 func _ready():
 	$Hero.on_cutscene = true
