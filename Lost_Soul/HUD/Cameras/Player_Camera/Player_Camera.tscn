@@ -13,7 +13,7 @@ margin_right = -302.0
 margin_bottom = -248.0
 
 [node name="Soul_Counter" parent="." instance=ExtResource( 2 )]
-margin_left = 374.0
-margin_top = -290.0
-margin_right = 499.0
-margin_bottom = -170.0
+margin_left = -502.0
+margin_top = -250.0
+margin_right = -402.0
+margin_bottom = -165.0

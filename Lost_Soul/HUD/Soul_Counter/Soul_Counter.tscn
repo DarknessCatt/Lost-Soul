@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Fonts/XenopyreRegular-qd8V.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUD/Soul_Counter/Soul_Counter.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 50
+size = 35
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
@@ -18,18 +23,23 @@ __meta__ = {
 
 [node name="Total" type="Label" parent="."]
 margin_right = 1024.0
-margin_bottom = 58.0
+margin_bottom = 40.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.670588, 0.878431, 1, 1 )
 text = "1000"
 align = 2
 valign = 1
 
+[node name="Soul" type="Polygon2D" parent="Total"]
+position = Vector2( 12, 16 )
+color = Color( 0.670588, 0.878431, 1, 1 )
+polygon = PoolVector2Array( 0, -12, 8, -4, 8, 4, 0, 12, -8, 4, -8, -4 )
+
 [node name="Collected" type="Label" parent="."]
-margin_top = 62.0
+margin_top = 44.0
 margin_right = 1024.0
-margin_bottom = 120.0
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 73.0
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.85, 0.945, 1, 1 )
 text = "+1000"
 align = 2
