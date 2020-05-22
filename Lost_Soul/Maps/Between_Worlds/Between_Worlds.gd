@@ -18,6 +18,9 @@ func _on_Tween_tween_all_completed():
 			state = BEGIN
 			$Hero/Player_Camera.current = true
 			$Hero/Player_Camera.show()
+			var atk_event = InputEventKey.new()
+			atk_event.scancode = 67
+			InputMap.action_add_event("hero_attack", atk_event)
 
 func _ready():
 	state = INTRO1

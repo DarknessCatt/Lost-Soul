@@ -42,6 +42,8 @@ func _input(event):
 		$Tween.seek(10)
 
 func _ready():
+	InputMap.action_erase_events("hero_attack")
+
 	$Hero.on_cutscene = true
 	$Hero._change_anim("StandingUp")
 	$Tween.interpolate_property($Hero/Camera, "zoom", Vector2(0.3,0.3), Vector2(1,1), 10, Tween.TRANS_LINEAR, Tween.EASE_OUT)
@@ -129,5 +131,5 @@ func _on_Chaos_body_entered(_body):
 	$Hero._change_anim("Death")
 
 func _on_Outro_timeout():
-	get_tree().change_scene("res://Maps/Prototype_Mountain/Prototype_Mountain.tscn")
+	get_tree().change_scene("res://Maps/Between_Worlds/Between_Worlds.tscn")
 

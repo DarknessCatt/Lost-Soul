@@ -39,7 +39,7 @@ Character = NodePath("../..")
 Character = NodePath("../..")
 
 [node name="Intro_Panel" type="Panel" parent="."]
-visible = false
+modulate = Color( 1, 1, 1, 0 )
 margin_left = -1000.0
 margin_top = -1750.0
 margin_right = 1000.0
