@@ -11,6 +11,10 @@ func _on_Tween_tween_all_completed():
 				$Intro_Panel, "modulate:a",
 				$Intro_Panel.modulate.a, 0,
 				2, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+			$Tween.interpolate_property(
+				$Intro_Camera, "zoom",
+				$Intro_Camera.zoom, $Hero/Player_Camera.zoom,
+				2, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 			$Tween.start()
 			state = INTRO2
 
@@ -30,7 +34,7 @@ func _ready():
 		5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.interpolate_property(
 		$Intro_Camera, "zoom",
-		$Intro_Camera.zoom, $Hero/Player_Camera.zoom,
+		$Intro_Camera.zoom, Vector2(2, 0.5),
 		5, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	$Tween.interpolate_property(
 		$Intro_Panel, "modulate:a",
