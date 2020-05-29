@@ -26,6 +26,22 @@ func _on_Tween_tween_all_completed():
 			atk_event.scancode = 67
 			InputMap.action_add_event("hero_attack", atk_event)
 
+func _input(event):
+	if event.is_action_pressed("hero_jump") and (state == INTRO1 or state == INTRO2):
+		$Tween.stop_all()
+
+		$Hero.on_cutscene = false
+		$Hero/Player_Camera.current = true
+		$Hero/Player_Camera.show()
+
+		var atk_event = InputEventKey.new()
+		atk_event.scancode = 67
+		InputMap.action_add_event("hero_attack", atk_event)
+
+		$Intro_Panel.modulate.a = 0
+
+		state = BEGIN
+
 func _ready():
 	state = INTRO1
 	$Tween.interpolate_property(
