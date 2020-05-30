@@ -313,9 +313,9 @@ position = Vector2( 0, -75 )
 current = true
 
 [node name="Dialogue" parent="Hero/Camera" instance=ExtResource( 4 )]
-margin_left = -98.8496
+margin_left = -100.0
 margin_top = -80.0
-margin_right = 1901.15
+margin_right = 1900.0
 margin_bottom = 720.0
 custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )

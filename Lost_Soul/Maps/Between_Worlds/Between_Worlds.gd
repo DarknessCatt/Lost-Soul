@@ -1,5 +1,14 @@
 extends Node2D
 
+onready var dialogue : Label = $Hero/Player_Camera/Dialogue
+
+const dil_intro : Array = [
+"Ainda não \nestás vivo.",
+"Teu corpo não\naguentaria tudo.",
+"Vais ter que\ncontinuar andando.",
+""
+]
+
 enum {INTRO1, INTRO2, BEGIN}
 var state : int
 
@@ -44,6 +53,9 @@ func _input(event):
 
 func _ready():
 	state = INTRO1
+
+	$Hero.health = 1
+
 	$Tween.interpolate_property(
 		$Intro_Camera, "global_position",
 		$Intro_Camera.global_position, $Hero/Player_Camera.global_position,
@@ -59,3 +71,7 @@ func _ready():
 	$Tween.start()
 	$Hero.on_cutscene = true
 
+func _on_Intro_entered(body):
+	dialogue.change_dialogue(dil_intro)
+	dialogue.begin()
+	$Dialogue_Triggers/Intro.call_deferred("set","monitoring",false)
