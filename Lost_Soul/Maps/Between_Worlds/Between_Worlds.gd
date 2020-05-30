@@ -9,8 +9,16 @@ const dil_intro : Array = [
 ""
 ]
 
+const dil_check : Array = [
+"Posso extrair poder\ndestes altares.",
+"Porém, isto dará\ntempo para",
+"teus inimigos\nse recuperarem.",
+""
+]
+
 enum {INTRO1, INTRO2, BEGIN}
 var state : int
+var first_check : bool = false
 
 func _on_Tween_tween_all_completed():
 	match(state):
@@ -43,10 +51,6 @@ func _input(event):
 		$Hero/Player_Camera.current = true
 		$Hero/Player_Camera.show()
 
-		var atk_event = InputEventKey.new()
-		atk_event.scancode = 67
-		InputMap.action_add_event("hero_attack", atk_event)
-
 		$Intro_Panel.modulate.a = 0
 
 		state = BEGIN
@@ -71,7 +75,43 @@ func _ready():
 	$Tween.start()
 	$Hero.on_cutscene = true
 
-func _on_Intro_entered(body):
+func _on_Intro_entered(_body):
 	dialogue.change_dialogue(dil_intro)
 	dialogue.begin()
 	$Dialogue_Triggers/Intro.call_deferred("set","monitoring",false)
+
+func _on_First_Check_entered(_body):
+	$Tween.stop_all()
+	$Tween.interpolate_property(
+		$Dialogue_Triggers/First_Check/Up_Arrow, "modulate:a",
+		$Dialogue_Triggers/First_Check/Up_Arrow.modulate.a, 1,
+		0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
+
+func _on_First_Check_exited(_body):
+	$Tween.stop_all()
+	$Tween.interpolate_property(
+		$Dialogue_Triggers/First_Check/Up_Arrow, "modulate:a",
+		$Dialogue_Triggers/First_Check/Up_Arrow.modulate.a, 0,
+		0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
+
+func _on_checkpoint_reached(checkpoint : Area2D):
+	checkpoint.disconnect("checkpoint_reached", self, "_on_checkpoint_reached")
+	$Dialogue_Triggers/First_Check.disconnect("body_entered", self, "_on_First_Check_entered")
+	$Dialogue_Triggers/First_Check.disconnect("body_exited", self, "_on_First_Check_exited")
+
+	$Tween.stop_all()
+	$Tween.interpolate_property(
+		$Dialogue_Triggers/First_Check/Up_Arrow, "modulate:a",
+		$Dialogue_Triggers/First_Check/Up_Arrow.modulate.a, 0,
+		0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
+
+	first_check = true
+	dialogue.change_dialogue(dil_check)
+	dialogue.begin()
+
+	var atk_event = InputEventKey.new()
+	atk_event.scancode = 67
+	InputMap.action_add_event("hero_attack", atk_event)
