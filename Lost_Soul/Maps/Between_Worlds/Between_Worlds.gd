@@ -115,3 +115,21 @@ func _on_checkpoint_reached(checkpoint : Area2D):
 	var atk_event = InputEventKey.new()
 	atk_event.scancode = 67
 	InputMap.action_add_event("hero_attack", atk_event)
+
+func _on_Attack_entered(_body):
+	if first_check:
+		$Tween.stop_all()
+		$Tween.interpolate_property(
+			$Dialogue_Triggers/Attack/C, "modulate:a",
+			$Dialogue_Triggers/Attack/C.modulate.a, 1,
+			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Tween.start()
+
+func _on_Attack_exited(_body):
+	if first_check:
+		$Tween.stop_all()
+		$Tween.interpolate_property(
+			$Dialogue_Triggers/Attack/C, "modulate:a",
+			$Dialogue_Triggers/Attack/C.modulate.a, 0,
+			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Tween.start()
