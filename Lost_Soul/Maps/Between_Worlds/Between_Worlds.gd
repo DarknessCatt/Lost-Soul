@@ -24,6 +24,13 @@ const dil_soul : Array = [
 ""
 ]
 
+const dil_wander : Array = [
+"Nem todos\nteus inimigos são\nda tua altura.",
+"Lembra de\natacar baixo.",
+"Se pereceres,\nte trarei de volta\nno altar.",
+""
+]
+
 enum {INTRO1, INTRO2, BEGIN}
 var state : int
 var first_check : bool = false
@@ -144,4 +151,8 @@ func _on_Attack_exited(_body):
 
 func _on_Souls_Tutorial_entered(body):
 	dialogue.change_dialogue(dil_soul)
+	dialogue.begin()
+
+func _on_Wander_Enemy_entered(body):
+	dialogue.change_dialogue(dil_wander)
 	dialogue.begin()
