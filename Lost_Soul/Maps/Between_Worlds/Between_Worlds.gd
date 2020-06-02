@@ -16,6 +16,14 @@ const dil_check : Array = [
 ""
 ]
 
+const dil_soul : Array = [
+"Este é um\nfragmento\nde alma,",
+"deixado por\nalguma alma\nperdida.",
+"Podemos usá-lo\ncomo fonte\nde poder,",
+"no futuro.",
+""
+]
+
 enum {INTRO1, INTRO2, BEGIN}
 var state : int
 var first_check : bool = false
@@ -133,3 +141,7 @@ func _on_Attack_exited(_body):
 			$Dialogue_Triggers/Attack/C.modulate.a, 0,
 			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Tween.start()
+
+func _on_Souls_Tutorial_entered(body):
+	dialogue.change_dialogue(dil_soul)
+	dialogue.begin()
