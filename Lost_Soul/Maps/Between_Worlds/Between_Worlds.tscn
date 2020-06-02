@@ -209,15 +209,15 @@ Character = NodePath("../..")
 Character = NodePath("../..")
 
 [node name="Dialogue" parent="Hero/Player_Camera" instance=ExtResource( 8 )]
-margin_left = -100.0
-margin_top = -160.0
-margin_right = 1900.0
-margin_bottom = 645.0
+margin_top = -140.0
+margin_right = 2000.0
+margin_bottom = 665.0
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 text = "Dialogue"
 align = 1
 valign = 1
+Autocenter = true
 Autostart = false
 Letter_Delay = 0.07
 Sentence_Delay = 2.0
