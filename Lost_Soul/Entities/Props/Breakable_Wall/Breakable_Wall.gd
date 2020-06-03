@@ -5,7 +5,7 @@ export(int) var health : int = 3
 
 var shake_num : int = 0
 
-func _on_Hurtbox_area_entered(area):
+func _on_Hurtbox_area_entered(_area):
 	health -= 1
 	if health <= 0:
 		$phys_body.call_deferred("set", "disabled", true)

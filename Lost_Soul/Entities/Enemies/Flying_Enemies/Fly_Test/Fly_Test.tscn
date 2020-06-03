@@ -228,8 +228,5 @@ shape = SubResource( 8 )
 visible = false
 shape = SubResource( 9 )
 
-[node name="Perception" parent="." index="5"]
-visible = false
-
 [node name="Area" type="CollisionShape2D" parent="Perception/Player_Detect" index="0"]
 shape = SubResource( 10 )

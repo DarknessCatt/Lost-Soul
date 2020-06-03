@@ -31,6 +31,14 @@ const dil_wander : Array = [
 ""
 ]
 
+const dil_lost_souls : Array = [
+"Almas que\ntentaram voltar,",
+"mas se perderam\nna passagem do tempo,",
+"deformando-se em\nsuas próprias\nloucuras.",
+"De uma maneira\nou de outra,\nsão todos iguais.",
+""
+]
+
 enum {INTRO1, INTRO2, BEGIN}
 var state : int
 var first_check : bool = false
@@ -149,10 +157,14 @@ func _on_Attack_exited(_body):
 			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Tween.start()
 
-func _on_Souls_Tutorial_entered(body):
+func _on_Souls_Tutorial_entered(_body):
 	dialogue.change_dialogue(dil_soul)
 	dialogue.begin()
 
-func _on_Wander_Enemy_entered(body):
+func _on_Wander_Enemy_entered(_body):
 	dialogue.change_dialogue(dil_wander)
+	dialogue.begin()
+
+func _on_About_Lost_entered(_area):
+	dialogue.change_dialogue(dil_lost_souls)
 	dialogue.begin()
