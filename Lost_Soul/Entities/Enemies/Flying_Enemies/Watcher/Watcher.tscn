@@ -514,9 +514,6 @@ shape = SubResource( 8 )
 visible = false
 shape = SubResource( 9 )
 
-[node name="Perception" parent="." index="6"]
-visible = false
-
 [node name="Area" type="CollisionShape2D" parent="Perception/Player_Detect" index="0"]
 shape = SubResource( 10 )
 [connection signal="timeout" from="States/Hero_Tracker/Seek_Swap" to="States/Hero_Tracker" method="_on_Seek_Swap_timeout"]

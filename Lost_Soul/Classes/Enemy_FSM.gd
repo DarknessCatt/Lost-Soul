@@ -35,6 +35,6 @@ func spawn_souls() -> void:
 		var pos = Vector2(0, -65)
 		pos.x += rand_range(-soul_x, soul_x)
 		pos.y += rand_range(-20, 20)
-		new_soul.global_position = self.global_position + pos
+		new_soul.position = self.position + pos
 		self.get_parent().call_deferred("add_child", new_soul)
 		yield(get_tree().create_timer(0.05), "timeout")
