@@ -39,6 +39,20 @@ const dil_lost_souls : Array = [
 ""
 ]
 
+const dil_eyes : Array = [
+"Estás quase\nno outro lado...",
+"Já se perguntou\nporquê estas\nalmas perdidas",
+"acabaram\npresas aqui?",
+""
+]
+
+const dil_about_eyes : Array = [
+"Sentinelas que\nestão aqui\ndesde o começo.",
+"Impedindo que\nas almas voltem.",
+"Porém, ainda\nnão acabou...",
+""
+]
+
 enum {INTRO1, INTRO2, BEGIN}
 var state : int
 var first_check : bool = false
@@ -165,6 +179,14 @@ func _on_Wander_Enemy_entered(_body):
 	dialogue.change_dialogue(dil_wander)
 	dialogue.begin()
 
-func _on_About_Lost_entered(_area):
+func _on_About_Lost_entered(_body):
 	dialogue.change_dialogue(dil_lost_souls)
+	dialogue.begin()
+
+func _on_Before_Eyes_entered(_body):
+	dialogue.change_dialogue(dil_eyes)
+	dialogue.begin()
+
+func _on_About_Eyes_entered(body):
+	dialogue.change_dialogue(dil_about_eyes)
 	dialogue.begin()
