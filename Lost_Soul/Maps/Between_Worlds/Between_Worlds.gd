@@ -190,3 +190,7 @@ func _on_Before_Eyes_entered(_body):
 func _on_About_Eyes_entered(body):
 	dialogue.change_dialogue(dil_about_eyes)
 	dialogue.begin()
+
+func _on_Trigger_Boss_entered(body):
+	$Enemies/Boss/The_Gate_Guardian.intro(body)
+	$Enemies/Boss/Trigger_Boss.call_deferred("set", "monitoring", false)

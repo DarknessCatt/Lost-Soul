@@ -1,8 +1,9 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/The_Gate_Guardian.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/FSM/Intro.gd" type="Script" id=2]
 [ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/FSM/Phase1.gd" type="Script" id=3]
+[ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/FSM/Idle.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Atk_Bounce_Intro"
@@ -876,7 +877,12 @@ graph_offset = Vector2( -39, 47 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=36]
 
+[sub_resource type="CircleShape2D" id=37]
+radius = 60.0
+
 [node name="The_Gate_Guardian" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 16
 script = ExtResource( 1 )
 
 [node name="Body_Anim" type="AnimationPlayer" parent="."]
@@ -898,11 +904,16 @@ parameters/playback = SubResource( 36 )
 
 [node name="States" type="Node" parent="."]
 
+[node name="Idle" type="Node" parent="States"]
+script = ExtResource( 4 )
+
 [node name="Intro" type="Node" parent="States"]
 script = ExtResource( 2 )
 
 [node name="Phase1" type="Node" parent="States"]
 script = ExtResource( 3 )
+horizontal_space = 400
+downwards_space = 330
 
 [node name="Phase2" type="Node" parent="States"]
 
@@ -913,16 +924,18 @@ polygon = PoolVector2Array( -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0,
 
 [node name="Iris" type="Polygon2D" parent="Body/Eye"]
 color = Color( 0, 0, 0, 1 )
-polygon = PoolVector2Array( -24, 0, 0, -24, 24, 0, 0, 24 )
+polygon = PoolVector2Array( -12, 0, 0, -12, 12, 0, 0, 12 )
 
 [node name="Inside_Iris" type="Polygon2D" parent="Body/Eye/Iris"]
-color = Color( 1, 0.25, 0.25, 1 )
-polygon = PoolVector2Array( -19, 0, 0, -19, 19, 0, 0, 19 )
+polygon = PoolVector2Array( -4, 0, 0, -4, 4, 0, 0, 4 )
 
 [node name="Top_Lid" type="Polygon2D" parent="Body/Eye"]
 color = Color( 0.39, 0.0975, 0.039, 1 )
-polygon = PoolVector2Array( -52, -33, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -33, 32, -50, -32, -50 )
+polygon = PoolVector2Array( -52, -24, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -24, 32, -44, -32, -44 )
 
 [node name="Bot_Lid" type="Polygon2D" parent="Body/Eye"]
 color = Color( 0.39, 0.0975, 0.039, 1 )
-polygon = PoolVector2Array( -52, 38, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 38, 32, 50, -32, 50 )
+polygon = PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 44, -32, 44 )
+
+[node name="Phys_Body" type="CollisionShape2D" parent="."]
+shape = SubResource( 37 )
