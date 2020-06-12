@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilesets/Placeholder_White/Placeholder_White.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Entities/Pickups/Souls/Souls.tscn" type="PackedScene" id=9]
 [ext_resource path="res://HUD/Cameras/Player_Camera/Player_Camera.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Entities/Map_Elements/Hidden_Area/Hidden_Area.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/The_Gate_Guardian.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 136, 48 )
@@ -66,6 +67,9 @@ position = Vector2( 458.15, 257.476 )
 
 [node name="Watcher" parent="." instance=ExtResource( 8 )]
 position = Vector2( 780.038, 218.038 )
+
+[node name="The_Gate_Guardian" parent="." instance=ExtResource( 12 )]
+position = Vector2( 275.542, 486.596 )
 
 [node name="Hidden_Area" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1319, 528 )
