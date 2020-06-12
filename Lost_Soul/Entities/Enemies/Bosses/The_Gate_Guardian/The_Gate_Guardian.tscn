@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/The_Gate_Guardian.gd" type="Script" id=1]
 
@@ -754,6 +754,109 @@ tracks/14/keys = {
 "values": [ 0.0 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Atk_Bounce_Intro"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "Atk_Shoot_Multi"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "Atk_Shoot_Rain"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Atk_Shoot_Spread"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Idle_1"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Idle_2"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "Phase_2"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "Side_Switch"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "Spawning"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "rest"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id=35]
+states/Atk_Bounce_Intro/node = SubResource( 11 )
+states/Atk_Bounce_Intro/position = Vector2( 1145, 252 )
+states/Atk_Shoot_Multi/node = SubResource( 12 )
+states/Atk_Shoot_Multi/position = Vector2( 344, 252 )
+states/Atk_Shoot_Rain/node = SubResource( 13 )
+states/Atk_Shoot_Rain/position = Vector2( 902, 252 )
+states/Atk_Shoot_Spread/node = SubResource( 14 )
+states/Atk_Shoot_Spread/position = Vector2( 577, 252 )
+states/Idle_1/node = SubResource( 15 )
+states/Idle_1/position = Vector2( 439, 124 )
+states/Idle_2/node = SubResource( 16 )
+states/Idle_2/position = Vector2( 1020, 124 )
+states/Phase_2/node = SubResource( 17 )
+states/Phase_2/position = Vector2( 739, 124 )
+states/Side_Switch/node = SubResource( 18 )
+states/Side_Switch/position = Vector2( 439, -20 )
+states/Spawning/node = SubResource( 19 )
+states/Spawning/position = Vector2( 251, 124 )
+states/rest/node = SubResource( 20 )
+states/rest/position = Vector2( 75, 124 )
+transitions = [ "rest", "Spawning", SubResource( 21 ), "Spawning", "Idle_1", SubResource( 22 ), "Idle_1", "Phase_2", SubResource( 23 ), "Idle_1", "Atk_Shoot_Spread", SubResource( 24 ), "Idle_1", "Atk_Shoot_Multi", SubResource( 25 ), "Atk_Shoot_Multi", "Idle_1", SubResource( 26 ), "Atk_Shoot_Spread", "Idle_1", SubResource( 27 ), "Idle_1", "Side_Switch", SubResource( 28 ), "Side_Switch", "Idle_1", SubResource( 29 ), "Phase_2", "Idle_2", SubResource( 30 ), "Idle_2", "Atk_Shoot_Rain", SubResource( 31 ), "Idle_2", "Atk_Bounce_Intro", SubResource( 32 ), "Atk_Shoot_Rain", "Idle_2", SubResource( 33 ), "Atk_Bounce_Intro", "Idle_2", SubResource( 34 ) ]
+graph_offset = Vector2( 256, 24 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=36]
+
 [node name="The_Gate_Guardian" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -769,24 +872,34 @@ anims/Side_Switch = SubResource( 10 )
 anims/Spawning = SubResource( 8 )
 anims/rest = SubResource( 9 )
 
+[node name="Animation_Player" type="AnimationTree" parent="."]
+tree_root = SubResource( 35 )
+anim_player = NodePath("../Body_Anim")
+active = true
+parameters/playback = SubResource( 36 )
+
 [node name="States" type="Node" parent="."]
 
 [node name="Body" type="Node2D" parent="."]
 
 [node name="Eye" type="Polygon2D" parent="Body"]
+color = Color( 1, 0.65, 0.65, 1 )
 polygon = PoolVector2Array( -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 56, 40, 40, 56, -40, 56, -56, 40 )
 
 [node name="Iris" type="Polygon2D" parent="Body/Eye"]
-color = Color( 0, 0, 0, 1 )
-polygon = PoolVector2Array( -12, 0, 0, -12, 12, 0, 0, 12 )
+position = Vector2( -2.04317, 29.7991 )
+color = Color( 1, 0.05, 0.05, 1 )
+polygon = PoolVector2Array( -16, 0, 0, -16, 16, 0, 0, 16 )
 
 [node name="Inside_Iris" type="Polygon2D" parent="Body/Eye/Iris"]
-polygon = PoolVector2Array( -4, 0, 0, -4, 4, 0, 0, 4 )
+position = Vector2( 0.326219, 0 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -11.6568, 0, 0, -11.6568, 11.6568, 0, 0, 11.6568 )
 
 [node name="Top_Lid" type="Polygon2D" parent="Body/Eye"]
 color = Color( 0.39, 0.0975, 0.039, 1 )
-polygon = PoolVector2Array( -52, -24, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -24, 32, -44, -32, -44 )
+polygon = PoolVector2Array( -52, -24, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -24, 32, -46.8211, -32, -46.8211 )
 
 [node name="Bot_Lid" type="Polygon2D" parent="Body/Eye"]
 color = Color( 0.39, 0.0975, 0.039, 1 )
-polygon = PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 44, -32, 44 )
+polygon = PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 46.8211, -32, 46.8211 )
