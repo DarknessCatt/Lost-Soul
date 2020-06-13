@@ -5,11 +5,17 @@ var body : Node2D
 var hero : KinematicBody2D
 onready var animation : AnimationNodeStateMachinePlayback = \
 		$Animation_Player.get("parameters/playback")
+onready var effects : AnimationPlayer = $Body_Effects
 
 #Signals
 signal intro_ended
 
+const invencible : bool = false
+
 ##Functions
+func _hit(damage : int, force : int, direction : Vector2) -> void:
+	cur_state.hit(damage, force, direction)
+
 func _ready():
 	body = $Body
 	cur_state = $States/Idle

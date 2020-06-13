@@ -3,12 +3,22 @@ extends State
 export(int) var horizontal_space = 0
 export(int) var downwards_space = 0
 
+#Attributes
+const MAX_HEALTH : int = 80
+var health : int = MAX_HEALTH
+var animation : AnimationNodeStateMachinePlayback
+var effects : AnimationPlayer
+
+#Side Switch Info
+const SIDE_SWITCH_THRESHOLD : int = 20
+var side_damage : int = 0
+
 #Movement Speed
 const NORMAL : Vector2 = Vector2(0, -1)
 var speed : Vector2 = Vector2(0,0)
 const ACCEL : int = 500
 const MAX_SPEED : int = 500
-const FRICTION : float = 0.9
+const FRICTION : float = 0.95
 
 #Movement Direction
 var point_to_seek : Vector2 = Vector2(0,0)
@@ -22,7 +32,9 @@ const atk_variance : float = 1.0
 const atk_base_cooldown : float = 5.0
 var atk_cooldown : float = 0.0
 
-func enter(_Guardian : KinematicBody2D) -> void:
+func enter(Guardian : KinematicBody2D) -> void:
+	animation = Guardian.animation
+	effects = Guardian.effects
 	randomize()
 	point_to_seek = Vector2(horizontal_space, downwards_space)
 	atk_cooldown = atk_base_cooldown \
@@ -71,7 +83,23 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 						+ rand_range(-atk_variance, atk_variance)
 
 		if rand_range(0, 1) <= 0.5:
-			Guardian.animation.travel("Atk_Shoot_Multi")
+			animation.travel("Atk_Shoot_Multi")
 
 		else:
-			Guardian.animation.travel("Atk_Shoot_Spread")
+			animation.travel("Atk_Shoot_Spread")
+
+func hit(damage : int, force : int, direction : Vector2) -> void:
+	health -= damage
+	side_damage += damage
+
+	speed += force*direction.normalized()
+
+	if side_damage >= SIDE_SWITCH_THRESHOLD:
+		side_damage = 0
+		point_to_seek.x = -1*sign(point_to_seek.x)*horizontal_space
+		point_to_seek.y = downwards_space
+		animation.travel("Side_Switch")
+		speed.x = MAX_SPEED*4*sign(point_to_seek.x)
+
+	else:
+		effects.play("hit")
