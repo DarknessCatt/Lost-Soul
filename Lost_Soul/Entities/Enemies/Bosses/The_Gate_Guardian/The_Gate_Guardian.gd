@@ -13,7 +13,7 @@ signal intro_ended
 func _ready():
 	body = $Body
 	cur_state = $States/Idle
-	self.hide()
+	self.modulate.a = 0
 
 func _input(_event):
 	pass

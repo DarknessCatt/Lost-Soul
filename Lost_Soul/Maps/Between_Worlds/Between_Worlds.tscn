@@ -58,17 +58,17 @@ extents = Vector2( 16, 128 )
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 10, 96 )
 
-[sub_resource type="CircleShape2D" id=18]
+[sub_resource type="CircleShape2D" id=15]
 radius = 40.0367
 
-[sub_resource type="DynamicFontData" id=15]
+[sub_resource type="DynamicFontData" id=16]
 font_path = "res://Assets/Fonts/BasaltRegular-Jx3o.ttf"
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=17]
 size = 350
-font_data = SubResource( 15 )
+font_data = SubResource( 16 )
 
-[sub_resource type="StyleBoxFlat" id=17]
+[sub_resource type="StyleBoxFlat" id=18]
 bg_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
 [node name="Between_Worlds" type="Node2D"]
@@ -448,7 +448,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Enemies/Boss/Trigger_Boss"]
-shape = SubResource( 18 )
+shape = SubResource( 15 )
 
 [node name="The_Gate_Guardian" parent="Enemies/Boss" instance=ExtResource( 15 )]
 
@@ -467,7 +467,7 @@ Character = NodePath("../..")
 margin_top = -140.0
 margin_right = 2000.0
 margin_bottom = 665.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 text = "Dialogue"
 align = 1
@@ -483,7 +483,7 @@ margin_left = -1100.0
 margin_top = -1750.0
 margin_right = 1100.0
 margin_bottom = 1750.0
-custom_styles/panel = SubResource( 17 )
+custom_styles/panel = SubResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

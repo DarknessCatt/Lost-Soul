@@ -14,10 +14,19 @@ const FRICTION : float = 0.9
 var point_to_seek : Vector2 = Vector2(0,0)
 var seek_timer : float = 0.0
 const seek_variance : float = 20.0
-const seek_cooldown = 1
+const seek_cooldown : float = 1.0
+
+#Attack Timer
+var atk_timer : float = 0.0
+const atk_variance : float = 1.0
+const atk_base_cooldown : float = 5.0
+var atk_cooldown : float = 0.0
 
 func enter(_Guardian : KinematicBody2D) -> void:
+	randomize()
 	point_to_seek = Vector2(horizontal_space, downwards_space)
+	atk_cooldown = atk_base_cooldown \
+					+ rand_range(-atk_variance, atk_variance)
 
 func update(Guardian: KinematicBody2D, delta : float) -> void:
 
@@ -31,7 +40,7 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 	seek_timer += delta
 
 	if seek_timer >= seek_cooldown:
-		seek_timer = 0
+		seek_timer = 0.0
 		point_to_seek.x += rand_range(-seek_variance, seek_variance)
 		point_to_seek.y += rand_range(-seek_variance, seek_variance)
 
@@ -52,3 +61,17 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 		if abs(speed.y) < 1: speed.y = 0
 
 	Guardian.move_and_slide(speed, NORMAL)
+
+	#Handling Attacks
+	atk_timer += delta
+
+	if atk_timer > atk_cooldown:
+		atk_timer = 0.0
+		atk_cooldown = atk_base_cooldown \
+						+ rand_range(-atk_variance, atk_variance)
+
+		if rand_range(0, 1) <= 0.5:
+			Guardian.animation.travel("Atk_Shoot_Multi")
+
+		else:
+			Guardian.animation.travel("Atk_Shoot_Spread")
