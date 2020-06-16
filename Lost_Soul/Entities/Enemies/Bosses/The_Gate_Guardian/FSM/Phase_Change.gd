@@ -25,6 +25,9 @@ func enter(Guardian : KinematicBody2D) -> void:
 
 	Guardian.get_node("Hurtbox").call_deferred("set", "monitoring", false)
 
+func exit(Guardian : KinematicBody2D) -> void:
+	Guardian.get_node("Hurtbox").call_deferred("set", "monitoring", true)
+
 func update(Guardian: KinematicBody2D, delta : float) -> void:
 	#Handling Movement
 	var move_dir : Vector2 = (-Guardian.position)

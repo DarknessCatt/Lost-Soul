@@ -1,7 +1,7 @@
 extends State
 
-export(int) var horizontal_space = 0
-export(int) var downwards_space = 0
+var horizontal_space = 0
+var downwards_space = 0
 
 #Attributes
 const MAX_HEALTH : int = 10
@@ -35,6 +35,9 @@ var atk_cooldown : float = 0.0
 func enter(Guardian : KinematicBody2D) -> void:
 	animation = Guardian.animation
 	effects = Guardian.effects
+	horizontal_space = Guardian.horizontal_space
+	downwards_space = Guardian.downwards_space
+
 	randomize()
 	point_to_seek = Vector2(horizontal_space, downwards_space)
 	atk_cooldown = atk_base_cooldown \

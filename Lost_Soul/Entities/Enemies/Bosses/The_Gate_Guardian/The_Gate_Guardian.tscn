@@ -502,18 +502,6 @@ tracks/9/keys = {
 "method": "scene_ended"
 } ]
 }
-tracks/10/type = "value"
-tracks/10/path = NodePath("Hurtbox:monitoring")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0, 2.4, 2.45, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ false, false, true, true ]
-}
 
 [sub_resource type="Animation" id=9]
 step = 0.05
@@ -1045,6 +1033,8 @@ radius = 60.0
 collision_layer = 2
 collision_mask = 16
 script = ExtResource( 1 )
+horizontal_space = 400
+downwards_space = 320
 
 [node name="Body_Effects" type="AnimationPlayer" parent="."]
 anims/hit = SubResource( 1 )
@@ -1076,8 +1066,6 @@ script = ExtResource( 2 )
 
 [node name="Phase1" type="Node" parent="States"]
 script = ExtResource( 3 )
-horizontal_space = 400
-downwards_space = 320
 
 [node name="Phase_Change" type="Node" parent="States"]
 script = ExtResource( 6 )
@@ -1099,14 +1087,13 @@ polygon = PoolVector2Array( -4, 0, 0, -4, 4, 0, 0, 4 )
 
 [node name="Top_Lid" type="Polygon2D" parent="Body/Eye"]
 color = Color( 0.39, 0.0975, 0.039, 1 )
-polygon = PoolVector2Array( -52, -24, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -24, 32, -44, -32, -44 )
+polygon = PoolVector2Array( -52, -32, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -32, 32, -48, -32, -48 )
 
 [node name="Bot_Lid" type="Polygon2D" parent="Body/Eye"]
 color = Color( 0.39, 0.0975, 0.039, 1 )
-polygon = PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 44, -32, 44 )
+polygon = PoolVector2Array( -52, 36, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 36, 32, 48, -36, 48 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 5 )]
-monitoring = false
 Id = 2
 Character = NodePath("..")
 hit_effect_dist = 30

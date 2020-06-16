@@ -7,6 +7,9 @@ onready var animation : AnimationNodeStateMachinePlayback = \
 		$Animation_Player.get("parameters/playback")
 onready var effects : AnimationPlayer = $Body_Effects
 
+export(int) var horizontal_space = 0
+export(int) var downwards_space = 0
+
 #Signals
 signal intro_ended
 
