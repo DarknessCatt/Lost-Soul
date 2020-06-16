@@ -4,7 +4,7 @@ export(int) var horizontal_space = 0
 export(int) var downwards_space = 0
 
 #Attributes
-const MAX_HEALTH : int = 80
+const MAX_HEALTH : int = 10
 var health : int = MAX_HEALTH
 var animation : AnimationNodeStateMachinePlayback
 var effects : AnimationPlayer
@@ -29,7 +29,7 @@ const seek_cooldown : float = 1.0
 #Attack Timer
 var atk_timer : float = 0.0
 const atk_variance : float = 1.0
-const atk_base_cooldown : float = 5.0
+const atk_base_cooldown : float = 4.0
 var atk_cooldown : float = 0.0
 
 func enter(Guardian : KinematicBody2D) -> void:
@@ -40,7 +40,14 @@ func enter(Guardian : KinematicBody2D) -> void:
 	atk_cooldown = atk_base_cooldown \
 					+ rand_range(-atk_variance, atk_variance)
 
+func exit(Guardian : KinematicBody2D) -> void:
+	Guardian.body.rotation = 0
+
 func update(Guardian: KinematicBody2D, delta : float) -> void:
+
+	if health <= 0 and animation.get_current_node() == "Idle_1":
+		Guardian._change_state($"../Phase_Change")
+		return
 
 	#Handling Body Rotation
 	var look_dir : Vector2 = Guardian.hero.global_position \
