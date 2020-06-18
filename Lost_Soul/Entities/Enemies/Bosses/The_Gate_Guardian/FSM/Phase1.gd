@@ -10,7 +10,7 @@ var animation : AnimationNodeStateMachinePlayback
 var effects : AnimationPlayer
 
 #Side Switch Info
-const SIDE_SWITCH_THRESHOLD : int = 20
+const SIDE_SWITCH_THRESHOLD : int = 10
 var side_damage : int = 0
 
 #Movement Speed

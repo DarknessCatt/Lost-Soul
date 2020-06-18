@@ -19,7 +19,7 @@ const FRICTION : float = 0.99
 #Movement Direction
 var point_to_seek : Vector2 = Vector2(0,0)
 var seek_timer : float = 0.0
-const seek_variance : float = 20.0
+const seek_variance : float = 10.0
 const seek_cooldown : float = 0.5
 
 #Attack Timer
@@ -27,6 +27,9 @@ var atk_timer : float = 0.0
 const atk_variance : float = 1.0
 const atk_base_cooldown : float = 4.0
 var atk_cooldown : float = 0.0
+
+#"FSM"
+var on_bounce : bool = false
 
 func enter(Guardian : KinematicBody2D) -> void:
 	animation = Guardian.animation
@@ -47,6 +50,10 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 	if health <= 0 and animation.get_current_node() == "Idle_2":
 		#Guardian._change_state($"../Phase_Change")
 		pass
+
+	if on_bounce:
+		$Phase2_Bounce.update(Guardian, delta)
+		return
 
 	#Handling Body Rotation
 	var look_dir : Vector2 = Guardian.hero.global_position \
@@ -90,11 +97,12 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 		atk_cooldown = atk_base_cooldown \
 						+ rand_range(-atk_variance, atk_variance)
 
-		if rand_range(0, 1) <= 1:
+		if rand_range(0, 1) <= 0:
 			animation.travel("Atk_Shoot_Rain")
 
 		else:
-			animation.travel("Atk_Shoot_Spread")
+			$Phase2_Bounce.enter(Guardian)
+			on_bounce = true
 
 func hit(damage : int, force : int, direction : Vector2) -> void:
 	health -= damage

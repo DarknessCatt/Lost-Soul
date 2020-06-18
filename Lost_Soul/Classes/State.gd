@@ -12,5 +12,4 @@ func update(_Player: KinematicBody2D, _delta : float) -> void:
 	pass
 
 func input(_Player: KinematicBody2D, _event : InputEvent) -> void:
-	#uhu
 	pass
