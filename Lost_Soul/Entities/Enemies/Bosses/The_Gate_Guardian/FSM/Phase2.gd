@@ -110,3 +110,10 @@ func hit(damage : int, force : int, direction : Vector2) -> void:
 	speed += (force/1.5)*direction.normalized()
 
 	effects.play("hit")
+
+# Called by Atk_Bounce_Outro
+
+func bounce_end() -> void:
+	on_bounce = false
+	speed = Vector2(0,-1)*MAX_SPEED
+	point_to_seek = Vector2(0, 0)

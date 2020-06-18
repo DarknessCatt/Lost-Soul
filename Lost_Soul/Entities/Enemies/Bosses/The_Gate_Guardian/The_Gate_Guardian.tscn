@@ -39,7 +39,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-length = 1.3
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Eye:color")
 tracks/0/interp = 1
@@ -47,7 +47,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 1.3 ),
+"times": PoolRealArray( 0, 1.7, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 0.65, 0.65, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
@@ -59,7 +59,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 1.3 ),
+"times": PoolRealArray( 0, 1.7, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 0.05, 0.05, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
@@ -71,7 +71,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 1.2, 1.3 ),
+"times": PoolRealArray( 0, 1.7, 1.9, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ PoolVector2Array( -16, 0, 0, -16, 16, 0, 0, 16 ), PoolVector2Array( -28, 0, 0, -28, 28, 0, 0, 28 ), PoolVector2Array( -28, 0, 0, -28, 28, 0, 0, 28 ), PoolVector2Array( -16, 0, 0, -16, 16, 0, 0, 16 ) ]
@@ -83,7 +83,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1, 1.2, 1.3 ),
+"times": PoolRealArray( 0, 1.7, 1.9, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ PoolVector2Array( -52, -24, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -24, 32, -44, -32, -44 ), PoolVector2Array( -52, -28, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -28, 32, -48, -32, -48 ), PoolVector2Array( -52, -28, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -28, 32, -48, -32, -48 ), PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ) ]
@@ -95,10 +95,24 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 1, 1.2, 1.3 ),
+"times": PoolRealArray( 0, 1.7, 1.9, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 44, -32, 44 ), PoolVector2Array( -52, 36, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 36, 32, 48, -32, 48 ), PoolVector2Array( -52, 36, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 36, 32, 48, -32, 48 ), PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ) ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("States/Phase2/Phase2_Bounce")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "begin_bounce"
+} ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -136,10 +150,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.2, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 0, 0, 1 ), Color( 0.991667, 1, 0.5, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Body/Eye/Iris:color")
@@ -200,6 +214,20 @@ tracks/7/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("States/Phase2")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 2.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "bounce_end"
+} ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -1227,7 +1255,7 @@ states/Spawning/position = Vector2( 251, 124 )
 states/rest/node = SubResource( 23 )
 states/rest/position = Vector2( 75, 124 )
 transitions = [ "rest", "Spawning", SubResource( 24 ), "Spawning", "Idle_1", SubResource( 25 ), "Idle_1", "Phase_2", SubResource( 26 ), "Idle_1", "Atk_Shoot_Spread", SubResource( 27 ), "Idle_1", "Atk_Shoot_Multi", SubResource( 28 ), "Atk_Shoot_Multi", "Idle_1", SubResource( 29 ), "Atk_Shoot_Spread", "Idle_1", SubResource( 30 ), "Idle_1", "Side_Switch", SubResource( 31 ), "Side_Switch", "Idle_1", SubResource( 32 ), "Phase_2", "Idle_2", SubResource( 33 ), "Idle_2", "Atk_Shoot_Rain", SubResource( 34 ), "Idle_2", "Atk_Bounce_Intro", SubResource( 35 ), "Atk_Shoot_Rain", "Idle_2", SubResource( 36 ), "Atk_Shoot_Spread", "Side_Switch", SubResource( 37 ), "Atk_Shoot_Multi", "Side_Switch", SubResource( 38 ), "Atk_Bounce_Intro", "Atk_Bounce_Outro", SubResource( 39 ), "Atk_Bounce_Outro", "Idle_2", SubResource( 40 ) ]
-graph_offset = Vector2( 562.688, 159 )
+graph_offset = Vector2( 643.688, -82 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=42]
 
@@ -1291,19 +1319,19 @@ script = ExtResource( 8 )
 polygon = PoolVector2Array( -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 56, 40, 40, 56, -40, 56, -56, 40 )
 
 [node name="Iris" type="Polygon2D" parent="Body/Eye"]
-color = Color( 0, 0, 0, 1 )
-polygon = PoolVector2Array( -12, 0, 0, -12, 12, 0, 0, 12 )
+color = Color( 0.45, 0.45, 0.45, 1 )
+polygon = PoolVector2Array( -14, 0, 0, -14, 14, 0, 0, 14 )
 
 [node name="Inside_Iris" type="Polygon2D" parent="Body/Eye/Iris"]
 polygon = PoolVector2Array( -4, 0, 0, -4, 4, 0, 0, 4 )
 
 [node name="Top_Lid" type="Polygon2D" parent="Body/Eye"]
 color = Color( 0.39, 0.0975, 0.039, 1 )
-polygon = PoolVector2Array( -52, -32, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -32, 32, -48, -32, -48 )
+polygon = PoolVector2Array( -52, -32, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -32, 32, -44, -32, -44 )
 
 [node name="Bot_Lid" type="Polygon2D" parent="Body/Eye"]
 color = Color( 0.39, 0.0975, 0.039, 1 )
-polygon = PoolVector2Array( -52, 36, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 36, 32, 48, -36, 48 )
+polygon = PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 48, -32, 48 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 5 )]
 visible = false
