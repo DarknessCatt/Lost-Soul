@@ -4,7 +4,7 @@ var horizontal_space = 0
 var downwards_space = 0
 
 #Attributes
-const MAX_HEALTH : int = 5
+const MAX_HEALTH : int = 45
 var health : int = MAX_HEALTH
 var animation : AnimationNodeStateMachinePlayback
 var effects : AnimationPlayer
@@ -17,9 +17,9 @@ const MAX_SPEED : int = 600
 const FRICTION : float = 0.99
 
 #Movement Direction
-var point_to_seek : Vector2 = Vector2(0,0)
+var point_to_seek : Vector2 = Vector2(0,-20)
 var seek_timer : float = 0.0
-const seek_variance : float = 10.0
+const seek_variance : float = 5.0
 const seek_cooldown : float = 0.5
 
 #Attack Timer

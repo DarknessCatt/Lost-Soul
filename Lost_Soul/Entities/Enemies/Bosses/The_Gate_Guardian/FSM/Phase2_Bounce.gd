@@ -68,5 +68,5 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 func begin_bounce() -> void:
 	state = BOUNCE
 	speed.x *= -1
-	speed.y = 1000
+	speed.y = 1200
 	floor_bounce = 0

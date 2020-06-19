@@ -1,7 +1,10 @@
 extends FSM
 
+#Resources
+const SOUL_RES : Resource = preload("res://Entities/Pickups/Souls/Souls.tscn")
+const BULLET_RES : Resource = preload("res://Entities/Enemies/Flying_Enemies/Watcher/Components/Watcher_Shoot.tscn")
+
 #Information
-const SOUL_RES = preload("res://Entities/Pickups/Souls/Souls.tscn")
 var body : Node2D
 var hero : KinematicBody2D
 onready var animation : AnimationNodeStateMachinePlayback = \
@@ -13,6 +16,7 @@ export(int) var downwards_space = 0
 
 #Signals
 signal intro_ended
+signal dead
 
 const invencible : bool = false
 
@@ -34,7 +38,37 @@ func intro(player : KinematicBody2D):
 	$Animation_Player.active = true
 	cur_state.enter(self)
 
+# Called by "Atk" animations
+
+func single_shot() -> void:
+	var bullet = BULLET_RES.instance()
+	bullet.SPEED = 700
+	bullet.position = self.position + self.body.get_node("Eye/Iris").position.rotated(self.body.rotation)
+	bullet.rotation = self.body.rotation
+	self.get_parent().add_child(bullet)
+
+func spread_shot() -> void:
+
+	var inicial_rad : float = -1.04
+	var increment : float = 0.52
+
+	for i in 5:
+		var bullet = BULLET_RES.instance()
+		bullet.SPEED = 550
+		bullet.position = self.position + self.body.get_node("Eye/Iris").position.rotated(self.body.rotation)
+		bullet.rotation = self.body.rotation + inicial_rad + i*increment
+		self.get_parent().add_child(bullet)
+
+func rain_shot() -> void:
+	var bullet = BULLET_RES.instance()
+	bullet.SPEED = 1000
+	bullet.position = self.position + self.body.get_node("Eye/Iris").position.rotated(self.body.rotation)
+	bullet.rotation = self.body.rotation + 1.57
+	self.get_parent().add_child(bullet)
+
+# Called by "Dead" animation
 func spawn_souls() -> void:
+	emit_signal("dead")
 	randomize()
 	for i in 25:
 		var new_soul = SOUL_RES.instance()

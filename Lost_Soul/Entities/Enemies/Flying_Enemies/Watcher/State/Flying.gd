@@ -50,7 +50,7 @@ func update(_Player: KinematicBody2D, _delta : float) -> void:
 
 	if atk:
 		var bullet = BULLET_RES.instance()
-		bullet.position = _Player.position - _Player.body.get_node("Eye/Iris").position
+		bullet.position = _Player.position + _Player.body.get_node("Eye/Iris").position.rotated(_Player.body.rotation)
 		bullet.rotation = _Player.body.rotation
 		_Player.get_parent().add_child(bullet)
 

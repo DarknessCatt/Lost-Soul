@@ -13,10 +13,12 @@ func enter(Guardian : KinematicBody2D) -> void:
 	eye = Guardian.body.get_node("Eye")
 	iris = Guardian.body.get_node("Eye/Iris")
 
+	Guardian.get_node("Hitbox").call_deferred("set", "monitorable", false)
 	Guardian.get_node("Hurtbox").call_deferred("set", "monitoring", false)
 
 func exit(Guardian : KinematicBody2D) -> void:
 	Guardian.get_node("Hurtbox").call_deferred("set", "monitoring", true)
+	Guardian.get_node("Hitbox").call_deferred("set", "monitorable", true)
 
 func update(Guardian: KinematicBody2D, _delta : float) -> void:
 	if intro_done:

@@ -4,7 +4,7 @@ var horizontal_space = 0
 var downwards_space = 0
 
 #Attributes
-const MAX_HEALTH : int = 10
+const MAX_HEALTH : int = 40
 var health : int = MAX_HEALTH
 var animation : AnimationNodeStateMachinePlayback
 var effects : AnimationPlayer
@@ -28,8 +28,8 @@ const seek_cooldown : float = 1.0
 
 #Attack Timer
 var atk_timer : float = 0.0
-const atk_variance : float = 1.0
-const atk_base_cooldown : float = 4.0
+const atk_variance : float = 0.5
+const atk_base_cooldown : float = 2.5
 var atk_cooldown : float = 0.0
 
 func enter(Guardian : KinematicBody2D) -> void:

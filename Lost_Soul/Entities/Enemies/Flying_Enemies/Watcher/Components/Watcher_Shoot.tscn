@@ -55,12 +55,12 @@ anims/rest = SubResource( 2 )
 
 [node name="Shot" type="Polygon2D" parent="."]
 color = Color( 0.82, 0.2378, 0.2378, 1 )
-polygon = PoolVector2Array( 16, 6, 16, 0, 16, -6, 0, -14, -14, -6, -26, 0, -14, 6, 0, 14 )
+polygon = PoolVector2Array( 14, 7.33333, 16, 0, 14, -6.66667, 0, -11.3333, -14, -6, -28, -0.666667, -14, 6.66667, 0, 12.6667 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 1 )]
 Body = NodePath("../Shot")
 Id = 2
-Damage = 5
+Damage = 10
 
 [node name="Area" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 3 )
