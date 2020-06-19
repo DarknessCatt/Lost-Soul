@@ -4,7 +4,7 @@ var horizontal_space = 0
 var downwards_space = 0
 
 #Attributes
-const MAX_HEALTH : int = 10
+const MAX_HEALTH : int = 5
 var health : int = MAX_HEALTH
 var animation : AnimationNodeStateMachinePlayback
 var effects : AnimationPlayer
@@ -30,6 +30,7 @@ var atk_cooldown : float = 0.0
 
 #"FSM"
 var on_bounce : bool = false
+var atk_counter : int = 0
 
 func enter(Guardian : KinematicBody2D) -> void:
 	animation = Guardian.animation
@@ -48,8 +49,7 @@ func exit(Guardian : KinematicBody2D) -> void:
 func update(Guardian: KinematicBody2D, delta : float) -> void:
 
 	if health <= 0 and animation.get_current_node() == "Idle_2":
-		#Guardian._change_state($"../Phase_Change")
-		pass
+		Guardian._change_state($"../Dead")
 
 	if on_bounce:
 		$Phase2_Bounce.update(Guardian, delta)
@@ -97,10 +97,13 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 		atk_cooldown = atk_base_cooldown \
 						+ rand_range(-atk_variance, atk_variance)
 
-		if rand_range(0, 1) <= 0:
+		atk_counter += 1
+
+		if atk_counter < 3:
 			animation.travel("Atk_Shoot_Rain")
 
 		else:
+			atk_counter = 0
 			$Phase2_Bounce.enter(Guardian)
 			on_bounce = true
 

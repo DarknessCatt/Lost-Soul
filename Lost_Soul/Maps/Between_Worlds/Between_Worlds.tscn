@@ -456,7 +456,7 @@ shape = SubResource( 15 )
 position = Vector2( 20000, -1800 )
 
 [node name="Player_Camera" parent="Hero" instance=ExtResource( 3 )]
-zoom = Vector2( 1.5, 1.5 )
+position = Vector2( 0, -100 )
 
 [node name="Player_Status" parent="Hero/Player_Camera" index="0"]
 Character = NodePath("../..")

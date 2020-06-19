@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/The_Gate_Guardian.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/FSM/Intro.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/FSM/Phase_Change.gd" type="Script" id=6]
 [ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/FSM/Phase2.gd" type="Script" id=7]
 [ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/FSM/Phase2_Bounce.gd" type="Script" id=8]
+[ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/FSM/Dead.gd" type="Script" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "hit"
@@ -399,6 +400,195 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id=7]
+resource_name = "Dead"
+length = 4.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Eye/Iris:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( -12, 0, 0, -12, 12, 0, 0, 12 ), PoolVector2Array( -40, 0, 0, -40, 40, 0, 0, 40 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Eye/Top_Lid:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( -52, -32, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -32, 32, -48, -32, -48 ), PoolVector2Array( -52, -36, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -36, 32, -52, -32, -52 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Eye/Bot_Lid:polygon")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( -52, 36, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 36, 32, 48, -36, 48 ), PoolVector2Array( -52, 36, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 36, 32, 52, -36, 52 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Eye/Iris:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.8, 0.8, 0.8, 1 ), Color( 0.54, 0.54, 0.54, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Eye:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.9, 0.9, 0.9, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3.05, 3.2, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.95, 0.95 ), Vector2( 1, 1 ), Vector2( 0.95, 0.95 ), Vector2( 1, 1 ), Vector2( 0.95, 0.95 ), Vector2( 1, 1 ), Vector2( 0.95, 0.95 ), Vector2( 1, 1 ), Vector2( 0.95, 0.95 ), Vector2( 1, 1 ), Vector2( 0.95, 0.95 ), Vector2( 1, 1 ), Vector2( 0.95, 0.95 ), Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 1.1, 1.1 ), Vector2( 1.1, 1.1 ), Vector2( 0.8, 0.5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Body:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.588235 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Body:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1.5, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 30 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Body/Eye/Iris:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Body/Eye/Iris/Inside_Iris:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Body/Death:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 1.45, 1.5, 3.2, 3.25, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, true, false, false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hurtbox:monitoring")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/12/type = "method"
+tracks/12/path = NodePath("States/Dead")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 3.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "begin_outro"
+} ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Body:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/14/type = "method"
+tracks/14/path = NodePath(".")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 3.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_souls"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
 length = 2.0
 loop = true
 step = 0.05
@@ -451,7 +641,7 @@ tracks/3/keys = {
 "values": [ PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 44, -32, 44 ), PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 48, -32, 48 ), PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 44, -32, 44 ), PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ), PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ), PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 44, -32, 44 ), PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 48, -32, 48 ), PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 44, -32, 44 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 2.0
 loop = true
 step = 0.05
@@ -564,7 +754,7 @@ tracks/8/keys = {
 "values": [ PoolVector2Array( -16, 0, 0, -16, 16, 0, 0, 16 ), PoolVector2Array( -16, 0, 0, -16, 16, 0, 0, 16 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 2.5
 step = 0.05
 tracks/0/type = "value"
@@ -693,7 +883,7 @@ tracks/9/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Eye/Top_Lid:polygon")
@@ -792,7 +982,7 @@ tracks/7/keys = {
 "values": [ false, false, true, true ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 4.0
 step = 0.05
 tracks/0/type = "value"
@@ -921,7 +1111,7 @@ tracks/9/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Eye:polygon")
@@ -1139,130 +1329,184 @@ tracks/17/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
-
-[sub_resource type="AnimationNodeAnimation" id=13]
-animation = "Atk_Bounce_Intro"
+tracks/18/type = "value"
+tracks/18/path = NodePath("Body:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Body:scale")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Body:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="AnimationNodeAnimation" id=14]
-animation = "Atk_Bounce_Outro"
+animation = "Atk_Bounce_Intro"
 
 [sub_resource type="AnimationNodeAnimation" id=15]
-animation = "Atk_Shoot_Multi"
+animation = "Atk_Bounce_Outro"
 
 [sub_resource type="AnimationNodeAnimation" id=16]
-animation = "Atk_Shoot_Rain"
+animation = "Atk_Shoot_Multi"
 
 [sub_resource type="AnimationNodeAnimation" id=17]
-animation = "Atk_Shoot_Spread"
+animation = "Atk_Shoot_Rain"
 
 [sub_resource type="AnimationNodeAnimation" id=18]
-animation = "Idle_1"
+animation = "Atk_Shoot_Spread"
 
 [sub_resource type="AnimationNodeAnimation" id=19]
-animation = "Idle_2"
+animation = "Dead"
 
 [sub_resource type="AnimationNodeAnimation" id=20]
-animation = "Phase_2"
+animation = "Idle_1"
 
 [sub_resource type="AnimationNodeAnimation" id=21]
-animation = "Side_Switch"
+animation = "Idle_2"
 
 [sub_resource type="AnimationNodeAnimation" id=22]
-animation = "Spawning"
+animation = "Phase_2"
 
 [sub_resource type="AnimationNodeAnimation" id=23]
+animation = "Side_Switch"
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "Spawning"
+
+[sub_resource type="AnimationNodeAnimation" id=25]
 animation = "rest"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
 switch_mode = 2
 auto_advance = true
 xfade_time = 0.1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=27]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=28]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=29]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=30]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=31]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=32]
 switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=33]
-switch_mode = 2
-auto_advance = true
-xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=34]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=35]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=36]
 switch_mode = 2
 auto_advance = true
 xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=37]
 xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=38]
-xfade_time = 0.1
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=39]
 xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=40]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
 switch_mode = 2
 auto_advance = true
 xfade_time = 0.2
 
-[sub_resource type="AnimationNodeStateMachine" id=41]
-states/Atk_Bounce_Intro/node = SubResource( 13 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachine" id=44]
+states/Atk_Bounce_Intro/node = SubResource( 14 )
 states/Atk_Bounce_Intro/position = Vector2( 1020, 327 )
-states/Atk_Bounce_Outro/node = SubResource( 14 )
+states/Atk_Bounce_Outro/node = SubResource( 15 )
 states/Atk_Bounce_Outro/position = Vector2( 1155.69, 225 )
-states/Atk_Shoot_Multi/node = SubResource( 15 )
+states/Atk_Shoot_Multi/node = SubResource( 16 )
 states/Atk_Shoot_Multi/position = Vector2( 271, -2 )
-states/Atk_Shoot_Rain/node = SubResource( 16 )
+states/Atk_Shoot_Rain/node = SubResource( 17 )
 states/Atk_Shoot_Rain/position = Vector2( 893, 225 )
-states/Atk_Shoot_Spread/node = SubResource( 17 )
+states/Atk_Shoot_Spread/node = SubResource( 18 )
 states/Atk_Shoot_Spread/position = Vector2( 622, -2 )
-states/Idle_1/node = SubResource( 18 )
+states/Dead/node = SubResource( 19 )
+states/Dead/position = Vector2( 1408.69, 124 )
+states/Idle_1/node = SubResource( 20 )
 states/Idle_1/position = Vector2( 439, 124 )
-states/Idle_2/node = SubResource( 19 )
+states/Idle_2/node = SubResource( 21 )
 states/Idle_2/position = Vector2( 1020, 124 )
-states/Phase_2/node = SubResource( 20 )
+states/Phase_2/node = SubResource( 22 )
 states/Phase_2/position = Vector2( 729, 124 )
-states/Side_Switch/node = SubResource( 21 )
+states/Side_Switch/node = SubResource( 23 )
 states/Side_Switch/position = Vector2( 439, -101 )
-states/Spawning/node = SubResource( 22 )
+states/Spawning/node = SubResource( 24 )
 states/Spawning/position = Vector2( 251, 124 )
-states/rest/node = SubResource( 23 )
+states/rest/node = SubResource( 25 )
 states/rest/position = Vector2( 75, 124 )
-transitions = [ "rest", "Spawning", SubResource( 24 ), "Spawning", "Idle_1", SubResource( 25 ), "Idle_1", "Phase_2", SubResource( 26 ), "Idle_1", "Atk_Shoot_Spread", SubResource( 27 ), "Idle_1", "Atk_Shoot_Multi", SubResource( 28 ), "Atk_Shoot_Multi", "Idle_1", SubResource( 29 ), "Atk_Shoot_Spread", "Idle_1", SubResource( 30 ), "Idle_1", "Side_Switch", SubResource( 31 ), "Side_Switch", "Idle_1", SubResource( 32 ), "Phase_2", "Idle_2", SubResource( 33 ), "Idle_2", "Atk_Shoot_Rain", SubResource( 34 ), "Idle_2", "Atk_Bounce_Intro", SubResource( 35 ), "Atk_Shoot_Rain", "Idle_2", SubResource( 36 ), "Atk_Shoot_Spread", "Side_Switch", SubResource( 37 ), "Atk_Shoot_Multi", "Side_Switch", SubResource( 38 ), "Atk_Bounce_Intro", "Atk_Bounce_Outro", SubResource( 39 ), "Atk_Bounce_Outro", "Idle_2", SubResource( 40 ) ]
-graph_offset = Vector2( 643.688, -82 )
+transitions = [ "rest", "Spawning", SubResource( 26 ), "Spawning", "Idle_1", SubResource( 27 ), "Idle_1", "Phase_2", SubResource( 28 ), "Idle_1", "Atk_Shoot_Spread", SubResource( 29 ), "Idle_1", "Atk_Shoot_Multi", SubResource( 30 ), "Atk_Shoot_Multi", "Idle_1", SubResource( 31 ), "Atk_Shoot_Spread", "Idle_1", SubResource( 32 ), "Idle_1", "Side_Switch", SubResource( 33 ), "Side_Switch", "Idle_1", SubResource( 34 ), "Phase_2", "Idle_2", SubResource( 35 ), "Idle_2", "Atk_Shoot_Rain", SubResource( 36 ), "Idle_2", "Atk_Bounce_Intro", SubResource( 37 ), "Atk_Shoot_Rain", "Idle_2", SubResource( 38 ), "Atk_Shoot_Spread", "Side_Switch", SubResource( 39 ), "Atk_Shoot_Multi", "Side_Switch", SubResource( 40 ), "Atk_Bounce_Intro", "Atk_Bounce_Outro", SubResource( 41 ), "Atk_Bounce_Outro", "Idle_2", SubResource( 42 ), "Idle_2", "Dead", SubResource( 43 ) ]
+graph_offset = Vector2( 616.688, 36 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=42]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=45]
 
-[sub_resource type="CircleShape2D" id=43]
+[sub_resource type="ParticlesMaterial" id=46]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1000.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 15.0
+scale_random = 0.5
+
+[sub_resource type="CircleShape2D" id=47]
 radius = 55.0066
 
-[sub_resource type="CircleShape2D" id=44]
+[sub_resource type="CircleShape2D" id=48]
 radius = 60.0
 
 [node name="The_Gate_Guardian" type="KinematicBody2D"]
@@ -1281,17 +1525,18 @@ anims/Atk_Bounce_Outro = SubResource( 3 )
 anims/Atk_Shoot_Multi = SubResource( 4 )
 anims/Atk_Shoot_Rain = SubResource( 5 )
 anims/Atk_Shoot_Spread = SubResource( 6 )
-anims/Idle_1 = SubResource( 7 )
-anims/Idle_2 = SubResource( 8 )
-anims/Phase_2 = SubResource( 9 )
-anims/Side_Switch = SubResource( 10 )
-anims/Spawning = SubResource( 11 )
-anims/rest = SubResource( 12 )
+anims/Dead = SubResource( 7 )
+anims/Idle_1 = SubResource( 8 )
+anims/Idle_2 = SubResource( 9 )
+anims/Phase_2 = SubResource( 10 )
+anims/Side_Switch = SubResource( 11 )
+anims/Spawning = SubResource( 12 )
+anims/rest = SubResource( 13 )
 
 [node name="Animation_Player" type="AnimationTree" parent="."]
-tree_root = SubResource( 41 )
+tree_root = SubResource( 44 )
 anim_player = NodePath("../Body_Anim")
-parameters/playback = SubResource( 42 )
+parameters/playback = SubResource( 45 )
 
 [node name="States" type="Node" parent="."]
 
@@ -1313,35 +1558,42 @@ script = ExtResource( 7 )
 [node name="Phase2_Bounce" type="Node" parent="States/Phase2"]
 script = ExtResource( 8 )
 
+[node name="Dead" type="Node" parent="States"]
+script = ExtResource( 9 )
+
 [node name="Body" type="Node2D" parent="."]
+
+[node name="Death" type="Particles2D" parent="Body"]
+emitting = false
+amount = 30
+process_material = SubResource( 46 )
 
 [node name="Eye" type="Polygon2D" parent="Body"]
 polygon = PoolVector2Array( -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 56, 40, 40, 56, -40, 56, -56, 40 )
 
 [node name="Iris" type="Polygon2D" parent="Body/Eye"]
-color = Color( 0.45, 0.45, 0.45, 1 )
-polygon = PoolVector2Array( -14, 0, 0, -14, 14, 0, 0, 14 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -12, 0, 0, -12, 12, 0, 0, 12 )
 
 [node name="Inside_Iris" type="Polygon2D" parent="Body/Eye/Iris"]
 polygon = PoolVector2Array( -4, 0, 0, -4, 4, 0, 0, 4 )
 
 [node name="Top_Lid" type="Polygon2D" parent="Body/Eye"]
 color = Color( 0.39, 0.0975, 0.039, 1 )
-polygon = PoolVector2Array( -52, -32, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -32, 32, -44, -32, -44 )
+polygon = PoolVector2Array( -52, -32, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -32, 32, -48, -32, -48 )
 
 [node name="Bot_Lid" type="Polygon2D" parent="Body/Eye"]
 color = Color( 0.39, 0.0975, 0.039, 1 )
-polygon = PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 48, -32, 48 )
+polygon = PoolVector2Array( -52, 36, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 36, 32, 48, -36, 48 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 5 )]
-visible = false
+monitoring = false
 Id = 2
 Character = NodePath("..")
 hit_effect_dist = 30
 
 [node name="Area" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource( 43 )
+shape = SubResource( 47 )
 
 [node name="Phys_Body" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource( 44 )
+shape = SubResource( 48 )

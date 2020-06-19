@@ -309,7 +309,7 @@ __meta__ = {
 position = Vector2( 3465.43, 522.71 )
 
 [node name="Camera" type="Camera2D" parent="Hero"]
-position = Vector2( 0, -75 )
+position = Vector2( 0, -100 )
 current = true
 
 [node name="Dialogue" parent="Hero/Camera" instance=ExtResource( 4 )]

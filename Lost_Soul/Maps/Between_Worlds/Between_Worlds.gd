@@ -187,7 +187,7 @@ func _on_Before_Eyes_entered(_body):
 	dialogue.change_dialogue(dil_eyes)
 	dialogue.begin()
 
-func _on_About_Eyes_entered(body):
+func _on_About_Eyes_entered(_body):
 	dialogue.change_dialogue(dil_about_eyes)
 	dialogue.begin()
 
