@@ -53,6 +53,18 @@ const dil_about_eyes : Array = [
 ""
 ]
 
+const dil_arena : Array = [
+"Parece que\nte pegaram...",
+""
+]
+
+const dil_boss_defeated : Array = [
+"Muito bem,\nmuito bem.",
+"Superastes minhas\nexpectativas.",
+"O mundo dos vivos\nestá logo a frente.",
+""
+]
+
 enum {INTRO1, INTRO2, BEGIN}
 var state : int
 var first_check : bool = false
@@ -191,6 +203,47 @@ func _on_About_Eyes_entered(_body):
 	dialogue.change_dialogue(dil_about_eyes)
 	dialogue.begin()
 
+func _on_Close_Arena_entered(_body):
+	dialogue.change_dialogue(dil_arena)
+	dialogue.begin()
+	$Walls.set_cell(680, 6, 0)
+	$Walls.set_cell(680, 7, 0)
+	$Walls.set_cell(680, 8, 0)
+	$Walls.set_cell(680, 9, 0)
+	$Walls.set_cell(650, -10, 0)
+	$Walls.set_cell(651, -10, 0)
+	$Walls.set_cell(652, -10, 0)
+	$Walls.set_cell(653, -10, 0)
+	$Boss/Close_Arena.call_deferred("set", "monitoring", false)
+	$Boss/Trigger_Boss.call_deferred("set", "monitoring", true)
+
 func _on_Trigger_Boss_entered(body):
-	$Enemies/Boss/The_Gate_Guardian.intro(body)
-	$Enemies/Boss/Trigger_Boss.call_deferred("set", "monitoring", false)
+	$Tween.interpolate_property($Boss/Boss_Camera, "global_position",
+								$Hero/Player_Camera.global_position, Vector2(20864,0),
+								3, Tween.TRANS_EXPO, Tween.EASE_OUT)
+	$Tween.interpolate_property($Boss/Titulo, "modulate:a",
+								0, 1, 4, Tween.TRANS_EXPO, Tween.EASE_IN)
+	$Tween.start()
+	$Boss/Boss_Camera.current = true
+	$Hero/Player_Camera.hide()
+
+	$Boss/The_Gate_Guardian.intro(body)
+	$Boss/Trigger_Boss.call_deferred("set", "monitoring", false)
+
+func _on_The_Gate_Guardian_intro_ended():
+	$Boss/Titulo.modulate.a = 0
+	$Hero/Player_Camera.current = true
+	$Hero/Player_Camera.show()
+
+
+func _on_The_Gate_Guardian_dead():
+	$Walls.set_cell(680, 6, -1)
+	$Walls.set_cell(680, 7, -1)
+	$Walls.set_cell(680, 8, -1)
+	$Walls.set_cell(680, 9, -1)
+	$Walls.set_cell(650, -10, -1)
+	$Walls.set_cell(651, -10, -1)
+	$Walls.set_cell(652, -10, -1)
+	$Walls.set_cell(653, -10, -1)
+	dialogue.change_dialogue(dil_boss_defeated)
+	dialogue.begin()
