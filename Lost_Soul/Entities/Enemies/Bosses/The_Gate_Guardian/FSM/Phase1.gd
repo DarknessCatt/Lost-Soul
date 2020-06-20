@@ -4,13 +4,13 @@ var horizontal_space = 0
 var downwards_space = 0
 
 #Attributes
-const MAX_HEALTH : int = 40
+const MAX_HEALTH : int = 80
 var health : int = MAX_HEALTH
 var animation : AnimationNodeStateMachinePlayback
 var effects : AnimationPlayer
 
 #Side Switch Info
-const SIDE_SWITCH_THRESHOLD : int = 10
+const SIDE_SWITCH_THRESHOLD : int = 20
 var side_damage : int = 0
 
 #Movement Speed

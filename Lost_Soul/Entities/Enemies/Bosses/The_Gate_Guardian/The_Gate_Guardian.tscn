@@ -317,7 +317,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-length = 2.6
+length = 3.0
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Eye:color")
@@ -326,7 +326,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8, 1.2, 1.25, 2.6 ),
+"times": PoolRealArray( 0, 1.2, 1.6, 1.65, 3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 0.65, 0.65, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0.65, 0.65, 1 ), Color( 1, 0.65, 0.65, 1 ) ]
@@ -338,7 +338,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.8, 1.2, 1.25, 1.4, 1.45, 1.6, 1.65, 1.8, 1.85, 2, 2.05, 2.25, 2.6 ),
+"times": PoolRealArray( 0, 1.2, 1.6, 1.65, 1.8, 1.85, 2, 2.05, 2.2, 2.25, 2.4, 2.45, 2.65, 3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ PoolVector2Array( -16, 0, 0, -16, 16, 0, 0, 16 ), PoolVector2Array( -24, 0, 0, -40, 24, 0, 0, 16 ), PoolVector2Array( -24, 0, 0, -40, 24, 0, 0, 16 ), PoolVector2Array( -8, 0, 0, -8, 8, 0, 0, 8 ), PoolVector2Array( -24, 0, 0, -40, 24, 0, 0, 16 ), PoolVector2Array( -8, 0, 0, -8, 8, 0, 0, 8 ), PoolVector2Array( -24, 0, 0, -40, 24, 0, 0, 16 ), PoolVector2Array( -8, 0, 0, -8, 8, 0, 0, 8 ), PoolVector2Array( -24, 0, 0, -40, 24, 0, 0, 16 ), PoolVector2Array( -8, 0, 0, -8, 8, 0, 0, 8 ), PoolVector2Array( -24, 0, 0, -40, 24, 0, 0, 16 ), PoolVector2Array( -8, 0, 0, -8, 8, 0, 0, 8 ), PoolVector2Array( -8, 0, 0, -8, 8, 0, 0, 8 ), PoolVector2Array( -16, 0, 0, -16, 16, 0, 0, 16 ) ]
@@ -350,7 +350,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.8, 1.2, 1.25, 1.4, 1.45, 1.6, 1.65, 1.8, 1.85, 2, 2.05, 2.25, 2.6 ),
+"times": PoolRealArray( 0, 1.2, 1.6, 1.65, 1.8, 1.85, 2, 2.05, 2.2, 2.25, 2.4, 2.45, 2.65, 3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ PoolVector2Array( -12, 0, 0, -12, 12, 0, 0, 12 ), PoolVector2Array( -12, 0, 0, -32, 12, 0, 0, 12 ), PoolVector2Array( -12, 0, 0, -32, 12, 0, 0, 12 ), PoolVector2Array( -4, 0, 0, -4, 4, 0, 0, 4 ), PoolVector2Array( -12, 0, 0, -32, 12, 0, 0, 12 ), PoolVector2Array( -4, 0, 0, -4, 4, 0, 0, 4 ), PoolVector2Array( -12, 0, 0, -32, 12, 0, 0, 12 ), PoolVector2Array( -4, 0, 0, -4, 4, 0, 0, 4 ), PoolVector2Array( -12, 0, 0, -32, 12, 0, 0, 12 ), PoolVector2Array( -4, 0, 0, -4, 4, 0, 0, 4 ), PoolVector2Array( -12, 0, 0, -32, 12, 0, 0, 12 ), PoolVector2Array( -4, 0, 0, -4, 4, 0, 0, 4 ), PoolVector2Array( -4, 0, 0, -4, 4, 0, 0, 4 ), PoolVector2Array( -12, 0, 0, -12, 12, 0, 0, 12 ) ]
@@ -362,7 +362,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 1.25, 1.45, 1.65, 1.85, 2.05 ),
+"times": PoolRealArray( 1.65, 1.85, 2.05, 2.25, 2.45 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -1615,10 +1615,10 @@ scale_random = 0.5
 [sub_resource type="CircleShape2D" id=47]
 radius = 55.0066
 
-[sub_resource type="CircleShape2D" id=49]
+[sub_resource type="CircleShape2D" id=48]
 radius = 51.6268
 
-[sub_resource type="CircleShape2D" id=48]
+[sub_resource type="CircleShape2D" id=49]
 radius = 60.0
 
 [node name="The_Gate_Guardian" type="KinematicBody2D"]
@@ -1715,8 +1715,8 @@ Damage = 10
 Force = 10
 
 [node name="Area" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource( 49 )
+shape = SubResource( 48 )
 
 [node name="Phys_Body" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 48 )
+shape = SubResource( 49 )

@@ -60,11 +60,15 @@ func spread_shot() -> void:
 		self.get_parent().add_child(bullet)
 
 func rain_shot() -> void:
-	var bullet = BULLET_RES.instance()
-	bullet.SPEED = 1000
-	bullet.position = self.position + self.body.get_node("Eye/Iris").position.rotated(self.body.rotation)
-	bullet.rotation = self.body.rotation + 1.57
-	self.get_parent().add_child(bullet)
+	var inicial_rad : float = -0.17
+	var increment : float = 0.17
+
+	for i in 3:
+		var bullet = BULLET_RES.instance()
+		bullet.SPEED = 1000
+		bullet.position = self.position + self.body.get_node("Eye/Iris").position.rotated(self.body.rotation)
+		bullet.rotation = self.body.rotation + inicial_rad + i*increment + 1.57 + rand_range(-0.05, 0.05)
+		self.get_parent().add_child(bullet)
 
 # Called by "Dead" animation
 func spawn_souls() -> void:
