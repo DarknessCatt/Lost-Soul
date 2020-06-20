@@ -11,7 +11,7 @@
 [ext_resource path="res://Entities/Pickups/Souls/Souls.tscn" type="PackedScene" id=9]
 [ext_resource path="res://HUD/Cameras/Player_Camera/Player_Camera.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Entities/Map_Elements/Hidden_Area/Hidden_Area.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/The_Gate_Guardian.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Entities/Enemies/Flying_Enemies/Watcher/Components/Watcher_Shoot.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 136, 48 )
@@ -68,9 +68,6 @@ position = Vector2( 458.15, 257.476 )
 [node name="Watcher" parent="." instance=ExtResource( 8 )]
 position = Vector2( 780.038, 218.038 )
 
-[node name="The_Gate_Guardian" parent="." instance=ExtResource( 12 )]
-position = Vector2( 275.542, 486.596 )
-
 [node name="Hidden_Area" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1319, 528 )
 
@@ -84,5 +81,9 @@ polygon = PoolVector2Array( -135, -80, -135, 80, 153, 80, 153, -80 )
 
 [node name="FakeWall" type="Polygon2D" parent="Hidden_Area"]
 polygon = PoolVector2Array( -135, -48, -167, -48, -167, -8, -159, 0, -167, 8, -167, 48, -135, 48 )
+
+[node name="Watcher_Shoot" parent="." instance=ExtResource( 12 )]
+position = Vector2( 216.916, 453.375 )
+rotation = 1.61431
 
 [editable path="Hero/Player_Camera"]
