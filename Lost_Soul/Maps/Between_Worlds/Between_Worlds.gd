@@ -231,10 +231,18 @@ func _on_Trigger_Boss_entered(body):
 	$Boss/Trigger_Boss.call_deferred("set", "monitoring", false)
 
 func _on_The_Gate_Guardian_intro_ended():
-	$Boss/Titulo.modulate.a = 0
+	$Hero/Player_Camera.global_position = $Boss/Boss_Camera.global_position
+
+	$Tween.interpolate_property($Hero/Player_Camera, "position",
+								$Hero/Player_Camera.position, Vector2(0,-100),
+								1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+
+	$Tween.interpolate_property($Boss/Titulo, "modulate:a",
+								1, 0, 0.5, Tween.TRANS_EXPO, Tween.EASE_IN)
+	$Tween.start()
+
 	$Hero/Player_Camera.current = true
 	$Hero/Player_Camera.show()
-
 
 func _on_The_Gate_Guardian_dead():
 	$Walls.set_cell(680, 6, -1)
