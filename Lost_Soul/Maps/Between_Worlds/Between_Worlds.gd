@@ -65,6 +65,10 @@ const dil_boss_defeated : Array = [
 ""
 ]
 
+const dil_ending : Array = [
+"Estou sem ideia agora )="
+]
+
 enum {INTRO1, INTRO2, BEGIN}
 var state : int
 var first_check : bool = false
@@ -255,3 +259,15 @@ func _on_The_Gate_Guardian_dead():
 	$Walls.set_cell(653, -10, -1)
 	dialogue.change_dialogue(dil_boss_defeated)
 	dialogue.begin()
+
+func _on_End_entered(body):
+	$Ending_Panel/End_Area.call_deferred("set", "monitoring", false)
+	$Tween.interpolate_property($Ending_Panel/Panel, "custom_styles/panel:bg_color",
+								Color("ffffff"), Color("000000"),
+								0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
+
+	$Ending_Panel/End_Camera.current = true
+
+	$Ending_Panel/End_Camera/End_Dialogue.change_dialogue(dil_ending)
+	$Ending_Panel/End_Camera/End_Dialogue.begin()
