@@ -10,17 +10,17 @@ onready var eyes : RayCast2D = $"../../Perception/Eyes"
 var detected : bool = false
 
 #Functions
-func enter(_Player : KinematicBody2D) -> void:
-	_Player.change_animation(state_anim)
-	_Player.hero = null
+func enter(base_fly : KinematicBody2D) -> void:
+	base_fly.change_animation(state_anim)
+	base_fly.hero = null
 
-func update(_Player: KinematicBody2D, _delta : float) -> void:
+func update(base_fly: KinematicBody2D, _delta : float) -> void:
 	if detected:
 		eyes.cast_to = (hero.global_position - eyes.global_position)
 		eyes.force_raycast_update()
 		if eyes.get_collider() == null:
-			_Player.hero = hero
-			_Player._change_state($"../Flying")
+			base_fly.hero = hero
+			base_fly._change_state($"../Flying")
 
 func _on_Player_Detected(body):
 	hero = body

@@ -159,7 +159,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.4, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.23, 0.0207, 0.0207, 1 ), Color( 0.23, 0.0207, 0.0207, 1 ), Color( 0.23, 0.23, 0.23, 0 ) ]
+"values": [ Color( 0.231373, 0.0196078, 0.0196078, 1 ), Color( 0.23, 0.0207, 0.0207, 1 ), Color( 0.23, 0.23, 0.23, 0 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Body/Eye:scale")
@@ -212,7 +212,7 @@ tracks/10/keys = {
 } ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Body/Eye/Hitbox/Area:disabled")
+tracks/11/path = NodePath("Body/Eye/Hitbox:monitorable")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -221,7 +221,7 @@ tracks/11/keys = {
 "times": PoolRealArray( 0, 0.01, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false, true, true ]
+"values": [ true, false, false ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -481,7 +481,8 @@ MAX_GRAV = 1000
 polygon = PoolVector2Array( -32, -16, -16, -32, 16, -32, 32, -16, 32, 16, 16, 32, -16, 32, -32, 16 )
 
 [node name="Iris" type="Polygon2D" parent="Body/Eye" index="0"]
-color = Color( 0.23, 0.0207, 0.0207, 1 )
+position = Vector2( 0.195031, 0.0315504 )
+color = Color( 0.231373, 0.0196078, 0.0196078, 1 )
 polygon = PoolVector2Array( 0, -8, 8, 0, 0, 8, -8, 0 )
 
 [node name="Top_Lid" type="Polygon2D" parent="Body/Eye" index="1"]
@@ -513,6 +514,9 @@ shape = SubResource( 8 )
 [node name="Collision" type="CollisionShape2D" parent="." index="5"]
 visible = false
 shape = SubResource( 9 )
+
+[node name="Perception" parent="." index="6"]
+visible = false
 
 [node name="Area" type="CollisionShape2D" parent="Perception/Player_Detect" index="0"]
 shape = SubResource( 10 )

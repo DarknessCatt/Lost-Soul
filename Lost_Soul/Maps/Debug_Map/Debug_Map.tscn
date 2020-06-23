@@ -70,7 +70,7 @@ polygon = PoolVector2Array( -135, -80, -135, 80, 153, 80, 153, -80 )
 polygon = PoolVector2Array( -135, -48, -167, -48, -167, -8, -159, 0, -167, 8, -167, 48, -135, 48 )
 
 [node name="Checkpoint" parent="." instance=ExtResource( 13 )]
-position = Vector2( 320, 512 )
+position = Vector2( 80.3265, 512 )
 
 [node name="Hero" parent="." instance=ExtResource( 1 )]
 position = Vector2( 72, 504 )

@@ -13,3 +13,8 @@ func _ready():
 #Functions
 func change_animation(anim : String) -> void:
 	$Body_Animations.play(anim)
+
+func respawn() -> void:
+	hero = null
+	self._change_state($States/Idle)
+	.respawn()
