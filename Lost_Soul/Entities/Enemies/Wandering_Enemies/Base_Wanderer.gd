@@ -12,3 +12,7 @@ func _ready():
 #Functions
 func change_animation(anim : String) -> void:
 	$Body_Animations.play(anim)
+
+func respawn() -> void:
+	self._change_state($States/Walking)
+	.respawn()

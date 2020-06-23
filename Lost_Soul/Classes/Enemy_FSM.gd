@@ -38,3 +38,10 @@ func spawn_souls() -> void:
 		new_soul.position = self.position + pos
 		self.get_parent().call_deferred("add_child", new_soul)
 		yield(get_tree().create_timer(0.05), "timeout")
+
+##Respawn
+onready var original_position : Vector2 = self.position
+
+func respawn() -> void:
+	self.health = self.max_health
+	self.position = self.original_position
