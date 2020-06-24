@@ -66,7 +66,13 @@ const dil_boss_defeated : Array = [
 ]
 
 const dil_ending : Array = [
-"Estou sem ideia agora )="
+"Chegaste no\nmundo dos vivos...",
+"Minha parte do\ncombinado está feita.",
+"Te acompanharei\npara garantir que\nfarás a tua parte.",
+"Tu me libertarás.",
+"Não importa quantas vezes\neu tenha que te\ntrazer de volta.",
+"Minha preciosa",
+"Alma\nPerdida                                    \nPrototipo 2\n\nObrigado por jogar!"
 ]
 
 enum {INTRO1, INTRO2, BEGIN}
@@ -261,6 +267,7 @@ func _on_The_Gate_Guardian_dead():
 	dialogue.begin()
 
 func _on_End_entered(body):
+	$Hero.on_cutscene = true
 	$Ending_Panel/End_Area.call_deferred("set", "monitoring", false)
 	$Tween.interpolate_property($Ending_Panel/Panel, "custom_styles/panel:bg_color",
 								Color("ffffff"), Color("000000"),

@@ -20,6 +20,7 @@ func _ready():
 	self.text = ""
 
 	$letterSpeed.wait_time = Letter_Delay
+	$sentenceSpeed.wait_time = Sentence_Delay
 
 	if Autostart:
 		begin()
