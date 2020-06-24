@@ -19,3 +19,6 @@ func _on_Animation_finished(anim_name):
 		$Animation.seek(rand_range(0,4))
 	elif anim_name == "collect":
 		self.call_deferred("free")
+
+func respawn() -> void:
+	self.call_deferred("free")

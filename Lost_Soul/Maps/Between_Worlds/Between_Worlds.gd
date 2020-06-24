@@ -79,6 +79,17 @@ enum {INTRO1, INTRO2, BEGIN}
 var state : int
 var first_check : bool = false
 
+var respawn_pos : Vector2 = Vector2(0, -540)
+
+func _on_checkpoint_used(check : Area2D) -> void:
+	respawn_pos = check.position
+	respawn_monsters()
+
+func respawn_monsters() -> void:
+	for monster_area in $Enemies.get_children():
+		for monster in monster_area.get_children():
+			monster.respawn()
+
 func _on_Tween_tween_all_completed():
 	match(state):
 		INTRO1:
@@ -115,6 +126,9 @@ func _input(event):
 		state = BEGIN
 
 func _ready():
+	for checkpoint in $Checkpoins.get_children():
+		checkpoint.connect("checkpoint_reached", self, "_on_checkpoint_used")
+
 	state = INTRO1
 
 	$Hero.health = 1
@@ -266,7 +280,7 @@ func _on_The_Gate_Guardian_dead():
 	dialogue.change_dialogue(dil_boss_defeated)
 	dialogue.begin()
 
-func _on_End_entered(body):
+func _on_End_entered(_body):
 	$Hero.on_cutscene = true
 	$Ending_Panel/End_Area.call_deferred("set", "monitoring", false)
 	$Tween.interpolate_property($Ending_Panel/Panel, "custom_styles/panel:bg_color",
