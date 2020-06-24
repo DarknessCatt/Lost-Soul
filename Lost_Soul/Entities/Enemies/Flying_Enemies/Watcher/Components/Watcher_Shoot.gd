@@ -20,3 +20,6 @@ func _physics_process(delta):
 
 func _on_Self_Destruct_timeout():
 	self.call_deferred("free")
+
+func respawn():
+	self.call_deferred("free")

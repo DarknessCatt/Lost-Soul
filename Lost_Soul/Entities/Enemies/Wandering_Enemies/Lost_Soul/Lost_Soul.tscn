@@ -809,7 +809,7 @@ polygon = PoolVector2Array( -4, -4, -4, 20, 0, 24, 4, 20, 4, -4, 0, -8 )
 visible = false
 Body = NodePath("..")
 Id = 2
-Damage = 4
+Damage = 10
 Force = 250
 Direction = Vector2( 1, -0.2 )
 

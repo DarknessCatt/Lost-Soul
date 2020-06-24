@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Tilesets/Placeholder_White/Placeholder_White.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=2]
@@ -67,27 +67,30 @@ radius = 40.0367
 size = 300
 font_data = ExtResource( 16 )
 
-[sub_resource type="DynamicFont" id=23]
+[sub_resource type="DynamicFont" id=17]
 size = 350
 font_data = ExtResource( 16 )
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 1500, 300 )
 
-[sub_resource type="StyleBoxFlat" id=20]
+[sub_resource type="StyleBoxFlat" id=19]
 bg_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="RectangleShape2D" id=21]
+[sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 16, 144 )
 
-[sub_resource type="DynamicFontData" id=17]
+[sub_resource type="DynamicFontData" id=21]
 font_path = "res://Assets/Fonts/BasaltRegular-Jx3o.ttf"
 
-[sub_resource type="DynamicFont" id=18]
+[sub_resource type="DynamicFont" id=22]
 size = 500
-font_data = SubResource( 17 )
+font_data = SubResource( 21 )
 
-[sub_resource type="StyleBoxFlat" id=22]
+[sub_resource type="StyleBoxFlat" id=23]
 bg_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
 [node name="Between_Worlds" type="Node2D"]
@@ -515,7 +518,7 @@ Character = NodePath("../..")
 margin_top = -10.0
 margin_right = 1200.0
 margin_bottom = 390.0
-custom_fonts/font = SubResource( 23 )
+custom_fonts/font = SubResource( 17 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 text = "Dialogue"
 align = 1
@@ -524,6 +527,16 @@ Autocenter = true
 Autostart = false
 Letter_Delay = 0.07
 Sentence_Delay = 1.5
+
+[node name="Blackout" type="Panel" parent="Hero/Player_Camera"]
+margin_left = -520.0
+margin_top = -300.0
+margin_right = 520.0
+margin_bottom = 300.0
+custom_styles/panel = SubResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Ending_Panel" type="Node2D" parent="."]
 position = Vector2( 23000, -104 )
@@ -535,7 +548,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Ending_Panel/Active_Area"]
-shape = SubResource( 19 )
+shape = SubResource( 18 )
 
 [node name="Panel" type="Panel" parent="Ending_Panel"]
 modulate = Color( 1, 1, 1, 0 )
@@ -543,7 +556,7 @@ margin_left = -1000.0
 margin_top = -400.0
 margin_right = 3500.0
 margin_bottom = 800.0
-custom_styles/panel = SubResource( 20 )
+custom_styles/panel = SubResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -554,7 +567,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Ending_Panel/End_Area"]
-shape = SubResource( 21 )
+shape = SubResource( 20 )
 
 [node name="End_Camera" type="Camera2D" parent="Ending_Panel"]
 position = Vector2( 2406, 221 )
@@ -562,7 +575,7 @@ position = Vector2( 2406, 221 )
 [node name="End_Dialogue" parent="Ending_Panel/End_Camera" instance=ExtResource( 8 )]
 margin_right = 1714.0
 margin_bottom = 572.0
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 text = "Dialogue"
 align = 1
@@ -578,7 +591,7 @@ margin_left = -1100.0
 margin_top = -1750.0
 margin_right = 1100.0
 margin_bottom = 1750.0
-custom_styles/panel = SubResource( 22 )
+custom_styles/panel = SubResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -598,6 +611,7 @@ __meta__ = {
 [connection signal="body_entered" from="Boss/Trigger_Boss" to="." method="_on_Trigger_Boss_entered"]
 [connection signal="dead" from="Boss/The_Gate_Guardian" to="." method="_on_The_Gate_Guardian_dead"]
 [connection signal="intro_ended" from="Boss/The_Gate_Guardian" to="." method="_on_The_Gate_Guardian_intro_ended"]
+[connection signal="dead" from="Hero" to="." method="_on_Hero_dead"]
 [connection signal="body_entered" from="Ending_Panel/Active_Area" to="Ending_Panel" method="_on_Active_Area_body_entered"]
 [connection signal="body_exited" from="Ending_Panel/Active_Area" to="Ending_Panel" method="_on_Active_Area_body_exited"]
 [connection signal="body_entered" from="Ending_Panel/End_Area" to="." method="_on_End_entered"]

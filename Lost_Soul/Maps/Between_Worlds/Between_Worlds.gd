@@ -78,19 +78,39 @@ const dil_ending : Array = [
 enum {INTRO1, INTRO2, BEGIN}
 var state : int
 var first_check : bool = false
+var respawning : bool = false
 
-var respawn_pos : Vector2 = Vector2(0, -540)
-
-func _on_checkpoint_used(check : Area2D) -> void:
-	respawn_pos = check.position
-	respawn_monsters()
+var respawn_pos : Vector2 = Vector2(0, 540)
 
 func respawn_monsters() -> void:
 	for monster_area in $Enemies.get_children():
 		for monster in monster_area.get_children():
 			monster.respawn()
 
+func _on_checkpoint_used(check : Area2D) -> void:
+	respawn_pos = check.position
+	respawn_monsters()
+
+func _on_Hero_dead():
+	$Tween.remove_all()
+	$Tween.interpolate_property($Hero/Player_Camera/Blackout, "custom_styles/panel:bg_color:a",
+								0, 1, 2.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
+	$Hero._die()
+	respawning = true
+
 func _on_Tween_tween_all_completed():
+	if respawning:
+		respawn_monsters()
+		$Hero.position = respawn_pos
+		$Hero._refresh()
+		$Hero.on_cutscene = false
+		$Tween.interpolate_property($Hero/Player_Camera/Blackout, "custom_styles/panel:bg_color:a",
+								1, 0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Tween.start()
+		respawning = false
+		return
+
 	match(state):
 		INTRO1:
 			$Hero._change_anim("PowerUp")
@@ -115,7 +135,7 @@ func _on_Tween_tween_all_completed():
 
 func _input(event):
 	if event.is_action_pressed("hero_jump") and (state == INTRO1 or state == INTRO2):
-		$Tween.stop_all()
+		$Tween.remove_all()
 
 		$Hero.on_cutscene = false
 		$Hero/Player_Camera.current = true
@@ -154,7 +174,7 @@ func _on_Intro_entered(_body):
 	$Dialogue_Triggers/Intro.call_deferred("set","monitoring",false)
 
 func _on_First_Check_entered(_body):
-	$Tween.stop_all()
+	$Tween.remove_all()
 	$Tween.interpolate_property(
 		$Dialogue_Triggers/First_Check/Up_Arrow, "modulate:a",
 		$Dialogue_Triggers/First_Check/Up_Arrow.modulate.a, 1,
@@ -162,7 +182,7 @@ func _on_First_Check_entered(_body):
 	$Tween.start()
 
 func _on_First_Check_exited(_body):
-	$Tween.stop_all()
+	$Tween.remove_all()
 	$Tween.interpolate_property(
 		$Dialogue_Triggers/First_Check/Up_Arrow, "modulate:a",
 		$Dialogue_Triggers/First_Check/Up_Arrow.modulate.a, 0,
@@ -174,7 +194,7 @@ func _on_checkpoint_reached(checkpoint : Area2D):
 	$Dialogue_Triggers/First_Check.disconnect("body_entered", self, "_on_First_Check_entered")
 	$Dialogue_Triggers/First_Check.disconnect("body_exited", self, "_on_First_Check_exited")
 
-	$Tween.stop_all()
+	$Tween.remove_all()
 	$Tween.interpolate_property(
 		$Dialogue_Triggers/First_Check/Up_Arrow, "modulate:a",
 		$Dialogue_Triggers/First_Check/Up_Arrow.modulate.a, 0,
@@ -191,7 +211,7 @@ func _on_checkpoint_reached(checkpoint : Area2D):
 
 func _on_Attack_entered(_body):
 	if first_check:
-		$Tween.stop_all()
+		$Tween.remove_all()
 		$Tween.interpolate_property(
 			$Dialogue_Triggers/Attack/C, "modulate:a",
 			$Dialogue_Triggers/Attack/C.modulate.a, 1,
@@ -200,7 +220,7 @@ func _on_Attack_entered(_body):
 
 func _on_Attack_exited(_body):
 	if first_check:
-		$Tween.stop_all()
+		$Tween.remove_all()
 		$Tween.interpolate_property(
 			$Dialogue_Triggers/Attack/C, "modulate:a",
 			$Dialogue_Triggers/Attack/C.modulate.a, 0,
