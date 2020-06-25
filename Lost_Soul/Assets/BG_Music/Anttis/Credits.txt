@@ -1,0 +1,6 @@
+Downloaded from http://www.soundclick.com/_mobileFrame.cfm?bandID=1277008
+
+Credit Antti Luode if you use them in your project.
+
+"Welcome. These are my instrumental songs. Some of them are very simple due to them being just vocal stripped versions of my songs with lyrics which you can find here: http://www.soundclick.com/bands/default.cfm?bandID=678627 I have a blog at: http://anttismusic.blogspot.fi/ where there are all FLstudio project files for my music starting from october 2013. A lot of my recent songs were made in Asian style for Kylele.net Kyle was featured on Bizarre foods episode about Ho Chi Minh City in June 2015 Note: I make one song almost every day and upload them all. Some of them may suck. But I do not think they all do.I make music for free (released under cc3.0 (Credit to Antti Luode)) 
+If you want to pay for using my music please make a donation at my patreon: https://patreon.com/user?u=3805565"

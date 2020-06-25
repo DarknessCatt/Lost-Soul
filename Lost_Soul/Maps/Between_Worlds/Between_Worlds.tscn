@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Tilesets/Placeholder_White/Placeholder_White.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/The_Gate_Guardian.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Assets/Fonts/BasaltRegular-Jx3o.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://Maps/Between_Worlds/Ending_Panel.gd" type="Script" id=17]
+[ext_resource path="res://Assets/BG_Music/Anttis/Anttis-instrumentals-1st-I-lost-my-money.ogg" type="AudioStream" id=18]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -71,30 +72,34 @@ font_data = ExtResource( 16 )
 size = 350
 font_data = ExtResource( 16 )
 
-[sub_resource type="StyleBoxFlat" id=24]
+[sub_resource type="StyleBoxFlat" id=18]
 bg_color = Color( 0, 0, 0, 0 )
 
-[sub_resource type="RectangleShape2D" id=18]
+[sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 1500, 300 )
 
-[sub_resource type="StyleBoxFlat" id=19]
+[sub_resource type="StyleBoxFlat" id=20]
 bg_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="RectangleShape2D" id=20]
+[sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 16, 144 )
 
-[sub_resource type="DynamicFontData" id=21]
+[sub_resource type="DynamicFontData" id=22]
 font_path = "res://Assets/Fonts/BasaltRegular-Jx3o.ttf"
 
-[sub_resource type="DynamicFont" id=22]
+[sub_resource type="DynamicFont" id=23]
 size = 500
-font_data = SubResource( 21 )
+font_data = SubResource( 22 )
 
-[sub_resource type="StyleBoxFlat" id=23]
+[sub_resource type="StyleBoxFlat" id=24]
 bg_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
 [node name="Between_Worlds" type="Node2D"]
 script = ExtResource( 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+autoplay = true
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -533,7 +538,7 @@ margin_left = -520.0
 margin_top = -300.0
 margin_right = 520.0
 margin_bottom = 300.0
-custom_styles/panel = SubResource( 24 )
+custom_styles/panel = SubResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -548,7 +553,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Ending_Panel/Active_Area"]
-shape = SubResource( 18 )
+shape = SubResource( 19 )
 
 [node name="Panel" type="Panel" parent="Ending_Panel"]
 modulate = Color( 1, 1, 1, 0 )
@@ -556,7 +561,7 @@ margin_left = -1000.0
 margin_top = -400.0
 margin_right = 3500.0
 margin_bottom = 800.0
-custom_styles/panel = SubResource( 19 )
+custom_styles/panel = SubResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -567,7 +572,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Ending_Panel/End_Area"]
-shape = SubResource( 20 )
+shape = SubResource( 21 )
 
 [node name="End_Camera" type="Camera2D" parent="Ending_Panel"]
 position = Vector2( 2406, 221 )
@@ -575,7 +580,7 @@ position = Vector2( 2406, 221 )
 [node name="End_Dialogue" parent="Ending_Panel/End_Camera" instance=ExtResource( 8 )]
 margin_right = 1714.0
 margin_bottom = 572.0
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 23 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 text = "Dialogue"
 align = 1
@@ -591,7 +596,7 @@ margin_left = -1100.0
 margin_top = -1750.0
 margin_right = 1100.0
 margin_bottom = 1750.0
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
