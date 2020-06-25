@@ -16,6 +16,9 @@ const MAX_SPEED : int = 300
 const FRICTION : float = 0.95
 
 func enter(Guardian : KinematicBody2D) -> void:
+	scene_done = false
+	shaking_eye = false
+
 	Guardian.animation.travel("Idle_2")
 
 	eye = Guardian.body.get_node("Eye")

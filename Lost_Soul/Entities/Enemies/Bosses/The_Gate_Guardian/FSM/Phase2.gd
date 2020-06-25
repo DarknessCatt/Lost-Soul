@@ -33,6 +33,12 @@ var on_bounce : bool = false
 var atk_counter : int = 0
 
 func enter(Guardian : KinematicBody2D) -> void:
+	health = MAX_HEALTH
+	speed = Vector2(0,0)
+	on_bounce = false
+	atk_timer = 0
+	atk_counter = 0
+
 	animation = Guardian.animation
 	effects = Guardian.effects
 	horizontal_space = Guardian.horizontal_space

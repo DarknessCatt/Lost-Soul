@@ -33,6 +33,11 @@ const atk_base_cooldown : float = 2.5
 var atk_cooldown : float = 0.0
 
 func enter(Guardian : KinematicBody2D) -> void:
+	health = MAX_HEALTH
+	speed = Vector2(0,0)
+	side_damage = 0
+	atk_timer = 0
+
 	animation = Guardian.animation
 	effects = Guardian.effects
 	horizontal_space = Guardian.horizontal_space

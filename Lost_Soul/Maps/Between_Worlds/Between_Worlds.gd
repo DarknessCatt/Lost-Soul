@@ -79,6 +79,7 @@ enum {INTRO1, INTRO2, BEGIN}
 var state : int
 var first_check : bool = false
 var respawning : bool = false
+var on_boss : bool = false
 
 var respawn_pos : Vector2 = Vector2(0, 540)
 
@@ -102,6 +103,19 @@ func _on_Hero_dead():
 func _on_Tween_tween_all_completed():
 	if respawning:
 		respawn_monsters()
+		if on_boss:
+			on_boss = false
+			$Walls.set_cell(680, 6, -1)
+			$Walls.set_cell(680, 7, -1)
+			$Walls.set_cell(680, 8, -1)
+			$Walls.set_cell(680, 9, -1)
+			$Walls.set_cell(650, -10, -1)
+			$Walls.set_cell(651, -10, -1)
+			$Walls.set_cell(652, -10, -1)
+			$Walls.set_cell(653, -10, -1)
+			$Boss/Close_Arena.call_deferred("set", "monitoring", true)
+			$Boss/The_Gate_Guardian.respawn()
+
 		$Hero.position = respawn_pos
 		$Hero._refresh()
 		$Hero.on_cutscene = false
@@ -273,6 +287,7 @@ func _on_Trigger_Boss_entered(body):
 
 	$Boss/The_Gate_Guardian.intro(body)
 	$Boss/Trigger_Boss.call_deferred("set", "monitoring", false)
+	on_boss = true
 
 func _on_The_Gate_Guardian_intro_ended():
 	$Hero/Player_Camera.global_position = $Boss/Boss_Camera.global_position
@@ -299,6 +314,7 @@ func _on_The_Gate_Guardian_dead():
 	$Walls.set_cell(653, -10, -1)
 	dialogue.change_dialogue(dil_boss_defeated)
 	dialogue.begin()
+	on_boss = false
 
 func _on_End_entered(_body):
 	$Hero.on_cutscene = true

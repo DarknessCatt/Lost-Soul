@@ -10,6 +10,7 @@ var hero : KinematicBody2D
 onready var animation : AnimationNodeStateMachinePlayback = \
 		$Animation_Player.get("parameters/playback")
 onready var effects : AnimationPlayer = $Body_Effects
+var original_position : Vector2
 
 export(int) var horizontal_space = 0
 export(int) var downwards_space = 0
@@ -27,16 +28,22 @@ func _hit(damage : int, force : int, direction : Vector2) -> void:
 func _ready():
 	body = $Body
 	cur_state = $States/Idle
+	original_position = self.position
 	self.modulate.a = 0
-
-func _input(_event):
-	pass
 
 func intro(player : KinematicBody2D):
 	hero = player
 	cur_state = $States/Intro
 	$Animation_Player.active = true
 	cur_state.enter(self)
+
+func respawn() -> void:
+	self.position = original_position
+	self._change_state($States/Idle)
+	self.modulate.a = 0
+	hero = null
+	$Animation_Player.active = false
+	$Body_Anim.play("rest")
 
 # Called by "Atk" animations
 

@@ -9,6 +9,9 @@ var iris : Polygon2D
 const shake_dist : float = 5.0
 
 func enter(Guardian : KinematicBody2D) -> void:
+	intro_done = false
+	shaking_eye = false
+
 	Guardian.animation.start("rest")
 	eye = Guardian.body.get_node("Eye")
 	iris = Guardian.body.get_node("Eye/Iris")

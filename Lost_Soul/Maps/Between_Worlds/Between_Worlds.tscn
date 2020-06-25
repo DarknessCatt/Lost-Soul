@@ -97,8 +97,9 @@ bg_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 [node name="Between_Worlds" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BG_Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
+volume_db = -10.0
 autoplay = true
 
 [node name="Tween" type="Tween" parent="."]
@@ -508,7 +509,7 @@ __meta__ = {
 }
 
 [node name="Hero" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 540 )
+position = Vector2( 19964.7, -1922.25 )
 
 [node name="Player_Camera" parent="Hero" instance=ExtResource( 3 )]
 position = Vector2( 0, -100 )
