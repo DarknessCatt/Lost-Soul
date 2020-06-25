@@ -96,6 +96,12 @@ func _on_Hero_dead():
 	$Tween.remove_all()
 	$Tween.interpolate_property($Hero/Player_Camera/Blackout, "custom_styles/panel:bg_color:a",
 								0, 1, 2.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	if on_boss:
+		$BG_Music.playing = true
+		$Tween.interpolate_property($BG_Music, "volume_db",
+									-80, -10, 2, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
+		$Tween.interpolate_property($Boss_Music, "volume_db",
+									-10, -80, 2, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
 	$Tween.start()
 	$Hero._die()
 	respawning = true
@@ -103,6 +109,12 @@ func _on_Hero_dead():
 func _on_Tween_tween_all_completed():
 	if respawning:
 		respawn_monsters()
+		$Hero.position = respawn_pos
+		$Hero._refresh()
+		$Hero.on_cutscene = false
+		$Tween.interpolate_property($Hero/Player_Camera/Blackout, "custom_styles/panel:bg_color:a",
+									1, 0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$Tween.start()
 		if on_boss:
 			on_boss = false
 			$Walls.set_cell(680, 6, -1)
@@ -115,13 +127,8 @@ func _on_Tween_tween_all_completed():
 			$Walls.set_cell(653, -10, -1)
 			$Boss/Close_Arena.call_deferred("set", "monitoring", true)
 			$Boss/The_Gate_Guardian.respawn()
+			$Boss_Music.playing = false
 
-		$Hero.position = respawn_pos
-		$Hero._refresh()
-		$Hero.on_cutscene = false
-		$Tween.interpolate_property($Hero/Player_Camera/Blackout, "custom_styles/panel:bg_color:a",
-								1, 0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		$Tween.start()
 		respawning = false
 		return
 
@@ -180,6 +187,7 @@ func _ready():
 		1, 0.5,
 		5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
+	$BG_Music.playing = true
 	$Hero.on_cutscene = true
 
 func _on_Intro_entered(_body):
@@ -281,7 +289,12 @@ func _on_Trigger_Boss_entered(body):
 								3, Tween.TRANS_EXPO, Tween.EASE_OUT)
 	$Tween.interpolate_property($Boss/Titulo, "modulate:a",
 								0, 1, 4, Tween.TRANS_EXPO, Tween.EASE_IN)
+	$Tween.interpolate_property($BG_Music, "volume_db",
+								-10, -80, 4, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
+	$Tween.interpolate_property($Boss_Music, "volume_db",
+								-80, -10, 4, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
 	$Tween.start()
+	$Boss_Music.playing = true
 	$Boss/Boss_Camera.current = true
 	$Hero/Player_Camera.hide()
 
@@ -300,6 +313,7 @@ func _on_The_Gate_Guardian_intro_ended():
 								1, 0, 0.5, Tween.TRANS_EXPO, Tween.EASE_IN)
 	$Tween.start()
 
+	$BG_Music.playing = false
 	$Hero/Player_Camera.current = true
 	$Hero/Player_Camera.show()
 
@@ -315,6 +329,9 @@ func _on_The_Gate_Guardian_dead():
 	dialogue.change_dialogue(dil_boss_defeated)
 	dialogue.begin()
 	on_boss = false
+	$Tween.interpolate_property($Boss_Music, "volume_db",
+								-10, -80, 10, Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
+	$Tween.start()
 
 func _on_End_entered(_body):
 	$Hero.on_cutscene = true
