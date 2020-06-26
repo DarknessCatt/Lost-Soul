@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/125388__thegoose09__monster-screech.wav-4c7e2aab1047ebbd52b9b10b4873092d.sample"
+
+[deps]
+
+source_file="res://Assets/Sound_Effects/Monster_Screech/125388__thegoose09__monster-screech.wav"
+dest_files=[ "res://.import/125388__thegoose09__monster-screech.wav-4c7e2aab1047ebbd52b9b10b4873092d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
