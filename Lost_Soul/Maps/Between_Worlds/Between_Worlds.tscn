@@ -100,11 +100,11 @@ script = ExtResource( 4 )
 
 [node name="BG_Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
-volume_db = -10.0
+volume_db = -15.0
 
 [node name="Boss_Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
-volume_db = -10.0
+volume_db = -15.0
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -513,7 +513,7 @@ __meta__ = {
 }
 
 [node name="Hero" parent="." instance=ExtResource( 2 )]
-position = Vector2( 19964.7, -1922.25 )
+position = Vector2( 0, 540 )
 
 [node name="Player_Camera" parent="Hero" instance=ExtResource( 3 )]
 position = Vector2( 0, -100 )
