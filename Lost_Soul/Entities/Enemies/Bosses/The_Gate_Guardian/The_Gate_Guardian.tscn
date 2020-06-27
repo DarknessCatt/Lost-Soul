@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/The_Gate_Guardian.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/FSM/Intro.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Assets/Sound_Effects/Monster_Screech/125388__thegoose09__monster-screech.wav" type="AudioStream" id=11]
 [ext_resource path="res://Assets/Sound_Effects/Space_Magic/238996__qubodup__space-magic.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Assets/Sound_Effects/Spell_Shoot/500908__bertsz__spell-shoot.wav" type="AudioStream" id=13]
+[ext_resource path="res://Assets/Sound_Effects/Hitting_Wall/249814__spookymodem__hitting-wall.wav" type="AudioStream" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "hit"
@@ -118,6 +119,30 @@ tracks/5/keys = {
 "args": [  ],
 "method": "begin_bounce"
 } ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Screech:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Screech:volume_db")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -80.0, 10.0, 0.0, -80.0 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -455,6 +480,54 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ PoolVector2Array( -52, 36, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 36, 32, 48, -36, 48 ), PoolVector2Array( -52, 36, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 36, 32, 48, -36, 48 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Charge:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.65 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Charge:volume_db")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, -10.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Shoot:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 1.45, 1.5, 1.7, 1.9, 2.1, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, true, true, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Shoot:volume_db")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 1.1, 1.65, 2.8, 2.95, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -80.0, -10.0, -10.0, -20.0, -80.0 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -1088,7 +1161,7 @@ tracks/10/keys = {
 "times": PoolRealArray( 0, 0.9, 1.05, 2.3, 2.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -80.0, -80.0, 20.0, 0.0, -80.0 ]
+"values": [ -80.0, -80.0, 10.0, 0.0, -80.0 ]
 }
 tracks/11/type = "method"
 tracks/11/path = NodePath("Screech")
@@ -1414,7 +1487,7 @@ tracks/11/keys = {
 "times": PoolRealArray( 0, 3.95, 6.55, 7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 20.0, 0.0, -80.0 ]
+"values": [ 0.0, 5.0, 0.0, -80.0 ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -1848,6 +1921,11 @@ collision_mask = 16
 script = ExtResource( 1 )
 horizontal_space = 400
 downwards_space = 320
+
+[node name="Wall" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = 2.0
+pitch_scale = 0.8
 
 [node name="Shoot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )

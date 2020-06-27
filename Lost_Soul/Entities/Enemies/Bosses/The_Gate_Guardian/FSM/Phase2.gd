@@ -8,6 +8,7 @@ const MAX_HEALTH : int = 45
 var health : int = MAX_HEALTH
 var animation : AnimationNodeStateMachinePlayback
 var effects : AnimationPlayer
+var Guardian_Node : KinematicBody2D
 
 #Movement Speed
 const NORMAL : Vector2 = Vector2(0, -1)
@@ -38,6 +39,7 @@ func enter(Guardian : KinematicBody2D) -> void:
 	on_bounce = false
 	atk_timer = 0
 	atk_counter = 0
+	Guardian_Node = Guardian
 
 	animation = Guardian.animation
 	effects = Guardian.effects
@@ -125,4 +127,4 @@ func hit(damage : int, force : int, direction : Vector2) -> void:
 func bounce_end() -> void:
 	on_bounce = false
 	speed = Vector2(0,-1)*MAX_SPEED
-	point_to_seek = Vector2(0, 0)
+	point_to_seek = sign(Guardian_Node.position.x)*Vector2(horizontal_space, 0)

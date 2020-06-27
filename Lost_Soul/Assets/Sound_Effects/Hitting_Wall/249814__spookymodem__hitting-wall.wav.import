@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/249814__spookymodem__hitting-wall.wav-5c67e26ba5a0df0dab4bc6bf7efe6273.sample"
+
+[deps]
+
+source_file="res://Assets/Sound_Effects/Hitting_Wall/249814__spookymodem__hitting-wall.wav"
+dest_files=[ "res://.import/249814__spookymodem__hitting-wall.wav-5c67e26ba5a0df0dab4bc6bf7efe6273.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

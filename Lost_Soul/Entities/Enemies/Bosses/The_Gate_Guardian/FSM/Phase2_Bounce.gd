@@ -37,6 +37,7 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 		Guardian.body.rotation = speed.angle() - 1.57 #90 deg in rad
 
 		if Guardian.is_on_floor() or Guardian.is_on_ceiling():
+			Guardian.get_node("Wall").play(0.17)
 			speed.y *= -1
 
 			if Guardian.is_on_floor():
@@ -48,6 +49,7 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 					Guardian.body.rotation = 0
 
 		if Guardian.is_on_wall():
+			Guardian.get_node("Wall").play(0.17)
 			speed.x *= -0.5
 
 	elif state == INTRO:
