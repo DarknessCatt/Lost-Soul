@@ -210,7 +210,7 @@ polygon = PoolVector2Array( -16, -8, -8, -16, 8, -16, 24, 0, 8, 16, -8, 16, -16,
 [node name="Hitbox" parent="Body/Wisp" index="0" instance=ExtResource( 2 )]
 Body = NodePath("../..")
 Id = 2
-Damage = 2
+Damage = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Wisp/Hitbox" index="0"]
 shape = SubResource( 7 )
