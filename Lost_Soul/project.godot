@@ -51,7 +51,7 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/resizable=false
+window/stretch/mode="viewport"
 
 [input]
 
