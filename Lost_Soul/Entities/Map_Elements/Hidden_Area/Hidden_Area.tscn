@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Entities/Map_Elements/Hidden_Area/Hidden_Area.gd" type="Script" id=1]
+
+[node name="Hidden_Area" type="Area2D"]
+modulate = Color( 1, 1, 1, 0.588235 )
+monitorable = false
+collision_layer = 0
+script = ExtResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="body_entered" from="." to="." method="_on_Hidden_Area_body_entered"]

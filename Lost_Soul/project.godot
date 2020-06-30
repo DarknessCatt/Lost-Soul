@@ -8,9 +8,38 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Enemy_FSM",
+"class": "Base_Fly",
+"language": "GDScript",
+"path": "res://Entities/Enemies/Flying_Enemies/Base_Fly.gd"
+}, {
+"base": "Enemy_FSM",
+"class": "Base_Wanderer",
+"language": "GDScript",
+"path": "res://Entities/Enemies/Wandering_Enemies/Base_Wanderer.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Enemy_FSM",
+"language": "GDScript",
+"path": "res://Classes/Enemy_FSM.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "FSM",
+"language": "GDScript",
+"path": "res://Classes/FSM.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://Classes/State.gd"
+} ]
 _global_script_class_icons={
-
+"Base_Fly": "",
+"Base_Wanderer": "",
+"Enemy_FSM": "",
+"FSM": "",
+"State": ""
 }
 
 [application]
@@ -22,7 +51,7 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/resizable=false
+window/stretch/mode="viewport"
 
 [input]
 
@@ -36,6 +65,16 @@ hero_right={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
  ]
 }
+hero_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
+}
+hero_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
 hero_jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"unicode":0,"echo":false,"script":null)
@@ -44,11 +83,6 @@ hero_jump={
 hero_attack={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":67,"unicode":0,"echo":false,"script":null)
- ]
-}
-hero_up={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
  ]
 }
 hero_heart={

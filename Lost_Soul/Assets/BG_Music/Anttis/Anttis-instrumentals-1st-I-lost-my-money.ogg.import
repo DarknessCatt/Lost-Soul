@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Anttis-instrumentals-1st-I-lost-my-money.ogg-5bc858617c11667d75509203ed5349f4.oggstr"
+
+[deps]
+
+source_file="res://Assets/BG_Music/Anttis/Anttis-instrumentals-1st-I-lost-my-money.ogg"
+dest_files=[ "res://.import/Anttis-instrumentals-1st-I-lost-my-money.ogg-5bc858617c11667d75509203ed5349f4.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

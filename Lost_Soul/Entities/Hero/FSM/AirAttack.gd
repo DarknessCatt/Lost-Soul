@@ -1,83 +1,48 @@
-extends "State.gd"
-
-const NORMAL : Vector2 = Vector2(0, -1)
-
-var attacking : bool = false
-var can_cancel : bool = false
-var attack_buffered : bool = false
-
-onready var buffer : Node = $"../Buffer"
-onready var combo_info : Array = [["AirJab1", $Jab1], ["AirJab2", $Jab2],
-								["AirJab3", $Jab3], ["DownAir", $DownAir]]
+extends "AttackMove.gd"
 
 func enter(_Player : KinematicBody2D) -> void:
-	$attack_input.stop()
-	$cancel.stop()
+	.enter(_Player)
 
-	attack_buffered = false
-	can_cancel = false
+	var attack : String
+	var timer : Timer
 
-	_Player.speed.x = 0
-	_Player.speed.y = 0
+	if Input.is_action_pressed("hero_down"):
+		attack = "Air_Jab_Down"
+		timer = $DownTilt
 
-	self.attack(_Player)
+	elif Input.is_action_pressed("hero_up"):
+		attack = "Air_Jab_Up"
+		timer = $UpTilt
 
-func exit(_Player: KinematicBody2D) -> void:
-	_Player._clear_attack_polys()
-	_Player._disable_hitboxes()
+	else:
+		attack = "Air_Jab"
+		timer = $Jab
+
+	_Player._change_anim(attack)
+	timer.start()
 
 func update(_Player: KinematicBody2D, _delta : float) -> void:
+	if attack_finished:
+		if _Player.is_on_floor():
+			if buffer.attack_buffered and buffer.can_attack:
+				_Player._change_state($"../GroundAttack")
 
-	_Player.move_and_slide(_Player.speed, NORMAL)
+			else:
+				_Player._change_state($"../OnGround")
 
-	if _Player.is_on_floor():
-		_Player._change_state($"../OnGround")
-
-	if can_cancel and attack_buffered:
-			attack(_Player)
-
-	elif not attacking:
-		buffer._air_attack_end()
-		_Player._change_state($"../Falling")
-
-func attack(_Player : KinematicBody2D):
-	$cancel.stop()
-	$attack_input.stop()
-
-	attack_buffered = false
-	can_cancel = false
-
-	var num = buffer.air_attack_num
-
-#	if Input.is_action_pressed("hero_up"):
-#		num = 3
-
-	var attack = combo_info[num]
-
-	_Player._change_anim(attack[0])
-	attack[1].start()
-	attacking = true
-
-	if num+1 >= 3:
-		num = -1
-
-	buffer._register_air_attack(num+1)
-
-func input(_Player: KinematicBody2D, event : InputEvent) -> void:
-	if event.is_action_pressed("hero_attack"):
-		if can_cancel:
-			attack(_Player)
 		else:
-			attack_buffered = true
-			$attack_input.start()
+			if buffer.attack_buffered and buffer.can_attack:
+				_Player._change_state($"../AirAttack")
 
-func _on_Attack_timeout():
-	can_cancel = true
-	$cancel.start()
+			else:
+				_Player._change_state($"../Falling")
 
-func _on_cancel_timeout():
-	attacking = false
-	can_cancel = false
+	else:
+		.update(_Player, _delta)
 
-func _on_attack_input_timeout():
-	attack_buffered = false
+		if _Player.is_on_floor():
+			if buffer.attack_buffered and buffer.can_attack:
+				_Player._change_state($"../GroundAttack")
+
+			else:
+				_Player._change_state($"../OnGround")

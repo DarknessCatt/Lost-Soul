@@ -22,26 +22,22 @@ func _coyote_timer():
 func _on_Coyote_Timer_timeout():
 	can_coyote = false
 
-#Ground Combo Counter
-var attack_num : int = 0
+#Attack Buffer
+var attack_buffered = false
 
-func _register_attack(num : int):
-	attack_num = num
-	$Combo_Timer.stop()
+func _buffer_attack():
+	attack_buffered = true
+	$Attack_Buffer.start()
+
+func _on_Attack_Buffer_timeout():
+	attack_buffered = false
+
+#Attack Delay
+var can_attack : bool = true
 
 func _attack_end():
-	$Combo_Timer.start()
+	can_attack = false
+	$Attack_Timer.start()
 
-func _on_Combo_Timer_timeout():
-	attack_num = 0
-	air_attack_num = 0
-
-#Ground Combo Counter
-var air_attack_num : int = 0
-
-func _register_air_attack(num : int):
-	air_attack_num = num
-	$Combo_Timer.stop()
-
-func _air_attack_end():
-	$Combo_Timer.start()
+func _on_Attack_Timer_timeout():
+	can_attack = true
