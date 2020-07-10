@@ -38,11 +38,15 @@ func _hit(damage : int, _force : int, _direction : Vector2) -> void:
 				var kb : Vector2 = Vector2(0,0)
 				var num : int = 0
 
-				for area  in $Body/Hip/Hurtbox_Hip.get_overlapping_areas():
+				for area  in $Body/Hip/Torso/Hurtbox.get_overlapping_areas():
 					kb += area.global_position
 					num +=1
 
-				for area  in $Body/Hip/Torso/Hurtbox_Torso.get_overlapping_areas():
+				for area in $Body/Hip/Left_Leg/Hurtbox.get_overlapping_areas():
+					kb += area.global_position
+					num +=1
+
+				for area in $Body/Hip/Right_Leg/Hurtbox.get_overlapping_areas():
 					kb += area.global_position
 					num +=1
 
@@ -52,8 +56,9 @@ func _hit(damage : int, _force : int, _direction : Vector2) -> void:
 				self._change_state($States/Knockback)
 
 func set_invencible(value : bool):
-	$Body/Hip/Hurtbox_Hip.call_deferred("set", "monitoring", not value)
-	$Body/Hip/Torso/Hurtbox_Torso.call_deferred("set", "monitoring", not value)
+	$Body/Hip/Torso/Hurtbox.call_deferred("set", "monitoring", not value)
+	$Body/Hip/Left_Leg/Hurtbox.call_deferred("set", "monitoring", not value)
+	$Body/Hip/Right_Leg/Hurtbox.call_deferred("set", "monitoring", not value)
 	invencible = value
 	if value: $Misc_Animations.play("inv")
 

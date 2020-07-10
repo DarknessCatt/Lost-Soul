@@ -4460,9 +4460,10 @@ height = 81.2568
 radius = 36.0421
 
 [sub_resource type="CapsuleShape2D" id=29]
+height = 28.7097
 
 [sub_resource type="CapsuleShape2D" id=30]
-height = 16.4528
+radius = 6.0
 
 [sub_resource type="RectangleShape2D" id=31]
 extents = Vector2( 20, 45.1426 )
@@ -4738,7 +4739,6 @@ Direction = Vector2( 0, -1 )
 position = Vector2( 0, -25 )
 rotation = 1.5708
 shape = SubResource( 27 )
-disabled = true
 
 [node name="AirJab1" type="Node2D" parent="Body/Hitboxes"]
 visible = false
@@ -4808,29 +4808,19 @@ __meta__ = {
 "_edit_ik_": true
 }
 
-[node name="Hurtbox_Hip" parent="Body/Hip" instance=ExtResource( 9 )]
-visible = false
-position = Vector2( 1.90735e-06, 23.0254 )
-Id = 1
-Character = NodePath("../../..")
-hit_effect_dist = 15
-
-[node name="Lower" type="CollisionShape2D" parent="Body/Hip/Hurtbox_Hip"]
-shape = SubResource( 29 )
-
 [node name="Torso" type="Polygon2D" parent="Body/Hip"]
 color = Color( 0.9, 0.9, 0.9, 1 )
 offset = Vector2( 0, -16 )
 polygon = PoolVector2Array( -7.99883, 16.1367, 7.99883, 15.8633, 14, -8, 14, -12, 10, -16, -10, -16, -14, -12, -14, -8 )
 
-[node name="Hurtbox_Torso" parent="Body/Hip/Torso" instance=ExtResource( 9 )]
-position = Vector2( 1.90735e-06, -14.0862 )
+[node name="Hurtbox" parent="Body/Hip/Torso" instance=ExtResource( 9 )]
+position = Vector2( 1.90735e-06, -7.69628 )
 Id = 1
 Character = NodePath("../../../..")
 hit_effect_dist = 15
 
-[node name="Upper" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox_Torso"]
-shape = SubResource( 30 )
+[node name="Upper" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox"]
+shape = SubResource( 29 )
 
 [node name="Head" type="Polygon2D" parent="Body/Hip/Torso"]
 position = Vector2( 0, -32 )
@@ -4905,6 +4895,15 @@ __meta__ = {
 "_edit_ik_": true
 }
 
+[node name="Hurtbox" parent="Body/Hip/Left_Leg" instance=ExtResource( 9 )]
+position = Vector2( 0, 12 )
+Id = 1
+Character = NodePath("../../../..")
+hit_effect_dist = 15
+
+[node name="Upper" type="CollisionShape2D" parent="Body/Hip/Left_Leg/Hurtbox"]
+shape = SubResource( 30 )
+
 [node name="Left_Shin" type="Polygon2D" parent="Body/Hip/Left_Leg"]
 position = Vector2( -0.0590348, 20.0132 )
 rotation = 0.012625
@@ -4934,6 +4933,15 @@ remote_path = NodePath("../../Right_Leg")
 __meta__ = {
 "_edit_ik_": true
 }
+
+[node name="Hurtbox" parent="Body/Hip/Right_Leg" instance=ExtResource( 9 )]
+position = Vector2( 0, 12 )
+Id = 1
+Character = NodePath("../../../..")
+hit_effect_dist = 15
+
+[node name="Upper" type="CollisionShape2D" parent="Body/Hip/Right_Leg/Hurtbox"]
+shape = SubResource( 30 )
 
 [node name="Right_Shin" type="RemoteTransform2D" parent="Body/Hip/Right_Leg"]
 position = Vector2( 0, 20 )
