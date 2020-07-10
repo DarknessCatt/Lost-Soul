@@ -117,6 +117,8 @@ func _on_Tween_tween_all_completed():
 		$Tween.start()
 		if on_boss:
 			on_boss = false
+			$Boss/The_Gate_Guardian.respawn()
+			$Boss_Music.playing = false
 			$Walls.set_cell(680, 6, -1)
 			$Walls.set_cell(680, 7, -1)
 			$Walls.set_cell(680, 8, -1)
@@ -125,9 +127,8 @@ func _on_Tween_tween_all_completed():
 			$Walls.set_cell(651, -10, -1)
 			$Walls.set_cell(652, -10, -1)
 			$Walls.set_cell(653, -10, -1)
+			yield(get_tree().create_timer(0.1), "timeout")
 			$Boss/Close_Arena.call_deferred("set", "monitoring", true)
-			$Boss/The_Gate_Guardian.respawn()
-			$Boss_Music.playing = false
 
 		respawning = false
 		return
