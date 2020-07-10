@@ -45,15 +45,16 @@ __meta__ = {
 
 [node name="Test_Wanderer" parent="." instance=ExtResource( 5 )]
 position = Vector2( 667.856, 532.781 )
+max_health = 200
 
 [node name="Lost_Soul" parent="." instance=ExtResource( 6 )]
 position = Vector2( 354.149, 346.849 )
 
 [node name="Fly_Test" parent="." instance=ExtResource( 7 )]
-position = Vector2( 458.15, 257.476 )
+position = Vector2( 1277.88, 257.476 )
 
 [node name="Watcher" parent="." instance=ExtResource( 8 )]
-position = Vector2( 780.038, 218.038 )
+position = Vector2( 1478.26, 218.038 )
 
 [node name="Hidden_Area" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1319, 528 )
