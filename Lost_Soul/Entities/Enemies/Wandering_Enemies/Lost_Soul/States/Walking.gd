@@ -16,19 +16,19 @@ onready var path_checker : RayCast2D = $"../../Perception/Path_Checker"
 onready var eyes : Area2D = $"../../Perception/Eyes"
 
 #Functions
-func enter(_Player : KinematicBody2D) -> void:
+func enter(Lost_Soul : KinematicBody2D) -> void:
 
-	_Player.change_animation(state_anim)
-	_Player.speed.y = 10
+	Lost_Soul.change_animation(state_anim)
+	Lost_Soul.speed.y = 10
 
-	dir = sign(_Player.speed.x)
+	dir = sign(Lost_Soul.speed.x)
 	if dir == 0: dir = 1
 
 	match sign(dir):
 		-1.0:
-			_Player.body.scale.x = -1
+			Lost_Soul.body.scale.x = -1
 		1.0:
-			_Player.body.scale.x = 1
+			Lost_Soul.body.scale.x = 1
 
 	enemy_detected = false
 
@@ -37,12 +37,14 @@ func enter(_Player : KinematicBody2D) -> void:
 
 	eyes.monitoring = true
 
-func exit(_Player : KinematicBody2D) -> void:
+func exit(_Lost_Soul : KinematicBody2D) -> void:
 	path_checker.enabled = false
 	eyes.monitoring = false
 
-func update(_Player: KinematicBody2D, _delta : float) -> void:
-	var spdx : float = _Player.speed.x + dir*ACCEL*_delta
+func update(Lost_Soul: KinematicBody2D, delta : float) -> void:
+	var spdx : float = Lost_Soul.speed.x
+
+	if abs(spdx) < MAX_SPEED: spdx += dir*ACCEL*delta
 
 	if sign(spdx) != dir : spdx *= FRICTION
 
@@ -50,30 +52,30 @@ func update(_Player: KinematicBody2D, _delta : float) -> void:
 		if abs(spdx) - MAX_SPEED < ACCEL/10 : spdx = MAX_SPEED*dir
 		else : spdx *= FRICTION
 
-	elif abs(spdx) < 10: spdx = 0
+	elif abs(spdx) < ACCEL/100: spdx = 0
 
-	if sign(spdx) != sign(_Player.speed.x):
+	if sign(spdx) != sign(Lost_Soul.speed.x):
 		match sign(spdx):
 			-1.0:
-				_Player.body.scale.x = -1
+				Lost_Soul.body.scale.x = -1
 			1.0:
-				_Player.body.scale.x = 1
+				Lost_Soul.body.scale.x = 1
 
-	_Player.speed.x = spdx
+	Lost_Soul.speed.x = spdx
 
-	_Player.move_and_slide(_Player.speed, NORMAL)
+	Lost_Soul.move_and_slide(Lost_Soul.speed, NORMAL)
 
-	if not _Player.is_on_floor():
-		_Player._change_state($"../Falling")
+	if not Lost_Soul.is_on_floor():
+		Lost_Soul._change_state($"../Falling")
 
 	elif enemy_detected:
-		_Player._change_state($"../Attacking")
+		Lost_Soul._change_state($"../Attacking")
 
 	elif path_checker.get_collider() == null:
 		self.change_direction()
 
-	elif _Player.is_on_wall():
-		_Player.speed.x = 0
+	elif Lost_Soul.is_on_wall():
+		Lost_Soul.speed.x = 0
 		self.change_direction()
 
 func change_direction() -> void:

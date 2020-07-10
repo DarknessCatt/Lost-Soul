@@ -725,7 +725,7 @@ radius = 30.0
 [node name="Lost_Soul" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 soul_x = 18.0
-max_health = 20
+max_health = 15
 souls = 2
 
 [node name="Body_Animations" parent="." index="0"]
@@ -745,13 +745,15 @@ anims/hit = SubResource( 9 )
 [node name="Walking" parent="States" index="0"]
 script = ExtResource( 4 )
 path_checker_dist = 22
-ACCEL = 1000
+ACCEL = 200
 MAX_SPEED = 50
-FRICTION = 0.5
+FRICTION = 0.7
 
 [node name="Falling" parent="States" index="1"]
-FRICTION = 0.8
-GRAVITY = 4000
+ACCEL = 0
+FRICTION = 0.95
+GRAVITY = 2700
+MAX_GRAV = 1000
 
 [node name="Attacking" type="Node" parent="States" index="2"]
 script = ExtResource( 3 )

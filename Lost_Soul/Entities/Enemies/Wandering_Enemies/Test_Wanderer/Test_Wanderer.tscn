@@ -195,7 +195,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, -4.24618 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=5]
 resource_name = "rest"
 length = 0.01
 tracks/0/type = "value"
@@ -247,7 +247,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=6]
 length = 0.15
 step = 0.05
 tracks/0/type = "value"
@@ -263,11 +263,11 @@ tracks/0/keys = {
 "values": [ Color( 1, 0.33, 0.33, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0.568627, 0.568627, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=12]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 12.8843
 height = 29.5408
 
-[sub_resource type="CapsuleShape2D" id=13]
+[sub_resource type="CapsuleShape2D" id=8]
 radius = 14.0
 height = 38.0
 
@@ -277,7 +277,6 @@ extents = Vector2( 32, 8 )
 [node name="Test_Wanderer" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 soul_x = 32.0
-max_health = 15
 souls = 1
 
 [node name="Body_Animations" parent="." index="0"]
@@ -285,15 +284,15 @@ anims/Dead = SubResource( 1 )
 anims/Falling = SubResource( 2 )
 "anims/Falling Loop" = SubResource( 3 )
 anims/Walking = SubResource( 4 )
-anims/rest = SubResource( 10 )
+anims/rest = SubResource( 5 )
 next/Falling = "Falling Loop"
 
 [node name="Misc_Animations" type="AnimationPlayer" parent="." index="1"]
-anims/hit = SubResource( 11 )
+anims/hit = SubResource( 6 )
 
 [node name="Walking" parent="States" index="0"]
 path_checker_dist = 32
-ACCEL = 800
+ACCEL = 200
 FRICTION = 0.8
 
 [node name="Falling" parent="States" index="1"]
@@ -328,7 +327,7 @@ Direction = Vector2( 1, -1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Hitbox" index="0"]
 rotation = 1.5708
-shape = SubResource( 12 )
+shape = SubResource( 7 )
 
 [node name="Hurtbox" parent="." index="4" instance=ExtResource( 3 )]
 position = Vector2( 0, -6 )
@@ -338,7 +337,7 @@ hit_effect_dist = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="1"]
 rotation = 1.5708
-shape = SubResource( 13 )
+shape = SubResource( 8 )
 
 [node name="Collision" type="CollisionShape2D" parent="." index="5"]
 visible = false

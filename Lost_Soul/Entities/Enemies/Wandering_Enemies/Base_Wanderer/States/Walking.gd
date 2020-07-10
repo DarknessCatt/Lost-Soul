@@ -13,27 +13,27 @@ var dir : int = 1
 onready var path_checker : RayCast2D = $"../../Perception/Path_Checker"
 
 #Functions
-func enter(_Player : KinematicBody2D) -> void:
-	_Player.change_animation(state_anim)
-	_Player.speed.y = 10
+func enter(Wanderer : KinematicBody2D) -> void:
+	Wanderer.change_animation(state_anim)
+	Wanderer.speed.y = 10
 
-	dir = sign(_Player.speed.x)
+	dir = sign(Wanderer.speed.x)
 	if dir == 0: dir = 1
 
 	match sign(dir):
 		-1.0:
-			_Player.body.scale.x = -1
+			Wanderer.body.scale.x = -1
 		1.0:
-			_Player.body.scale.x = 1
+			Wanderer.body.scale.x = 1
 
 	path_checker.position.x = path_checker_dist*dir
 	path_checker.enabled = true
 
-func exit(_Player : KinematicBody2D) -> void:
+func exit(Wanderer : KinematicBody2D) -> void:
 	path_checker.enabled = false
 
-func update(_Player: KinematicBody2D, _delta : float) -> void:
-	var spdx : float = _Player.speed.x + dir*ACCEL*_delta
+func update(Wanderer: KinematicBody2D, delta : float) -> void:
+	var spdx : float = Wanderer.speed.x + dir*ACCEL*delta
 
 	if sign(spdx) != dir : spdx *= FRICTION
 
@@ -41,27 +41,27 @@ func update(_Player: KinematicBody2D, _delta : float) -> void:
 		if abs(spdx) - MAX_SPEED < ACCEL/10 : spdx = MAX_SPEED*dir
 		else : spdx *= FRICTION
 
-	elif abs(spdx) < 10: spdx = 0
+	elif abs(spdx) < ACCEL/100: spdx = 0
 
-	if sign(spdx) != sign(_Player.speed.x):
+	if sign(spdx) != sign(Wanderer.speed.x):
 		match sign(spdx):
 			-1.0:
-				_Player.body.scale.x = -1
+				Wanderer.body.scale.x = -1
 			1.0:
-				_Player.body.scale.x = 1
+				Wanderer.body.scale.x = 1
 
-	_Player.speed.x = spdx
+	Wanderer.speed.x = spdx
 
-	_Player.move_and_slide(_Player.speed, NORMAL)
+	Wanderer.move_and_slide(Wanderer.speed, NORMAL)
 
-	if not _Player.is_on_floor():
-		_Player._change_state($"../Falling")
+	if not Wanderer.is_on_floor():
+		Wanderer._change_state($"../Falling")
 
 	elif path_checker.get_collider() == null:
 		self.change_direction()
 
-	elif _Player.is_on_wall():
-		_Player.speed.x = 0
+	elif Wanderer.is_on_wall():
+		Wanderer.speed.x = 0
 		self.change_direction()
 
 func change_direction() -> void:
