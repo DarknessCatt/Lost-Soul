@@ -16,7 +16,7 @@ var side_damage : int = 0
 #Movement Speed
 const NORMAL : Vector2 = Vector2(0, -1)
 var speed : Vector2 = Vector2(0,0)
-const ACCEL : int = 500
+const ACCEL : int = 200
 const MAX_SPEED : int = 500
 const FRICTION : float = 0.95
 
@@ -29,7 +29,7 @@ const seek_cooldown : float = 1.0
 #Attack Timer
 var atk_timer : float = 0.0
 const atk_variance : float = 0.5
-const atk_base_cooldown : float = 2.5
+const atk_base_cooldown : float = 3.0
 var atk_cooldown : float = 0.0
 
 func enter(Guardian : KinematicBody2D) -> void:

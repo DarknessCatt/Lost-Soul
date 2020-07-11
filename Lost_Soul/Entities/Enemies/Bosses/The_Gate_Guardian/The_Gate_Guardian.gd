@@ -44,6 +44,10 @@ func respawn() -> void:
 	hero = null
 	$Animation_Player.active = false
 	$Body_Anim.play("rest")
+	$Wall.stop()
+	$Shoot.stop()
+	$Charge.stop()
+	$Screech.stop()
 
 # Called by "Atk" animations
 
@@ -61,14 +65,14 @@ func spread_shot() -> void:
 
 	for i in 5:
 		var bullet = BULLET_RES.instance()
-		bullet.SPEED = 550
+		bullet.SPEED = 350
 		bullet.position = self.position + self.body.get_node("Eye/Iris").position.rotated(self.body.rotation)
 		bullet.rotation = self.body.rotation + inicial_rad + i*increment
 		self.get_parent().add_child(bullet)
 
 func rain_shot() -> void:
-	var inicial_rad : float = -0.17
-	var increment : float = 0.17
+	var inicial_rad : float = -0.12
+	var increment : float = 0.12
 
 	for i in 3:
 		var bullet = BULLET_RES.instance()

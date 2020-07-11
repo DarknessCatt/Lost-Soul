@@ -13,8 +13,8 @@ var Guardian_Node : KinematicBody2D
 #Movement Speed
 const NORMAL : Vector2 = Vector2(0, -1)
 var speed : Vector2 = Vector2(0,0)
-const ACCEL : int = 400
-const MAX_SPEED : int = 600
+const ACCEL : int = 300
+const MAX_SPEED : int = 500
 const FRICTION : float = 0.99
 
 #Movement Direction
@@ -25,8 +25,8 @@ const seek_cooldown : float = 0.5
 
 #Attack Timer
 var atk_timer : float = 0.0
-const atk_variance : float = 1.0
-const atk_base_cooldown : float = 4.0
+const atk_variance : float = 0.0
+const atk_base_cooldown : float = 5.0
 var atk_cooldown : float = 0.0
 
 #"FSM"

@@ -492,6 +492,7 @@ collision_layer = 0
 shape = SubResource( 15 )
 
 [node name="The_Gate_Guardian" parent="Boss" instance=ExtResource( 15 )]
+horizontal_space = 300
 
 [node name="Boss_Camera" type="Camera2D" parent="Boss"]
 position = Vector2( 0, 104 )

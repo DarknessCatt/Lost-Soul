@@ -43,7 +43,7 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 			if Guardian.is_on_floor():
 				floor_bounce += 1
 
-				if floor_bounce >= 10:
+				if floor_bounce >= 8:
 					Guardian.animation.travel("Atk_Bounce_Outro")
 					state = OUTRO
 					Guardian.body.rotation = 0
