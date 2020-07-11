@@ -32,7 +32,7 @@ func spawn_souls() -> void:
 	randomize()
 	for i in souls:
 		var new_soul = SOUL_RES.instance()
-		var pos = Vector2(0, -65)
+		var pos = Vector2(0, -30)
 		pos.x += rand_range(-soul_x, soul_x)
 		pos.y += rand_range(-20, 20)
 		new_soul.position = self.position + pos

@@ -11,6 +11,7 @@ func _hit(_damage : int, force : int, direction : Vector2):
 
 	else:
 		self._change_state($States/Dead)
+		self.spawn_souls()
 
 func respawn() -> void:
 	$Body/Body.color = Color("f5f89393")

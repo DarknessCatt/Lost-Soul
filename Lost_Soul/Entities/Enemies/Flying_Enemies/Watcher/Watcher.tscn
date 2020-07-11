@@ -197,27 +197,13 @@ tracks/9/keys = {
 "update": 0,
 "values": [ 0.0, 360.0 ]
 }
-tracks/10/type = "method"
-tracks/10/path = NodePath(".")
+tracks/10/type = "value"
+tracks/10/path = NodePath("Body/Eye/Hitbox:monitorable")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 1.06 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "spawn_souls"
-} ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("Body/Eye/Hitbox:monitorable")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
 "times": PoolRealArray( 0, 0.01, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
@@ -483,7 +469,7 @@ polygon = PoolVector2Array( -32, -16, -16, -32, 16, -32, 32, -16, 32, 16, 16, 32
 
 [node name="Iris" type="Polygon2D" parent="Body/Eye" index="0"]
 position = Vector2( 0.195031, 0.0315504 )
-color = Color( 0.23, 0.0207, 0.0207, 1 )
+color = Color( 0.231373, 0.0196078, 0.0196078, 1 )
 polygon = PoolVector2Array( 0, -8, 8, 0, 0, 8, -8, 0 )
 
 [node name="Top_Lid" type="Polygon2D" parent="Body/Eye" index="1"]

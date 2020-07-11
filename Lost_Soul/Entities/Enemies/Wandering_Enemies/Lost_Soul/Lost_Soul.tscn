@@ -120,39 +120,25 @@ tracks/8/keys = {
 "update": 1,
 "values": [ true, false, false ]
 }
-tracks/9/type = "method"
-tracks/9/path = NodePath(".")
+tracks/9/type = "value"
+tracks/9/path = NodePath("Collision:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0.28 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "spawn_souls"
-} ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("Collision:scale")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
 "times": PoolRealArray( 0, 0.19, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 0.5 ) ]
 }
-tracks/11/type = "value"
-tracks/11/path = NodePath("Collision:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
+tracks/10/type = "value"
+tracks/10/path = NodePath("Collision:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
 "times": PoolRealArray( 0, 0.19, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
@@ -729,6 +715,7 @@ max_health = 15
 souls = 2
 
 [node name="Body_Animations" parent="." index="0"]
+autoplay = "Rest"
 anims/Dead = SubResource( 1 )
 anims/Falling = SubResource( 2 )
 anims/Knockback = SubResource( 3 )

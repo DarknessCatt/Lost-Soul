@@ -13,6 +13,7 @@ func _hit(_damage : int, force : int, direction : Vector2):
 
 	if health <= 0:
 		self._change_state($States/Dead)
+		self.spawn_souls()
 
 func respawn() -> void:
 	$Body/Torso/Head.rotation = 0

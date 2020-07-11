@@ -67,20 +67,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [ true, false ]
 }
-tracks/5/type = "method"
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0.9 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "spawn_souls"
-} ]
-}
 
 [sub_resource type="Animation" id=2]
 length = 0.5
