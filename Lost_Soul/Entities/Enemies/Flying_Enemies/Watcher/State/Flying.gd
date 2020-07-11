@@ -34,8 +34,8 @@ func update(_Player: KinematicBody2D, _delta : float) -> void:
 		if spd.length() - MAX_SPEED < ACCEL/10 : spd = MAX_SPEED*spd.normalized()
 		else : spd *= FRICTION
 	else:
-		if abs(spd.x) < 6: spd.x = 0
-		if abs(spd.y) < 6: spd.y = 0
+		if abs(spd.x) < ACCEL/100: spd.x = 0
+		if abs(spd.y) < ACCEL/100: spd.y = 0
 
 	_Player.speed = spd
 
@@ -46,7 +46,6 @@ func update(_Player: KinematicBody2D, _delta : float) -> void:
 
 	if _Player.is_on_wall():
 		_Player.speed.x *= -1
-
 
 	if atk:
 		var bullet = BULLET_RES.instance()

@@ -2,7 +2,7 @@ extends FSM
 
 #Resources
 const SOUL_RES : Resource = preload("res://Entities/Pickups/Souls/Souls.tscn")
-const BULLET_RES : Resource = preload("res://Entities/Enemies/Flying_Enemies/Watcher/Components/Watcher_Shoot.tscn")
+const BULLET_RES : Resource = preload("res://Entities/Enemies/Bosses/The_Gate_Guardian/Components/Boss_Shoot.tscn")
 
 #Information
 var body : Node2D
