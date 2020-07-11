@@ -4427,7 +4427,7 @@ tracks/15/keys = {
 
 [sub_resource type="Animation" id=19]
 resource_name = "inv"
-length = 1.9
+length = 1.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -4435,10 +4435,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="CircleShape2D" id=20]
@@ -4468,30 +4468,30 @@ radius = 51.7705
 radius = 34.671
 height = 81.2568
 
-[sub_resource type="CapsuleShape2D" id=35]
+[sub_resource type="CapsuleShape2D" id=28]
 radius = 38.8882
 height = 39.1276
 
-[sub_resource type="CircleShape2D" id=28]
+[sub_resource type="CircleShape2D" id=29]
 radius = 36.0421
 
-[sub_resource type="CapsuleShape2D" id=29]
+[sub_resource type="CapsuleShape2D" id=30]
 height = 28.7097
 
-[sub_resource type="CapsuleShape2D" id=30]
+[sub_resource type="CapsuleShape2D" id=31]
 radius = 6.0
 
-[sub_resource type="RectangleShape2D" id=31]
+[sub_resource type="RectangleShape2D" id=32]
 extents = Vector2( 20, 45.1426 )
 
-[sub_resource type="Gradient" id=32]
+[sub_resource type="Gradient" id=33]
 offsets = PoolRealArray( 0, 0.219251, 0.385027, 0.73262, 0.941176 )
 colors = PoolColorArray( 1, 1, 1, 0.478431, 1, 0.61, 0.61, 1, 1, 0.57, 0.57, 1, 1, 0, 0, 1, 1, 0, 0, 0.0117647 )
 
-[sub_resource type="GradientTexture" id=33]
-gradient = SubResource( 32 )
+[sub_resource type="GradientTexture" id=34]
+gradient = SubResource( 33 )
 
-[sub_resource type="ParticlesMaterial" id=34]
+[sub_resource type="ParticlesMaterial" id=35]
 emission_shape = 1
 emission_sphere_radius = 100.0
 flag_disable_z = true
@@ -4503,7 +4503,7 @@ orbit_velocity_random = 0.0
 radial_accel = -300.0
 scale = 6.0
 scale_random = 0.3
-color_ramp = SubResource( 33 )
+color_ramp = SubResource( 34 )
 
 [node name="Hero" type="KinematicBody2D"]
 collision_mask = 16
@@ -4589,7 +4589,7 @@ script = ExtResource( 10 )
 
 [node name="Inv_Timer" type="Timer" parent="States/Knockback"]
 process_mode = 0
-wait_time = 2.0
+wait_time = 1.2
 one_shot = true
 
 [node name="Buffer" type="Node" parent="States"]
@@ -4749,7 +4749,7 @@ disabled = true
 
 [node name="Air_UpTilt_Hitbox_2" type="CollisionShape2D" parent="Body/Hitboxes/Air_Uptilt/Air_UpTilt_Hitbox"]
 position = Vector2( 34.4411, 16.2164 )
-shape = SubResource( 35 )
+shape = SubResource( 28 )
 disabled = true
 
 [node name="AirJab1" type="Node2D" parent="Body/Hitboxes"]
@@ -4764,7 +4764,7 @@ Force = 200
 Direction = Vector2( 0, -1 )
 
 [node name="AirJab1_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/AirJab1/AirJab1_Hitbox"]
-shape = SubResource( 28 )
+shape = SubResource( 29 )
 disabled = true
 
 [node name="Right_Arm" type="Polygon2D" parent="Body"]
@@ -4832,7 +4832,7 @@ Character = NodePath("../../../..")
 hit_effect_dist = 15
 
 [node name="Upper" type="CollisionShape2D" parent="Body/Hip/Torso/Hurtbox"]
-shape = SubResource( 29 )
+shape = SubResource( 30 )
 
 [node name="Head" type="Polygon2D" parent="Body/Hip/Torso"]
 position = Vector2( 0, -32 )
@@ -4914,7 +4914,7 @@ Character = NodePath("../../../..")
 hit_effect_dist = 15
 
 [node name="Upper" type="CollisionShape2D" parent="Body/Hip/Left_Leg/Hurtbox"]
-shape = SubResource( 30 )
+shape = SubResource( 31 )
 
 [node name="Left_Shin" type="Polygon2D" parent="Body/Hip/Left_Leg"]
 position = Vector2( -0.0590348, 20.0132 )
@@ -4953,7 +4953,7 @@ Character = NodePath("../../../..")
 hit_effect_dist = 15
 
 [node name="Upper" type="CollisionShape2D" parent="Body/Hip/Right_Leg/Hurtbox"]
-shape = SubResource( 30 )
+shape = SubResource( 31 )
 
 [node name="Right_Shin" type="RemoteTransform2D" parent="Body/Hip/Right_Leg"]
 position = Vector2( 0, 20 )
@@ -4981,7 +4981,7 @@ color = Color( 0.976471, 0.376471, 0.376471, 1 )
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 8 )
-shape = SubResource( 31 )
+shape = SubResource( 32 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -4992,7 +4992,7 @@ emitting = false
 amount = 40
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 34 )
+process_material = SubResource( 35 )
 [connection signal="timeout" from="States/GroundAttack/Jab" to="States/GroundAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/GroundAttack/UpTilt" to="States/GroundAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/GroundAttack/DownTilt" to="States/GroundAttack" method="_on_Attack_timeout"]
