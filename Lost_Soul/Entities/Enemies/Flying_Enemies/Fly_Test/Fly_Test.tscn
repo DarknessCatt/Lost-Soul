@@ -179,7 +179,7 @@ tracks/0/keys = {
 radius = 14.0
 
 [sub_resource type="CircleShape2D" id=8]
-radius = 19.1029
+radius = 24.0966
 
 [sub_resource type="CircleShape2D" id=9]
 radius = 16.0
@@ -190,7 +190,6 @@ radius = 200.0
 [node name="Fly_Test" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
 soul_x = 18.0
-max_health = 7
 souls = 1
 
 [node name="Body_Animations" parent="." index="0"]
@@ -202,6 +201,9 @@ anims/Rest = SubResource( 4 )
 [node name="Misc_Animations" type="AnimationPlayer" parent="." index="1"]
 anims/hit = SubResource( 5 )
 anims/rest = SubResource( 6 )
+
+[node name="Flying" parent="States" index="1"]
+ACCEL = 200
 
 [node name="Wisp" type="Polygon2D" parent="Body" index="0"]
 color = Color( 0.69, 0.69, 0.69, 1 )
@@ -216,12 +218,12 @@ Damage = 5
 shape = SubResource( 7 )
 
 [node name="Hurtbox" parent="Body/Wisp" index="1" instance=ExtResource( 3 )]
+visible = false
 rotation = -1.58654
 Id = 2
 Character = NodePath("../../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Wisp/Hurtbox" index="1"]
-visible = false
 shape = SubResource( 8 )
 
 [node name="Collision" type="CollisionShape2D" parent="." index="4"]
