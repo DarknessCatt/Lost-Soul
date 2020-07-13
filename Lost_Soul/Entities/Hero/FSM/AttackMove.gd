@@ -18,9 +18,9 @@ enum {LEFT = -1, NONE, RIGHT}
 var direction : int = NONE
 
 func enter(_Player : KinematicBody2D) -> void:
-	if Input.is_action_pressed("hero_left"): 	  direction = LEFT
+	if Input.is_action_pressed("hero_left"): 	direction = LEFT
 	elif Input.is_action_pressed("hero_right"): direction = RIGHT
-	else: 									  direction = NONE
+	else: 										direction = NONE
 
 	attack_finished = false
 
@@ -85,5 +85,4 @@ func input(_Player: KinematicBody2D, event : InputEvent) -> void:
 						direction = NONE
 
 func _on_Attack_timeout():
-	buffer._attack_end()
 	attack_finished = true

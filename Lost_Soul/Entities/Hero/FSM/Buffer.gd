@@ -31,13 +31,3 @@ func _buffer_attack():
 
 func _on_Attack_Buffer_timeout():
 	attack_buffered = false
-
-#Attack Delay
-var can_attack : bool = true
-
-func _attack_end():
-	can_attack = false
-	$Attack_Timer.start()
-
-func _on_Attack_Timer_timeout():
-	can_attack = true

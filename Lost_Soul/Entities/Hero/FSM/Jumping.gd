@@ -30,7 +30,7 @@ func update(_Player: KinematicBody2D, delta : float) -> void:
 		_Player.speed.y = 0
 		_Player._change_state($"../Falling")
 
-	elif buffer.attack_buffered and buffer.can_attack:
+	elif buffer.attack_buffered:
 		_Player._change_state($"../AirAttack")
 
 func input(_Player: KinematicBody2D, event : InputEvent) -> void:
@@ -38,11 +38,7 @@ func input(_Player: KinematicBody2D, event : InputEvent) -> void:
 		_Player._change_state($"../Falling")
 
 	elif event.is_action_pressed("hero_attack"):
-		if buffer.can_attack:
-			_Player._change_state($"../AirAttack")
-
-		else:
-			buffer._buffer_attack()
+		_Player._change_state($"../AirAttack")
 
 	else:
 		.input(_Player, event)

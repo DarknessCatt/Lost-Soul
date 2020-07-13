@@ -4610,11 +4610,6 @@ process_mode = 0
 wait_time = 0.05
 one_shot = true
 
-[node name="Attack_Timer" type="Timer" parent="States/Buffer"]
-process_mode = 0
-wait_time = 0.05
-one_shot = true
-
 [node name="Body" type="Node2D" parent="."]
 
 [node name="Hitboxes" type="Node2D" parent="Body"]
@@ -5003,4 +4998,3 @@ process_material = SubResource( 35 )
 [connection signal="timeout" from="States/Buffer/Jump_Buffer" to="States/Buffer" method="_on_Jump_Buffer_timeout"]
 [connection signal="timeout" from="States/Buffer/Coyote_Timer" to="States/Buffer" method="_on_Coyote_Timer_timeout"]
 [connection signal="timeout" from="States/Buffer/Attack_Buffer" to="States/Buffer" method="_on_Attack_Buffer_timeout"]
-[connection signal="timeout" from="States/Buffer/Attack_Timer" to="States/Buffer" method="_on_Attack_Timer_timeout"]

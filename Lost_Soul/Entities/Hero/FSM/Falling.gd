@@ -40,11 +40,7 @@ func input(_Player: KinematicBody2D, event : InputEvent) -> void:
 			buffer._buffer_jump()
 
 	elif event.is_action_pressed("hero_attack"):
-		if buffer.can_attack:
 			_Player._change_state($"../AirAttack")
-
-		else:
-			buffer._buffer_attack()
 
 	else:
 		.input(_Player, event)
