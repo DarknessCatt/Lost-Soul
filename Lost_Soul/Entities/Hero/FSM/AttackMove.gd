@@ -1,4 +1,4 @@
-extends "State.gd"
+extends State
 
 const NORMAL : Vector2 = Vector2(0, -1)
 
