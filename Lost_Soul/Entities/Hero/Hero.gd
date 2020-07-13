@@ -97,10 +97,14 @@ func _powerup_end():
 var speed : Vector2 = Vector2(0,0)
 
 #FSM
-onready var cur_state : Node  = $States/Falling
+var cur_state : Node
 export(bool) var on_cutscene : bool = false
 
 ##Functions
+func _ready():
+	cur_state = $States/Playing
+	cur_state.enter(self)
+
 func _clear_attack_polys() -> void:
 	$Body/Hip/Torso/Left_Arm/Left_Hand/Left_Weapon.polygon = PoolVector2Array()
 	$Body/Hip/Torso/Right_Arm/Right_Hand/Right_Weapon.polygon = PoolVector2Array()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Hero/FSM/Falling.gd" type="Script" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Entities/Hero/FSM/AirAttack.gd" type="Script" id=8]
 [ext_resource path="res://Entities/Combat/Hurtbox/Hurtbox.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/Hero/FSM/Knockback.gd" type="Script" id=10]
+[ext_resource path="res://Entities/Hero/FSM/Playing.gd" type="Script" id=11]
+[ext_resource path="res://Entities/Hero/FSM/Idle.gd" type="Script" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "AirJab1"
@@ -4539,8 +4541,38 @@ anims/inv = SubResource( 19 )
 
 [node name="States" type="Node" parent="."]
 
-[node name="OnGround" type="Node" parent="States"]
+[node name="Playing" type="Node" parent="States"]
+script = ExtResource( 11 )
+
+[node name="Buffer" type="Node" parent="States/Playing"]
+script = ExtResource( 5 )
+
+[node name="Jump_Buffer" type="Timer" parent="States/Playing/Buffer"]
+process_mode = 0
+wait_time = 0.2
+one_shot = true
+
+[node name="Coyote_Timer" type="Timer" parent="States/Playing/Buffer"]
+process_mode = 0
+wait_time = 0.1
+one_shot = true
+
+[node name="Attack_Buffer" type="Timer" parent="States/Playing/Buffer"]
+process_mode = 0
+wait_time = 0.05
+one_shot = true
+
+[node name="Idle" type="Node" parent="States/Playing"]
+script = ExtResource( 12 )
+
+[node name="OnGround" type="Node" parent="States/Playing"]
 script = ExtResource( 3 )
+
+[node name="Jumping" type="Node" parent="States/Playing"]
+script = ExtResource( 4 )
+
+[node name="Falling" type="Node" parent="States/Playing"]
+script = ExtResource( 2 )
 
 [node name="GroundAttack" type="Node" parent="States"]
 script = ExtResource( 6 )
@@ -4559,12 +4591,6 @@ one_shot = true
 process_mode = 0
 wait_time = 0.39
 one_shot = true
-
-[node name="Falling" type="Node" parent="States"]
-script = ExtResource( 2 )
-
-[node name="Jumping" type="Node" parent="States"]
-script = ExtResource( 4 )
 
 [node name="AirAttack" type="Node" parent="States"]
 script = ExtResource( 8 )
@@ -4590,24 +4616,6 @@ script = ExtResource( 10 )
 [node name="Inv_Timer" type="Timer" parent="States/Knockback"]
 process_mode = 0
 wait_time = 1.2
-one_shot = true
-
-[node name="Buffer" type="Node" parent="States"]
-script = ExtResource( 5 )
-
-[node name="Jump_Buffer" type="Timer" parent="States/Buffer"]
-process_mode = 0
-wait_time = 0.2
-one_shot = true
-
-[node name="Coyote_Timer" type="Timer" parent="States/Buffer"]
-process_mode = 0
-wait_time = 0.1
-one_shot = true
-
-[node name="Attack_Buffer" type="Timer" parent="States/Buffer"]
-process_mode = 0
-wait_time = 0.05
 one_shot = true
 
 [node name="Body" type="Node2D" parent="."]
@@ -4988,6 +4996,9 @@ amount = 40
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource( 35 )
+[connection signal="timeout" from="States/Playing/Buffer/Jump_Buffer" to="States/Playing/Buffer" method="_on_Jump_Buffer_timeout"]
+[connection signal="timeout" from="States/Playing/Buffer/Coyote_Timer" to="States/Playing/Buffer" method="_on_Coyote_Timer_timeout"]
+[connection signal="timeout" from="States/Playing/Buffer/Attack_Buffer" to="States/Playing/Buffer" method="_on_Attack_Buffer_timeout"]
 [connection signal="timeout" from="States/GroundAttack/Jab" to="States/GroundAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/GroundAttack/UpTilt" to="States/GroundAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/GroundAttack/DownTilt" to="States/GroundAttack" method="_on_Attack_timeout"]
@@ -4995,6 +5006,3 @@ process_material = SubResource( 35 )
 [connection signal="timeout" from="States/AirAttack/UpTilt" to="States/AirAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/AirAttack/DownTilt" to="States/AirAttack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/Knockback/Inv_Timer" to="." method="_on_Invencibility_timeout"]
-[connection signal="timeout" from="States/Buffer/Jump_Buffer" to="States/Buffer" method="_on_Jump_Buffer_timeout"]
-[connection signal="timeout" from="States/Buffer/Coyote_Timer" to="States/Buffer" method="_on_Coyote_Timer_timeout"]
-[connection signal="timeout" from="States/Buffer/Attack_Buffer" to="States/Buffer" method="_on_Attack_Buffer_timeout"]

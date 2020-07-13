@@ -16,11 +16,12 @@ func enter(Player : KinematicBody2D) -> void:
 
 func update(Player: KinematicBody2D, delta : float) -> void:
 	if knockback_over:
-		if Player.is_on_floor():
-			Player._change_state($"../OnGround")
+		Player._change_state($"../Playing")
+		#if Player.is_on_floor():
+		#	Player._change_state($"../OnGround")
 
-		else:
-			Player._change_state($"../Falling")
+		#else:
+		#	Player._change_state($"../Falling")
 
 	else:
 		var spd : Vector2 = Player.speed

@@ -9,7 +9,7 @@ const FRICTION : float = 0.75
 const GRAV : int = 3500
 const MAX_GRAV : int = 1500
 
-onready var buffer : Node = $"../Buffer"
+onready var buffer : Node = null #$"../Buffer"
 
 var attack_finished : bool = false
 
