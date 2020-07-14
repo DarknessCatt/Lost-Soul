@@ -22,6 +22,9 @@ func enter(Machine : Node, Player : KinematicBody2D) -> void:
 				cur_state = Fall
 				Player._change_anim("Falling")
 
+	if Player.speed.x != 0:
+		Player.body.scale.x = sign(Player.speed.x)
+
 func exit(Machine : Node, Player : KinematicBody2D) -> void:
 	pass
 
@@ -35,7 +38,8 @@ func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
 		Player._change_anim("Rest")
 
 func input(Machine : Node, Player: KinematicBody2D, event : InputEvent) -> void:
-	pass
+	if event.is_action_pressed("hero_attack"):
+		Machine.change_action_state($"../Attack")
 
 func move_state_changed(Machine : Node, Player: KinematicBody2D) -> void:
 	match(Machine.move_state.name):

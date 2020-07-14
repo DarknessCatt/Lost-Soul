@@ -135,3 +135,7 @@ func _change_state(new_state : Node):
 
 func _change_anim(new_anim : String):
 	$Body_Animations.play(new_anim)
+
+func _reset_anim(new_anim : String):
+	$Body_Animations.stop()
+	$Body_Animations.play(new_anim)

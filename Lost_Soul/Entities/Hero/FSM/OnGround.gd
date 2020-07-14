@@ -10,9 +10,6 @@ func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
 
 	.update(Machine, Player, delta)
 
-	#if buffer.attack_buffered:
-	#	Player._change_state($"../GroundAttack")
-
 	if not Player.is_on_floor():
 		buffer._coyote_timer()
 		Machine.change_move_state($"../Falling")

@@ -20,6 +20,11 @@ func change_move_state(new_state : ConcurrentState):
 	move_state.enter(self, Player_Node)
 	action_state.move_state_changed(self, Player_Node)
 
+func change_action_state(new_state : ConcurrentState):
+	action_state.exit(self, Player_Node)
+	action_state = new_state
+	action_state.enter(self, Player_Node)
+
 func exit(Player : KinematicBody2D) -> void:
 	pass
 

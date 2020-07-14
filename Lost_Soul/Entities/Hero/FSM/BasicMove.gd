@@ -31,7 +31,7 @@ func enter(_Machine : Node, Player : KinematicBody2D) -> void:
 		direction = NONE
 		#Player._change_anim(REST_ANIMATION)
 
-func update(_Machine : Node, Player: KinematicBody2D, delta : float) -> void:
+func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
 	var spdx : float = Player.speed.x + direction*ACCEL*delta
 
 	if sign(spdx) != direction : spdx *= FRICTION
@@ -39,7 +39,8 @@ func update(_Machine : Node, Player: KinematicBody2D, delta : float) -> void:
 	if abs(spdx) > MAX_SPEED: spdx = MAX_SPEED*direction
 	elif abs(spdx) < 10: spdx = 0
 
-	if sign(spdx) != sign(Player.speed.x):
+	if Machine.action_state.name != "Attack" and \
+		sign(spdx) != sign(Player.speed.x):
 		match sign(spdx):
 			-1.0:
 				Player.body.scale.x = -1

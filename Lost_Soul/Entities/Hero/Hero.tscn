@@ -1,13 +1,12 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Hero/FSM/Falling.gd" type="Script" id=2]
 [ext_resource path="res://Entities/Hero/FSM/OnGround.gd" type="Script" id=3]
 [ext_resource path="res://Entities/Hero/FSM/Jumping.gd" type="Script" id=4]
 [ext_resource path="res://Entities/Hero/FSM/Buffer.gd" type="Script" id=5]
-[ext_resource path="res://Entities/Hero/FSM/GroundAttack.gd" type="Script" id=6]
+[ext_resource path="res://Entities/Hero/FSM/Attack.gd" type="Script" id=6]
 [ext_resource path="res://Entities/Combat/Hitbox/Hitbox.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Entities/Hero/FSM/AirAttack.gd" type="Script" id=8]
 [ext_resource path="res://Entities/Combat/Hurtbox/Hurtbox.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/Hero/FSM/Knockback.gd" type="Script" id=10]
 [ext_resource path="res://Entities/Hero/FSM/Playing.gd" type="Script" id=11]
@@ -4559,7 +4558,7 @@ one_shot = true
 
 [node name="Attack_Buffer" type="Timer" parent="States/Playing/Buffer"]
 process_mode = 0
-wait_time = 0.05
+wait_time = 0.1
 one_shot = true
 
 [node name="Idle" type="Node" parent="States/Playing"]
@@ -4574,38 +4573,35 @@ script = ExtResource( 4 )
 [node name="Falling" type="Node" parent="States/Playing"]
 script = ExtResource( 2 )
 
-[node name="GroundAttack" type="Node" parent="States"]
+[node name="Attack" type="Node" parent="States/Playing"]
 script = ExtResource( 6 )
 
-[node name="Jab" type="Timer" parent="States/GroundAttack"]
+[node name="Jab" type="Timer" parent="States/Playing/Attack"]
 process_mode = 0
 wait_time = 0.25
 one_shot = true
 
-[node name="UpTilt" type="Timer" parent="States/GroundAttack"]
+[node name="UpTilt" type="Timer" parent="States/Playing/Attack"]
 process_mode = 0
 wait_time = 0.34
 one_shot = true
 
-[node name="DownTilt" type="Timer" parent="States/GroundAttack"]
+[node name="DownTilt" type="Timer" parent="States/Playing/Attack"]
 process_mode = 0
 wait_time = 0.39
 one_shot = true
 
-[node name="AirAttack" type="Node" parent="States"]
-script = ExtResource( 8 )
-
-[node name="Jab" type="Timer" parent="States/AirAttack"]
+[node name="AirJab" type="Timer" parent="States/Playing/Attack"]
 process_mode = 0
 wait_time = 0.34
 one_shot = true
 
-[node name="UpTilt" type="Timer" parent="States/AirAttack"]
+[node name="AirUpTilt" type="Timer" parent="States/Playing/Attack"]
 process_mode = 0
 wait_time = 0.62
 one_shot = true
 
-[node name="DownTilt" type="Timer" parent="States/AirAttack"]
+[node name="AirDownTilt" type="Timer" parent="States/Playing/Attack"]
 process_mode = 0
 wait_time = 0.35
 one_shot = true
@@ -4999,10 +4995,10 @@ process_material = SubResource( 35 )
 [connection signal="timeout" from="States/Playing/Buffer/Jump_Buffer" to="States/Playing/Buffer" method="_on_Jump_Buffer_timeout"]
 [connection signal="timeout" from="States/Playing/Buffer/Coyote_Timer" to="States/Playing/Buffer" method="_on_Coyote_Timer_timeout"]
 [connection signal="timeout" from="States/Playing/Buffer/Attack_Buffer" to="States/Playing/Buffer" method="_on_Attack_Buffer_timeout"]
-[connection signal="timeout" from="States/GroundAttack/Jab" to="States/GroundAttack" method="_on_Attack_timeout"]
-[connection signal="timeout" from="States/GroundAttack/UpTilt" to="States/GroundAttack" method="_on_Attack_timeout"]
-[connection signal="timeout" from="States/GroundAttack/DownTilt" to="States/GroundAttack" method="_on_Attack_timeout"]
-[connection signal="timeout" from="States/AirAttack/Jab" to="States/AirAttack" method="_on_Attack_timeout"]
-[connection signal="timeout" from="States/AirAttack/UpTilt" to="States/AirAttack" method="_on_Attack_timeout"]
-[connection signal="timeout" from="States/AirAttack/DownTilt" to="States/AirAttack" method="_on_Attack_timeout"]
+[connection signal="timeout" from="States/Playing/Attack/Jab" to="States/Playing/Attack" method="_on_Attack_timeout"]
+[connection signal="timeout" from="States/Playing/Attack/UpTilt" to="States/Playing/Attack" method="_on_Attack_timeout"]
+[connection signal="timeout" from="States/Playing/Attack/DownTilt" to="States/Playing/Attack" method="_on_Attack_timeout"]
+[connection signal="timeout" from="States/Playing/Attack/AirJab" to="States/Playing/Attack" method="_on_Attack_timeout"]
+[connection signal="timeout" from="States/Playing/Attack/AirUpTilt" to="States/Playing/Attack" method="_on_Attack_timeout"]
+[connection signal="timeout" from="States/Playing/Attack/AirDownTilt" to="States/Playing/Attack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/Knockback/Inv_Timer" to="." method="_on_Invencibility_timeout"]
