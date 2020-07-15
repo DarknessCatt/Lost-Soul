@@ -41,6 +41,9 @@ func input(Machine : Node, Player: KinematicBody2D, event : InputEvent) -> void:
 	if event.is_action_pressed("hero_attack"):
 		Machine.change_action_state($"../Attack")
 
+	elif event.is_action_pressed("hero_block"):
+		Machine.change_action_state($"../Blocking")
+
 func move_state_changed(Machine : Node, Player: KinematicBody2D) -> void:
 	match(Machine.move_state.name):
 			"OnGround":
