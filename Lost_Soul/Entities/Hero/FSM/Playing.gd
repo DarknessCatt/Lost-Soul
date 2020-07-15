@@ -8,7 +8,12 @@ onready var action_state : ConcurrentState = $Idle
 func enter(Player : KinematicBody2D) -> void:
 	self.Player_Node = Player
 
-	move_state = $OnGround
+	if Player.is_on_floor():
+		move_state = $OnGround
+
+	else:
+		move_state = $Falling
+
 	action_state = $Idle
 
 	move_state.enter(self, Player_Node)
@@ -26,7 +31,8 @@ func change_action_state(new_state : ConcurrentState):
 	action_state.enter(self, Player_Node)
 
 func exit(Player : KinematicBody2D) -> void:
-	pass
+	move_state.exit(self, Player_Node)
+	action_state.exit(self, Player_Node)
 
 func update(Player: KinematicBody2D, delta : float) -> void:
 	move_state.update(self, Player, delta)
