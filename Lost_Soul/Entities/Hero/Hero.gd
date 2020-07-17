@@ -12,6 +12,7 @@ var souls : int = 0
 var max_crystal_heart : int = 0
 var crystal_heart : int = max_crystal_heart
 
+var blocking : bool = false
 var invencible : bool = false setget set_invencible
 const KNOCKBACK_STRENGH : int = 1200
 
@@ -28,37 +29,51 @@ func _refresh() -> void:
 
 func _hit(damage : int, _force : int, _direction : Vector2) -> void:
 	if not invencible:
-		if health > 0:
-			health -= damage
+		if not blocking:
+			if health > 0:
+				health -= damage
 
-			if health <= 0:
-				emit_signal("dead")
+				if health <= 0:
+					emit_signal("dead")
 
-			else:
-				var kb : Vector2 = Vector2(0,0)
-				var num : int = 0
+				else:
+					var kb : Vector2 = Vector2(0,0)
+					var num : int = 0
 
-				for area  in $Body/Hip/Torso/Hurtbox.get_overlapping_areas():
-					kb += area.global_position
-					num +=1
+					for area  in $Body/Hip/Torso/Torso_Hurtbox.get_overlapping_areas():
+						kb += area.global_position
+						num +=1
 
-				for area in $Body/Hip/Left_Leg/Hurtbox.get_overlapping_areas():
-					kb += area.global_position
-					num +=1
+					for area in $Body/Hip/Left_Leg/L_Leg_Hurtbox.get_overlapping_areas():
+						kb += area.global_position
+						num +=1
 
-				for area in $Body/Hip/Right_Leg/Hurtbox.get_overlapping_areas():
-					kb += area.global_position
-					num +=1
+					for area in $Body/Hip/Left_Leg/Left_Shin/L_Shin_Hurtbox.get_overlapping_areas():
+						kb += area.global_position
+						num +=1
 
-				var dir = self.global_position - (kb/num)
+					for area in $Body/Hip/Right_Leg/R_Leg_Hurtbox.get_overlapping_areas():
+						kb += area.global_position
+						num +=1
 
-				self.speed = dir.normalized()*KNOCKBACK_STRENGH
-				self._change_state($States/Knockback)
+					for area in $Body/Hip/Right_Leg/Right_Shin/R_Shin_Hurtbox.get_overlapping_areas():
+						kb += area.global_position
+						num +=1
+
+					var dir = self.global_position - (kb/num)
+
+					self.speed = dir.normalized()*KNOCKBACK_STRENGH
+					self._change_state($States/Knockback)
+
+		else:
+			$Misc_Animations.play("blocked")
 
 func set_invencible(value : bool):
-	$Body/Hip/Torso/Hurtbox.call_deferred("set", "monitoring", not value)
-	$Body/Hip/Left_Leg/Hurtbox.call_deferred("set", "monitoring", not value)
-	$Body/Hip/Right_Leg/Hurtbox.call_deferred("set", "monitoring", not value)
+	$Body/Hip/Torso/Torso_Hurtbox.call_deferred("set", "monitoring", not value)
+	$Body/Hip/Left_Leg/L_Leg_Hurtbox.call_deferred("set", "monitoring", not value)
+	$Body/Hip/Left_Leg/Left_Shin/L_Shin_Hurtbox.call_deferred("set", "monitoring", not value)
+	$Body/Hip/Right_Leg/R_Leg_Hurtbox.call_deferred("set", "monitoring", not value)
+	$Body/Hip/Right_Leg/Right_Shin/R_Shin_Hurtbox.call_deferred("set", "monitoring", not value)
 	invencible = value
 	if value: $Misc_Animations.play("inv")
 
