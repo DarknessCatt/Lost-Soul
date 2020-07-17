@@ -4686,6 +4686,23 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false, false, true, true ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ false ],
+"method": "change_hurtboxes"
+}, {
+"args": [ true ],
+"method": "change_hurtboxes"
+} ]
+}
 
 [sub_resource type="Animation" id=21]
 length = 1.1
@@ -4702,7 +4719,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=40]
+[sub_resource type="CapsuleShape2D" id=22]
 radius = 31.0
 height = 34.0
 
@@ -4748,22 +4765,22 @@ height = 24.8619
 [sub_resource type="CapsuleShape2D" id=34]
 radius = 6.0
 
-[sub_resource type="CapsuleShape2D" id=39]
+[sub_resource type="CapsuleShape2D" id=35]
 radius = 6.0
 height = 10.0
 
-[sub_resource type="CapsuleShape2D" id=35]
+[sub_resource type="CapsuleShape2D" id=36]
 radius = 8.91768
 height = 73.8512
 
-[sub_resource type="Gradient" id=36]
+[sub_resource type="Gradient" id=37]
 offsets = PoolRealArray( 0, 0.219251, 0.385027, 0.73262, 0.941176 )
 colors = PoolColorArray( 1, 1, 1, 0.478431, 1, 0.61, 0.61, 1, 1, 0.57, 0.57, 1, 1, 0, 0, 1, 1, 0, 0, 0.0117647 )
 
-[sub_resource type="GradientTexture" id=37]
-gradient = SubResource( 36 )
+[sub_resource type="GradientTexture" id=38]
+gradient = SubResource( 37 )
 
-[sub_resource type="ParticlesMaterial" id=38]
+[sub_resource type="ParticlesMaterial" id=39]
 emission_shape = 1
 emission_sphere_radius = 100.0
 flag_disable_z = true
@@ -4775,7 +4792,7 @@ orbit_velocity_random = 0.0
 radial_accel = -300.0
 scale = 6.0
 scale_random = 0.3
-color_ramp = SubResource( 37 )
+color_ramp = SubResource( 38 )
 
 [node name="Hero" type="KinematicBody2D"]
 collision_mask = 18
@@ -4911,7 +4928,7 @@ Direction = Vector2( 1, 0 )
 [node name="Jab_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Jab/Jab_Hitbox"]
 position = Vector2( 28, 12 )
 rotation = 1.5708
-shape = SubResource( 40 )
+shape = SubResource( 22 )
 disabled = true
 
 [node name="UpTilt" type="Node2D" parent="Body/Hitboxes"]
@@ -5115,8 +5132,7 @@ offset = Vector2( 0, -16 )
 polygon = PoolVector2Array( -7.99883, 16.1367, 7.99883, 15.8633, 14, -8, 14, -12, 10, -16, -10, -16, -14, -12, -14, -8 )
 
 [node name="Torso_Hurtbox" parent="Body/Hip/Torso" instance=ExtResource( 9 )]
-visible = false
-position = Vector2( 1.90735e-06, -12.3188 )
+position = Vector2( 1.90735e-06, -13.0827 )
 Id = 1
 Character = NodePath("../../../..")
 hit_effect_dist = 15
@@ -5219,14 +5235,13 @@ __meta__ = {
 visible = false
 position = Vector2( 0, 12.31 )
 rotation = -0.00285979
-scale = Vector2( 1, 1 )
 Id = 1
 Character = NodePath("../../../../..")
 hit_effect_dist = 15
 
 [node name="Upper" type="CollisionShape2D" parent="Body/Hip/Left_Leg/Left_Shin/L_Shin_Hurtbox"]
 position = Vector2( 0.209907, 1.80684 )
-shape = SubResource( 39 )
+shape = SubResource( 35 )
 
 [node name="Left_Foot" type="Polygon2D" parent="Body/Hip/Left_Leg/Left_Shin"]
 position = Vector2( -0.0418882, 21.9996 )
@@ -5277,7 +5292,7 @@ hit_effect_dist = 15
 
 [node name="Upper" type="CollisionShape2D" parent="Body/Hip/Right_Leg/Right_Shin/R_Shin_Hurtbox"]
 position = Vector2( 0.209907, 1.80684 )
-shape = SubResource( 39 )
+shape = SubResource( 35 )
 
 [node name="Right_Foot" type="RemoteTransform2D" parent="Body/Hip/Right_Leg/Right_Shin"]
 position = Vector2( 0, 22 )
@@ -5297,7 +5312,7 @@ color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
-shape = SubResource( 35 )
+shape = SubResource( 36 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -5308,7 +5323,7 @@ emitting = false
 amount = 40
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 38 )
+process_material = SubResource( 39 )
 [connection signal="timeout" from="States/Playing/Buffer/Jump_Buffer" to="States/Playing/Buffer" method="_on_Jump_Buffer_timeout"]
 [connection signal="timeout" from="States/Playing/Buffer/Coyote_Timer" to="States/Playing/Buffer" method="_on_Coyote_Timer_timeout"]
 [connection signal="timeout" from="States/Playing/Buffer/Attack_Buffer" to="States/Playing/Buffer" method="_on_Attack_Buffer_timeout"]

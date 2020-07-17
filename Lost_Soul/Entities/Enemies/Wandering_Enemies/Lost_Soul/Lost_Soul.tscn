@@ -144,6 +144,18 @@ tracks/10/keys = {
 "update": 0,
 "values": [ Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, -5 ) ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath(".:collision_layer")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.01, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 0 ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.8
@@ -384,6 +396,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:collision_layer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -696,11 +720,11 @@ tracks/0/keys = {
 
 [sub_resource type="CapsuleShape2D" id=10]
 radius = 17.3604
-height = 33.1042
+height = 39.6779
 
 [sub_resource type="CapsuleShape2D" id=11]
 radius = 19.4993
-height = 31.2991
+height = 35.4001
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 12.6826, 34.2189 )
@@ -796,6 +820,7 @@ polygon = PoolVector2Array( -4, -4, -4, 20, 0, 24, 4, 20, 4, -4, 0, -8 )
 
 [node name="Hitbox" parent="Body" index="4" instance=ExtResource( 5 )]
 visible = false
+position = Vector2( 0.672028, -2.24009 )
 Body = NodePath("..")
 Id = 2
 Damage = 10
@@ -806,6 +831,7 @@ Direction = Vector2( 1, -0.2 )
 shape = SubResource( 10 )
 
 [node name="Hurtbox" parent="." index="4" instance=ExtResource( 6 )]
+position = Vector2( 0, -2.24009 )
 Id = 2
 Character = NodePath("..")
 hit_effect_dist = 20
@@ -817,6 +843,7 @@ __meta__ = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="." index="5"]
+visible = false
 position = Vector2( 0, 1 )
 shape = SubResource( 12 )
 

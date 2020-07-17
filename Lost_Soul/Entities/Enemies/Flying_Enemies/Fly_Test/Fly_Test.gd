@@ -14,6 +14,7 @@ func _hit(_damage : int, force : int, direction : Vector2):
 		self.spawn_souls()
 
 func respawn() -> void:
+	self.set_collision_layer_bit(1, 1)
 	$Body/Wisp.rotation = 0
 	$Body/Wisp.polygon = PoolVector2Array([Vector2(-16,-8), Vector2(-8,-16), Vector2(8,-16), Vector2(24,0), Vector2(8,16), Vector2(-8,16), Vector2(-16,8)])
 	self.modulate = Color("ffffff")

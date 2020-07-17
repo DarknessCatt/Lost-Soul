@@ -21,6 +21,7 @@ func _physics_process(delta):
 	cur_state.update(self, delta)
 
 func respawn() -> void:
+	self.set_collision_layer_bit(1, 1)
 	self.modulate = Color("ffffff")
 	self.rotation = 0
 	$Body/Eye.position = Vector2(0,0)

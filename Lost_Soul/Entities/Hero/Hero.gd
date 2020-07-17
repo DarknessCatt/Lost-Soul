@@ -69,13 +69,16 @@ func _hit(damage : int, _force : int, _direction : Vector2) -> void:
 			$Misc_Animations.play("blocked")
 
 func set_invencible(value : bool):
-	$Body/Hip/Torso/Torso_Hurtbox.call_deferred("set", "monitoring", not value)
-	$Body/Hip/Left_Leg/L_Leg_Hurtbox.call_deferred("set", "monitoring", not value)
-	$Body/Hip/Left_Leg/Left_Shin/L_Shin_Hurtbox.call_deferred("set", "monitoring", not value)
-	$Body/Hip/Right_Leg/R_Leg_Hurtbox.call_deferred("set", "monitoring", not value)
-	$Body/Hip/Right_Leg/Right_Shin/R_Shin_Hurtbox.call_deferred("set", "monitoring", not value)
+	self.change_hurtboxes(not value)
 	invencible = value
 	if value: $Misc_Animations.play("inv")
+
+func change_hurtboxes(value : bool) -> void:
+	$Body/Hip/Torso/Torso_Hurtbox.call_deferred("set", "monitoring", value)
+	$Body/Hip/Left_Leg/L_Leg_Hurtbox.call_deferred("set", "monitoring", value)
+	$Body/Hip/Left_Leg/Left_Shin/L_Shin_Hurtbox.call_deferred("set", "monitoring", value)
+	$Body/Hip/Right_Leg/R_Leg_Hurtbox.call_deferred("set", "monitoring", value)
+	$Body/Hip/Right_Leg/Right_Shin/R_Shin_Hurtbox.call_deferred("set", "monitoring", value)
 
 func _on_Invencibility_timeout():
 	self.invencible = false
