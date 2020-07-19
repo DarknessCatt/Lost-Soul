@@ -31,6 +31,10 @@ func _refresh() -> void:
 	self.crystal_heart = max_crystal_heart
 	$Heart_Particles.restart()
 
+func _on_attack_hit(energy_restored):
+	energy += energy_restored
+	energy = min(max_energy, energy)
+
 func _hit(damage : int, _force : int, _direction : Vector2) -> void:
 	if not invencible:
 		if not blocking:

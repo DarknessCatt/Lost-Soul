@@ -20,4 +20,5 @@ func respawn() -> void:
 	self.modulate = Color("ffffff")
 	$Body/Wisp/Hitbox.call_deferred("set", "monitorable", true)
 	$Body/Wisp/Hurtbox.call_deferred("set", "monitoring", true)
+	$Body/Wisp/Hurtbox.call_deferred("set", "monitorable", true)
 	.respawn()

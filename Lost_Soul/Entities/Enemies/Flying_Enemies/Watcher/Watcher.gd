@@ -30,4 +30,5 @@ func respawn() -> void:
 	$Body/Eye/Iris.color = Color("3b0505")
 	$Body/Eye/Hitbox.call_deferred("set", "monitorable", true)
 	$Hurtbox.call_deferred("set", "monitoring", true)
+	$Hurtbox.call_deferred("set", "monitorable", true)
 	.respawn()

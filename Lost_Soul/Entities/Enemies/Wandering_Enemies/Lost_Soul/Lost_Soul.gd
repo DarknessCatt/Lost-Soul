@@ -25,6 +25,7 @@ func respawn() -> void:
 	self.modulate = Color("ffffff")
 	$Body/Hitbox.call_deferred("set", "monitorable", true)
 	$Hurtbox.call_deferred("set", "monitoring", true)
+	$Hurtbox.call_deferred("set", "monitorable", true)
 	$Collision.scale = Vector2(1,1)
 	$Collision.position = Vector2(0,1)
 	.respawn()

@@ -7,6 +7,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dead"
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Wisp:rotation_degrees")
 tracks/0/interp = 1
@@ -78,6 +79,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Body/Wisp/Hurtbox:monitorable")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.01 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=2]
