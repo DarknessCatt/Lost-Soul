@@ -5061,12 +5061,13 @@ shape = SubResource( 31 )
 disabled = true
 
 [node name="Block_Push" type="Node2D" parent="Body/Hitboxes"]
+visible = false
 
 [node name="Block_Push_Hitbox" parent="Body/Hitboxes/Block_Push" instance=ExtResource( 7 )]
 position = Vector2( 0, 5.12108 )
 Body = NodePath("../../..")
 Id = 1
-Force = 1000
+Force = 1200
 Knockback_Type = 1
 
 [node name="Block_Push_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Block_Push/Block_Push_Hitbox"]
@@ -5213,7 +5214,6 @@ __meta__ = {
 }
 
 [node name="L_Leg_Hurtbox" parent="Body/Hip/Left_Leg" instance=ExtResource( 9 )]
-visible = false
 position = Vector2( 0, 12 )
 Id = 1
 Character = NodePath("../../../..")
@@ -5232,7 +5232,6 @@ __meta__ = {
 }
 
 [node name="L_Shin_Hurtbox" parent="Body/Hip/Left_Leg/Left_Shin" instance=ExtResource( 9 )]
-visible = false
 position = Vector2( 0, 12.31 )
 rotation = -0.00285979
 Id = 1
@@ -5265,7 +5264,6 @@ __meta__ = {
 }
 
 [node name="R_Leg_Hurtbox" parent="Body/Hip/Right_Leg" instance=ExtResource( 9 )]
-visible = false
 position = Vector2( -0.637856, 11.9064 )
 rotation = 0.00976517
 Id = 1
@@ -5283,7 +5281,6 @@ __meta__ = {
 }
 
 [node name="R_Shin_Hurtbox" parent="Body/Hip/Right_Leg/Right_Shin" instance=ExtResource( 9 )]
-visible = false
 position = Vector2( -0.637856, 12.9876 )
 rotation = 0.00976517
 Id = 1

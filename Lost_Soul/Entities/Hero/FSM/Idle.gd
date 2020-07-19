@@ -1,5 +1,7 @@
 extends ConcurrentState
 
+var energy_timer : float = 0.0
+
 enum {Stop, Walk, Jump, Fall}
 var cur_state : int = 0
 
@@ -25,6 +27,8 @@ func enter(Machine : Node, Player : KinematicBody2D) -> void:
 	if Player.speed.x != 0:
 		Player.body.scale.x = sign(Player.speed.x)
 
+	energy_timer = 0.0
+
 func exit(Machine : Node, Player : KinematicBody2D) -> void:
 	pass
 
@@ -36,6 +40,12 @@ func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
 	elif cur_state == Walk and Player.speed.x == 0:
 		cur_state = Stop
 		Player._change_anim("Rest")
+
+	energy_timer += delta
+
+	while energy_timer >= 1:
+		Player.energy += 1
+		energy_timer -= 1
 
 func input(Machine : Node, Player: KinematicBody2D, event : InputEvent) -> void:
 	if event.is_action_pressed("hero_attack"):

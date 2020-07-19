@@ -7,6 +7,9 @@ onready var body : Node2D = $Body
 var max_health : int = 100
 var health : int = max_health
 
+var max_energy : int = 30
+var energy : int = max_energy
+
 var souls : int = 0
 
 var max_crystal_heart : int = 0
@@ -24,6 +27,7 @@ signal heart_used(num)
 ##Functions
 func _refresh() -> void:
 	self.health = max_health
+	self.energy = max_energy
 	self.crystal_heart = max_crystal_heart
 	$Heart_Particles.restart()
 
@@ -37,36 +41,53 @@ func _hit(damage : int, _force : int, _direction : Vector2) -> void:
 					emit_signal("dead")
 
 				else:
-					var kb : Vector2 = Vector2(0,0)
-					var num : int = 0
-
-					for area  in $Body/Hip/Torso/Torso_Hurtbox.get_overlapping_areas():
-						kb += area.global_position
-						num +=1
-
-					for area in $Body/Hip/Left_Leg/L_Leg_Hurtbox.get_overlapping_areas():
-						kb += area.global_position
-						num +=1
-
-					for area in $Body/Hip/Left_Leg/Left_Shin/L_Shin_Hurtbox.get_overlapping_areas():
-						kb += area.global_position
-						num +=1
-
-					for area in $Body/Hip/Right_Leg/R_Leg_Hurtbox.get_overlapping_areas():
-						kb += area.global_position
-						num +=1
-
-					for area in $Body/Hip/Right_Leg/Right_Shin/R_Shin_Hurtbox.get_overlapping_areas():
-						kb += area.global_position
-						num +=1
-
-					var dir = self.global_position - (kb/num)
+					var kb : Vector2 = calculate_knockback()
+					var dir = self.global_position - kb
 
 					self.speed = dir.normalized()*KNOCKBACK_STRENGH
 					self._change_state($States/Knockback)
 
 		else:
-			$Misc_Animations.play("blocked")
+			energy -= damage
+
+			if energy <= 0:
+				health += energy
+				energy = 0
+
+				var kb : Vector2 = calculate_knockback()
+				var dir = self.global_position - kb
+
+				self.speed = dir.normalized()*KNOCKBACK_STRENGH
+				self._change_state($States/Knockback)
+
+			else:
+				$Misc_Animations.play("blocked")
+
+func calculate_knockback() -> Vector2:
+	var kb : Vector2 = Vector2(0,0)
+	var num : int = 0
+
+	for area  in $Body/Hip/Torso/Torso_Hurtbox.get_overlapping_areas():
+		kb += area.global_position
+		num +=1
+
+	for area in $Body/Hip/Left_Leg/L_Leg_Hurtbox.get_overlapping_areas():
+		kb += area.global_position
+		num +=1
+
+	for area in $Body/Hip/Left_Leg/Left_Shin/L_Shin_Hurtbox.get_overlapping_areas():
+		kb += area.global_position
+		num +=1
+
+	for area in $Body/Hip/Right_Leg/R_Leg_Hurtbox.get_overlapping_areas():
+		kb += area.global_position
+		num +=1
+
+	for area in $Body/Hip/Right_Leg/Right_Shin/R_Shin_Hurtbox.get_overlapping_areas():
+		kb += area.global_position
+		num +=1
+
+	return (kb/num)
 
 func set_invencible(value : bool):
 	self.change_hurtboxes(not value)
