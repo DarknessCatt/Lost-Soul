@@ -5308,6 +5308,7 @@ __meta__ = {
 color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 8 )
 shape = SubResource( 36 )
 __meta__ = {

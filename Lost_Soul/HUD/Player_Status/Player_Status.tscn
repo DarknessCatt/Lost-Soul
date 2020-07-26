@@ -30,24 +30,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Life_Bar" type="ProgressBar" parent="Order"]
+[node name="Life_Position" type="Control" parent="Order"]
 margin_right = 1024.0
 margin_bottom = 10.0
-rect_min_size = Vector2( 200, 10 )
+rect_min_size = Vector2( 100, 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Life_Bar" type="ProgressBar" parent="Order/Life_Position"]
+margin_right = 100.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 100, 10 )
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
-max_value = 100.0
 value = 50.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Energy_Bar" type="ProgressBar" parent="Order"]
+[node name="Energy_Position" type="Control" parent="Order"]
 margin_top = 15.0
 margin_right = 1024.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 200, 10 )
+margin_bottom = 15.0
+
+[node name="Energy_Bar" type="ProgressBar" parent="Order/Energy_Position"]
+margin_right = 30.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 30, 10 )
 custom_styles/fg = SubResource( 3 )
 custom_styles/bg = SubResource( 4 )
 max_value = 30.0
@@ -58,8 +69,8 @@ __meta__ = {
 }
 
 [node name="Heart_Uses" type="HBoxContainer" parent="Order"]
-margin_top = 30.0
+margin_top = 20.0
 margin_right = 1024.0
-margin_bottom = 62.0
+margin_bottom = 52.0
 rect_min_size = Vector2( 0, 32 )
 custom_constants/separation = 0

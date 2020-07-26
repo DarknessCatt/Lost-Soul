@@ -14,15 +14,17 @@ var current_hearts : int = 0
 func _ready():
 	Char_Node = get_node(Character)
 
-	$Order/Life_Bar.max_value = Char_Node.max_health
-	$Order/Life_Bar.value = Char_Node.health
+	$Order/Life_Position/Life_Bar.max_value = Char_Node.max_health
+	$Order/Life_Position/Life_Bar.rect_size.x = 2*Char_Node.max_health
+	$Order/Life_Position/Life_Bar.value = Char_Node.health
 
-	$Order/Energy_Bar.max_value = Char_Node.max_energy
-	$Order/Energy_Bar.value = Char_Node.energy
+	$Order/Energy_Position/Energy_Bar.max_value = Char_Node.max_energy
+	$Order/Energy_Position/Energy_Bar.rect_size.x = 2*Char_Node.max_energy
+	$Order/Energy_Position/Energy_Bar.value = Char_Node.energy
 
 func _process(_delta):
-	$Order/Life_Bar.value = Char_Node.health
-	$Order/Energy_Bar.value = Char_Node.energy
+	$Order/Life_Position/Life_Bar.value = Char_Node.health
+	$Order/Energy_Position/Energy_Bar.value = Char_Node.energy
 
 	if Char_Node.max_crystal_heart > max_hearts:
 		var heart = load(HEART_COUNTER_RES).instance()

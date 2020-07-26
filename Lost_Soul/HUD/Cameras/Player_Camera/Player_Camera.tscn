@@ -7,10 +7,12 @@
 z_index = 1
 
 [node name="Player_Status" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = -502.0
 margin_top = -290.0
 margin_right = -302.0
-margin_bottom = -248.0
+margin_bottom = -228.0
 
 [node name="Soul_Counter" parent="." instance=ExtResource( 2 )]
 margin_left = -502.0

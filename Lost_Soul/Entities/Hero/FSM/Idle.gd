@@ -41,11 +41,12 @@ func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
 		cur_state = Stop
 		Player._change_anim("Rest")
 
-	energy_timer += delta
+	if Player.energy < Player.max_energy:
+		energy_timer += delta
 
-	while energy_timer >= 1:
-		Player.energy += 1
-		energy_timer -= 1
+		while energy_timer >= 1:
+			Player.energy += 1
+			energy_timer -= 1
 
 func input(Machine : Node, Player: KinematicBody2D, event : InputEvent) -> void:
 	if event.is_action_pressed("hero_attack"):
