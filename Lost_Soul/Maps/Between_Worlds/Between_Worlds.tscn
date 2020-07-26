@@ -514,7 +514,7 @@ __meta__ = {
 }
 
 [node name="Hero" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, 540 )
+position = Vector2( 19999.7, -1895.22 )
 
 [node name="Player_Camera" parent="Hero" instance=ExtResource( 3 )]
 position = Vector2( 0, -100 )

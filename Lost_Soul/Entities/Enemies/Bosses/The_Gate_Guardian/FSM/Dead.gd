@@ -7,6 +7,7 @@ var outro : bool = false
 
 func enter(Guardian : KinematicBody2D) -> void:
 	Guardian.animation.travel("Dead")
+	Guardian.set_collision_layer_bit(1, 0)
 
 func update(Guardian: KinematicBody2D, delta : float) -> void:
 	if not outro:

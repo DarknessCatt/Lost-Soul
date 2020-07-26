@@ -38,6 +38,7 @@ func intro(player : KinematicBody2D):
 	cur_state.enter(self)
 
 func respawn() -> void:
+	self.set_collision_layer_bit(1, 0)
 	self.position = original_position
 	self._change_state($States/Idle)
 	self.modulate.a = 0
