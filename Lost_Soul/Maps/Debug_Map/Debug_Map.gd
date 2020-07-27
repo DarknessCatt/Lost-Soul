@@ -15,5 +15,6 @@ func _on_Checkpoint_reached(_checkpoint):
 	$Lost_Soul.respawn()
 	$Fly_Test.respawn()
 	$Watcher.respawn()
+	$Spitter.respawn()
 
 
