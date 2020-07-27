@@ -48,11 +48,11 @@ func enter(Machine : Node, Player : KinematicBody2D) -> void:
 	Player._reset_anim(attack)
 	timer.start()
 
-func exit(Machine : Node, Player : KinematicBody2D) -> void:
+func exit(_Machine : Node, Player : KinematicBody2D) -> void:
 	Player._clear_attack_polys()
 	Player._disable_hitboxes()
 
-func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
+func update(Machine : Node, _Player: KinematicBody2D, _delta : float) -> void:
 	if attack_finished:
 		if buffer.attack_buffered:
 			Machine.change_action_state($"../Attack")
@@ -60,14 +60,14 @@ func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
 		else:
 			Machine.change_action_state($"../Idle")
 
-func input(Machine : Node, Player: KinematicBody2D, event : InputEvent) -> void:
+func input(Machine : Node, _Player: KinematicBody2D, event : InputEvent) -> void:
 	if event.is_action_pressed("hero_attack"):
 		buffer._buffer_attack()
 
 	elif event.is_action_pressed("hero_block"):
 		Machine.change_action_state($"../Blocking")
 
-func move_state_changed(Machine : Node, Player: KinematicBody2D) -> void:
+func move_state_changed(Machine : Node, _Player: KinematicBody2D) -> void:
 	var is_ground : bool = Machine.move_state.name == "OnGround"
 
 	if not (air_state or is_ground) or (air_state and is_ground):

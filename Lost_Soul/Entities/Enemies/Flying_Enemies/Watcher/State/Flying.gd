@@ -17,12 +17,12 @@ export(Vector2) var Point_To_Seek : Vector2 = Vector2(0,0)
 var atk : bool = false
 
 #Functions
-func enter(_Player : KinematicBody2D) -> void:
-	_Player.change_animation(state_anim)
+func enter(Watcher : KinematicBody2D) -> void:
+	Watcher.change_animation(state_anim)
 
-func update(_Player: KinematicBody2D, _delta : float) -> void:
-	var dir : Vector2 = ((_Player.hero.global_position + Point_To_Seek) - _Player.global_position)
-	var spd : Vector2 = _Player.speed + dir.normalized()*ACCEL*_delta
+func update(Watcher: KinematicBody2D, _delta : float) -> void:
+	var dir : Vector2 = ((Watcher.hero.global_position + Point_To_Seek) - Watcher.global_position)
+	var spd : Vector2 = Watcher.speed + dir.normalized()*ACCEL*_delta
 
 	if dir.length() <= STOP_DIST : spd *= FRICTION
 	dir = dir.normalized()
@@ -40,21 +40,21 @@ func update(_Player: KinematicBody2D, _delta : float) -> void:
 		# warning-ignore:integer_division
 		if abs(spd.y) < ACCEL/100: spd.y = 0
 
-	_Player.speed = spd
+	Watcher.speed = spd
 
-	_Player.move_and_slide(_Player.speed, NORMAL)
+	Watcher.move_and_slide(Watcher.speed, NORMAL)
 
-	if _Player.is_on_floor() or _Player.is_on_ceiling():
-		_Player.speed.y *= -1
+	if Watcher.is_on_floor() or Watcher.is_on_ceiling():
+		Watcher.speed.y *= -1
 
-	if _Player.is_on_wall():
-		_Player.speed.x *= -1
+	if Watcher.is_on_wall():
+		Watcher.speed.x *= -1
 
 	if atk:
 		var bullet = BULLET_RES.instance()
-		bullet.position = _Player.position + _Player.body.get_node("Eye/Iris").position.rotated(_Player.body.rotation)
-		bullet.rotation = _Player.body.rotation
-		_Player.get_parent().add_child(bullet)
+		bullet.position = Watcher.position + Watcher.body.get_node("Eye/Iris").position.rotated(Watcher.body.rotation)
+		bullet.rotation = Watcher.body.rotation
+		Watcher.get_parent().add_child(bullet)
 
 		atk = false
 

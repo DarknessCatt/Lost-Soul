@@ -18,5 +18,5 @@ func input(Machine : Node, _Player: KinematicBody2D, event : InputEvent) -> void
 	elif event.is_action_released("hero_block"):
 		Machine.change_action_state($"../Idle")
 
-func move_state_changed(Machine : Node, Player: KinematicBody2D) -> void:
+func move_state_changed(_Machine : Node, _Player: KinematicBody2D) -> void:
 	pass

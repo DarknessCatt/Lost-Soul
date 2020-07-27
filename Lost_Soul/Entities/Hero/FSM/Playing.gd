@@ -31,8 +31,8 @@ func change_action_state(new_state : ConcurrentState):
 	action_state.enter(self, Player_Node)
 
 func exit(Player : KinematicBody2D) -> void:
-	move_state.exit(self, Player_Node)
-	action_state.exit(self, Player_Node)
+	move_state.exit(self, Player)
+	action_state.exit(self, Player)
 
 func update(Player: KinematicBody2D, delta : float) -> void:
 	move_state.update(self, Player, delta)
