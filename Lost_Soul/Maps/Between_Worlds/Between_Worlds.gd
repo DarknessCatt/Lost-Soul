@@ -20,7 +20,7 @@ const dil_soul : Array = [
 "Este é um\nfragmento\nde alma,",
 "deixado por\nalguma alma\nperdida.",
 "Podemos usá-lo\ncomo fonte\nde poder,",
-"no futuro.",
+"quando sairmos\ndeste local.",
 ""
 ]
 
@@ -36,6 +36,12 @@ const dil_lost_souls : Array = [
 "mas se perderam\nna passagem do tempo,",
 "deformando-se em\nsuas próprias\nloucuras.",
 "De uma maneira\nou de outra,\nsão todos iguais.",
+""
+]
+
+const dil_block : Array = [
+"Não esqueças\nde bloquear,",
+"Mas tenhas cuidado\npara não\nse cansar.",
 ""
 ]
 
@@ -258,6 +264,26 @@ func _on_Wander_Enemy_entered(_body):
 func _on_About_Lost_entered(_body):
 	dialogue.change_dialogue(dil_lost_souls)
 	dialogue.begin()
+
+func _on_Blocking_entered(_body):
+	dialogue.change_dialogue(dil_block)
+	dialogue.begin()
+
+func _on_Block_tutorial_entered(_body):
+	$Tween.remove_all()
+	$Tween.interpolate_property(
+		$Dialogue_Triggers/Block_tutorial/D, "modulate:a",
+		$Dialogue_Triggers/Block_tutorial/D.modulate.a, 1,
+		0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
+
+func _on_Block_tutorial_exited(_body):
+	$Tween.remove_all()
+	$Tween.interpolate_property(
+		$Dialogue_Triggers/Block_tutorial/D, "modulate:a",
+		$Dialogue_Triggers/Block_tutorial/D.modulate.a, 0,
+		0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
 
 func _on_Before_Eyes_entered(_body):
 	dialogue.change_dialogue(dil_eyes)

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var SPEED : int = 200
+var SPEED : int = 250
 var dir : Vector2 = Vector2(1,0)
 var collided : bool = false
 

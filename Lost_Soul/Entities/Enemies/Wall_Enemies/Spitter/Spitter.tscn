@@ -233,8 +233,8 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-length = 1.2
 loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Face/Eye:rotation_degrees")
 tracks/0/interp = 2
@@ -242,7 +242,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.7, 1.1 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.55, 0.95 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -17.1225, -116.287, 83.744, -18.0566 ]
@@ -254,7 +254,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.6, 0.9 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.45, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -3.67495, -10.063, 19.8074, 33.6138, -3.67495 ]
@@ -266,7 +266,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.6, 0.9 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.45, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 9.30796, -60.3458, -57.1128, 0.0 ]
@@ -278,7 +278,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -495,17 +495,19 @@ script = ExtResource( 6 )
 
 [node name="Jaw" type="Polygon2D" parent="Body"]
 position = Vector2( -11.9127, 0 )
-rotation = -0.06414
+rotation = -0.0922029
 color = Color( 0.501961, 0.501961, 0.501961, 1 )
 polygon = PoolVector2Array( 0, -8, -4, 8, -1.369, 19.9533, 22.838, 17.4998, 35.5825, 6.29364, 24.12, -2.45906, 15.88, 1.01994, 7.89647, 0.507175 )
 
 [node name="Face" type="Polygon2D" parent="Body"]
 position = Vector2( -11.9127, 0 )
+rotation = 0.0435522
 color = Color( 0.6, 0.6, 0.6, 1 )
 polygon = PoolVector2Array( -0.0872574, -32, 15.9127, -32, 35.9127, -24, 39.9127, -4, 28, 8, 20, 4, 4, 0, 0, 0, -8.08726, -20 )
 
 [node name="Eye" type="Polygon2D" parent="Body/Face"]
 position = Vector2( 11.9127, -20 )
+rotation = -0.376176
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( -8, 0, 0, -8, 8, 0, 0, 16 )
 

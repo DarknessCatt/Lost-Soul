@@ -234,6 +234,7 @@ color = Color( 0.69, 0.69, 0.69, 1 )
 polygon = PoolVector2Array( -16, -8, -8, -16, 8, -16, 24, 0, 8, 16, -8, 16, -16, 8 )
 
 [node name="Hitbox" parent="Body/Wisp" index="0" instance=ExtResource( 2 )]
+visible = false
 Body = NodePath("../..")
 Id = 2
 Damage = 5
@@ -242,7 +243,6 @@ Damage = 5
 shape = SubResource( 7 )
 
 [node name="Hurtbox" parent="Body/Wisp" index="1" instance=ExtResource( 3 )]
-visible = false
 rotation = -1.58654
 Id = 2
 Character = NodePath("../../..")
