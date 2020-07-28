@@ -37,7 +37,7 @@ tracks/0/keys = {
 "values": [ PoolVector2Array( 16, 6, 16, 0, 16, -6, 0, -14, -14, -6, -26, 0, -14, 6, 0, 14 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=3]
 radius = 16.9238
 
 [sub_resource type="CircleShape2D" id=4]
@@ -85,7 +85,7 @@ Id = 2
 Damage = 3
 
 [node name="Area" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Area" type="CollisionShape2D" parent="."]
 shape = SubResource( 4 )
