@@ -231,16 +231,28 @@ func _on_checkpoint_reached(checkpoint : Area2D):
 	dialogue.change_dialogue(dil_check)
 	dialogue.begin()
 
-	var atk_event = InputEventKey.new()
-	atk_event.scancode = 67
-	InputMap.action_add_event("hero_attack", atk_event)
+	var atk_key_event = InputEventKey.new()
+	atk_key_event.scancode = 67
+	InputMap.action_add_event("hero_attack", atk_key_event)
+
+	var atk_con_event = InputEventJoypadButton.new()
+	atk_con_event.button_index = 2
+	InputMap.action_add_event("hero_attack", atk_con_event)
+
+	var blk_key_event = InputEventKey.new()
+	blk_key_event.scancode = 68
+	InputMap.action_add_event("hero_block", blk_key_event)
+
+	var blk_con_event = InputEventJoypadButton.new()
+	blk_con_event.button_index = 5
+	InputMap.action_add_event("hero_block", blk_con_event)
 
 func _on_Attack_entered(_body):
 	if first_check:
 		$Tween.remove_all()
 		$Tween.interpolate_property(
-			$Dialogue_Triggers/Attack/C, "modulate:a",
-			$Dialogue_Triggers/Attack/C.modulate.a, 1,
+			$Dialogue_Triggers/Attack/Tutorial_Button, "modulate:a",
+			$Dialogue_Triggers/Attack/Tutorial_Button.modulate.a, 1,
 			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Tween.start()
 
@@ -248,8 +260,8 @@ func _on_Attack_exited(_body):
 	if first_check:
 		$Tween.remove_all()
 		$Tween.interpolate_property(
-			$Dialogue_Triggers/Attack/C, "modulate:a",
-			$Dialogue_Triggers/Attack/C.modulate.a, 0,
+			$Dialogue_Triggers/Attack/Tutorial_Button, "modulate:a",
+			$Dialogue_Triggers/Attack/Tutorial_Button.modulate.a, 0,
 			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Tween.start()
 
@@ -272,16 +284,16 @@ func _on_Blocking_entered(_body):
 func _on_Block_tutorial_entered(_body):
 	$Tween.remove_all()
 	$Tween.interpolate_property(
-		$Dialogue_Triggers/Block_tutorial/D, "modulate:a",
-		$Dialogue_Triggers/Block_tutorial/D.modulate.a, 1,
+		$Dialogue_Triggers/Block_tutorial/Tutorial_Button, "modulate:a",
+		$Dialogue_Triggers/Block_tutorial/Tutorial_Button.modulate.a, 1,
 		0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 
 func _on_Block_tutorial_exited(_body):
 	$Tween.remove_all()
 	$Tween.interpolate_property(
-		$Dialogue_Triggers/Block_tutorial/D, "modulate:a",
-		$Dialogue_Triggers/Block_tutorial/D.modulate.a, 0,
+		$Dialogue_Triggers/Block_tutorial/Tutorial_Button, "modulate:a",
+		$Dialogue_Triggers/Block_tutorial/Tutorial_Button.modulate.a, 0,
 		0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 

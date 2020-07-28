@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Tilesets/Placeholder_White/Placeholder_White.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Entities/Map_Elements/Hidden_Area/Hidden_Area.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Entities/Pickups/Souls/Souls.tscn" type="PackedScene" id=8]
 [ext_resource path="res://HUD/Soul_Counter/Soul_Counter.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/controller/controller_button_A.png" type="Texture" id=10]
+[ext_resource path="res://Entities/Information/Tutorial_buttons/Tutorial_Button.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 38.6221, 220.676 )
@@ -194,12 +196,21 @@ collision_layer = 0
 position = Vector2( 1.3291, 0 )
 shape = SubResource( 4 )
 
-[node name="Z" type="Polygon2D" parent="Jump"]
-position = Vector2( 38.8612, 44.1783 )
+[node name="Tutorial_Button" parent="Jump" instance=ExtResource( 11 )]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Z" type="Polygon2D" parent="Jump/Tutorial_Button"]
+position = Vector2( 40, 45 )
 scale = Vector2( 0.5, 0.5 )
-color = Color( 0.976471, 0.376471, 0.376471, 0 )
-offset = Vector2( -15.9305, -66.326 )
+color = Color( 0.976471, 0.376471, 0.376471, 1 )
+offset = Vector2( -15, -66.326 )
 polygon = PoolVector2Array( -24.0695, 22.326, 55.9305, 22.326, 55.9305, 38.326, -0.069458, 94.326, 55.9305, 94.326, 55.9305, 110.326, -24.0695, 110.326, -24.0695, 94.326, 31.9305, 38.326, -24.0695, 38.326 )
+
+[node name="Controller" type="Sprite" parent="Jump/Tutorial_Button"]
+visible = false
+position = Vector2( 40, 45 )
+scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 10 )
 
 [node name="Middle" type="Area2D" parent="."]
 position = Vector2( 562.102, 81.2445 )

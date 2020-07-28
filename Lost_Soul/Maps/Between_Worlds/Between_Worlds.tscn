@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Tilesets/Placeholder_White/Placeholder_White.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=2]
@@ -20,6 +20,9 @@
 [ext_resource path="res://Assets/BG_Music/Anttis/Anttis-instrumentals-1st-I-lost-my-money.ogg" type="AudioStream" id=18]
 [ext_resource path="res://Assets/BG_Music/Anttis/Anttis-instrumentals-Beat.ogg" type="AudioStream" id=19]
 [ext_resource path="res://Entities/Enemies/Wall_Enemies/Spitter/Spitter.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Entities/Information/Tutorial_buttons/Tutorial_Button.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Assets/controller/controller_button_X.png" type="Texture" id=22]
+[ext_resource path="res://Assets/controller/controller_RB.png" type="Texture" id=23]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -325,11 +328,19 @@ collision_layer = 0
 [node name="area" type="CollisionShape2D" parent="Dialogue_Triggers/Attack"]
 shape = SubResource( 10 )
 
-[node name="C" type="Polygon2D" parent="Dialogue_Triggers/Attack"]
+[node name="Tutorial_Button" parent="Dialogue_Triggers/Attack" instance=ExtResource( 21 )]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( -0.000244141, -80 )
+
+[node name="C" type="Polygon2D" parent="Dialogue_Triggers/Attack/Tutorial_Button"]
+position = Vector2( -8, -55 )
 color = Color( 0.976471, 0.376471, 0.376471, 1 )
 polygon = PoolVector2Array( 16, 16, 0, 16, -8, 0.52211, 0, -16, 16, -16, 16, -22, -6, -22, -16, 0.258121, -6, 22, 16, 22 )
+
+[node name="Sprite" type="Sprite" parent="Dialogue_Triggers/Attack/Tutorial_Button"]
+visible = false
+position = Vector2( 0, -55 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 22 )
 
 [node name="Wander_Enemy" type="Area2D" parent="Dialogue_Triggers"]
 position = Vector2( 6912, 1216 )
@@ -363,15 +374,23 @@ collision_layer = 0
 [node name="Area" type="CollisionShape2D" parent="Dialogue_Triggers/Block_tutorial"]
 shape = SubResource( 14 )
 
-[node name="D" type="Polygon2D" parent="Dialogue_Triggers/Block_tutorial"]
+[node name="Tutorial_Button" parent="Dialogue_Triggers/Block_tutorial" instance=ExtResource( 21 )]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 72.001, -104 )
+
+[node name="D" type="Polygon2D" parent="Dialogue_Triggers/Block_tutorial/Tutorial_Button"]
+position = Vector2( 72, -104 )
 color = Color( 0.976471, 0.376471, 0.376471, 1 )
 polygon = PoolVector2Array( 8, -40, 24, -16, 24, 24, 8, 40, -16, 40, -16, -40 )
 
-[node name="D_Inside" type="Polygon2D" parent="Dialogue_Triggers/Block_tutorial/D"]
+[node name="D_Inside" type="Polygon2D" parent="Dialogue_Triggers/Block_tutorial/Tutorial_Button/D"]
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( -8, -32, 8, -32, 16, -16, 16, 24, 8, 32, -8, 32 )
+
+[node name="Sprite" type="Sprite" parent="Dialogue_Triggers/Block_tutorial/Tutorial_Button"]
+visible = false
+position = Vector2( 72, -104 )
+scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 23 )
 
 [node name="Before_Eyes" type="Area2D" parent="Dialogue_Triggers"]
 position = Vector2( 15664, 160 )
