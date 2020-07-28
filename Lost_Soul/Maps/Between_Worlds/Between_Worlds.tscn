@@ -57,49 +57,49 @@ extents = Vector2( 160, 16 )
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 224, 112 )
 
-[sub_resource type="RectangleShape2D" id=25]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 10, 88 )
 
-[sub_resource type="RectangleShape2D" id=26]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 247.999, 176 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 16, 128 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 10, 96 )
 
-[sub_resource type="CircleShape2D" id=15]
+[sub_resource type="CircleShape2D" id=17]
 radius = 40.0367
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=18]
 size = 300
 font_data = ExtResource( 16 )
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=19]
 size = 350
 font_data = ExtResource( 16 )
 
-[sub_resource type="StyleBoxFlat" id=18]
+[sub_resource type="StyleBoxFlat" id=20]
 bg_color = Color( 0, 0, 0, 0 )
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 1500, 300 )
 
-[sub_resource type="StyleBoxFlat" id=20]
+[sub_resource type="StyleBoxFlat" id=22]
 bg_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="RectangleShape2D" id=21]
+[sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 16, 144 )
 
-[sub_resource type="DynamicFontData" id=22]
+[sub_resource type="DynamicFontData" id=24]
 font_path = "res://Assets/Fonts/BasaltRegular-Jx3o.ttf"
 
-[sub_resource type="DynamicFont" id=23]
+[sub_resource type="DynamicFont" id=25]
 size = 500
-font_data = SubResource( 22 )
+font_data = SubResource( 24 )
 
-[sub_resource type="StyleBoxFlat" id=24]
+[sub_resource type="StyleBoxFlat" id=26]
 bg_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
 [node name="Between_Worlds" type="Node2D"]
@@ -353,7 +353,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Dialogue_Triggers/Blocking"]
-shape = SubResource( 25 )
+shape = SubResource( 13 )
 
 [node name="Block_tutorial" type="Area2D" parent="Dialogue_Triggers"]
 position = Vector2( 16136, 1200 )
@@ -361,7 +361,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Dialogue_Triggers/Block_tutorial"]
-shape = SubResource( 26 )
+shape = SubResource( 14 )
 
 [node name="D" type="Polygon2D" parent="Dialogue_Triggers/Block_tutorial"]
 modulate = Color( 1, 1, 1, 0 )
@@ -379,7 +379,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="area" type="CollisionShape2D" parent="Dialogue_Triggers/Before_Eyes"]
-shape = SubResource( 13 )
+shape = SubResource( 15 )
 
 [node name="About_Eyes" type="Area2D" parent="Dialogue_Triggers"]
 position = Vector2( 18368, -1808 )
@@ -387,7 +387,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Dialogue_Triggers/About_Eyes"]
-shape = SubResource( 14 )
+shape = SubResource( 16 )
 
 [node name="Props" type="Node2D" parent="."]
 
@@ -529,7 +529,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Boss/Close_Arena"]
-shape = SubResource( 15 )
+shape = SubResource( 17 )
 
 [node name="Trigger_Boss" type="Area2D" parent="Boss"]
 position = Vector2( 0, 361.205 )
@@ -538,7 +538,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Boss/Trigger_Boss"]
-shape = SubResource( 15 )
+shape = SubResource( 17 )
 
 [node name="The_Gate_Guardian" parent="Boss" instance=ExtResource( 15 )]
 horizontal_space = 300
@@ -553,7 +553,7 @@ margin_top = 104.0
 margin_right = 1080.0
 margin_bottom = 448.0
 rect_scale = Vector2( 0.4, 0.4 )
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 text = "O Guardião"
 align = 1
@@ -563,7 +563,7 @@ __meta__ = {
 }
 
 [node name="Hero" parent="." instance=ExtResource( 2 )]
-position = Vector2( 13773.9, 1277.99 )
+position = Vector2( 0, 540 )
 
 [node name="Player_Camera" parent="Hero" instance=ExtResource( 3 )]
 position = Vector2( 0, -100 )
@@ -578,7 +578,7 @@ Character = NodePath("../..")
 margin_top = -10.0
 margin_right = 1200.0
 margin_bottom = 390.0
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 text = "Dialogue"
 align = 1
@@ -593,7 +593,7 @@ margin_left = -520.0
 margin_top = -300.0
 margin_right = 520.0
 margin_bottom = 300.0
-custom_styles/panel = SubResource( 18 )
+custom_styles/panel = SubResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -608,7 +608,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Ending_Panel/Active_Area"]
-shape = SubResource( 19 )
+shape = SubResource( 21 )
 
 [node name="Panel" type="Panel" parent="Ending_Panel"]
 modulate = Color( 1, 1, 1, 0 )
@@ -616,7 +616,7 @@ margin_left = -1000.0
 margin_top = -400.0
 margin_right = 3500.0
 margin_bottom = 800.0
-custom_styles/panel = SubResource( 20 )
+custom_styles/panel = SubResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -627,7 +627,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Ending_Panel/End_Area"]
-shape = SubResource( 21 )
+shape = SubResource( 23 )
 
 [node name="End_Camera" type="Camera2D" parent="Ending_Panel"]
 position = Vector2( 2406, 221 )
@@ -635,7 +635,7 @@ position = Vector2( 2406, 221 )
 [node name="End_Dialogue" parent="Ending_Panel/End_Camera" instance=ExtResource( 8 )]
 margin_right = 1714.0
 margin_bottom = 572.0
-custom_fonts/font = SubResource( 23 )
+custom_fonts/font = SubResource( 25 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 text = "Dialogue"
 align = 1
@@ -651,7 +651,7 @@ margin_left = -1100.0
 margin_top = -1750.0
 margin_right = 1100.0
 margin_bottom = 1750.0
-custom_styles/panel = SubResource( 24 )
+custom_styles/panel = SubResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
