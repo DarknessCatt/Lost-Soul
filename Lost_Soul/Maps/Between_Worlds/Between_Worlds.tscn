@@ -165,7 +165,6 @@ position = Vector2( 15312, 224 )
 position = Vector2( 20016, -1760 )
 
 [node name="Secrets" type="Node2D" parent="."]
-z_index = 1
 
 [node name="Beginning_Secret" type="Node2D" parent="Secrets"]
 
@@ -254,24 +253,25 @@ shape = SubResource( 5 )
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( -272, 160, 336, 160, 336, -288, -272, -288 )
 
-[node name="Above_The_Bird_Pit" type="Node2D" parent="Secrets"]
+[node name="Above_The_Block_Pit" type="Node2D" parent="Secrets"]
 position = Vector2( 14104, 56 )
+z_index = 1
 
-[node name="Souls" parent="Secrets/Above_The_Bird_Pit" instance=ExtResource( 6 )]
+[node name="Souls" parent="Secrets/Above_The_Block_Pit" instance=ExtResource( 6 )]
 modulate = Color( 0.9665, 1, 0.33, 1 )
 scale = Vector2( 1.5, 1.5 )
 Soul_Value = 15
 
-[node name="Hidden_Area" parent="Secrets/Above_The_Bird_Pit" instance=ExtResource( 5 )]
+[node name="Hidden_Area" parent="Secrets/Above_The_Block_Pit" instance=ExtResource( 5 )]
 
-[node name="Shadow" type="Polygon2D" parent="Secrets/Above_The_Bird_Pit/Hidden_Area"]
+[node name="Shadow" type="Polygon2D" parent="Secrets/Above_The_Block_Pit/Hidden_Area"]
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( -216, 200, 104, 200, 104, -216, -216, -216 )
 
-[node name="Wall" type="Polygon2D" parent="Secrets/Above_The_Bird_Pit/Hidden_Area"]
+[node name="Wall" type="Polygon2D" parent="Secrets/Above_The_Block_Pit/Hidden_Area"]
 polygon = PoolVector2Array( 168, -120, 168, 104, 200, 104, 200, -120 )
 
-[node name="Area" type="CollisionShape2D" parent="Secrets/Above_The_Bird_Pit/Hidden_Area"]
+[node name="Area" type="CollisionShape2D" parent="Secrets/Above_The_Block_Pit/Hidden_Area"]
 position = Vector2( 184, -8 )
 shape = SubResource( 6 )
 
