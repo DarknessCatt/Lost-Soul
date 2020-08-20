@@ -1916,7 +1916,7 @@ states/Spawning/position = Vector2( 251, 124 )
 states/rest/node = SubResource( 25 )
 states/rest/position = Vector2( 75, 124 )
 transitions = [ "rest", "Spawning", SubResource( 26 ), "Spawning", "Idle_1", SubResource( 27 ), "Idle_1", "Phase_2", SubResource( 28 ), "Idle_1", "Atk_Shoot_Spread", SubResource( 29 ), "Idle_1", "Atk_Shoot_Multi", SubResource( 30 ), "Atk_Shoot_Multi", "Idle_1", SubResource( 31 ), "Atk_Shoot_Spread", "Idle_1", SubResource( 32 ), "Idle_1", "Side_Switch", SubResource( 33 ), "Side_Switch", "Idle_1", SubResource( 34 ), "Phase_2", "Idle_2", SubResource( 35 ), "Idle_2", "Atk_Shoot_Rain", SubResource( 36 ), "Idle_2", "Atk_Bounce_Intro", SubResource( 37 ), "Atk_Shoot_Rain", "Idle_2", SubResource( 38 ), "Atk_Shoot_Spread", "Side_Switch", SubResource( 39 ), "Atk_Shoot_Multi", "Side_Switch", SubResource( 40 ), "Atk_Bounce_Intro", "Atk_Bounce_Outro", SubResource( 41 ), "Atk_Bounce_Outro", "Idle_2", SubResource( 42 ), "Idle_2", "Dead", SubResource( 43 ) ]
-graph_offset = Vector2( 616.688, 36 )
+graph_offset = Vector2( -117.312, -35 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=45]
 
@@ -1957,7 +1957,7 @@ volume_db = -80.0
 
 [node name="Charge" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
-volume_db = -80.0
+volume_db = -10.0
 
 [node name="Screech" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )

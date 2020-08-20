@@ -1,12 +1,14 @@
 [gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://Entities/Boss/Boss.gd" type="Script" id=1]
-[ext_resource path="res://Entities/Boss/FSM/Knockback.gd" type="Script" id=2]
-[ext_resource path="res://Entities/Boss/FSM/Idle.gd" type="Script" id=3]
-[ext_resource path="res://Entities/Boss/FSM/Attack.gd" type="Script" id=4]
-[ext_resource path="res://Entities/Boss/FSM/OnCombat.gd" type="Script" id=5]
+[ext_resource path="res://Old_Broken_Stuff/Boss/Boss.gd" type="Script" id=1]
+[ext_resource path="res://Old_Broken_Stuff/Boss/FSM/Knockback.gd" type="Script" id=2]
+[ext_resource path="res://Old_Broken_Stuff/Boss/FSM/Idle.gd" type="Script" id=3]
+[ext_resource path="res://Old_Broken_Stuff/Boss/FSM/Attack.gd" type="Script" id=4]
+[ext_resource path="res://Old_Broken_Stuff/Boss/FSM/OnCombat.gd" type="Script" id=5]
 [ext_resource path="res://Entities/Combat/Hitbox/Hitbox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Entities/Combat/Hurtbox/Hurtbox.tscn" type="PackedScene" id=9]
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "Death"

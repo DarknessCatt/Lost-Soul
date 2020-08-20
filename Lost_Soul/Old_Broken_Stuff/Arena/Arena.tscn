@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Tilesets/Placeholder_White/Placeholder_White.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Entities/Arena/Arena.gd" type="Script" id=2]
+[ext_resource path="res://Old_Broken_Stuff/Arena/Arena.gd" type="Script" id=2]
 [ext_resource path="res://HUD/Player_Status/Player_Status.tscn" type="PackedScene" id=4]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.8522, 267.042 )
