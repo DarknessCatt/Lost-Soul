@@ -120,7 +120,8 @@ func _crystal_heart_collected() -> void:
 	crystal_heart += 1
 
 	self.speed = Vector2(0,0)
-	_change_state($States/OnGround)
+	#Fix
+	#_change_state($States/OnGround)
 	_change_anim("PowerUp")
 
 	on_cutscene = true
@@ -132,9 +133,6 @@ func _use_heart() -> void:
 		health = max_health
 		$Heart_Particles.restart()
 		emit_signal("heart_used", crystal_heart)
-
-func _powerup_end():
-	on_cutscene = false
 
 #Movement
 var speed : Vector2 = Vector2(0,0)

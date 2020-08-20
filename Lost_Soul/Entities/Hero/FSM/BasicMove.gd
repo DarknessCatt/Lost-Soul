@@ -8,10 +8,6 @@ const ACCEL : int = 2000
 const MAX_SPEED : int = 400
 const FRICTION : float = 0.75
 
-##Animation Vars
-var MOVE_ANIMATION : String
-var REST_ANIMATION : String
-
 #Direction Enum FSM
 enum {LEFT = -1, NONE, RIGHT}
 var direction : int = NONE
@@ -20,16 +16,13 @@ func enter(_Machine : Node, Player : KinematicBody2D) -> void:
 	if Input.is_action_pressed("hero_left"):
 		direction = LEFT
 		Player.body.scale.x = -1
-		#Player._change_anim(MOVE_ANIMATION)
 
 	elif Input.is_action_pressed("hero_right"):
 		direction = RIGHT
 		Player.body.scale.x = 1
-		#Player._change_anim(MOVE_ANIMATION)
 
 	else:
 		direction = NONE
-		#Player._change_anim(REST_ANIMATION)
 
 func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
 	var spdx : float = Player.speed.x + direction*ACCEL*delta
@@ -49,6 +42,7 @@ func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
 
 	Player.speed.x = spdx
 
+	# warning-ignore:return_value_discarded
 	Player.move_and_slide(Player.speed, NORMAL)
 
 func input(_Machine : Node, _Player: KinematicBody2D, event : InputEvent) -> void:
@@ -58,11 +52,9 @@ func input(_Machine : Node, _Player: KinematicBody2D, event : InputEvent) -> voi
 		NONE:
 			if event.is_action_pressed("hero_left"):
 				direction = LEFT
-				#Player._change_anim(MOVE_ANIMATION)
 
 			elif event.is_action_pressed("hero_right"):
 				direction = RIGHT
-				#Player._change_anim(MOVE_ANIMATION)
 
 		LEFT:
 			if event.is_action_pressed("hero_right"):
@@ -73,7 +65,6 @@ func input(_Machine : Node, _Player: KinematicBody2D, event : InputEvent) -> voi
 					direction = RIGHT
 				else:
 					direction = NONE
-					#Player._change_anim(REST_ANIMATION)
 
 		RIGHT:
 			if event.is_action_pressed("hero_left"):
@@ -84,4 +75,3 @@ func input(_Machine : Node, _Player: KinematicBody2D, event : InputEvent) -> voi
 					direction = LEFT
 				else:
 					direction = NONE
-					#Player._change_anim(REST_ANIMATION)

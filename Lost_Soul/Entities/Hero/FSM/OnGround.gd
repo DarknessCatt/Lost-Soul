@@ -20,8 +20,5 @@ func input(Machine : Node, Player: KinematicBody2D, event : InputEvent) -> void:
 	if event.is_action_pressed("hero_jump"):
 		Machine.change_move_state($"../Jumping")
 
-	#elif event.is_action_pressed("hero_attack"):
-	#	Player._change_state($"../GroundAttack")
-
 	else:
 		.input(Machine, Player, event)

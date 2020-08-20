@@ -157,6 +157,7 @@ func _on_Tween_tween_all_completed():
 			state = BEGIN
 			$Hero/Player_Camera.current = true
 			$Hero/Player_Camera.show()
+			$Hero.on_cutscene = false
 
 func _input(event):
 	if event.is_action_pressed("hero_jump") and (state == INTRO1 or state == INTRO2):

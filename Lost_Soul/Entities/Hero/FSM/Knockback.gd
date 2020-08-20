@@ -14,14 +14,12 @@ func enter(Player : KinematicBody2D) -> void:
 	knockback_over = false
 	$Inv_Timer.start()
 
+func exit(Player : KinematicBody2D) -> void:
+	Player.speed = Vector2.ZERO
+
 func update(Player: KinematicBody2D, delta : float) -> void:
 	if knockback_over:
 		Player._change_state($"../Playing")
-		#if Player.is_on_floor():
-		#	Player._change_state($"../OnGround")
-
-		#else:
-		#	Player._change_state($"../Falling")
 
 	else:
 		var spd : Vector2 = Player.speed
@@ -33,6 +31,7 @@ func update(Player: KinematicBody2D, delta : float) -> void:
 
 		Player.speed = spd
 
+		# warning-ignore:return_value_discarded
 		Player.move_and_slide(Player.speed, NORMAL)
 
 func _anim_done():
