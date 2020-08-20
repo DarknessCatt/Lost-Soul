@@ -17,6 +17,7 @@ func enter(Wanderer : KinematicBody2D) -> void:
 	Wanderer.change_animation(state_anim)
 	Wanderer.speed.y = 10
 
+# warning-ignore:narrowing_conversion
 	dir = sign(Wanderer.speed.x)
 	if dir == 0: dir = 1
 
@@ -29,7 +30,7 @@ func enter(Wanderer : KinematicBody2D) -> void:
 	path_checker.position.x = path_checker_dist*dir
 	path_checker.enabled = true
 
-func exit(Wanderer : KinematicBody2D) -> void:
+func exit(_Wanderer : KinematicBody2D) -> void:
 	path_checker.enabled = false
 
 func update(Wanderer: KinematicBody2D, delta : float) -> void:
@@ -38,9 +39,11 @@ func update(Wanderer: KinematicBody2D, delta : float) -> void:
 	if sign(spdx) != dir : spdx *= FRICTION
 
 	if abs(spdx) > MAX_SPEED:
+		# warning-ignore:integer_division
 		if abs(spdx) - MAX_SPEED < ACCEL/10 : spdx = MAX_SPEED*dir
 		else : spdx *= FRICTION
 
+	# warning-ignore:integer_division
 	elif abs(spdx) < ACCEL/100: spdx = 0
 
 	if sign(spdx) != sign(Wanderer.speed.x):
@@ -52,6 +55,7 @@ func update(Wanderer: KinematicBody2D, delta : float) -> void:
 
 	Wanderer.speed.x = spdx
 
+	# warning-ignore:return_value_discarded
 	Wanderer.move_and_slide(Wanderer.speed, NORMAL)
 
 	if not Wanderer.is_on_floor():

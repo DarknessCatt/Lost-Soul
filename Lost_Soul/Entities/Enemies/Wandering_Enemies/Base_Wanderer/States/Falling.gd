@@ -13,37 +13,41 @@ export(int) var MAX_GRAV : int = 2000
 var dir : int = 1
 
 #Functions
-func enter(_Player : KinematicBody2D) -> void:
-	_Player.change_animation(state_anim)
-	dir = sign(_Player.speed.x)
+func enter(Player : KinematicBody2D) -> void:
+	Player.change_animation(state_anim)
+	# warning-ignore:narrowing_conversion
+	dir = sign(Player.speed.x)
 
-func update(_Player: KinematicBody2D, _delta : float) -> void:
-	var spdx : float = _Player.speed.x + dir*ACCEL*_delta
+func update(Player: KinematicBody2D, _delta : float) -> void:
+	var spdx : float = Player.speed.x + dir*ACCEL*_delta
 
 	if sign(spdx) != dir : spdx *= FRICTION
 
 	if abs(spdx) > MAX_SPEED:
+		# warning-ignore:integer_division
 		if abs(spdx) - MAX_SPEED < ACCEL/10 : spdx = MAX_SPEED*dir
 		else : spdx *= FRICTION
 
+	# warning-ignore:integer_division
 	elif abs(spdx) < ACCEL/100: spdx = 0
 
-	if sign(spdx) != sign(_Player.speed.x):
+	if sign(spdx) != sign(Player.speed.x):
 		match sign(spdx):
 			-1.0:
-				_Player.body.scale.x = -1
+				Player.body.scale.x = -1
 			1.0:
-				_Player.body.scale.x = 1
+				Player.body.scale.x = 1
 
-	_Player.speed.x = spdx
+	Player.speed.x = spdx
 
-	_Player.speed.y += GRAVITY*_delta
-	if _Player.speed.y > MAX_GRAV: _Player.speed.y = MAX_GRAV
+	Player.speed.y += GRAVITY*_delta
+	if Player.speed.y > MAX_GRAV: Player.speed.y = MAX_GRAV
 
-	_Player.move_and_slide(_Player.speed, NORMAL)
+	# warning-ignore:return_value_discarded
+	Player.move_and_slide(Player.speed, NORMAL)
 
-	if _Player.is_on_wall():
-		_Player.speed.x *= -1
+	if Player.is_on_wall():
+		Player.speed.x *= -1
 
-	if _Player.is_on_floor():
-		_Player._change_state($"../Walking")
+	if Player.is_on_floor():
+		Player._change_state($"../Walking")
