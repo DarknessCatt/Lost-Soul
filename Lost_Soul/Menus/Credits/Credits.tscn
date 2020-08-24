@@ -1,0 +1,46 @@
+[gd_scene format=2]
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -66.5
+margin_right = 66.5
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Label" parent="List"]
+margin_right = 133.0
+margin_bottom = 269.0
+text = "
+
+
+Um jogo de
+Matheus Lima Cunha
+
+Musica por
+Anttis Instrumentals
+
+???
+
+???
+
+???
+
+???"
+align = 1
+
+[node name="Button" type="Button" parent="List"]
+margin_top = 319.0
+margin_right = 133.0
+margin_bottom = 339.0
+text = "Back"

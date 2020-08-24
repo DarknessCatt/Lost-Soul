@@ -4948,6 +4948,7 @@ Direction = Vector2( 0.5, -1 )
 position = Vector2( 50, -20 )
 rotation = 1.5708
 shape = SubResource( 24 )
+disabled = true
 
 [node name="Jab3" type="Node2D" parent="Body/Hitboxes"]
 visible = false
