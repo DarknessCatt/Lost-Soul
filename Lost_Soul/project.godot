@@ -122,3 +122,4 @@ hero_heart={
 
 environment/default_clear_color=Color( 0.05, 0.05, 0.05, 1 )
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false
