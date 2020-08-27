@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/controller/controller.png" type="Texture" id=1]
+[ext_resource path="res://Menus/Keybinding/Components/Keybind_Single_Button/Keybind_Single_Button.gd" type="Script" id=2]
+
+[node name="Keybind_Single_Button" type="HBoxContainer"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -25.0
+margin_bottom = 25.0
+alignment = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Action" type="Label" parent="."]
+margin_left = 286.0
+margin_top = -1.0
+margin_right = 421.0
+margin_bottom = 49.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 135, 50 )
+text = "Action_Action_Action"
+align = 1
+valign = 1
+
+[node name="Space" type="Control" parent="."]
+margin_left = 425.0
+margin_right = 545.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 120, 50 )
+
+[node name="Keyboard_Button" type="Button" parent="."]
+margin_left = 549.0
+margin_right = 620.0
+margin_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 70, 50 )
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Keyboard"
+
+[node name="Space2" type="Control" parent="."]
+margin_left = 624.0
+margin_right = 664.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 40, 50 )
+
+[node name="Control_Button" type="Button" parent="."]
+margin_left = 668.0
+margin_right = 738.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 70, 50 )
+focus_mode = 0
+enabled_focus_mode = 0
+
+[node name="Sprite" type="Sprite" parent="Control_Button"]
+position = Vector2( 35, 25 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 1 )
+[connection signal="pressed" from="Keyboard_Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control_Button" to="." method="_on_button_pressed"]

@@ -35,6 +35,11 @@ _global_script_classes=[ {
 "path": "res://Classes/FSM.gd"
 }, {
 "base": "Node",
+"class": "JoyButtonSpriter",
+"language": "GDScript",
+"path": "res://Classes/JoyButtonSpriter.gd"
+}, {
+"base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://Classes/State.gd"
@@ -45,6 +50,7 @@ _global_script_class_icons={
 "ConcurrentState": "",
 "Enemy_FSM": "",
 "FSM": "",
+"JoyButtonSpriter": "",
 "State": ""
 }
 

@@ -1,0 +1,336 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Menus/Keybinding/Components/Keybind_Single_Button/Keybind_Single_Button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Menus/Keybinding/Keybinding.gd" type="Script" id=2]
+[ext_resource path="res://Assets/controller/controller.png" type="Texture" id=3]
+
+[node name="Keybinding" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="HBoxContainer" parent="."]
+margin_left = 321.0
+margin_top = 30.0
+margin_right = 698.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 50 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Action" type="Label" parent="Description"]
+margin_right = 60.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 60, 50 )
+text = "Ação"
+align = 1
+valign = 1
+
+[node name="Space" type="Control" parent="Description"]
+margin_left = 64.0
+margin_right = 219.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 155, 50 )
+
+[node name="Keyboard" type="Label" parent="Description"]
+margin_left = 223.0
+margin_right = 293.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 70, 50 )
+text = "Teclado"
+align = 1
+valign = 1
+
+[node name="Space2" type="Control" parent="Description"]
+margin_left = 297.0
+margin_right = 337.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 40, 50 )
+
+[node name="Controller" type="Label" parent="Description"]
+margin_left = 341.0
+margin_right = 411.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 70, 50 )
+text = "Controle"
+align = 1
+valign = 1
+
+[node name="Controls" type="ScrollContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.13
+anchor_right = 0.5
+anchor_bottom = 0.85
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 360, 0 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="Controls"]
+margin_right = 452.0
+margin_bottom = 174.0
+custom_constants/separation = 12
+alignment = 1
+
+[node name="Keybind_Single_Button" parent="Controls/Menu" instance=ExtResource( 1 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 0.0
+margin_right = 452.0
+margin_bottom = 50.0
+action = "hero_jump"
+
+[node name="Keybind_Single_Button2" parent="Controls/Menu" instance=ExtResource( 1 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 62.0
+margin_right = 452.0
+margin_bottom = 112.0
+action = "hero_attack"
+
+[node name="Keybind_Single_Button3" parent="Controls/Menu" instance=ExtResource( 1 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 124.0
+margin_right = 452.0
+margin_bottom = 174.0
+action = "hero_block"
+
+[node name="Save and Exit" type="Button" parent="."]
+anchor_left = 0.4
+anchor_top = 0.9
+anchor_right = 0.4
+anchor_bottom = 0.9
+margin_left = -50.0
+margin_right = 50.0001
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 40 )
+text = "Save and Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reset" type="Button" parent="."]
+anchor_left = 0.6
+anchor_top = 0.9
+anchor_right = 0.6
+anchor_bottom = 0.9
+margin_left = -50.0
+margin_right = 50.0001
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 40 )
+text = "Reset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Change_Key" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="Panel" parent="Change_Key"]
+modulate = Color( 0, 0, 0, 0.6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Windows" type="Panel" parent="Change_Key"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -125.0
+margin_top = -80.0
+margin_right = 125.0
+margin_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 250, 170 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Window" type="VBoxContainer" parent="Change_Key/Windows"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Titulo" type="Label" parent="Change_Key/Windows/Window"]
+margin_top = -1.0
+margin_right = 240.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 240, 50 )
+text = "Aperte um botão para a ação action_action_ action"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Input" type="Control" parent="Change_Key/Windows/Window"]
+margin_top = 54.0
+margin_right = 240.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Keyboard" type="Label" parent="Change_Key/Windows/Window/Input"]
+anchor_right = 0.5
+anchor_bottom = 0.5
+rect_scale = Vector2( 2, 2 )
+text = "A"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controller" type="Sprite" parent="Change_Key/Windows/Window/Input"]
+position = Vector2( 120, 25 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+
+[node name="SaveExit" type="Control" parent="Change_Key/Windows/Window"]
+margin_top = 108.0
+margin_right = 240.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Salve" type="Button" parent="Change_Key/Windows/Window/SaveExit"]
+anchor_left = 0.1
+anchor_right = 0.1
+anchor_bottom = 1.0
+margin_top = 10.0
+rect_min_size = Vector2( 70, 40 )
+text = "Salvar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="Change_Key/Windows/Window/SaveExit"]
+anchor_left = 0.6
+anchor_right = 0.9
+anchor_bottom = 1.0
+margin_top = 10.0
+rect_min_size = Vector2( 70, 40 )
+text = "Sair"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Confirm_Reset" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="Panel" parent="Confirm_Reset"]
+modulate = Color( 0, 0, 0, 0.6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.825623
+margin_right = 0.825684
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Windows" type="Panel" parent="Confirm_Reset"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -125.0
+margin_top = -60.0
+margin_right = 125.0
+margin_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 250, 120 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Window" type="VBoxContainer" parent="Confirm_Reset/Windows"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Titulo" type="Label" parent="Confirm_Reset/Windows/Window"]
+margin_right = 240.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 240, 50 )
+text = "Certeza que deseja voltar todos os botões para a configuração padrão?"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmCancel" type="Control" parent="Confirm_Reset/Windows/Window"]
+margin_top = 54.0
+margin_right = 240.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Confirm" type="Button" parent="Confirm_Reset/Windows/Window/ConfirmCancel"]
+anchor_left = 0.1
+anchor_right = 0.1
+anchor_bottom = 1.0
+margin_top = 10.0
+rect_min_size = Vector2( 75, 40 )
+text = "Confirmar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="Confirm_Reset/Windows/Window/ConfirmCancel"]
+anchor_left = 0.6
+anchor_right = 0.9
+anchor_bottom = 1.0
+margin_top = 10.0
+rect_min_size = Vector2( 75, 40 )
+text = "Cancelar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="key_change_request" from="Controls/Menu/Keybind_Single_Button" to="." method="_on_key_change_request"]
+[connection signal="key_change_request" from="Controls/Menu/Keybind_Single_Button2" to="." method="_on_key_change_request"]
+[connection signal="key_change_request" from="Controls/Menu/Keybind_Single_Button3" to="." method="_on_key_change_request"]
+[connection signal="pressed" from="Save and Exit" to="." method="_on_Save_and_Exit_pressed"]
+[connection signal="pressed" from="Reset" to="." method="_on_Reset"]
+[connection signal="pressed" from="Change_Key/Windows/Window/SaveExit/Salve" to="." method="_on_Salve_pressed"]
+[connection signal="pressed" from="Change_Key/Windows/Window/SaveExit/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Confirm_Reset/Windows/Window/ConfirmCancel/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="Confirm_Reset/Windows/Window/ConfirmCancel/Cancel" to="." method="_on_Cancel_pressed"]
