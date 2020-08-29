@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Tilesets/Placeholder_White/Placeholder_White.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=2]
@@ -9,8 +9,7 @@
 [ext_resource path="res://Entities/Map_Elements/Hidden_Area/Hidden_Area.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Entities/Pickups/Souls/Souls.tscn" type="PackedScene" id=8]
 [ext_resource path="res://HUD/Soul_Counter/Soul_Counter.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Assets/controller/controller_button_A.png" type="Texture" id=10]
-[ext_resource path="res://Entities/Information/Tutorial_buttons/Tutorial_Button.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Information/Tutorial_Key/Tutorial_Key.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 38.6221, 220.676 )
@@ -21,16 +20,16 @@ extents = Vector2( 69.7646, 146.222 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 17.7515, 535.225 )
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 71.4067, 282.712 )
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 131.368, 225.783 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 431.827, 258.417 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 40.2529, 39.5746 )
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=6]
 emission_shape = 1
 emission_sphere_radius = 14.0
 flag_disable_z = true
@@ -43,19 +42,19 @@ scale = 20.0
 scale_random = 0.5
 color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 26.5804, 71.5447 )
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=9]
 size = 350
 outline_size = 8
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
 [node name="Prototype_Dead_World" type="Node2D"]
@@ -187,30 +186,12 @@ collision_layer = 0
 [node name="Area" type="CollisionShape2D" parent="Left"]
 shape = SubResource( 3 )
 
-[node name="Jump" type="Area2D" parent="."]
-position = Vector2( 1676.88, 320.397 )
-monitorable = false
-collision_layer = 0
+[node name="Tutorial_Jump" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1730, 360 )
+action = "hero_jump"
 
-[node name="area" type="CollisionShape2D" parent="Jump"]
-position = Vector2( 1.3291, 0 )
-shape = SubResource( 4 )
-
-[node name="Tutorial_Button" parent="Jump" instance=ExtResource( 11 )]
-modulate = Color( 1, 1, 1, 0 )
-
-[node name="Z" type="Polygon2D" parent="Jump/Tutorial_Button"]
-position = Vector2( 40, 45 )
-scale = Vector2( 0.5, 0.5 )
-color = Color( 0.976471, 0.376471, 0.376471, 1 )
-offset = Vector2( -15, -66.326 )
-polygon = PoolVector2Array( -24.0695, 22.326, 55.9305, 22.326, 55.9305, 38.326, -0.069458, 94.326, 55.9305, 94.326, 55.9305, 110.326, -24.0695, 110.326, -24.0695, 94.326, 31.9305, 38.326, -24.0695, 38.326 )
-
-[node name="Controller" type="Sprite" parent="Jump/Tutorial_Button"]
-visible = false
-position = Vector2( 40, 45 )
-scale = Vector2( 0.35, 0.35 )
-texture = ExtResource( 10 )
+[node name="Area" type="CollisionShape2D" parent="Tutorial_Jump"]
+shape = SubResource( 11 )
 
 [node name="Middle" type="Area2D" parent="."]
 position = Vector2( 562.102, 81.2445 )
@@ -227,7 +208,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="area" type="CollisionShape2D" parent="Church"]
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="End" type="Area2D" parent="."]
 position = Vector2( -2994.14, 692.668 )
@@ -245,7 +226,7 @@ collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Chaos"]
 position = Vector2( -2.81348, -0.272827 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Chaos"]
 position = Vector2( -2.81348, -0.272827 )
@@ -256,7 +237,7 @@ polygon = PoolVector2Array( -24, 0, -16, -16, 0, -24, 16, -16, 24, 0, 16, 16, 0,
 amount = 40
 lifetime = 5.0
 explosiveness = 1.0
-process_material = SubResource( 7 )
+process_material = SubResource( 6 )
 
 [node name="Souls_1" parent="." instance=ExtResource( 8 )]
 modulate = Color( 0.28, 0.736, 1, 1 )
@@ -269,7 +250,7 @@ position = Vector2( 697, 677 )
 
 [node name="Trigger" type="CollisionShape2D" parent="Hidden_Area_1"]
 position = Vector2( 159.943, -3.86957 )
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [node name="Black" type="Polygon2D" parent="Hidden_Area_1"]
 position = Vector2( -697.249, -677.881 )
@@ -291,7 +272,7 @@ position = Vector2( -7082, 629 )
 
 [node name="Trigger" type="CollisionShape2D" parent="Hidden_Area_2"]
 position = Vector2( 159.943, -3.86957 )
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [node name="Black" type="Polygon2D" parent="Hidden_Area_2"]
 position = Vector2( -694, -661 )
@@ -310,7 +291,7 @@ margin_left = 2943.02
 margin_top = -203.987
 margin_right = 5443.02
 margin_bottom = 796.013
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 8 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -327,7 +308,7 @@ current = true
 margin_top = -40.0
 margin_right = 1025.0
 margin_bottom = 360.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 text = "Dialogo"
 align = 1
@@ -353,7 +334,7 @@ margin_left = -6223.39
 margin_top = -24.4492
 margin_right = -3723.39
 margin_bottom = 975.551
-custom_styles/panel = SubResource( 11 )
+custom_styles/panel = SubResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -362,8 +343,6 @@ __meta__ = {
 [connection signal="body_entered" from="Line" to="." method="_on_Line_body_entered"]
 [connection signal="body_exited" from="Line" to="." method="_on_Line_body_exited"]
 [connection signal="body_entered" from="Left" to="." method="_on_Left_body_entered"]
-[connection signal="body_entered" from="Jump" to="." method="_on_Jump_body_entered"]
-[connection signal="body_exited" from="Jump" to="." method="_on_Jump_body_exited"]
 [connection signal="body_entered" from="Middle" to="." method="_on_Middle_body_entered"]
 [connection signal="body_entered" from="Church" to="." method="_on_Church_body_entered"]
 [connection signal="body_exited" from="Church" to="." method="_on_Church_body_exited"]

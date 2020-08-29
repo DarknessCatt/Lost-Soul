@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Fonts/PlatNomor-WyVnn.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/controller/controller.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Information/Tutorial_Key/Tutorial_Action.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 350
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Tutorial_Action" type="Area2D"]
+monitorable = false
+collision_layer = 0
+script = ExtResource( 3 )
+
+[node name="Keyboard" type="Label" parent="."]
+margin_left = -37.0
+margin_top = -35.0
+margin_right = 333.0
+margin_bottom = 317.0
+rect_min_size = Vector2( 370, 0 )
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
+text = "a"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controller" type="Sprite" parent="."]
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -228,7 +228,7 @@ func _on_checkpoint_reached(checkpoint : Area2D):
 		0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 
-	first_check = true
+	$Dialogue_Triggers/Tutorial_Attack.disabled = false
 	dialogue.change_dialogue(dil_check)
 	dialogue.begin()
 
@@ -248,24 +248,6 @@ func _on_checkpoint_reached(checkpoint : Area2D):
 	blk_con_event.button_index = 5
 	InputMap.action_add_event("hero_block", blk_con_event)
 
-func _on_Attack_entered(_body):
-	if first_check:
-		$Tween.remove_all()
-		$Tween.interpolate_property(
-			$Dialogue_Triggers/Attack/Tutorial_Button, "modulate:a",
-			$Dialogue_Triggers/Attack/Tutorial_Button.modulate.a, 1,
-			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		$Tween.start()
-
-func _on_Attack_exited(_body):
-	if first_check:
-		$Tween.remove_all()
-		$Tween.interpolate_property(
-			$Dialogue_Triggers/Attack/Tutorial_Button, "modulate:a",
-			$Dialogue_Triggers/Attack/Tutorial_Button.modulate.a, 0,
-			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		$Tween.start()
-
 func _on_Souls_Tutorial_entered(_body):
 	dialogue.change_dialogue(dil_soul)
 	dialogue.begin()
@@ -281,22 +263,6 @@ func _on_About_Lost_entered(_body):
 func _on_Blocking_entered(_body):
 	dialogue.change_dialogue(dil_block)
 	dialogue.begin()
-
-func _on_Block_tutorial_entered(_body):
-	$Tween.remove_all()
-	$Tween.interpolate_property(
-		$Dialogue_Triggers/Block_tutorial/Tutorial_Button, "modulate:a",
-		$Dialogue_Triggers/Block_tutorial/Tutorial_Button.modulate.a, 1,
-		0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	$Tween.start()
-
-func _on_Block_tutorial_exited(_body):
-	$Tween.remove_all()
-	$Tween.interpolate_property(
-		$Dialogue_Triggers/Block_tutorial/Tutorial_Button, "modulate:a",
-		$Dialogue_Triggers/Block_tutorial/Tutorial_Button.modulate.a, 0,
-		0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	$Tween.start()
 
 func _on_Before_Eyes_entered(_body):
 	dialogue.change_dialogue(dil_eyes)

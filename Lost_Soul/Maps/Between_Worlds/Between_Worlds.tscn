@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Tilesets/Placeholder_White/Placeholder_White.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=2]
@@ -20,9 +20,7 @@
 [ext_resource path="res://Assets/BG_Music/Anttis/Anttis-instrumentals-1st-I-lost-my-money.ogg" type="AudioStream" id=18]
 [ext_resource path="res://Assets/BG_Music/Anttis/Anttis-instrumentals-Beat.ogg" type="AudioStream" id=19]
 [ext_resource path="res://Entities/Enemies/Wall_Enemies/Spitter/Spitter.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Entities/Information/Tutorial_buttons/Tutorial_Button.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Assets/controller/controller_button_X.png" type="Texture" id=22]
-[ext_resource path="res://Assets/controller/controller_RB.png" type="Texture" id=23]
+[ext_resource path="res://Entities/Information/Tutorial_Key/Tutorial_Key.tscn" type="PackedScene" id=24]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -51,8 +49,8 @@ extents = Vector2( 8, 64 )
 [sub_resource type="CircleShape2D" id=9]
 radius = 112.704
 
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 24.0002, 112 )
+[sub_resource type="RectangleShape2D" id=27]
+extents = Vector2( 120, 130 )
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 160, 16 )
@@ -63,8 +61,8 @@ extents = Vector2( 224, 112 )
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 10, 88 )
 
-[sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 247.999, 176 )
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 220, 180 )
 
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 16, 128 )
@@ -320,27 +318,13 @@ modulate = Color( 1, 1, 1, 0 )
 color = Color( 0.976471, 0.376471, 0.376471, 1 )
 polygon = PoolVector2Array( -8, -144, -8, -168, -24, -168, 0, -192, 24, -168, 8, -168, 8, -144 )
 
-[node name="Attack" type="Area2D" parent="Dialogue_Triggers"]
-position = Vector2( 3384, 496 )
-monitorable = false
-collision_layer = 0
+[node name="Tutorial_Attack" parent="Dialogue_Triggers" instance=ExtResource( 24 )]
+position = Vector2( 3330, 450 )
+action = "hero_attack"
+disabled = true
 
-[node name="area" type="CollisionShape2D" parent="Dialogue_Triggers/Attack"]
-shape = SubResource( 10 )
-
-[node name="Tutorial_Button" parent="Dialogue_Triggers/Attack" instance=ExtResource( 21 )]
-modulate = Color( 1, 1, 1, 0 )
-
-[node name="C" type="Polygon2D" parent="Dialogue_Triggers/Attack/Tutorial_Button"]
-position = Vector2( -8, -55 )
-color = Color( 0.976471, 0.376471, 0.376471, 1 )
-polygon = PoolVector2Array( 16, 16, 0, 16, -8, 0.52211, 0, -16, 16, -16, 16, -22, -6, -22, -16, 0.258121, -6, 22, 16, 22 )
-
-[node name="Sprite" type="Sprite" parent="Dialogue_Triggers/Attack/Tutorial_Button"]
-visible = false
-position = Vector2( 0, -55 )
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 22 )
+[node name="area" type="CollisionShape2D" parent="Dialogue_Triggers/Tutorial_Attack"]
+shape = SubResource( 27 )
 
 [node name="Wander_Enemy" type="Area2D" parent="Dialogue_Triggers"]
 position = Vector2( 6912, 1216 )
@@ -366,31 +350,13 @@ collision_layer = 0
 [node name="Area" type="CollisionShape2D" parent="Dialogue_Triggers/Blocking"]
 shape = SubResource( 13 )
 
-[node name="Block_tutorial" type="Area2D" parent="Dialogue_Triggers"]
-position = Vector2( 16136, 1200 )
-monitorable = false
-collision_layer = 0
+[node name="Tutorial_Block" parent="Dialogue_Triggers" instance=ExtResource( 24 )]
+position = Vector2( 16205, 1130 )
+action = "hero_block"
 
-[node name="Area" type="CollisionShape2D" parent="Dialogue_Triggers/Block_tutorial"]
-shape = SubResource( 14 )
-
-[node name="Tutorial_Button" parent="Dialogue_Triggers/Block_tutorial" instance=ExtResource( 21 )]
-modulate = Color( 1, 1, 1, 0 )
-
-[node name="D" type="Polygon2D" parent="Dialogue_Triggers/Block_tutorial/Tutorial_Button"]
-position = Vector2( 72, -104 )
-color = Color( 0.976471, 0.376471, 0.376471, 1 )
-polygon = PoolVector2Array( 8, -40, 24, -16, 24, 24, 8, 40, -16, 40, -16, -40 )
-
-[node name="D_Inside" type="Polygon2D" parent="Dialogue_Triggers/Block_tutorial/Tutorial_Button/D"]
-color = Color( 0, 0, 0, 1 )
-polygon = PoolVector2Array( -8, -32, 8, -32, 16, -16, 16, 24, 8, 32, -8, 32 )
-
-[node name="Sprite" type="Sprite" parent="Dialogue_Triggers/Block_tutorial/Tutorial_Button"]
-visible = false
-position = Vector2( 72, -104 )
-scale = Vector2( 0.35, 0.35 )
-texture = ExtResource( 23 )
+[node name="area" type="CollisionShape2D" parent="Dialogue_Triggers/Tutorial_Block"]
+position = Vector2( -40, 70 )
+shape = SubResource( 28 )
 
 [node name="Before_Eyes" type="Area2D" parent="Dialogue_Triggers"]
 position = Vector2( 15664, 160 )
@@ -679,13 +645,9 @@ __meta__ = {
 [connection signal="body_entered" from="Dialogue_Triggers/Intro" to="." method="_on_Intro_entered"]
 [connection signal="body_entered" from="Dialogue_Triggers/First_Check" to="." method="_on_First_Check_entered"]
 [connection signal="body_exited" from="Dialogue_Triggers/First_Check" to="." method="_on_First_Check_exited"]
-[connection signal="body_entered" from="Dialogue_Triggers/Attack" to="." method="_on_Attack_entered"]
-[connection signal="body_exited" from="Dialogue_Triggers/Attack" to="." method="_on_Attack_exited"]
 [connection signal="body_entered" from="Dialogue_Triggers/Wander_Enemy" to="." method="_on_Wander_Enemy_entered"]
 [connection signal="body_entered" from="Dialogue_Triggers/About_Lost_Souls" to="." method="_on_About_Lost_entered"]
 [connection signal="body_entered" from="Dialogue_Triggers/Blocking" to="." method="_on_Blocking_entered"]
-[connection signal="body_entered" from="Dialogue_Triggers/Block_tutorial" to="." method="_on_Block_tutorial_entered"]
-[connection signal="body_exited" from="Dialogue_Triggers/Block_tutorial" to="." method="_on_Block_tutorial_exited"]
 [connection signal="body_entered" from="Dialogue_Triggers/Before_Eyes" to="." method="_on_Before_Eyes_entered"]
 [connection signal="body_entered" from="Dialogue_Triggers/About_Eyes" to="." method="_on_About_Eyes_entered"]
 [connection signal="body_entered" from="Props/Souls_Tutorial" to="." method="_on_Souls_Tutorial_entered"]
