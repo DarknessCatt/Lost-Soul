@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Fonts/BasaltRegular-Jx3o.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menus/Main_Menu/Main_Menu.gd" type="Script" id=2]
+[ext_resource path="res://Menus/Settings/Settings.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -17,7 +18,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 game_scene = "res://Maps/Prototype_Dead_World/Prototype_Dead_World.tscn"
-settings_scene = "res://Menus/Keybinding/Keybinding.tscn"
 credits_scene = "res://Menus/Credits/Credits.tscn"
 
 [node name="Menu" type="VBoxContainer" parent="."]
@@ -88,7 +88,11 @@ margin_right = 550.0
 margin_bottom = 220.0
 rect_min_size = Vector2( 0, 40 )
 text = "Sair"
+
+[node name="Settings" parent="." instance=ExtResource( 3 )]
+visible = false
 [connection signal="pressed" from="Menu/Buttons/New Game" to="." method="_on_New_Game_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="menu_exited" from="Settings" to="." method="_on_Settings_exited"]
