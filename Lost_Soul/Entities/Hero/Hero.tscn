@@ -14,7 +14,6 @@
 [ext_resource path="res://Entities/Hero/FSM/Idle.gd" type="Script" id=12]
 
 [sub_resource type="Animation" id=1]
-resource_name = "AirJab1"
 length = 0.28
 step = 0.01
 tracks/0/type = "value"
@@ -211,7 +210,6 @@ tracks/15/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "Air_Jab"
 length = 0.34
 step = 0.01
 tracks/0/type = "value"
@@ -408,7 +406,6 @@ tracks/15/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "Air_Jab_Down"
 length = 0.35
 step = 0.01
 tracks/0/type = "value"
@@ -825,7 +822,6 @@ tracks/17/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-resource_name = "Block_Stand"
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -4609,7 +4605,6 @@ tracks/15/keys = {
 }
 
 [sub_resource type="Animation" id=20]
-resource_name = "blocked"
 length = 0.3
 step = 0.01
 tracks/0/type = "value"
@@ -4756,8 +4751,8 @@ radius = 6.0
 height = 10.0
 
 [sub_resource type="CapsuleShape2D" id=36]
-radius = 8.91768
-height = 73.8512
+radius = 9.0
+height = 72.0
 
 [sub_resource type="Gradient" id=37]
 offsets = PoolRealArray( 0, 0.219251, 0.385027, 0.73262, 0.941176 )
@@ -5058,7 +5053,6 @@ Knockback_Type = 1
 
 [node name="Block_Push_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Block_Push/Block_Push_Hitbox"]
 shape = SubResource( 32 )
-disabled = true
 
 [node name="Right_Arm" type="Polygon2D" parent="Body"]
 position = Vector2( 10, -28 )
@@ -5166,7 +5160,7 @@ __meta__ = {
 }
 
 [node name="Left_Weapon" type="Polygon2D" parent="Body/Hip/Torso/Left_Arm/Left_Hand"]
-color = Color( 0.976471, 0.376471, 0.376471, 1 )
+color = Color( 1, 0, 0, 1 )
 
 [node name="Right_Arm" type="RemoteTransform2D" parent="Body/Hip/Torso"]
 position = Vector2( 10, -28 )
@@ -5190,7 +5184,7 @@ __meta__ = {
 
 [node name="Right_Weapon" type="Polygon2D" parent="Body/Hip/Torso/Right_Arm/Right_Hand"]
 position = Vector2( 0.121346, 0.121346 )
-color = Color( 0.976471, 0.376471, 0.376471, 1 )
+color = Color( 1, 0, 0, 1 )
 
 [node name="Left_Leg" type="Polygon2D" parent="Body/Hip"]
 position = Vector2( -4, 8 )
@@ -5299,12 +5293,8 @@ __meta__ = {
 color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 8 )
 shape = SubResource( 36 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Heart_Particles" type="Particles2D" parent="."]
 position = Vector2( 1.90735e-06, -11.8787 )

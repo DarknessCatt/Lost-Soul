@@ -3,7 +3,7 @@ extends "BasicMove.gd"
 onready var buffer : Node = $"../Buffer"
 
 func enter(Machine : Node, Player : KinematicBody2D) -> void:
-	Player.speed.y = 10
+	Player.speed.y = 200
 	.enter(Machine, Player)
 
 func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
@@ -20,5 +20,5 @@ func input(Machine : Node, Player: KinematicBody2D, event : InputEvent) -> void:
 	if event.is_action_pressed("hero_jump"):
 		Machine.change_move_state($"../Jumping")
 
-	else:
-		.input(Machine, Player, event)
+#	else:
+#		.input(Machine, Player, event)

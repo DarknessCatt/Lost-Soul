@@ -33,6 +33,7 @@ func _refresh() -> void:
 
 func _on_attack_hit(energy_restored):
 	energy += energy_restored
+	# warning-ignore:narrowing_conversion
 	energy = min(max_energy, energy)
 
 func _hit(damage : int, _force : int, _direction : Vector2) -> void:

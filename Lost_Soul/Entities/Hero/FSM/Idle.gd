@@ -8,7 +8,7 @@ var cur_state : int = 0
 func enter(Machine : Node, Player : KinematicBody2D) -> void:
 	match(Machine.move_state.name):
 			"OnGround":
-				if Player.speed.x == 0:
+				if get_direction() == 0:
 					cur_state = Stop
 					Player._change_anim("Rest")
 
@@ -24,17 +24,14 @@ func enter(Machine : Node, Player : KinematicBody2D) -> void:
 				cur_state = Fall
 				Player._change_anim("Falling")
 
-	if Player.speed.x != 0:
-		Player.body.scale.x = sign(Player.speed.x)
-
 	energy_timer = 0.0
 
 func update(_Machine : Node, Player: KinematicBody2D, delta : float) -> void:
-	if cur_state == Stop and Player.speed.x != 0:
+	if cur_state == Stop and get_direction() != 0:
 		cur_state = Walk
 		Player._change_anim("Walking")
 
-	elif cur_state == Walk and Player.speed.x == 0:
+	elif cur_state == Walk and get_direction() == 0:
 		cur_state = Stop
 		Player._change_anim("Rest")
 
@@ -55,7 +52,7 @@ func input(Machine : Node, _Player: KinematicBody2D, event : InputEvent) -> void
 func move_state_changed(Machine : Node, Player: KinematicBody2D) -> void:
 	match(Machine.move_state.name):
 			"OnGround":
-				if Player.speed.x == 0:
+				if get_direction() == 0:
 					cur_state = Stop
 					Player._change_anim("Rest")
 
@@ -70,3 +67,6 @@ func move_state_changed(Machine : Node, Player: KinematicBody2D) -> void:
 			"Falling":
 				cur_state = Fall
 				Player._change_anim("Falling")
+
+func get_direction() -> float:
+	return sign(Input.get_action_strength("hero_right") - Input.get_action_strength("hero_left"))

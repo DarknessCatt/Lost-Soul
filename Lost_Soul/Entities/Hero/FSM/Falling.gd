@@ -11,6 +11,9 @@ func enter(Machine : Node, Player : KinematicBody2D) -> void:
 	if Player.speed.y < 0:
 		Player.speed.y /= 1.5
 
+	else:
+		Player.speed.y = 0
+
 func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
 	Player.speed.y += GRAV*delta
 	if Player.speed.y > MAX_GRAV: Player.speed.y = MAX_GRAV
@@ -31,6 +34,3 @@ func input(Machine : Node, Player: KinematicBody2D, event : InputEvent) -> void:
 			Machine.change_move_state($"../Jumping")
 		else:
 			buffer._buffer_jump()
-
-	else:
-		.input(Machine, Player, event)
