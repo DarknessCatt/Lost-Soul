@@ -5290,7 +5290,7 @@ __meta__ = {
 }
 
 [node name="Right_Foot_Weapon" type="Polygon2D" parent="Body/Hip/Right_Leg/Right_Shin/Right_Foot"]
-color = Color( 0.976471, 0.376471, 0.376471, 1 )
+color = Color( 1, 0, 0, 1 )
 
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )

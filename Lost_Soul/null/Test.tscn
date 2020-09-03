@@ -1,0 +1,126 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=2]
+
+[node name="Test" type="Node2D"]
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 1024, 600 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Polygons" type="Node2D" parent="ViewportContainer/Viewport"]
+
+[node name="Ceu" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.509804, 0.635294, 0.686275, 1 )
+polygon = PoolVector2Array( 0, 600, 1024, 600, 1024, 0, 0, 0 )
+
+[node name="Folhas" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.45098, 0.415686, 0.0588235, 1 )
+polygon = PoolVector2Array( 816, 280, 768, 280, 752, 296, 752, 312, 792, 352, 824, 352, 832, 344, 832, 296 )
+
+[node name="Folhas2" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.45098, 0.415686, 0.0588235, 1 )
+polygon = PoolVector2Array( 856, 256, 816, 200, 816, 168, 864, 128, 896, 128, 944, 168, 944, 208, 920, 232, 904, 256 )
+
+[node name="TerraProfunda" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( 0, 536, 0, 600, 1024, 600, 1024, 504 )
+
+[node name="Caverna" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.172549, 0.133333, 0.129412, 1 )
+polygon = PoolVector2Array( 72, 96, 32.7567, 170.137, 31.845, 211.165, 56, 248, 0, 248, 0, 56, 40, 72 )
+
+[node name="Caverna2" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.172549, 0.133333, 0.129412, 1 )
+polygon = PoolVector2Array( 256, 72, 304, 144, 304, 184, 272, 248, 480, 264, 432, 160, 424, 96, 440, 64, 392, 40, 312, 40 )
+
+[node name="Caverna3" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.172549, 0.133333, 0.129412, 1 )
+polygon = PoolVector2Array( 0, 312, 120, 296, 176, 296, 288, 296, 552, 360, 504, 440, 504, 496, 528, 536, 264, 536, 232, 456, 216, 344, 184, 432, 120, 512, 0, 512 )
+
+[node name="Caverna4" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.172549, 0.133333, 0.129412, 1 )
+polygon = PoolVector2Array( 848, 536, 880, 488, 864, 336, 808, 336, 784, 320, 784, 296, 816, 296, 864, 304, 872, 216, 888, 192, 896, 296, 912, 304, 912, 328, 896, 344, 896, 400, 904, 456, 952, 464, 952, 472, 856, 544 )
+
+[node name="Terra" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 0, 56, 40, 72, 72, 96, 88, 96, 88, 72, 56, 48, 0, 32 )
+
+[node name="Terra2" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 240, 72, 264, 72, 312, 40, 384, 40, 424, 56, 440, 64, 472, 64, 472, 32, 472, 16, 416, 0, 304, 0, 272, 16, 240, 16, 232, 24, 232, 64 )
+
+[node name="Terra3" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 776, 296, 816, 296, 864, 312, 864, 328, 808, 328, 776, 320 )
+
+[node name="Terra4" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 0, 280, 24, 256, 80, 256, 184, 272, 240, 264, 368, 272, 424, 280, 456, 272, 520, 296, 592, 312, 624, 312, 656, 296, 672, 304, 680, 336, 608, 336, 552, 360, 288, 296, 128, 296, 0, 312 )
+
+[node name="Terra5" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 0, 512, 320, 536, 512, 536, 616, 552, 848, 552, 960, 480, 968, 464, 976, 384, 1024, 368, 1024, 504, 856, 592, 840, 592, 576, 576, 320, 584, 0, 536 )
+
+[node name="Grama" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 88, 88, 96, 88, 96, 56, 40, 16, 0, 16, 0, 32, 56, 48, 88, 72 )
+
+[node name="Grama2" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 848, 536, 856, 536, 944, 472, 960, 376, 976, 360, 1024, 360, 1024, 368, 976, 392, 968, 480, 856, 552, 600, 552, 504, 536 )
+
+[node name="Grama3" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 0, 512, 136, 512, 320, 536, 320, 544 )
+
+[node name="Grama4" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 232, 64, 216, 48, 216, 0, 304, 0, 272, 16, 232, 24 )
+
+[node name="Grama5" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 416, 0, 472, 16, 472, 64, 488, 48, 488, 0 )
+
+[node name="Grama6" type="Polygon2D" parent="ViewportContainer/Viewport/Polygons"]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 0, 248, 272, 248, 496, 264, 512, 280, 688, 280, 688, 352, 664, 304, 624, 312, 568, 312, 512, 296, 456, 272, 424, 280, 184, 272, 40, 256, 0, 280 )
+
+[node name="Hero" parent="ViewportContainer/Viewport" instance=ExtResource( 2 )]
+position = Vector2( 231.237, 177.766 )
+
+[node name="Camera" type="Camera2D" parent="ViewportContainer/Viewport/Hero"]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 1024
+limit_bottom = 600
+
+[node name="Position2D" type="Position2D" parent="ViewportContainer/Viewport"]
+position = Vector2( 1024, 600 )
+
+[node name="Walls" type="StaticBody2D" parent="ViewportContainer/Viewport"]
+visible = false
+
+[node name="col1" type="CollisionPolygon2D" parent="ViewportContainer/Viewport/Walls"]
+polygon = PoolVector2Array( 72, 96, 96, 96, 96, 56, 40, 16, 0, 16, 0, 56 )
+
+[node name="col2" type="CollisionPolygon2D" parent="ViewportContainer/Viewport/Walls"]
+polygon = PoolVector2Array( 232, 64, 280, 64, 320, 40, 440, 64, 480, 64, 488, 0, 216, 0 )
+
+[node name="col3" type="CollisionPolygon2D" parent="ViewportContainer/Viewport/Walls"]
+polygon = PoolVector2Array( 0, 248, 264, 248, 336, 256, 432, 264, 504, 280, 688, 280, 688, 336, 608, 336, 544, 360, 456, 360, 312, 304, 104, 304, 0, 312 )
+
+[node name="col4" type="CollisionPolygon2D" parent="ViewportContainer/Viewport/Walls"]
+polygon = PoolVector2Array( 776, 304, 872, 304, 872, 320, 840, 336, 808, 336, 776, 320 )
+
+[node name="col5" type="CollisionPolygon2D" parent="ViewportContainer/Viewport/Walls"]
+polygon = PoolVector2Array( 24, 496, 48, 504, 72, 512, 136, 520, 184, 528, 264, 536, 864, 536, 936, 472, 960, 472, 968, 368, 976, 360, 1024, 360, 1024, 560, 0, 552, 0, 496 )
