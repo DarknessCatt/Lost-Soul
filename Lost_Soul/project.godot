@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/Enemies/Flying_Enemies/Base_Fly.gd"
 }, {
+"base": "Node2D",
+"class": "Base_Room",
+"language": "GDScript",
+"path": "res://Classes/Base_Room.gd"
+}, {
 "base": "Enemy_FSM",
 "class": "Base_Wanderer",
 "language": "GDScript",
@@ -29,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Classes/Enemy_FSM.gd"
 }, {
+"base": "Resource",
+"class": "Exit",
+"language": "GDScript",
+"path": "res://Classes/Exit.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "FSM",
 "language": "GDScript",
@@ -40,17 +50,25 @@ _global_script_classes=[ {
 "path": "res://Classes/JoyButtonSpriter.gd"
 }, {
 "base": "Node",
+"class": "RoomConstants",
+"language": "GDScript",
+"path": "res://Classes/Rooms_Constants.gd"
+}, {
+"base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://Classes/State.gd"
 } ]
 _global_script_class_icons={
 "Base_Fly": "",
+"Base_Room": "",
 "Base_Wanderer": "",
 "ConcurrentState": "",
 "Enemy_FSM": "",
+"Exit": "",
 "FSM": "",
 "JoyButtonSpriter": "",
+"RoomConstants": "",
 "State": ""
 }
 
@@ -60,10 +78,6 @@ config/name="Lost Soul"
 run/main_scene="res://Menus/Main_Menu/Main_Menu.tscn"
 boot_splash/bg_color=Color( 0.01, 0.01, 0.01, 1 )
 config/icon="res://icon.png"
-
-[debug]
-
-settings/stdout/print_fps=true
 
 [display]
 
