@@ -27,7 +27,7 @@ func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
 		else:
 			Machine.change_move_state($"../OnGround")
 
-func input(Machine : Node, Player: KinematicBody2D, event : InputEvent) -> void:
+func input(Machine : Node, _Player: KinematicBody2D, event : InputEvent) -> void:
 	if event.is_action_pressed("hero_jump"):
 
 		if buffer.can_coyote:

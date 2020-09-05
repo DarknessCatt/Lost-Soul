@@ -17,3 +17,6 @@ func _ready():
 
 func open_exits(_exits : Array):
 	pass
+
+func get_spawn_point(_exit_id : int) -> Vector2:
+	return Vector2(528, 200)

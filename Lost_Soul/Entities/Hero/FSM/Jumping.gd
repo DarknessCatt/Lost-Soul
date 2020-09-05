@@ -23,6 +23,6 @@ func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
 		Player.speed.y = 0
 		Machine.change_move_state($"../Falling")
 
-func input(Machine : Node, Player: KinematicBody2D, event : InputEvent) -> void:
+func input(Machine : Node, _Player: KinematicBody2D, event : InputEvent) -> void:
 	if event.is_action_released("hero_jump"):
 		Machine.change_move_state($"../Falling")

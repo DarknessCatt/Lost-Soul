@@ -1,26 +1,49 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Maps/Procedural_Maps/Mountain/Basic_Cave/Basic_Cave.gd" type="Script" id=1]
 [ext_resource path="res://Maps/Util/Mountain_Polygon/Mountain_Polygon.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Maps/Util/Room_Exit/RoomExit.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Classes/Exit.gd" type="Script" id=5]
 
+[sub_resource type="Resource" id=1]
+script = ExtResource( 5 )
+id = 0
+direction = 2
+position = Vector2( 0, 0 )
 
+[sub_resource type="Resource" id=2]
+script = ExtResource( 5 )
+id = 1
+direction = 0
+position = Vector2( 0, 0 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="Resource" id=3]
+script = ExtResource( 5 )
+id = 2
+direction = 3
+position = Vector2( 0, 0 )
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 5 )
+id = 3
+direction = 1
+position = Vector2( 0, 0 )
+
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 8, 96 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 56, 8 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 8, 72 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 56, 8 )
 
 [node name="Basic_Cave" type="Node2D"]
 script = ExtResource( 1 )
+exits = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ]
 
 [node name="Room" type="Node2D" parent="."]
 
@@ -177,28 +200,42 @@ polygon = PoolVector2Array( 448, 536, 496, 544, 568, 536, 640, 544, 640, 552, 44
 position = Vector2( -32, 400 )
 
 [node name="area" type="CollisionShape2D" parent="Exits/Left"]
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 
 [node name="Top" parent="Exits" instance=ExtResource( 4 )]
 position = Vector2( 528, -32 )
+exit_id = 1
 
 [node name="area" type="CollisionShape2D" parent="Exits/Top"]
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="Right" parent="Exits" instance=ExtResource( 4 )]
 position = Vector2( 1048, 440 )
+exit_id = 2
 
 [node name="area" type="CollisionShape2D" parent="Exits/Right"]
-shape = SubResource( 3 )
+shape = SubResource( 7 )
 
 [node name="Bot" parent="Exits" instance=ExtResource( 4 )]
 position = Vector2( 544, 648 )
+exit_id = 3
 
 [node name="area" type="CollisionShape2D" parent="Exits/Bot"]
-shape = SubResource( 4 )
+shape = SubResource( 8 )
 
-[node name="Hero" parent="." instance=ExtResource( 3 )]
-position = Vector2( 552, 208 )
+[node name="Entrances" type="Node2D" parent="."]
+
+[node name="0" type="Position2D" parent="Entrances"]
+position = Vector2( 64, 408 )
+
+[node name="1" type="Position2D" parent="Entrances"]
+position = Vector2( 528, 112 )
+
+[node name="2" type="Position2D" parent="Entrances"]
+position = Vector2( 984, 448 )
+
+[node name="3" type="Position2D" parent="Entrances"]
+position = Vector2( 664, 448 )
 [connection signal="exit_entered" from="Exits/Left" to="." method="_on_exit_entered"]
 [connection signal="exit_entered" from="Exits/Top" to="." method="_on_exit_entered"]
 [connection signal="exit_entered" from="Exits/Right" to="." method="_on_exit_entered"]
