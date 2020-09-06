@@ -3,7 +3,7 @@ extends Node2D
 var MAP_SIZE : Vector2 = Vector2(15, 15)
 var START_POS : Vector2 = Vector2(7, 7)
 
-var gen_seed : int = 2211327#0
+var gen_seed : int = 0
 
 var map_data : Array
 

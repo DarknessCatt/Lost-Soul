@@ -14,5 +14,6 @@ z_index = 1
 
 [node name="change_timer" type="Timer" parent="."]
 process_mode = 0
+wait_time = 0.05
 one_shot = true
 [connection signal="timeout" from="change_timer" to="." method="_on_change_timer_timeout"]
