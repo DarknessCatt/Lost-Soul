@@ -29,4 +29,4 @@ func open_exits(exits : Array):
 	if(randi()%3 != 0): $Variants/Hill.call_deferred("free")
 
 func get_spawn_point(exit_id : int) -> Vector2:
-	return $Entrances.get_child(exit_id).global_position
+	return $Entrances.get_child(exit_id).position

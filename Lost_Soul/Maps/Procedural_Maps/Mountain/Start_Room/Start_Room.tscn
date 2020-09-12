@@ -22,7 +22,6 @@ exits = [ SubResource( 1 ) ]
 [node name="Room" type="Node2D" parent="."]
 
 [node name="BG" parent="Room" instance=ExtResource( 1 )]
-position = Vector2( 16, -16 )
 color = Color( 0.172549, 0.133333, 0.129412, 1 )
 polygon = PoolVector2Array( 0, 0, 1024, 0, 1024, 600, 0, 600 )
 type = 2
@@ -38,11 +37,10 @@ polygon = PoolVector2Array( 1024, 552, 888, 560, 792, 576, 632, 552, 536, 560, 3
 type = 3
 
 [node name="Wall" type="StaticBody2D" parent="Room"]
-visible = false
 collision_layer = 16
 
 [node name="col" type="CollisionPolygon2D" parent="Room/Wall"]
-polygon = PoolVector2Array( 1024, 528, 64, 536, 64, 64, 960, 64, 960, 384, 1064, 384, 1064, 528, 1032, 528, 1032, 536, 1072, 536, 1072, 376, 968, 376, 968, 56, 56, 56, 56, 544, 1024, 536 )
+polygon = PoolVector2Array( 1024, 528, 944, 528, 888, 520, 736, 536, 520, 520, 376, 544, 160, 528, 88, 480, 56, 384, 72, 256, 120, 152, 200, 104, 384, 64, 632, 80, 856, 112, 920, 152, 952, 232, 936, 304, 936, 368, 960, 384, 1064, 384, 1064, 528, 1032, 528, 1032, 536, 1072, 536, 1072, 376, 968, 376, 968, 56, 16, 56, 16, 560, 1024, 560 )
 
 [node name="Exits" type="Node2D" parent="."]
 
@@ -55,10 +53,16 @@ shape = SubResource( 2 )
 [node name="Entrances" type="Node2D" parent="."]
 
 [node name="0" type="Position2D" parent="Entrances"]
-position = Vector2( 992, 448 )
+position = Vector2( 992, 480 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
 
 [node name="1" type="Position2D" parent="Entrances"]
-position = Vector2( 512, 448 )
+position = Vector2( 520, 472 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
 
 [node name="Variants" type="Node2D" parent="."]
 
@@ -66,7 +70,9 @@ position = Vector2( 512, 448 )
 
 [node name="0" parent="Variants/Opening" instance=ExtResource( 1 )]
 visible = false
+color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 376, 544, 432, 480, 456, 400, 464, 424, 488, 352, 480, 272, 488, 192, 496, 232, 504, 216, 552, 272, 584, 352, 592, 336, 616, 384, 640, 488, 672, 512, 736, 536, 520, 520 )
+type = 0
 
 [node name="Grass" parent="Variants/Opening/0" instance=ExtResource( 1 )]
 color = Color( 0.556863, 0.513726, 0.101961, 1 )
@@ -80,7 +86,9 @@ type = 1
 
 [node name="1" parent="Variants/Opening" instance=ExtResource( 1 )]
 visible = false
+color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 200, 104, 216, 104, 264, 128, 280, 152, 320, 144, 352, 152, 368, 136, 400, 144, 440, 168, 472, 160, 512, 176, 536, 192, 576, 168, 656, 160, 720, 168, 776, 160, 808, 160, 848, 120, 880, 128, 856, 112, 632, 80, 384, 64 )
+type = 0
 
 [node name="Grass" parent="Variants/Opening/1" instance=ExtResource( 1 )]
 color = Color( 0.556863, 0.513726, 0.101961, 1 )
@@ -94,7 +102,9 @@ type = 1
 
 [node name="2" parent="Variants/Opening" instance=ExtResource( 1 )]
 visible = false
+color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 120, 152, 104, 200, 112, 224, 120, 296, 136, 384, 144, 368, 160, 440, 195.662, 465.473, 224, 464, 236.305, 487.252, 288, 496, 317.412, 516.219, 328, 528, 341.95, 522.815, 384, 520, 413.924, 537.339, 376, 544, 160, 528, 88, 480, 56, 384, 72, 256 )
+type = 0
 
 [node name="Grass" parent="Variants/Opening/2" instance=ExtResource( 1 )]
 color = Color( 0.556863, 0.513726, 0.101961, 1 )

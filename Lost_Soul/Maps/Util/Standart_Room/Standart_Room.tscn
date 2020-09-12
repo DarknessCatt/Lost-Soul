@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="Standart_Room" type="Node2D"]
+
+[node name="Room" type="Node2D" parent="."]
+
+[node name="Wall" type="StaticBody2D" parent="Room"]
+collision_layer = 16
+
+[node name="Variants" type="Node2D" parent="."]
+
+[node name="Blocks" type="Node2D" parent="."]
+
+[node name="Exits" type="Node2D" parent="."]
+
+[node name="Entrances" type="Node2D" parent="."]

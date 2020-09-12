@@ -7,5 +7,9 @@ func open_exits(exits : Array):
 	$Blocks.show()
 	for exit_data in exits: $Blocks.remove_child($Blocks.get_node(str(exit_data.exit.id)))
 
+	for open in $Variants/Openings.get_children():
+		if rand_range(0, 1) < 0.5:
+			open.call_deferred("free")
+
 func get_spawn_point(exit_id : int) -> Vector2:
 	return $Entrances.get_child(exit_id).position

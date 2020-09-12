@@ -1,12 +1,11 @@
 extends Node2D
 
-var MAP_SIZE : Vector2 = Vector2(15, 15)
-var START_POS : Vector2 = Vector2(7, 7)
+var MAP_SIZE : Vector2 = Vector2(20, 20)
+var START_POS : Vector2 = Vector2(10, 10)
 
-var gen_seed : int = 0
+var gen_seed : int =  0
 
 var map_data : Array
-
 
 func _ready():
 	$Room_Manager.prepare_rooms("res://Maps/Procedural_Maps/Mountain/")
@@ -79,10 +78,12 @@ func generate():
 	print(map)
 
 	#Provavelmente mover isso para quem chamar a função para gerar o mapa
-	self.add_child(map_data[cur_pos.x][cur_pos.y].node)
+	$Room.add_child(map_data[cur_pos.x][cur_pos.y].node)
 	map_data[cur_pos.x][cur_pos.y].node.connect("player_exited", self, "_room_exited")
 	#Revisar essa posição inicial
 	$Player.global_position = map_data[cur_pos.x][cur_pos.y].node.get_start_point()
+	$Player/Camera.limit_right = map_data[cur_pos.x][cur_pos.y].node.camera_limits.x
+	$Player/Camera.limit_bottom = map_data[cur_pos.x][cur_pos.y].node.camera_limits.y
 
 #Faz os ciclos,
 #Com faz eu digo que ele olha as saidas ainda não usadas
@@ -482,43 +483,65 @@ func remove_room(room_data : Dictionary) -> void:
 	old_room.call_deferred("free")
 
 # Tudo isso ficaria em um Game Manager
+enum {READY, FADE_OUT, FADE_IN, REVEAL}
 var cur_pos : Vector2 = START_POS
-var changing : bool = false
-
-func change_room(next_room : Vector2, exit_id : int):
-	changing = true
-	$change_timer.start()
-	var player = $Player
-
-	self.call_deferred("remove_child", $Player)
-	yield(player, "tree_exited")
-
-	var room = map_data[cur_pos.x][cur_pos.y].node
-	room.call_deferred("disconnect", "player_exited", self, "_room_exited")
-
-	self.call_deferred("remove_child", room)
-
-	cur_pos = next_room
-	room = map_data[cur_pos.x][cur_pos.y].node
-
-	self.call_deferred("add_child", room)
-	room.call_deferred("connect", "player_exited", self, "_room_exited")
-	yield(room, "tree_entered")
-
-	self.call_deferred("add_child", player)
-	yield(player, "tree_entered")
-
-	player.global_position =  room.get_spawn_point(exit_id)
+var change_state : int = READY
+var spawn_point : Vector2
 
 func _room_exited(exit_id : int):
-	if not changing:
-		print("exited from " +str(cur_pos)+ " in "+ str(exit_id))
+	if change_state == READY:
+		$Player.on_cutscene = true
+
 		var cur_room = map_data[cur_pos.x][cur_pos.y]
 
 		for exit_data in cur_room.exits:
 			if exit_data.exit.id == exit_id:
-				change_room(exit_data.to, exit_data.entrance.id)
-				break
+				change_room(exit_data.to, exit_data.exit, exit_data.entrance)
+				return
+
+		$Player.on_cutscene = false
+
+func change_room(next_room : Vector2, entrance : Exit, exit : Exit):
+	change_state = FADE_OUT
+	$Player.move_and_slide(Vector2.ZERO)
+
+	var room : Base_Room = map_data[cur_pos.x][cur_pos.y].node
+	room.call_deferred("disconnect", "player_exited", self, "_room_exited")
+	$Room.call_deferred("remove_child", room)
+	yield(room, "tree_exited")
+
+	cur_pos = next_room
+	room = map_data[cur_pos.x][cur_pos.y].node
+	spawn_point = room.get_spawn_point(exit.id)
+
+	var norm_player_pos : Vector2 = \
+		Vector2($Player.position.x - 1024*entrance.position.x, $Player.position.y - 600*entrance.position.y)
+	var norm_spawn_pos : Vector2 = \
+		Vector2(spawn_point.x - 1024*exit.position.x, spawn_point.y - 600*exit.position.y)
+
+	$Tween.interpolate_property($Player/Blackout, "modulate:a", 0, 1, 0.1)
+	$Tween.interpolate_property($Player/Camera, "offset", Vector2.ZERO, norm_player_pos-norm_spawn_pos, 0.7)
+	$Tween.start()
+
+func _on_Tween_tween_all_completed():
+	if change_state == FADE_OUT:
+		change_state = FADE_IN
+		$change_timer.start()
+		var room : Base_Room = map_data[cur_pos.x][cur_pos.y].node
+
+		$Player/Camera.offset = Vector2.ZERO
+		$Player/Camera.limit_right = room.camera_limits.x
+		$Player/Camera.limit_bottom = room.camera_limits.y
+
+		$Player.position = spawn_point
+
+		$Room.call_deferred("add_child", room)
+		room.call_deferred("connect", "player_exited", self, "_room_exited")
+		yield(room, "tree_entered")
+
+		$Tween.interpolate_property($Player/Blackout, "modulate:a", 1, 0, 0.1)
+		$Tween.start()
 
 func _on_change_timer_timeout():
-	changing = false
+	change_state = READY
+	$Player.on_cutscene = false
