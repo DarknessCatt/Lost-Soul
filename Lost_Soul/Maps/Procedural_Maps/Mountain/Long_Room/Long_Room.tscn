@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Maps/Util/Standart_Room/Standart_Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Maps/Util/Mountain_Polygon/Mountain_Polygon.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Maps/Procedural_Maps/Mountain/Long_Room/Long_Room.gd" type="Script" id=3]
 [ext_resource path="res://Maps/Util/Room_Exit/RoomExit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Classes/Exit.gd" type="Script" id=5]
+[ext_resource path="res://Entities/Map_Elements/One_Way_Platform/One_Way_Platform.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 5 )
@@ -40,7 +41,16 @@ exits = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ]
 position = Vector2( 3.47168, 0 )
 polygon = PoolVector2Array( 0, 0, 3072, 0, 3072, 600, 0, 600 )
 
-[node name="Left" parent="Room" index="1" instance=ExtResource( 2 )]
+[node name="Hole" parent="Room" index="1" instance=ExtResource( 2 )]
+color = Color( 0.172549, 0.133333, 0.129412, 1 )
+polygon = PoolVector2Array( 1480, 528, 1488, 544, 1504, 560, 1520, 568, 1536, 560, 1552, 568, 1584, 560, 1592, 552, 1600, 536, 1600, 600, 1480, 600 )
+type = 2
+
+[node name="One_Way_Platform" parent="Room" index="2" instance=ExtResource( 6 )]
+position = Vector2( 1540, 578 )
+scale = Vector2( 0.9, 1 )
+
+[node name="Left" parent="Room" index="3" instance=ExtResource( 2 )]
 color = Color( 0.172549, 0.133333, 0.129412, 1 )
 polygon = PoolVector2Array( 344, 472, 304, 456, 240, 432, 224, 408, 216, 376, 216, 352, 240, 336, 264, 352, 272, 320, 288, 280, 320, 256, 336, 288, 344, 208, 0, 208, 0, 448, 216, 448 )
 type = 2
@@ -75,7 +85,7 @@ color = Color( 0.556863, 0.513726, 0.101961, 1 )
 polygon = PoolVector2Array( 256, 456, 344, 472, 384, 480, 448, 480, 528, 488, 632, 480, 736, 464, 936, 472, 1096, 464, 1208, 480, 1360, 496, 1392, 504, 1424, 496, 1472, 512, 1480, 528, 1480, 512, 1432, 488, 1320, 464, 1216, 456, 1088, 440, 864, 448, 712, 448, 584, 464, 464, 464, 336, 464 )
 type = 5
 
-[node name="Right" parent="Room" index="2" instance=ExtResource( 2 )]
+[node name="Right" parent="Room" index="4" instance=ExtResource( 2 )]
 color = Color( 0.172549, 0.133333, 0.129412, 1 )
 polygon = PoolVector2Array( 2696, 504, 2752, 472, 2776, 440, 2816, 424, 2832, 400, 2808, 368, 2768, 328, 2752, 288, 2744, 312, 2720, 288, 2704, 256, 2696, 216, 2760, 216, 2824, 224, 2920, 240, 2984, 240, 3072, 208, 3072, 488 )
 type = 2
@@ -110,11 +120,6 @@ color = Color( 0.556863, 0.513726, 0.101961, 1 )
 polygon = PoolVector2Array( 2680, 192, 2696, 160, 2720, 144, 2776, 136, 2832, 120, 2880, 136, 2928, 136, 2960, 120, 2968, 104, 2976, 64, 2960, 104, 2896, 120, 2840, 104, 2760, 104, 2720, 120, 2688, 144 )
 type = 5
 
-[node name="Hole" parent="Room" index="3" instance=ExtResource( 2 )]
-color = Color( 0.172549, 0.133333, 0.129412, 1 )
-polygon = PoolVector2Array( 1480, 528, 1488, 544, 1504, 560, 1520, 568, 1536, 560, 1552, 568, 1584, 560, 1592, 552, 1600, 536, 1600, 600, 1480, 600 )
-type = 2
-
 [node name="Left_Up" type="CollisionPolygon2D" parent="Room/Wall" index="0"]
 polygon = PoolVector2Array( 72, -96, 72, 56, 80, 104, 136, 144, 216, 144, 352, 168, 360, 176, 376, 192, 368, 240, 352, 264, 344, 264, 248, 224, 72, 248, 0, 224, -40, 224, -40, 448, 0, 448, 0, 456, -48, 456, -48, 216, 0, 216, 0, -96 )
 
@@ -129,6 +134,9 @@ polygon = PoolVector2Array( 3072, 456, 3008, 448, 2864, 464, 2640, 504, 2136, 46
 
 [node name="Down" type="CollisionPolygon2D" parent="Room/Wall" index="4"]
 polygon = PoolVector2Array( 1488, 600, 1488, 704, 1592, 704, 1592, 600, 1600, 600, 1600, 712, 1480, 712, 1480, 600 )
+
+[node name="Variants" parent="." index="1"]
+visible = false
 
 [node name="Clouds" type="Node2D" parent="Variants" index="0"]
 
@@ -219,6 +227,9 @@ collision_layer = 16
 
 [node name="Col" type="CollisionPolygon2D" parent="Variants/Middle_Cave/Wall" index="0"]
 polygon = PoolVector2Array( 1272, 344, 1264, 320, 1264, 304, 1256, 280, 1272, 248, 1312, 224, 1360, 216, 1392, 192, 1408, 152, 1480, 128, 1560, 136, 1624, 168, 1664, 224, 1704, 248, 1744, 264, 1792, 272, 1832, 288, 1824, 320, 1808, 312, 1736, 328, 1648, 304, 1600, 304, 1528, 328, 1480, 328, 1408, 296, 1360, 288, 1296, 304, 1288, 336 )
+
+[node name="Blocks" parent="." index="2"]
+visible = false
 
 [node name="0" parent="Blocks" index="0" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )

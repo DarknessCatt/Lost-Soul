@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Maps/Procedural_Maps/Mountain/Big_Tree/Big_Tree.gd" type="Script" id=1]
 [ext_resource path="res://Classes/Exit.gd" type="Script" id=2]
 [ext_resource path="res://Maps/Util/Room_Exit/RoomExit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Maps/Util/Mountain_Polygon/Mountain_Polygon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Maps/Util/Standart_Room/Standart_Room.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Map_Elements/One_Way_Platform/One_Way_Platform.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
@@ -87,7 +88,11 @@ polygon = PoolVector2Array( 1968, 648, 1976, 560, 2000, 528, 2024, 528, 2032, 48
 color = Color( 0.172549, 0.133333, 0.129412, 1 )
 polygon = PoolVector2Array( 848, 440, 0, 448, 0, 1200, 904, 1200, 904, 1104, 840, 1056, 728, 1040, 680, 992, 672, 904, 704, 824, 688, 744, 656, 696, 664, 616, 728, 536 )
 
-[node name="Right_Soft_Rock" type="Polygon2D" parent="Room" index="6"]
+[node name="One_Way_Platform" parent="Room" index="6" instance=ExtResource( 6 )]
+position = Vector2( 475, 1159.72 )
+scale = Vector2( 1.6, 1 )
+
+[node name="Right_Soft_Rock" type="Polygon2D" parent="Room" index="7"]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
 polygon = PoolVector2Array( 664, 1088, 880, 1080, 1184, 1120, 1592, 1120, 1848, 1080, 1896, 1040, 1976, 976, 2000, 960, 2048, 944, 2048, 1200, 576, 1200, 568, 1152, 600, 1104 )
 
@@ -99,7 +104,7 @@ polygon = PoolVector2Array( 2048, 1200, 600, 1200, 624, 1152, 656, 1120, 688, 11
 color = Color( 0.556863, 0.513726, 0.101961, 1 )
 polygon = PoolVector2Array( 600, 1104, 664, 1088, 816, 1072, 896, 1072, 1080, 1088, 1232, 1104, 1360, 1088, 1656, 1096, 1808, 1064, 1856, 1056, 1896, 1008, 1936, 984, 1984, 944, 2048, 936, 2048, 952, 2000, 968, 1952, 1000, 1904, 1040, 1864, 1088, 1784, 1104, 1648, 1120, 1496, 1136, 1352, 1120, 1192, 1128, 1080, 1112, 920, 1096, 888, 1088, 800, 1088, 672, 1096, 608, 1104, 568, 1152, 576, 1136 )
 
-[node name="Left_Soft_Rock" type="Polygon2D" parent="Room" index="7"]
+[node name="Left_Soft_Rock" type="Polygon2D" parent="Room" index="8"]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
 polygon = PoolVector2Array( 0, 288, 136, 288, 288, 320, 472, 328, 656, 312, 856, 328, 944, 328, 976, 344, 968, 384, 904, 416, 872, 472, 824, 448, 736, 456, 712, 536, 656, 512, 528, 528, 456, 600, 424, 672, 400, 640, 328, 640, 272, 704, 240, 808, 208, 864, 208, 952, 232, 1008, 240, 1064, 264, 1112, 320, 1136, 376, 1152, 392, 1200, 0, 1200 )
 
@@ -111,7 +116,7 @@ polygon = PoolVector2Array( 0, 1200, 0, 328, 216, 376, 608, 352, 808, 360, 848, 
 color = Color( 0.556863, 0.513726, 0.101961, 1 )
 polygon = PoolVector2Array( 136, 288, 288, 312, 448, 320, 648, 312, 744, 312, 880, 320, 960, 320, 992, 344, 984, 384, 976, 424, 968, 384, 952, 360, 896, 352, 800, 336, 728, 336, 656, 320, 576, 328, 496, 328, 496, 328, 440, 336, 280, 320 )
 
-[node name="Leaves" type="Polygon2D" parent="Room" index="8"]
+[node name="Leaves" type="Polygon2D" parent="Room" index="9"]
 color = Color( 0.45098, 0.415686, 0.0588235, 1 )
 polygon = PoolVector2Array( 1480, 344, 1416, 328, 1360, 280, 1352, 200, 1376, 136, 1456, 104, 1568, 136, 1600, 200, 1600, 288, 1552, 328 )
 
@@ -158,6 +163,68 @@ polygon = PoolVector2Array( 1616, 759.595, 1728, 799.574, 1792, 807.57, 1824, 82
 [node name="Branch_Left" type="CollisionPolygon2D" parent="Room/Wall" index="5"]
 scale = Vector2( 1, 1.00053 )
 polygon = PoolVector2Array( 1096, 519.723, 1168, 495.736, 1232, 503.731, 1312, 495.736, 1368, 503.731, 1416, 519.723, 1384, 527.719, 1320, 527.719, 1248, 535.714, 1152, 519.723 )
+
+[node name="Clouds" type="Node2D" parent="Variants" index="0"]
+
+[node name="Cloud1" type="Polygon2D" parent="Variants/Clouds" index="0"]
+position = Vector2( 584, -160 )
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 1131.77, 796.123, 1099.77, 804.123, 1091.77, 828.123, 1107.77, 852.123, 1131.77, 860.123, 1187.77, 852.123, 1219.77, 860.123, 1243.77, 852.123, 1259.77, 836.123, 1251.77, 804.123, 1219.77, 788.123, 1179.77, 796.123 )
+
+[node name="Cloud2" type="Polygon2D" parent="Variants/Clouds" index="1"]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 600, 136, 624, 144, 656, 152, 672, 176, 672, 208, 656, 232, 608, 240, 592, 232, 600, 192, 600, 176, 584, 144 )
+
+[node name="Cloud3" type="Polygon2D" parent="Variants/Clouds" index="2"]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 800, 848, 752, 872, 728, 920, 752, 960, 824, 1000, 888, 992, 960, 968, 1016, 992, 1072, 960, 1104, 920, 1096, 864, 992, 832, 872, 832 )
+
+[node name="Cloud4" type="Polygon2D" parent="Variants/Clouds" index="3"]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 1792, 320, 1752, 304, 1704, 320, 1680, 352, 1688, 392, 1728, 424, 1776, 432, 1808, 416, 1848, 432, 1896, 416, 1928, 384, 1920, 336, 1880, 320, 1848, 328 )
+
+[node name="Cloud5" type="Polygon2D" parent="Variants/Clouds" index="4"]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 1000, 192, 976, 208, 960, 240, 976, 272, 1040, 296, 1128, 280, 1160, 256, 1168, 216, 1120, 192, 1064, 184 )
+
+[node name="Cloud6" type="Polygon2D" parent="Variants/Clouds" index="5"]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 1152, 640, 1112, 664, 1096, 696, 1120, 736, 1176, 744, 1224, 736, 1272, 744, 1280, 728, 1264, 712, 1256, 696, 1264, 672, 1280, 656, 1272, 648, 1208, 640 )
+
+[node name="Cloud7" type="Polygon2D" parent="Variants/Clouds" index="6"]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 1962.79, 961.553, 1952, 952, 1912, 944, 1880, 944, 1848, 952, 1816, 944, 1784, 944, 1744, 960, 1736, 968, 1736, 976, 1744, 984, 1784, 992, 1816, 992, 1856, 984, 1904, 992, 1936.17, 983.702 )
+
+[node name="Cloud8" type="Polygon2D" parent="Variants/Clouds" index="7"]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 1568, 136, 1592, 120, 1624, 112, 1664, 128, 1680, 160, 1672, 200, 1632, 216, 1600, 208, 1600, 200 )
+
+[node name="Branch" type="Node2D" parent="Variants" index="1"]
+
+[node name="Leaves" parent="Variants/Branch" index="0" instance=ExtResource( 4 )]
+color = Color( 0.45098, 0.415686, 0.0588235, 1 )
+polygon = PoolVector2Array( 1272, 920, 1328, 904, 1400, 912, 1432, 944, 1432, 960, 1352, 976, 1288, 984, 1224, 968 )
+type = 6
+
+[node name="Branch" parent="Variants/Branch/Leaves" index="0" instance=ExtResource( 4 )]
+color = Color( 0.172549, 0.133333, 0.129412, 1 )
+polygon = PoolVector2Array( 1472, 928, 1392, 944, 1320, 936, 1232, 960, 1296, 952, 1320, 952, 1392, 960, 1472, 976 )
+type = 2
+
+[node name="Solid" parent="Variants/Branch/Leaves/Branch" index="0" instance=ExtResource( 4 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 1440, 936, 1392, 944, 1320, 936, 1264, 952, 1320, 944, 1408, 952 )
+type = 4
+
+[node name="Wall" type="StaticBody2D" parent="Variants/Branch/Leaves" index="1"]
+position = Vector2( 1328, 944 )
+collision_layer = 16
+
+[node name="col" type="CollisionPolygon2D" parent="Variants/Branch/Leaves/Wall" index="0"]
+polygon = PoolVector2Array( -8, -8.00006, 64, -6.10352e-05, 112, -8.00006, 80, 7.99994, -8, -6.10352e-05, -64, 7.99994 )
+
+[node name="Blocks" parent="." index="2"]
+visible = false
 
 [node name="0" parent="Blocks" index="0" instance=ExtResource( 4 )]
 position = Vector2( -5.28827, -5.28827 )
@@ -250,65 +317,6 @@ position = Vector2( 480, 1000 )
 __meta__ = {
 "_gizmo_extents_": 50.0
 }
-
-[node name="Clouds" type="Node2D" parent="Variants" index="0"]
-
-[node name="Cloud1" type="Polygon2D" parent="Variants/Clouds" index="0"]
-position = Vector2( 584, -160 )
-color = Color( 0.627451, 0.737255, 0.784314, 1 )
-polygon = PoolVector2Array( 1131.77, 796.123, 1099.77, 804.123, 1091.77, 828.123, 1107.77, 852.123, 1131.77, 860.123, 1187.77, 852.123, 1219.77, 860.123, 1243.77, 852.123, 1259.77, 836.123, 1251.77, 804.123, 1219.77, 788.123, 1179.77, 796.123 )
-
-[node name="Cloud2" type="Polygon2D" parent="Variants/Clouds" index="1"]
-color = Color( 0.627451, 0.737255, 0.784314, 1 )
-polygon = PoolVector2Array( 600, 136, 624, 144, 656, 152, 672, 176, 672, 208, 656, 232, 608, 240, 592, 232, 600, 192, 600, 176, 584, 144 )
-
-[node name="Cloud3" type="Polygon2D" parent="Variants/Clouds" index="2"]
-color = Color( 0.627451, 0.737255, 0.784314, 1 )
-polygon = PoolVector2Array( 800, 848, 752, 872, 728, 920, 752, 960, 824, 1000, 888, 992, 960, 968, 1016, 992, 1072, 960, 1104, 920, 1096, 864, 992, 832, 872, 832 )
-
-[node name="Cloud4" type="Polygon2D" parent="Variants/Clouds" index="3"]
-color = Color( 0.627451, 0.737255, 0.784314, 1 )
-polygon = PoolVector2Array( 1792, 320, 1752, 304, 1704, 320, 1680, 352, 1688, 392, 1728, 424, 1776, 432, 1808, 416, 1848, 432, 1896, 416, 1928, 384, 1920, 336, 1880, 320, 1848, 328 )
-
-[node name="Cloud5" type="Polygon2D" parent="Variants/Clouds" index="4"]
-color = Color( 0.627451, 0.737255, 0.784314, 1 )
-polygon = PoolVector2Array( 1000, 192, 976, 208, 960, 240, 976, 272, 1040, 296, 1128, 280, 1160, 256, 1168, 216, 1120, 192, 1064, 184 )
-
-[node name="Cloud6" type="Polygon2D" parent="Variants/Clouds" index="5"]
-color = Color( 0.627451, 0.737255, 0.784314, 1 )
-polygon = PoolVector2Array( 1152, 640, 1112, 664, 1096, 696, 1120, 736, 1176, 744, 1224, 736, 1272, 744, 1280, 728, 1264, 712, 1256, 696, 1264, 672, 1280, 656, 1272, 648, 1208, 640 )
-
-[node name="Cloud7" type="Polygon2D" parent="Variants/Clouds" index="6"]
-color = Color( 0.627451, 0.737255, 0.784314, 1 )
-polygon = PoolVector2Array( 1962.79, 961.553, 1952, 952, 1912, 944, 1880, 944, 1848, 952, 1816, 944, 1784, 944, 1744, 960, 1736, 968, 1736, 976, 1744, 984, 1784, 992, 1816, 992, 1856, 984, 1904, 992, 1936.17, 983.702 )
-
-[node name="Cloud8" type="Polygon2D" parent="Variants/Clouds" index="7"]
-color = Color( 0.627451, 0.737255, 0.784314, 1 )
-polygon = PoolVector2Array( 1568, 136, 1592, 120, 1624, 112, 1664, 128, 1680, 160, 1672, 200, 1632, 216, 1600, 208, 1600, 200 )
-
-[node name="Branch" type="Node2D" parent="Variants" index="1"]
-
-[node name="Leaves" parent="Variants/Branch" index="0" instance=ExtResource( 4 )]
-color = Color( 0.45098, 0.415686, 0.0588235, 1 )
-polygon = PoolVector2Array( 1272, 920, 1328, 904, 1400, 912, 1432, 944, 1432, 960, 1352, 976, 1288, 984, 1224, 968 )
-type = 6
-
-[node name="Branch" parent="Variants/Branch/Leaves" index="0" instance=ExtResource( 4 )]
-color = Color( 0.172549, 0.133333, 0.129412, 1 )
-polygon = PoolVector2Array( 1472, 928, 1392, 944, 1320, 936, 1232, 960, 1296, 952, 1320, 952, 1392, 960, 1472, 976 )
-type = 2
-
-[node name="Solid" parent="Variants/Branch/Leaves/Branch" index="0" instance=ExtResource( 4 )]
-color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 1440, 936, 1392, 944, 1320, 936, 1264, 952, 1320, 944, 1408, 952 )
-type = 4
-
-[node name="Wall" type="StaticBody2D" parent="Variants/Branch/Leaves" index="1"]
-position = Vector2( 1328, 944 )
-collision_layer = 16
-
-[node name="col" type="CollisionPolygon2D" parent="Variants/Branch/Leaves/Wall" index="0"]
-polygon = PoolVector2Array( -8, -8.00006, 64, -6.10352e-05, 112, -8.00006, 80, 7.99994, -8, -6.10352e-05, -64, 7.99994 )
 
 [node name="Map_Limit" type="Position2D" parent="." index="5"]
 position = Vector2( 2048, 1200 )
