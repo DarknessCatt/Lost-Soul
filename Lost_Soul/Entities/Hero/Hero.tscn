@@ -4617,7 +4617,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.976471, 0.376471, 0.376471, 1 ) ]
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Hip/Torso/Right_Arm/Right_Hand/Right_Weapon:color")
@@ -4629,7 +4629,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.05, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.976471, 0.376471, 0.376471, 1 ) ]
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Hip/Torso/Left_Arm/Left_Hand/Left_Weapon:scale")
@@ -5053,6 +5053,7 @@ Knockback_Type = 1
 
 [node name="Block_Push_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Block_Push/Block_Push_Hitbox"]
 shape = SubResource( 32 )
+disabled = true
 
 [node name="Right_Arm" type="Polygon2D" parent="Body"]
 position = Vector2( 10, -28 )
