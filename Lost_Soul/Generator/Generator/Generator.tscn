@@ -12,6 +12,7 @@ pause_mode = 2
 script = ExtResource( 2 )
 
 [node name="Room_Manager" parent="." instance=ExtResource( 1 )]
+print_analytics = true
 
 [node name="Room" type="Node2D" parent="."]
 
