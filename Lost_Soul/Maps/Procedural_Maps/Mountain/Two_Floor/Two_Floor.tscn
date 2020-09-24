@@ -44,7 +44,6 @@ room_positions = [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 2, 0 ), Vector2( 0
 exits = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ]
 
 [node name="BG" parent="Room" index="0" instance=ExtResource( 2 )]
-position = Vector2( 8, 0 )
 color = Color( 0.172549, 0.133333, 0.129412, 1 )
 polygon = PoolVector2Array( 0, 0, 3072, 0, 3072, 1200, 0, 1200 )
 type = 2
@@ -155,7 +154,6 @@ polygon = PoolVector2Array( 1976, 360, 1960, 368, 1952, 384, 1960, 408, 2000, 41
 type = 1
 
 [node name="Top_Left" parent="Variants/Openings" index="1" instance=ExtResource( 2 )]
-color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 80, 232, 160, 216, 224, 184, 328, 240, 304, 264, 264, 352, 256, 312, 248, 464, 272, 576, 216, 512, 144, 464, 80, 424 )
 type = 0
 
@@ -180,7 +178,6 @@ polygon = PoolVector2Array( 252.357, 384.041, 232, 352, 200, 344, 168, 352, 160,
 type = 1
 
 [node name="Top_Right" parent="Variants/Openings" index="2" instance=ExtResource( 2 )]
-color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 2792, 104, 2896, 104, 2984, 176, 3024, 288, 2992, 376, 2896, 368, 2816, 408, 2816, 472, 2864, 536, 2840, 600, 2816, 544, 2792, 520, 2776, 432, 2760, 464, 2752, 376, 2824, 240, 2808, 232, 2792, 168, 2776, 176, 2768, 128 )
 type = 0
 
@@ -205,7 +202,6 @@ polygon = PoolVector2Array( 2756.5, 423.945, 2768, 408, 2792, 408, 2802.94, 418.
 type = 1
 
 [node name="Bottom" parent="Variants/Openings" index="3" instance=ExtResource( 2 )]
-color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 1016, 1048, 1080, 968, 1104, 912, 1112, 928, 1128, 872, 1120, 808, 1192, 840, 1320, 816, 1464, 840, 1472, 864, 1480, 840, 1536, 824, 1648, 824, 1736, 792, 1760, 832, 1768, 816, 1888, 808, 2064, 840, 2144, 888, 2160, 920, 2168, 968, 2152, 944, 2168, 1016, 2264, 1056, 2096, 1040, 1920, 944, 1664, 952, 1432, 976, 1248, 960 )
 type = 0
 

@@ -7,7 +7,7 @@ func _on_player_on_top(body):
 	if Input.is_action_pressed("hero_down"):
 		$Drop_Timer.start()
 
-func _on_player_exited(body):
+func _on_player_exited(_body):
 	Player = null
 	$Drop_Timer.stop()
 

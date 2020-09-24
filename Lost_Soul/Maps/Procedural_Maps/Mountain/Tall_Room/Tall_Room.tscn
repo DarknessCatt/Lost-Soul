@@ -99,7 +99,6 @@ polygon = PoolVector2Array( 472, 760, 512, 752, 568, 720, 624, 712, 664, 720, 72
 type = 5
 
 [node name="Top" parent="Variants/Openings" index="1" instance=ExtResource( 2 )]
-color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 280, 256, 256, 232, 216, 216, 136, 224, 64, 256, 48, 360, 56, 448, 72, 440, 104, 464, 120, 384, 184, 408, 232, 400, 240, 352, 264, 384, 296, 352, 304, 312, 336, 272, 384, 304, 360, 216, 312, 216 )
 
 [node name="Grass" parent="Variants/Openings/Top" index="0" instance=ExtResource( 2 )]
@@ -113,7 +112,6 @@ polygon = PoolVector2Array( 304, 312, 280, 288, 240, 280, 192, 280, 168, 288, 15
 type = 1
 
 [node name="Left" parent="Variants/Openings" index="2" instance=ExtResource( 2 )]
-color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 208, 1024, 176, 1040, 136, 1016, 88, 1032, 56, 1088, 48, 1136, 64, 1216, 80, 1152, 96, 1120, 120, 1136, 160, 1144, 200, 1120, 208, 1088, 224, 1104, 248, 1056, 240, 1024 )
 
 [node name="Grass" parent="Variants/Openings/Left" index="0" instance=ExtResource( 2 )]
@@ -127,7 +125,6 @@ polygon = PoolVector2Array( 120, 1048, 112, 1056, 112, 1064, 120, 1072, 144, 108
 type = 1
 
 [node name="Right" parent="Variants/Openings" index="3" instance=ExtResource( 2 )]
-color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 704, 1016, 624, 1040, 608, 1144, 632, 1280, 640, 1216, 656, 1224, 672, 1176, 656, 1088, 680, 1104, 712, 1080, 768, 992, 760, 896 )
 
 [node name="Grass" parent="Variants/Openings/Right" index="0" instance=ExtResource( 2 )]

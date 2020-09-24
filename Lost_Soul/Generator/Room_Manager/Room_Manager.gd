@@ -24,7 +24,7 @@ func prepare_rooms(path : String):
 		while room_folder != "":
 
 			var room_dir : Directory = Directory.new()
-			assert(room_dir.open("%s/%s" % [path, room_folder]) == OK)
+			assert(room_dir.open("%s%s" % [path, room_folder]) == OK)
 			# warning-ignore:return_value_discarded
 			room_dir.list_dir_begin(true, true)
 
@@ -32,7 +32,7 @@ func prepare_rooms(path : String):
 
 			while file_name != "":
 				if ".tscn" in file_name:
-					room_list.append(load("%s/%s/%s" % [path, room_folder, file_name]).instance())
+					room_list.append(load("%s%s/%s" % [path, room_folder, file_name]).instance())
 					break
 				file_name = room_dir.get_next()
 

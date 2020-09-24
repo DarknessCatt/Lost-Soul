@@ -1,9 +1,9 @@
 extends Node2D
 
-var MAP_SIZE : Vector2 = Vector2(20, 20)
-var START_POS : Vector2 = Vector2(10, 10)
+var MAP_SIZE : Vector2 = Vector2(30, 30)
+var START_POS : Vector2 = Vector2(15, 15)
 
-var gen_seed : int =  0
+var gen_seed : int = 9162325
 
 var map_data : Array
 
@@ -17,6 +17,8 @@ func generate():
 	if gen_seed == 0:
 		randomize()
 		gen_seed = randi()%9999999
+
+	$Seed.text += str(gen_seed)
 
 	print("Seed: "+str(gen_seed))
 	seed(gen_seed)
@@ -53,29 +55,29 @@ func generate():
 	for room in room_list: room.node.open_exits(room.exits)
 
 	#Printa o minimapa, bom para debuggar mas da para tirar no futuro.
-	var map : String = ""
-
-	for x in range(MAP_SIZE.x):
-		for y in range(MAP_SIZE.y):
-			if x == START_POS.x and y == START_POS.y:
-				map += "[S]"
-
-			elif map_data[y][x] == null:
-				map += "   "
-
-			else:
-				if map_data[y][x].node.room_type == RoomConstants.room_types.BONUS:
-					map += "[B]"
-
-				elif map_data[y][x].node.room_type == RoomConstants.room_types.POWER:
-					map += "[P]"
-
-				else:
-					map += "["+str(map_data[y][x].rank)+"]"
-
-		map += "\n"
-
-	print(map)
+#	var map : String = ""
+#
+#	for x in range(MAP_SIZE.x):
+#		for y in range(MAP_SIZE.y):
+#			if x == START_POS.x and y == START_POS.y:
+#				map += "[S]"
+#
+#			elif map_data[y][x] == null:
+#				map += "   "
+#
+#			else:
+#				if map_data[y][x].node.room_type == RoomConstants.room_types.BONUS:
+#					map += "[B]"
+#
+#				elif map_data[y][x].node.room_type == RoomConstants.room_types.POWER:
+#					map += "[P]"
+#
+#				else:
+#					map += "["+str(map_data[y][x].rank)+"]"
+#
+#		map += "\n"
+#
+#	print(map)
 
 	#Provavelmente mover isso para quem chamar a função para gerar o mapa
 	$Room.add_child(map_data[cur_pos.x][cur_pos.y].node)

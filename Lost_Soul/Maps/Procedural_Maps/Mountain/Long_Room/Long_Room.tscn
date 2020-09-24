@@ -40,6 +40,7 @@ exits = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ]
 [node name="Sky" parent="Room" index="0" instance=ExtResource( 2 )]
 position = Vector2( 3.47168, 0 )
 polygon = PoolVector2Array( 0, 0, 3072, 0, 3072, 600, 0, 600 )
+type = 0
 
 [node name="Hole" parent="Room" index="1" instance=ExtResource( 2 )]
 color = Color( 0.172549, 0.133333, 0.129412, 1 )
@@ -134,9 +135,6 @@ polygon = PoolVector2Array( 3072, 456, 3008, 448, 2864, 464, 2640, 504, 2136, 46
 
 [node name="Down" type="CollisionPolygon2D" parent="Room/Wall" index="4"]
 polygon = PoolVector2Array( 1488, 600, 1488, 704, 1592, 704, 1592, 600, 1600, 600, 1600, 712, 1480, 712, 1480, 600 )
-
-[node name="Variants" parent="." index="1"]
-visible = false
 
 [node name="Clouds" type="Node2D" parent="Variants" index="0"]
 
