@@ -2,7 +2,6 @@ extends ConcurrentState
 
 const NORMAL : Vector2 = Vector2(0, -1)
 
-#Overridable Vars
 ##Movement Vars
 const ACCEL : int = 2000
 const MAX_SPEED : int = 400

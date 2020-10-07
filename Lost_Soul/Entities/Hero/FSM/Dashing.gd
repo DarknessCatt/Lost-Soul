@@ -1,6 +1,6 @@
 extends State
 
-const DASH_SPEED : int  = 3000
+const DASH_SPEED : int  = 2000
 export(PackedScene) var GHOST_SCENE : PackedScene
 
 var dash_over : bool = false
@@ -24,7 +24,6 @@ func enter(Player : KinematicBody2D) -> void:
 	$Dash_Timer.start()
 
 func exit(Player : KinematicBody2D) -> void:
-	Player.speed = Vector2.ZERO
 	Player.body.modulate = Color(1,1,1)
 
 func update(Player: KinematicBody2D, delta : float) -> void:
@@ -43,7 +42,7 @@ func update(Player: KinematicBody2D, delta : float) -> void:
 			Player.get_parent().add_child(new_ghost)
 
 		Player.move_and_slide(Player.speed)
-		Player.speed *= 0.8
+		Player.speed *= 0.87
 
 func _on_Dash_timeout():
 	dash_over = true

@@ -15,7 +15,7 @@
 [ext_resource path="res://Entities/Hero/FSM/Dashing.gd" type="Script" id=13]
 [ext_resource path="res://Assets/Player_Effects/Ghost/Ghost.tscn" type="PackedScene" id=14]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 length = 0.28
 step = 0.01
 tracks/0/type = "value"
@@ -211,7 +211,7 @@ tracks/15/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 length = 0.34
 step = 0.01
 tracks/0/type = "value"
@@ -407,7 +407,7 @@ tracks/15/keys = {
 "values": [ true, true, false, false, true, true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 length = 0.35
 step = 0.01
 tracks/0/type = "value"
@@ -603,7 +603,7 @@ tracks/15/keys = {
 "values": [ true, true, false, false, true, true ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 length = 0.62
 step = 0.01
 tracks/0/type = "value"
@@ -823,7 +823,7 @@ tracks/17/keys = {
 "values": [ true, true, false, false, true, true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -1019,7 +1019,7 @@ tracks/15/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -1179,7 +1179,7 @@ tracks/12/keys = {
 "values": [ Color( 0, 0.4375, 1, 1 ), Color( 0, 0.4375, 1, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=7]
 length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Hip:position")
@@ -1350,7 +1350,7 @@ tracks/13/keys = {
 "values": [ 0.0, -135.0, -135.0, -135.0, -135.0, -135.0, -135.0, -120.0, -30.0, 0.0, 0.0, -30.0 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=8]
 length = 0.8
 loop = true
 step = 0.05
@@ -1487,7 +1487,7 @@ tracks/10/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=9]
 length = 0.65
 step = 0.01
 tracks/0/type = "value"
@@ -1707,7 +1707,7 @@ tracks/17/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=10]
 length = 0.39
 step = 0.01
 tracks/0/type = "value"
@@ -1927,7 +1927,7 @@ tracks/17/keys = {
 "values": [ true, true, false, false, true, true ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=11]
 length = 0.25
 step = 0.01
 tracks/0/type = "value"
@@ -2123,7 +2123,7 @@ tracks/15/keys = {
 "values": [ PoolVector2Array(  ), PoolVector2Array( 4.20172, 20.2587, -3.51467, 20.4853, -3.58825, 24.1847, 0.299165, 27.8829, 4.33373, 24.1823 ), PoolVector2Array( 4.71343, 24.2797, -4.05172, 13.2493, -12.0293, -16.8053, -17.8276, 7.02769, -6.92401, 41.0075, 4.39568, 48.8872, 12.7678, 37.3104 ), PoolVector2Array( 4.71343, 24.2797, -4.05172, 13.2493, -12.0293, -16.8053, -17.8276, 7.02769, -6.92401, 41.0075, 4.39568, 48.8872, 12.7678, 37.3104 ), PoolVector2Array( 4.71343, 24.2797, 0.90341, 22.4757, -3.60612, 21.8254, -3.72694, 24.4433, -2.8327, 40.1961, 6.70415, 44.4565, 12.7678, 37.3104 ), PoolVector2Array( 4.1743, 22.0702, -3.39527, 19.3089, -3.88149, 21.2417, -3.39622, 24.8725, -1.26099, 27.4048, 1.69482, 28.1327, 3.97345, 25.2453 ), PoolVector2Array( 4.20172, 20.2587, -3.51467, 20.4853, -3.58825, 24.1847, 0.299165, 27.8829, 4.33373, 24.1823 ), PoolVector2Array(  ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=12]
 length = 0.25
 step = 0.01
 tracks/0/type = "value"
@@ -2319,7 +2319,7 @@ tracks/15/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=13]
 length = 0.34
 step = 0.01
 tracks/0/type = "value"
@@ -2527,7 +2527,7 @@ tracks/16/keys = {
 "values": [ 0.0, 0.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=14]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -2699,7 +2699,7 @@ tracks/13/keys = {
 "values": [ PoolVector2Array(  ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=15]
 length = 0.3
 step = 0.01
 tracks/0/type = "value"
@@ -2885,7 +2885,7 @@ tracks/14/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=16]
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -3563,7 +3563,7 @@ tracks/55/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=17]
 length = 1.75
 step = 0.05
 tracks/0/type = "value"
@@ -3759,7 +3759,7 @@ tracks/15/keys = {
 "values": [ 0.0, 30.0, 30.0, 0.0, 0.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=18]
 length = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Hip/Torso/Right_Arm:position")
@@ -4422,7 +4422,7 @@ tracks/54/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=19]
 length = 17.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Hip/Left_Leg/Left_Shin:rotation_degrees")
@@ -4593,7 +4593,7 @@ tracks/13/keys = {
 "values": [ Vector2( -28.493, 38 ), Vector2( -28.493, 38 ), Vector2( -24.5377, 24 ), Vector2( -24.5377, 24 ), Vector2( -7.44871, 12.7826 ), Vector2( -7.44871, 12.7826 ), Vector2( 0, 3.1739 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=20]
 length = 0.6
 loop = true
 step = 0.05
@@ -4790,7 +4790,7 @@ tracks/15/keys = {
 "values": [ -3.0, 3.0, -3.0, 3.0 ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=21]
 length = 0.3
 step = 0.01
 tracks/0/type = "value"
@@ -4871,7 +4871,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=22]
 length = 1.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -4886,68 +4886,68 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.352941 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=25]
+[sub_resource type="CapsuleShape2D" id=23]
 radius = 31.0
 height = 34.0
 
-[sub_resource type="CapsuleShape2D" id=26]
+[sub_resource type="CapsuleShape2D" id=24]
 radius = 50.0
 height = 32.0
 
-[sub_resource type="CapsuleShape2D" id=27]
+[sub_resource type="CapsuleShape2D" id=25]
 radius = 19.9999
 height = 84.0003
 
-[sub_resource type="CircleShape2D" id=28]
+[sub_resource type="CircleShape2D" id=26]
 radius = 36.2215
 
-[sub_resource type="CircleShape2D" id=29]
+[sub_resource type="CircleShape2D" id=27]
 radius = 56.1427
 
-[sub_resource type="CircleShape2D" id=30]
+[sub_resource type="CircleShape2D" id=28]
 radius = 48.0812
 
-[sub_resource type="CircleShape2D" id=31]
+[sub_resource type="CircleShape2D" id=29]
 radius = 51.7705
 
-[sub_resource type="CapsuleShape2D" id=32]
+[sub_resource type="CapsuleShape2D" id=30]
 radius = 34.671
 height = 81.2568
 
-[sub_resource type="CapsuleShape2D" id=33]
+[sub_resource type="CapsuleShape2D" id=31]
 radius = 38.8882
 height = 39.1276
 
-[sub_resource type="CircleShape2D" id=34]
+[sub_resource type="CircleShape2D" id=32]
 radius = 36.0421
 
-[sub_resource type="CapsuleShape2D" id=35]
+[sub_resource type="CapsuleShape2D" id=33]
 radius = 52.458
 height = 29.898
 
-[sub_resource type="CapsuleShape2D" id=36]
+[sub_resource type="CapsuleShape2D" id=34]
 radius = 12.9655
 height = 24.8619
 
-[sub_resource type="CapsuleShape2D" id=37]
+[sub_resource type="CapsuleShape2D" id=35]
 radius = 6.0
 
-[sub_resource type="CapsuleShape2D" id=38]
+[sub_resource type="CapsuleShape2D" id=36]
 radius = 6.0
 height = 10.0
 
-[sub_resource type="CapsuleShape2D" id=39]
+[sub_resource type="CapsuleShape2D" id=37]
 radius = 9.0
 height = 72.0
 
-[sub_resource type="Gradient" id=40]
+[sub_resource type="Gradient" id=38]
 offsets = PoolRealArray( 0, 0.219251, 0.385027, 0.73262, 0.941176 )
 colors = PoolColorArray( 1, 1, 1, 0.478431, 1, 0.61, 0.61, 1, 1, 0.57, 0.57, 1, 1, 0, 0, 1, 1, 0, 0, 0.0117647 )
 
-[sub_resource type="GradientTexture" id=41]
-gradient = SubResource( 40 )
+[sub_resource type="GradientTexture" id=39]
+gradient = SubResource( 38 )
 
-[sub_resource type="ParticlesMaterial" id=42]
+[sub_resource type="ParticlesMaterial" id=40]
 emission_shape = 1
 emission_sphere_radius = 100.0
 flag_disable_z = true
@@ -4959,7 +4959,7 @@ orbit_velocity_random = 0.0
 radial_accel = -300.0
 scale = 6.0
 scale_random = 0.3
-color_ramp = SubResource( 41 )
+color_ramp = SubResource( 39 )
 
 [node name="Hero" type="KinematicBody2D"]
 collision_mask = 18
@@ -4970,31 +4970,31 @@ __meta__ = {
 
 [node name="Body_Animations" type="AnimationPlayer" parent="."]
 autoplay = "Rest"
-anims/AirJab1 = SubResource( 3 )
-anims/Air_Jab = SubResource( 4 )
-anims/Air_Jab_Down = SubResource( 5 )
-anims/Air_Jab_Up = SubResource( 6 )
-anims/Block_Stand = SubResource( 7 )
-anims/Dashing = SubResource( 8 )
-anims/Death = SubResource( 9 )
-anims/Falling = SubResource( 10 )
-anims/Jab3 = SubResource( 11 )
-anims/Jab_Down = SubResource( 12 )
-anims/Jab_Left = SubResource( 13 )
-anims/Jab_Right = SubResource( 14 )
-anims/Jab_Up = SubResource( 15 )
-anims/Jumping = SubResource( 16 )
-anims/OnFallenDown = SubResource( 17 )
-anims/OnHit = SubResource( 18 )
-anims/PowerUp = SubResource( 19 )
-anims/Rest = SubResource( 20 )
-anims/StandingUp = SubResource( 21 )
-anims/Walking = SubResource( 22 )
+anims/AirJab1 = SubResource( 1 )
+anims/Air_Jab = SubResource( 2 )
+anims/Air_Jab_Down = SubResource( 3 )
+anims/Air_Jab_Up = SubResource( 4 )
+anims/Block_Stand = SubResource( 5 )
+anims/Dashing = SubResource( 6 )
+anims/Death = SubResource( 7 )
+anims/Falling = SubResource( 8 )
+anims/Jab3 = SubResource( 9 )
+anims/Jab_Down = SubResource( 10 )
+anims/Jab_Left = SubResource( 11 )
+anims/Jab_Right = SubResource( 12 )
+anims/Jab_Up = SubResource( 13 )
+anims/Jumping = SubResource( 14 )
+anims/OnFallenDown = SubResource( 15 )
+anims/OnHit = SubResource( 16 )
+anims/PowerUp = SubResource( 17 )
+anims/Rest = SubResource( 18 )
+anims/StandingUp = SubResource( 19 )
+anims/Walking = SubResource( 20 )
 next/Jumping = "Falling"
 
 [node name="Misc_Animations" type="AnimationPlayer" parent="."]
-anims/blocked = SubResource( 23 )
-anims/inv = SubResource( 24 )
+anims/blocked = SubResource( 21 )
+anims/inv = SubResource( 22 )
 
 [node name="States" type="Node" parent="."]
 
@@ -5105,7 +5105,7 @@ Direction = Vector2( 1, 0 )
 [node name="Jab_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Jab/Jab_Hitbox"]
 position = Vector2( 28, 12 )
 rotation = 1.5708
-shape = SubResource( 25 )
+shape = SubResource( 23 )
 disabled = true
 
 [node name="UpTilt" type="Node2D" parent="Body/Hitboxes"]
@@ -5121,7 +5121,7 @@ Direction = Vector2( 0, -1 )
 
 [node name="UpTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/UpTilt/UpTilt_Hitbox"]
 position = Vector2( 20, -20 )
-shape = SubResource( 26 )
+shape = SubResource( 24 )
 disabled = true
 
 [node name="DownTilt" type="Node2D" parent="Body/Hitboxes"]
@@ -5138,7 +5138,7 @@ Direction = Vector2( 0.5, -1 )
 [node name="DownTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/DownTilt/DownTilt_Hitbox"]
 position = Vector2( 50, -20 )
 rotation = 1.5708
-shape = SubResource( 27 )
+shape = SubResource( 25 )
 disabled = true
 
 [node name="Jab3" type="Node2D" parent="Body/Hitboxes"]
@@ -5153,7 +5153,7 @@ Force = 500
 Direction = Vector2( 0, 1 )
 
 [node name="Jab3_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Jab3/Jab3_Hitbox"]
-shape = SubResource( 28 )
+shape = SubResource( 26 )
 disabled = true
 
 [node name="Jab3_Hitbox2" parent="Body/Hitboxes/Jab3" instance=ExtResource( 7 )]
@@ -5165,7 +5165,7 @@ Force = 1200
 Direction = Vector2( 1, -0.1 )
 
 [node name="Jab3_Hitbox2" type="CollisionShape2D" parent="Body/Hitboxes/Jab3/Jab3_Hitbox2"]
-shape = SubResource( 29 )
+shape = SubResource( 27 )
 disabled = true
 
 [node name="Air_Jab" type="Node2D" parent="Body/Hitboxes"]
@@ -5181,7 +5181,7 @@ Direction = Vector2( 1, 0 )
 
 [node name="Air_Jab_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Air_Jab/Air_Jab_Hitbox"]
 position = Vector2( 30, 0 )
-shape = SubResource( 30 )
+shape = SubResource( 28 )
 disabled = true
 
 [node name="Air_DownTilt" type="Node2D" parent="Body/Hitboxes"]
@@ -5197,7 +5197,7 @@ Direction = Vector2( 0, 1 )
 
 [node name="Air_DownTilt_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Air_DownTilt/Air_DownTilt_Hitbox"]
 position = Vector2( 0, 20 )
-shape = SubResource( 31 )
+shape = SubResource( 29 )
 disabled = true
 
 [node name="Air_Uptilt" type="Node2D" parent="Body/Hitboxes"]
@@ -5214,12 +5214,12 @@ Direction = Vector2( 0, -1 )
 [node name="Air_UpTilt_Hitbox_1" type="CollisionShape2D" parent="Body/Hitboxes/Air_Uptilt/Air_UpTilt_Hitbox"]
 position = Vector2( 0, -25 )
 rotation = 1.5708
-shape = SubResource( 32 )
+shape = SubResource( 30 )
 disabled = true
 
 [node name="Air_UpTilt_Hitbox_2" type="CollisionShape2D" parent="Body/Hitboxes/Air_Uptilt/Air_UpTilt_Hitbox"]
 position = Vector2( 34.4411, 16.2164 )
-shape = SubResource( 33 )
+shape = SubResource( 31 )
 disabled = true
 
 [node name="AirJab1" type="Node2D" parent="Body/Hitboxes"]
@@ -5234,7 +5234,7 @@ Force = 200
 Direction = Vector2( 0, -1 )
 
 [node name="AirJab1_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/AirJab1/AirJab1_Hitbox"]
-shape = SubResource( 34 )
+shape = SubResource( 32 )
 disabled = true
 
 [node name="Block_Push" type="Node2D" parent="Body/Hitboxes"]
@@ -5248,7 +5248,7 @@ Force = 1200
 Knockback_Type = 1
 
 [node name="Block_Push_Hitbox" type="CollisionShape2D" parent="Body/Hitboxes/Block_Push/Block_Push_Hitbox"]
-shape = SubResource( 35 )
+shape = SubResource( 33 )
 disabled = true
 
 [node name="Right_Arm" type="Polygon2D" parent="Body"]
@@ -5317,7 +5317,7 @@ Character = NodePath("../../../..")
 hit_effect_dist = 15
 
 [node name="Upper" type="CollisionShape2D" parent="Body/Hip/Torso/Torso_Hurtbox"]
-shape = SubResource( 36 )
+shape = SubResource( 34 )
 
 [node name="Head" type="Polygon2D" parent="Body/Hip/Torso"]
 position = Vector2( 0, -32 )
@@ -5399,7 +5399,7 @@ Character = NodePath("../../../..")
 hit_effect_dist = 15
 
 [node name="Upper" type="CollisionShape2D" parent="Body/Hip/Left_Leg/L_Leg_Hurtbox"]
-shape = SubResource( 37 )
+shape = SubResource( 35 )
 
 [node name="Left_Shin" type="Polygon2D" parent="Body/Hip/Left_Leg"]
 position = Vector2( -0.0590348, 20.0132 )
@@ -5420,7 +5420,7 @@ hit_effect_dist = 15
 
 [node name="Upper" type="CollisionShape2D" parent="Body/Hip/Left_Leg/Left_Shin/L_Shin_Hurtbox"]
 position = Vector2( 0.209907, 1.80684 )
-shape = SubResource( 38 )
+shape = SubResource( 36 )
 
 [node name="Left_Foot" type="Polygon2D" parent="Body/Hip/Left_Leg/Left_Shin"]
 position = Vector2( -0.0418882, 21.9996 )
@@ -5452,7 +5452,7 @@ Character = NodePath("../../../..")
 hit_effect_dist = 15
 
 [node name="Upper" type="CollisionShape2D" parent="Body/Hip/Right_Leg/R_Leg_Hurtbox"]
-shape = SubResource( 37 )
+shape = SubResource( 35 )
 
 [node name="Right_Shin" type="RemoteTransform2D" parent="Body/Hip/Right_Leg"]
 position = Vector2( 0, 20 )
@@ -5471,7 +5471,7 @@ hit_effect_dist = 15
 
 [node name="Upper" type="CollisionShape2D" parent="Body/Hip/Right_Leg/Right_Shin/R_Shin_Hurtbox"]
 position = Vector2( 0.209907, 1.80684 )
-shape = SubResource( 38 )
+shape = SubResource( 36 )
 
 [node name="Right_Foot" type="RemoteTransform2D" parent="Body/Hip/Right_Leg/Right_Shin"]
 position = Vector2( 0, 22 )
@@ -5492,7 +5492,7 @@ color = Color( 1, 0, 0, 1 )
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 8 )
-shape = SubResource( 39 )
+shape = SubResource( 37 )
 
 [node name="Heart_Particles" type="Particles2D" parent="."]
 position = Vector2( 1.90735e-06, -11.8787 )
@@ -5500,7 +5500,7 @@ emitting = false
 amount = 40
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 42 )
+process_material = SubResource( 40 )
 [connection signal="timeout" from="States/Playing/Buffer/Jump_Buffer" to="States/Playing/Buffer" method="_on_Jump_Buffer_timeout"]
 [connection signal="timeout" from="States/Playing/Buffer/Coyote_Timer" to="States/Playing/Buffer" method="_on_Coyote_Timer_timeout"]
 [connection signal="timeout" from="States/Playing/Buffer/Attack_Buffer" to="States/Playing/Buffer" method="_on_Attack_Buffer_timeout"]
