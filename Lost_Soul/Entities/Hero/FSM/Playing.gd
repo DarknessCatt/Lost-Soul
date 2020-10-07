@@ -40,8 +40,8 @@ func update(Player: KinematicBody2D, delta : float) -> void:
 
 func input(Player: KinematicBody2D, event : InputEvent) -> void:
 	if event.is_action_pressed("hero_dash"):
-		if Player.energy >= 15:
-			Player.energy -= 15
+		if Player.energy >= 10:
+			Player.energy -= 10
 			Player._change_state($"../Dashing")
 		#else: play no energy anim
 
