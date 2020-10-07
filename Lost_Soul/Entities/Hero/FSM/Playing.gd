@@ -9,12 +9,16 @@ func enter(Player : KinematicBody2D) -> void:
 	self.Player_Node = Player
 
 	if Player.is_on_floor():
-		move_state = $OnGround
+		if Player.buffer.jump_buffered: move_state = $Jumping
+		else: move_state = $OnGround
 
 	else:
 		move_state = $Falling
 
-	action_state = $Idle
+	if Player.buffer.attack_buffered:
+		action_state = $Attack
+	else:
+		action_state = $Idle
 
 	move_state.enter(self, Player_Node)
 	action_state.enter(self, Player_Node)
@@ -39,11 +43,8 @@ func update(Player: KinematicBody2D, delta : float) -> void:
 	action_state.update(self, Player, delta)
 
 func input(Player: KinematicBody2D, event : InputEvent) -> void:
-	if event.is_action_pressed("hero_dash"):
-		if Player.energy >= 10:
-			Player.energy -= 10
-			Player._change_state($"../Dashing")
-		#else: play no energy anim
+	if event.is_action_pressed("hero_dash") and Player.can_dash():
+		Player._change_state($"../Dashing")
 
 	else:
 		move_state.input(self, Player, event)

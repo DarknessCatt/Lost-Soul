@@ -2698,6 +2698,30 @@ tracks/13/keys = {
 "update": 1,
 "values": [ PoolVector2Array(  ) ]
 }
+tracks/14/type = "value"
+tracks/14/path = NodePath("Body/Hip:rotation_degrees")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Body/Hip/Torso/Head:rotation_degrees")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=15]
 length = 0.3
@@ -4996,28 +5020,33 @@ next/Jumping = "Falling"
 anims/blocked = SubResource( 21 )
 anims/inv = SubResource( 22 )
 
-[node name="States" type="Node" parent="."]
-
-[node name="Playing" type="Node" parent="States"]
-script = ExtResource( 11 )
-
-[node name="Buffer" type="Node" parent="States/Playing"]
+[node name="Buffer" type="Node" parent="."]
 script = ExtResource( 5 )
 
-[node name="Jump_Buffer" type="Timer" parent="States/Playing/Buffer"]
+[node name="Jump_Buffer" type="Timer" parent="Buffer"]
 process_mode = 0
 wait_time = 0.2
 one_shot = true
 
-[node name="Coyote_Timer" type="Timer" parent="States/Playing/Buffer"]
+[node name="Coyote_Timer" type="Timer" parent="Buffer"]
 process_mode = 0
 wait_time = 0.1
 one_shot = true
 
-[node name="Attack_Buffer" type="Timer" parent="States/Playing/Buffer"]
+[node name="Attack_Buffer" type="Timer" parent="Buffer"]
 process_mode = 0
 wait_time = 0.1
 one_shot = true
+
+[node name="Dash_Buffer" type="Timer" parent="Buffer"]
+process_mode = 0
+wait_time = 0.1
+one_shot = true
+
+[node name="States" type="Node" parent="."]
+
+[node name="Playing" type="Node" parent="States"]
+script = ExtResource( 11 )
 
 [node name="Idle" type="Node" parent="States/Playing"]
 script = ExtResource( 12 )
@@ -5330,7 +5359,8 @@ __meta__ = {
 [node name="end" type="Position2D" parent="Body/Hip/Torso/Head"]
 position = Vector2( 0, -12 )
 __meta__ = {
-"_edit_bone_": true
+"_edit_bone_": true,
+"_gizmo_extents_": 2.0
 }
 
 [node name="Left_Arm" type="Polygon2D" parent="Body/Hip/Torso"]
@@ -5353,7 +5383,8 @@ __meta__ = {
 [node name="end" type="Position2D" parent="Body/Hip/Torso/Left_Arm/Left_Hand"]
 position = Vector2( 0.353489, 27.9978 )
 __meta__ = {
-"_edit_bone_": true
+"_edit_bone_": true,
+"_gizmo_extents_": 2.0
 }
 
 [node name="Left_Weapon" type="Polygon2D" parent="Body/Hip/Torso/Left_Arm/Left_Hand"]
@@ -5376,7 +5407,8 @@ __meta__ = {
 [node name="end" type="Position2D" parent="Body/Hip/Torso/Right_Arm/Right_Hand"]
 position = Vector2( 0, 28 )
 __meta__ = {
-"_edit_bone_": true
+"_edit_bone_": true,
+"_gizmo_extents_": 2.0
 }
 
 [node name="Right_Weapon" type="Polygon2D" parent="Body/Hip/Torso/Right_Arm/Right_Hand"]
@@ -5433,7 +5465,8 @@ __meta__ = {
 [node name="end" type="Position2D" parent="Body/Hip/Left_Leg/Left_Shin/Left_Foot"]
 position = Vector2( 6.40327, 1.90881 )
 __meta__ = {
-"_edit_bone_": true
+"_edit_bone_": true,
+"_gizmo_extents_": 2.0
 }
 
 [node name="Right_Leg" type="RemoteTransform2D" parent="Body/Hip"]
@@ -5483,7 +5516,8 @@ __meta__ = {
 [node name="end" type="Position2D" parent="Body/Hip/Right_Leg/Right_Shin/Right_Foot"]
 position = Vector2( 6, 2 )
 __meta__ = {
-"_edit_bone_": true
+"_edit_bone_": true,
+"_gizmo_extents_": 2.0
 }
 
 [node name="Right_Foot_Weapon" type="Polygon2D" parent="Body/Hip/Right_Leg/Right_Shin/Right_Foot"]
@@ -5501,9 +5535,10 @@ amount = 40
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource( 40 )
-[connection signal="timeout" from="States/Playing/Buffer/Jump_Buffer" to="States/Playing/Buffer" method="_on_Jump_Buffer_timeout"]
-[connection signal="timeout" from="States/Playing/Buffer/Coyote_Timer" to="States/Playing/Buffer" method="_on_Coyote_Timer_timeout"]
-[connection signal="timeout" from="States/Playing/Buffer/Attack_Buffer" to="States/Playing/Buffer" method="_on_Attack_Buffer_timeout"]
+[connection signal="timeout" from="Buffer/Jump_Buffer" to="Buffer" method="_on_Jump_Buffer_timeout"]
+[connection signal="timeout" from="Buffer/Coyote_Timer" to="Buffer" method="_on_Coyote_Timer_timeout"]
+[connection signal="timeout" from="Buffer/Attack_Buffer" to="Buffer" method="_on_Attack_Buffer_timeout"]
+[connection signal="timeout" from="Buffer/Dash_Buffer" to="Buffer" method="_on_Dash_Buffer_timeout"]
 [connection signal="timeout" from="States/Playing/Attack/Jab" to="States/Playing/Attack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/Playing/Attack/UpTilt" to="States/Playing/Attack" method="_on_Attack_timeout"]
 [connection signal="timeout" from="States/Playing/Attack/DownTilt" to="States/Playing/Attack" method="_on_Attack_timeout"]

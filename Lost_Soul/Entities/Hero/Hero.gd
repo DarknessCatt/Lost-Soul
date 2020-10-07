@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 #Info
 onready var body : Node2D = $Body
+onready var buffer : Node = $Buffer
 
 #Attributes
 var max_health : int = 100
@@ -18,6 +19,8 @@ var crystal_heart : int = max_crystal_heart
 var blocking : bool = false
 var invencible : bool = false setget set_invencible
 const KNOCKBACK_STRENGH : int = 1200
+
+const DASH_COST : int = 10
 
 ##Signals
 signal dead()
@@ -134,6 +137,13 @@ func _use_heart() -> void:
 		health = max_health
 		$Heart_Particles.restart()
 		emit_signal("heart_used", crystal_heart)
+
+func can_dash() -> bool:
+	if self.energy >= DASH_COST:
+		self.energy -= DASH_COST
+		return true
+
+	return false
 
 #Movement
 var speed : Vector2 = Vector2(0,0)

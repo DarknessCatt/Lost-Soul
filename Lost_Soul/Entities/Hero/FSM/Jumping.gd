@@ -1,10 +1,7 @@
 extends "BasicMove.gd"
 
 const GRAV : int = 2300
-
 const JUMP_FORCE = 1100
-
-onready var buffer : Node = $"../Buffer"
 
 func enter(Machine : Node, Player : KinematicBody2D) -> void:
 	.enter(Machine, Player)

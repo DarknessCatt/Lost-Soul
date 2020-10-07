@@ -31,3 +31,13 @@ func _buffer_attack():
 
 func _on_Attack_Buffer_timeout():
 	attack_buffered = false
+
+#Dash Buffer
+var dash_buffered = false
+
+func _buffer_dash():
+	dash_buffered = true
+	$Dash_Buffer.start()
+
+func _on_Dash_Buffer_timeout():
+	dash_buffered = false

@@ -3,8 +3,6 @@ extends "BasicMove.gd"
 const GRAV : int = 3500
 const MAX_GRAV : int = 1500
 
-onready var buffer : Node = $"../Buffer"
-
 func enter(Machine : Node, Player : KinematicBody2D) -> void:
 	.enter(Machine, Player)
 
@@ -21,16 +19,17 @@ func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
 	.update(Machine, Player, delta)
 
 	if Player.is_on_floor():
-		if buffer.jump_buffered:
+		if Player.buffer.jump_buffered:
 			Machine.change_move_state($"../Jumping")
 
 		else:
 			Machine.change_move_state($"../OnGround")
 
-func input(Machine : Node, _Player: KinematicBody2D, event : InputEvent) -> void:
+func input(Machine : Node, Player: KinematicBody2D, event : InputEvent) -> void:
 	if event.is_action_pressed("hero_jump"):
 
-		if buffer.can_coyote:
+		if Player.buffer.can_coyote:
 			Machine.change_move_state($"../Jumping")
+
 		else:
-			buffer._buffer_jump()
+			Player.buffer._buffer_jump()

@@ -1,7 +1,5 @@
 extends "BasicMove.gd"
 
-onready var buffer : Node = $"../Buffer"
-
 func enter(Machine : Node, Player : KinematicBody2D) -> void:
 	Player.speed.y = 200
 	.enter(Machine, Player)
@@ -11,7 +9,7 @@ func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
 	.update(Machine, Player, delta)
 
 	if not Player.is_on_floor():
-		buffer._coyote_timer()
+		Player.buffer._coyote_timer()
 		Machine.change_move_state($"../Falling")
 
 
