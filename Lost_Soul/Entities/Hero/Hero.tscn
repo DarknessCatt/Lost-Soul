@@ -4986,7 +4986,7 @@ scale_random = 0.3
 color_ramp = SubResource( 39 )
 
 [node name="Hero" type="KinematicBody2D"]
-collision_mask = 18
+collision_mask = 50
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]

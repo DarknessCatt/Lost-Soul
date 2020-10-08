@@ -17,6 +17,8 @@ func enter(Player : KinematicBody2D) -> void:
 	Player.body.scale.x = dash_dir
 	Player.speed = Vector2(dash_dir*DASH_SPEED, 10)
 
+	Player.set_collision_mask_bit(5, false)
+
 	ghost_timer = 0.0
 	GHOST_TIMEOUT = 0.0001
 
@@ -26,6 +28,7 @@ func enter(Player : KinematicBody2D) -> void:
 
 func exit(Player : KinematicBody2D) -> void:
 	Player.body.modulate = Color(1,1,1)
+	Player.set_collision_mask_bit(5, true)
 
 func update(Player: KinematicBody2D, delta : float) -> void:
 	if dash_over:

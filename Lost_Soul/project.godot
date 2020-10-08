@@ -148,6 +148,7 @@ hero_dash={
 2d_physics/layer_3="Hurtbox"
 2d_physics/layer_4="Hitbox"
 2d_physics/layer_5="Walls"
+2d_physics/layer_6="Dash_Barrier"
 
 [rendering]
 
