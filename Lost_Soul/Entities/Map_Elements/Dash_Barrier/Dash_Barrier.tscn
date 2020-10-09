@@ -30,6 +30,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ PoolVector2Array( -24, 60, -12, 44, -12, -44, -24, -60, -24, -64, 24, -64, 24, -60, 12, -44, 12, 44, 24, 60, 24, 64, -24, 64 ), PoolVector2Array( -8, 52, -56, 4, -56, -4, -8, -52, -24, -64, 24, -64, 24, -60, -24, -4, -24, 4, 24, 60, 24, 64, -24, 64 ), PoolVector2Array( -24, 60, 8, 4, 8, -4, -24, -60, -24, -64, 24, -64, 8, -52, 28, -4, 28, 4, 8, 52, 24, 64, -24, 64 ), PoolVector2Array( -8, 52, -20, 4, -20, -4, -8, -52, -24, -64, 24, -64, 24, -60, -4, -4, -4, 4, 24, 60, 24, 64, -24, 64 ), PoolVector2Array( -24, 60, -12, 44, -12, -44, -24, -60, -24, -64, 24, -64, 24, -60, 12, -44, 12, 44, 24, 60, 24, 64, -24, 64 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Barrier:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 loop = true

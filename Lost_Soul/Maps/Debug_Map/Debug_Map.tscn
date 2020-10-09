@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilesets/Placeholder_White/Placeholder_White.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Entities/Props/Checkpoint/Checkpoint.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Entities/Map_Elements/One_Way_Platform/One_Way_Platform.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Entities/Map_Elements/Dash_Barrier/Dash_Barrier.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Entities/Information/DialogueBox/DialogueBox.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 136, 48 )
@@ -82,6 +83,13 @@ polygon = PoolVector2Array( -135, -48, -167, -48, -167, -8, -159, 0, -167, 8, -1
 [node name="Checkpoint" parent="." instance=ExtResource( 13 )]
 position = Vector2( 80.3265, 512 )
 
+[node name="DialogueBox" parent="Checkpoint" instance=ExtResource( 16 )]
+margin_left = -273.327
+margin_top = -208.0
+margin_right = 341.673
+margin_bottom = -88.0
+Dialogue = [ "Congratulations!", "You activated a checkpoint!", "In the debug map!" ]
+
 [node name="Hero" parent="." instance=ExtResource( 1 )]
 position = Vector2( 75, 515 )
 
@@ -100,5 +108,6 @@ position = Vector2( 660.041, 335.069 )
 look_direction = -1
 look_distance = 475
 [connection signal="checkpoint_reached" from="Checkpoint" to="." method="_on_Checkpoint_reached"]
+[connection signal="dialogue_end" from="Checkpoint/DialogueBox" to="." method="_on_dialoguebox_end"]
 
 [editable path="Hero/Player_Camera"]

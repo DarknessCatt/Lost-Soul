@@ -17,4 +17,8 @@ func _on_Checkpoint_reached(_checkpoint):
 	$Watcher.respawn()
 	$Spitter.respawn()
 
+	$Checkpoint/DialogueBox.begin_dialogue()
+	$Hero.on_cutscene = true
 
+func _on_dialoguebox_end():
+	$Hero.on_cutscene = false
