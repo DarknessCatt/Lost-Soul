@@ -10,5 +10,9 @@ func _on_intro_body_entered(_body):
 	$Dialogue1/DialogueBox.begin_dialogue()
 
 func _on_Intro_end():
-	$Hero.on_cutscene = false
+	$Hero._change_anim("PowerUp")
+	$Anim_Timer.start()
 	$Animation.play_backwards("Intro")
+
+func _on_Anim_timeout():
+	$Hero.on_cutscene = false

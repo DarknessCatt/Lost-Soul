@@ -40,7 +40,7 @@ func _on_attack_hit(energy_restored):
 	energy = min(max_energy, energy)
 
 func _hit(damage : int, _force : int, _direction : Vector2) -> void:
-	if not invencible:
+	if not invencible and not on_cutscene:
 		if not blocking:
 			if health > 0:
 				health -= damage
@@ -113,7 +113,6 @@ func _on_Invencibility_timeout():
 	self.invencible = false
 
 func _die() -> void:
-	on_cutscene = true
 	self._change_anim("Death")
 
 func _soul_collected(quantity : int) -> void:
@@ -124,11 +123,8 @@ func _crystal_heart_collected() -> void:
 	crystal_heart += 1
 
 	self.speed = Vector2(0,0)
-	#Fix
-	#_change_state($States/OnGround)
-	_change_anim("PowerUp")
 
-	on_cutscene = true
+	_change_anim("PowerUp")
 	emit_signal("heart_collected")
 
 func _use_heart() -> void:
@@ -150,7 +146,16 @@ var speed : Vector2 = Vector2(0,0)
 
 #FSM
 var cur_state : Node
-export(bool) var on_cutscene : bool = false
+export(bool) var on_cutscene : bool = false setget set_cutscene
+
+func set_cutscene(new_value : bool):
+	on_cutscene = new_value
+	
+	if new_value:
+		self._change_state($States/Cutscene)
+
+	else:
+		self._change_state($States/Playing)
 
 ##Functions
 func _ready():
@@ -169,16 +174,13 @@ func _disable_hitboxes() -> void:
 				collision.call_deferred("set", "disabled", true)
 
 func _input(event):
-	if not on_cutscene:
-
-		if event.is_action_pressed("hero_heart"):
-			self._use_heart()
-		else:
-			cur_state.input(self, event)
+	if event.is_action_pressed("hero_heart"):
+		self._use_heart()
+	else:
+		cur_state.input(self, event)
 
 func _physics_process(delta):
-	if not on_cutscene:
-		cur_state.update(self, delta)
+	cur_state.update(self, delta)
 
 func _change_state(new_state : Node):
 	cur_state.exit(self)

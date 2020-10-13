@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Hero/FSM/Falling.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Entities/Hero/FSM/Idle.gd" type="Script" id=12]
 [ext_resource path="res://Entities/Hero/FSM/Dashing.gd" type="Script" id=13]
 [ext_resource path="res://Assets/Player_Effects/Ghost/Ghost.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Entities/Hero/FSM/Cutscene.gd" type="Script" id=15]
 
 [sub_resource type="Animation" id=1]
 length = 0.28
@@ -5112,6 +5113,9 @@ GHOST_SCENE = ExtResource( 14 )
 process_mode = 0
 wait_time = 0.2
 one_shot = true
+
+[node name="Cutscene" type="Node" parent="States"]
+script = ExtResource( 15 )
 
 [node name="Body" type="Node2D" parent="."]
 

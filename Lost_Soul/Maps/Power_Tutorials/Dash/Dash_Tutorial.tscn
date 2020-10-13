@@ -94,6 +94,10 @@ action = "hero_dash"
 [node name="area" type="CollisionShape2D" parent="Props/Tutorial_Action"]
 shape = SubResource( 2 )
 
+[node name="Anim_Timer" type="Timer" parent="."]
+wait_time = 1.75
+one_shot = true
+
 [node name="Dialogue1" type="Node2D" parent="."]
 
 [node name="Dialogue_Trigger" type="Area2D" parent="Dialogue1"]
@@ -128,5 +132,6 @@ polygon = PoolVector2Array( 0, 8, -8, 0, 0, -8, 8, 0 )
 [node name="Camera2D" type="Camera2D" parent="Hero"]
 position = Vector2( 0, -75 )
 current = true
+[connection signal="timeout" from="Anim_Timer" to="." method="_on_Anim_timeout"]
 [connection signal="body_entered" from="Dialogue1/Dialogue_Trigger" to="." method="_on_intro_body_entered"]
 [connection signal="dialogue_end" from="Dialogue1/DialogueBox" to="." method="_on_Intro_end"]
