@@ -25,13 +25,13 @@ func update_buttons() -> void:
 		elif event is InputEventJoypadButton:
 			$Controller.texture = JoyButtonSpriter.get_sprite(event.button_index)
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	if not disabled:
 		$Tween.stop_all()
 		$Tween.interpolate_property(self, "modulate:a", self.modulate.a, 1, 0.5)
 		$Tween.start()
 
-func _on_body_exited(body):
+func _on_body_exited(_body):
 	if not disabled:
 		$Tween.stop_all()
 		$Tween.interpolate_property(self, "modulate:a", self.modulate.a, 0, 0.5)

@@ -3,44 +3,44 @@
 [ext_resource path="res://Assets/Fonts/BasaltRegular-Jx3o.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Entities/Information/DialogueBox/DialogueBox.gd" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=1]
-size = 39
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.85098 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 104
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0, 0, 0, 0.85 )
-
-[node name="DialogueBox" type="Label"]
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.5
-rect_min_size = Vector2( 615, 120 )
-custom_fonts/font = SubResource( 1 )
-text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-valign = 1
-autowrap = true
-clip_text = true
+[node name="DialogueBox" type="Panel"]
+show_behind_parent = true
+margin_right = 640.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 640, 150 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
-show_behind_parent = true
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Label" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -317.5
-margin_top = -100.0
-margin_right = 317.5
-margin_bottom = 100.0
-rect_min_size = Vector2( 0, 200 )
-custom_styles/panel = SubResource( 2 )
+margin_left = -307.5
+margin_top = -60.0
+margin_right = 307.5
+margin_bottom = 60.0
+rect_min_size = Vector2( 2460, 480 )
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "X"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Tween" type="Tween" parent="."]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_all_completed"]

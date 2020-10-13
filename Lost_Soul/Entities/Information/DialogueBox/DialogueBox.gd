@@ -1,4 +1,4 @@
-extends Label
+extends Panel
 
 signal dialogue_end()
 
@@ -25,8 +25,8 @@ func begin_dialogue():
 	write_line()
 
 func write_line():
-	self.text = Dialogue[self.dialogue_line]
-	$Tween.interpolate_property(self, "percent_visible", 0, 1, self.text.length()*Delay_Per_Letter)
+	$Label.text = Dialogue[self.dialogue_line]
+	$Tween.interpolate_property($Label, "percent_visible", 0, 1, $Label.text.length()*Delay_Per_Letter)
 	$Tween.start()
 
 func _on_Tween_all_completed():
@@ -38,7 +38,7 @@ func _input(event):
 
 		if state == waiting:
 			self.dialogue_line += 1
-			self.percent_visible = 0
+			$Label.percent_visible = 0
 
 			if self.dialogue_line == Dialogue.size():
 				self.clear()
@@ -51,4 +51,4 @@ func _input(event):
 		elif state == talking:
 			$Tween.stop_all()
 			state = waiting
-			self.percent_visible = 1
+			$Label.percent_visible = 1

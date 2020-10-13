@@ -1,9 +1,38 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Map_Elements/Dash_Barrier/Dash_Barrier.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Power_Tutorials/Dash/Dash_Tutorial.gd" type="Script" id=3]
+[ext_resource path="res://Entities/Information/Tutorial_Key/Tutorial_Key.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Information/DialogueBox/DialogueBox.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Intro"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Dialogue1/Ghost:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 232, 224 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 1, 192 )
 
 [node name="Dash_Tutorial" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/Intro = SubResource( 1 )
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -13,7 +42,7 @@ polygon = PoolVector2Array( -875, 380, 5550, 380, 5550, -900, -875, -900 )
 
 [node name="Crack" type="Polygon2D" parent="Walls/BG"]
 color = Color( 0.075, 0.525, 0.75, 1 )
-polygon = PoolVector2Array( -512, -136, -440, -152, -392, -152, -376, -56, -360, -152, -232, -168, -56, -136, -24, -104, -8, 72, 32, -144, 144, -184, 272, -176, 368, -144, 392, -32, 408, -144, 448, -168, 488, -160, 512, -112, 528, -184, 576, -208, 680, -232, 704, -224, 720, -144, 736, -224, 760, -256, 840, -240, 944, -240, 976, -216, 1000, -184, 1024, -208, 1056, -216, 1104, -200, 1144, -136, 1152, -80, 1168, -168, 1192, -192, 1224, -192, 1392, -232, 1440, -200, 1480, 0, 1504, -64, 1488, -192, 1536, -216, 1512, -280, 1376, -336, 1304, -264, 1224, -232, 1152, -216, 1080, -240, 1008, -280, 976, -376, 968, -304, 928, -280, 824, -288, 720, -264, 704, -288, 704, -344, 672, -408, 720, -448, 736, -560, 688, -448, 664, -432, 600, -464, 528, -448, 616, -440, 648, -408, 680, -360, 672, -304, 680, -256, 656, -240, 512, -208, 480, -216, 464, -240, 448, -216, 408, -192, 296, -200, 216, -224, 176, -320, 160, -216, 16, -168, -76.6828, -178.77, -88, -272, -24, -392, -104, -296, -112, -176, -208, -208, -280, -184, -408, -168, -480, -192, -488, -256, -512, -200 )
+polygon = PoolVector2Array( -512, -136, -440, -152, -392, -152, -376, -56, -360, -152, -232, -168, -56, -136, -24, -104, -8, 72, 32, -144, 144, -184, 272, -176, 368, -144, 392, -32, 408, -144, 448, -168, 488, -160, 512, -112, 528, -184, 576, -208, 680, -232, 704, -224, 720, -144, 736, -224, 760, -256, 840, -240, 944, -240, 976, -216, 1000, -184, 1024, -208, 1056, -216, 1104, -200, 1144, -136, 1152, -80, 1168, -168, 1192, -192, 1224, -192, 1392, -232, 1440, -200, 1480, -64, 1504, -128, 1488, -192, 1536, -216, 1512, -280, 1376, -336, 1304, -264, 1224, -232, 1152, -216, 1080, -240, 1008, -280, 976, -376, 968, -304, 928, -280, 824, -288, 720, -264, 704, -288, 704, -344, 672, -408, 720, -448, 736, -560, 688, -448, 664, -432, 600, -464, 528, -448, 616, -440, 648, -408, 680, -360, 672, -304, 680, -256, 656, -240, 512, -208, 480, -216, 464, -240, 448, -216, 408, -192, 296, -200, 216, -224, 176, -320, 160, -216, 16, -168, -76.6828, -178.77, -88, -272, -24, -392, -104, -296, -112, -176, -208, -208, -280, -184, -408, -168, -480, -192, -488, -256, -512, -200 )
 
 [node name="Crack2" type="Polygon2D" parent="Walls/BG"]
 color = Color( 0.075, 0.525, 0.75, 1 )
@@ -58,8 +87,46 @@ polygon = PoolVector2Array( 552, -832, 608, -784, 640, -720, 696, -624, 744, -63
 position = Vector2( 1696, 72 )
 scale = Vector2( 1.5, 1.5 )
 
+[node name="Tutorial_Action" parent="Props" instance=ExtResource( 4 )]
+position = Vector2( 1496, -8 )
+action = "hero_dash"
+
+[node name="area" type="CollisionShape2D" parent="Props/Tutorial_Action"]
+shape = SubResource( 2 )
+
+[node name="Dialogue1" type="Node2D" parent="."]
+
+[node name="Dialogue_Trigger" type="Area2D" parent="Dialogue1"]
+position = Vector2( 896, -192 )
+monitorable = false
+collision_layer = 0
+
+[node name="area" type="CollisionShape2D" parent="Dialogue1/Dialogue_Trigger"]
+shape = SubResource( 3 )
+
+[node name="DialogueBox" parent="Dialogue1" instance=ExtResource( 5 )]
+margin_left = 577.0
+margin_top = -340.0
+margin_right = 1217.0
+margin_bottom = -190.0
+Dialogue = [ "Uma alma...
+perdida?", "Não te preocupes, teu mestre não existe aqui.", "Nenhuma alma deve viver aprisionada...", "Eu lhe concedo o poder da celeridade, para que possas escapar do caos no teu coração!" ]
+
+[node name="Ghost" type="Polygon2D" parent="Dialogue1"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 1128, -128 )
+color = Color( 0.027451, 0.847059, 0.980392, 1 )
+polygon = PoolVector2Array( 0, 24, -16, 16, -24, 0, -16, -16, 0, -24, 16, -16, 24, 0, 16, 16 )
+
+[node name="Iris" type="Polygon2D" parent="Dialogue1/Ghost"]
+position = Vector2( -16, 0 )
+color = Color( 0.92549, 0.92549, 0.92549, 1 )
+polygon = PoolVector2Array( 0, 8, -8, 0, 0, -8, 8, 0 )
+
 [node name="Hero" parent="." instance=ExtResource( 1 )]
 
 [node name="Camera2D" type="Camera2D" parent="Hero"]
 position = Vector2( 0, -75 )
 current = true
+[connection signal="body_entered" from="Dialogue1/Dialogue_Trigger" to="." method="_on_intro_body_entered"]
+[connection signal="dialogue_end" from="Dialogue1/DialogueBox" to="." method="_on_Intro_end"]
