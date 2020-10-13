@@ -34,6 +34,10 @@ script = ExtResource( 3 )
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/Intro = SubResource( 1 )
 
+[node name="Anim_Timer" type="Timer" parent="."]
+wait_time = 1.75
+one_shot = true
+
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="BG" type="Polygon2D" parent="Walls"]
@@ -94,10 +98,6 @@ action = "hero_dash"
 [node name="area" type="CollisionShape2D" parent="Props/Tutorial_Action"]
 shape = SubResource( 2 )
 
-[node name="Anim_Timer" type="Timer" parent="."]
-wait_time = 1.75
-one_shot = true
-
 [node name="Dialogue1" type="Node2D" parent="."]
 
 [node name="Dialogue_Trigger" type="Area2D" parent="Dialogue1"]
@@ -127,6 +127,34 @@ position = Vector2( -16, 0 )
 color = Color( 0.92549, 0.92549, 0.92549, 1 )
 polygon = PoolVector2Array( 0, 8, -8, 0, 0, -8, 8, 0 )
 
+[node name="Dialogue2" type="Node2D" parent="."]
+position = Vector2( 3744, -96 )
+
+[node name="Dialogue_Trigger" type="Area2D" parent="Dialogue2"]
+position = Vector2( 896, -192 )
+monitorable = false
+collision_layer = 0
+
+[node name="area" type="CollisionShape2D" parent="Dialogue2/Dialogue_Trigger"]
+shape = SubResource( 3 )
+
+[node name="DialogueBox" parent="Dialogue2" instance=ExtResource( 5 )]
+margin_left = 577.0
+margin_top = -340.0
+margin_right = 1217.0
+margin_bottom = -190.0
+Dialogue = [ "Está na hora de voltar.", "Boa sorte." ]
+
+[node name="Ghost" type="Polygon2D" parent="Dialogue2"]
+position = Vector2( 1128, -128 )
+color = Color( 0.027451, 0.847059, 0.980392, 1 )
+polygon = PoolVector2Array( 0, 24, -16, 16, -24, 0, -16, -16, 0, -24, 16, -16, 24, 0, 16, 16 )
+
+[node name="Iris" type="Polygon2D" parent="Dialogue2/Ghost"]
+position = Vector2( -16, 0 )
+color = Color( 0.92549, 0.92549, 0.92549, 1 )
+polygon = PoolVector2Array( 0, 8, -8, 0, 0, -8, 8, 0 )
+
 [node name="Hero" parent="." instance=ExtResource( 1 )]
 
 [node name="Camera2D" type="Camera2D" parent="Hero"]
@@ -135,3 +163,5 @@ current = true
 [connection signal="timeout" from="Anim_Timer" to="." method="_on_Anim_timeout"]
 [connection signal="body_entered" from="Dialogue1/Dialogue_Trigger" to="." method="_on_intro_body_entered"]
 [connection signal="dialogue_end" from="Dialogue1/DialogueBox" to="." method="_on_Intro_end"]
+[connection signal="body_entered" from="Dialogue2/Dialogue_Trigger" to="." method="_on_outro_body_entered"]
+[connection signal="dialogue_end" from="Dialogue2/DialogueBox" to="." method="_on_outro_dialogue_end"]

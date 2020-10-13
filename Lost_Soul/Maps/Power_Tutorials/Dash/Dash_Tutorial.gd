@@ -1,5 +1,7 @@
 extends Node2D
 
+signal tutorial_ended()
+
 func _process(_delta):
 	$Hero.energy = $Hero.max_energy
 
@@ -16,3 +18,11 @@ func _on_Intro_end():
 
 func _on_Anim_timeout():
 	$Hero.on_cutscene = false
+
+func _on_outro_body_entered(_body):
+	$Hero.on_cutscene = true
+	$Dialogue2/Dialogue_Trigger.call_deferred("set", "monitoring", false)
+	$Dialogue2/DialogueBox.begin_dialogue()
+
+func _on_outro_dialogue_end():
+	emit_signal("tutorial_ended")
