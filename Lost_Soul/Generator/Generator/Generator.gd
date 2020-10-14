@@ -1,7 +1,7 @@
 extends Node2D
 
-var MAP_SIZE : Vector2 = Vector2(30, 30)
-var START_POS : Vector2 = Vector2(15, 15)
+var MAP_SIZE : Vector2 = Vector2(20, 20)
+var START_POS : Vector2 = Vector2(10, 10)
 
 var gen_seed : int = 9162325
 
@@ -37,9 +37,9 @@ func generate():
 	var room_list : Array = [start_room.room]
 
 	#Rank 0 + caminhos
-	room_list += make_branch(room_list, 0, 5)
-#	room_list += make_branch(room_list, 0, 3, RoomConstants.room_types.BONUS)
-#	room_list += make_branch(room_list, 0, 3, RoomConstants.room_types.BONUS)
+#	room_list += make_branch(room_list, 0, 5)
+	room_list += make_branch(room_list, 0, 3, RoomConstants.room_types.CHECKPOINT)
+	room_list += make_branch(room_list, 0, 3)
 #	room_list += make_branch(room_list, 0, 3, RoomConstants.room_types.BONUS)
 
 	#Rank 1 + caminhos
@@ -55,29 +55,29 @@ func generate():
 	for room in room_list: room.node.open_exits(room.exits)
 
 	#Printa o minimapa, bom para debuggar mas da para tirar no futuro.
-#	var map : String = ""
-#
-#	for x in range(MAP_SIZE.x):
-#		for y in range(MAP_SIZE.y):
-#			if x == START_POS.x and y == START_POS.y:
-#				map += "[S]"
-#
-#			elif map_data[y][x] == null:
-#				map += "   "
-#
-#			else:
-#				if map_data[y][x].node.room_type == RoomConstants.room_types.BONUS:
-#					map += "[B]"
-#
-#				elif map_data[y][x].node.room_type == RoomConstants.room_types.POWER:
-#					map += "[P]"
-#
-#				else:
-#					map += "["+str(map_data[y][x].rank)+"]"
-#
-#		map += "\n"
-#
-#	print(map)
+	var map : String = ""
+
+	for x in range(MAP_SIZE.x):
+		for y in range(MAP_SIZE.y):
+			if x == START_POS.x and y == START_POS.y:
+				map += "[S]"
+
+			elif map_data[y][x] == null:
+				map += "   "
+
+			else:
+				if map_data[y][x].node.room_type == RoomConstants.room_types.BONUS:
+					map += "[B]"
+
+				elif map_data[y][x].node.room_type == RoomConstants.room_types.POWER:
+					map += "[P]"
+
+				else:
+					map += "["+str(map_data[y][x].rank)+"]"
+
+		map += "\n"
+
+	print(map)
 
 	#Provavelmente mover isso para quem chamar a função para gerar o mapa
 	$Room.add_child(map_data[cur_pos.x][cur_pos.y].node)
@@ -310,7 +310,7 @@ func make_special_room(position : Vector2, type : int, from : Dictionary = {}) -
 
 			place_room(new_room_data.room)
 
-		RoomConstants.room_types.POWER, RoomConstants.room_types.BONUS:
+		RoomConstants.room_types.POWER, RoomConstants.room_types.BONUS, RoomConstants.room_types.CHECKPOINT:
 			while true:
 				new_room_data.room["node"] = $Room_Manager.get_room()
 

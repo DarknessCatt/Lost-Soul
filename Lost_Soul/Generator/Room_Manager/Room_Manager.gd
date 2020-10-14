@@ -6,13 +6,21 @@ var room_list : Array = []
 
 var start_rooms : Array = []
 var normal_rooms : Dictionary = {RoomConstants.exit_dir.UP:[], RoomConstants.exit_dir.DOWN:[], RoomConstants.exit_dir.LEFT:[], RoomConstants.exit_dir.RIGHT:[]}
+var special_rooms : Dictionary = {}
 var power_rooms : Array = []
 var bonus_rooms : Array = []
 var gate_rooms : Array = []
 
+
 var room_queue : Dictionary = {"list":[], "pointer":0}
 
 func prepare_rooms(path : String):
+
+	for type in RoomConstants.room_types:
+		type = RoomConstants.room_types[type]
+		if type != RoomConstants.room_types.NORMAL:
+			special_rooms[type] = []
+
 	#var path = "res://abstracedural/Rooms/"
 	var dir : Directory = Directory.new()
 
@@ -67,17 +75,20 @@ func prepare_rooms(path : String):
 							if not room in normal_rooms[RoomConstants.exit_dir.RIGHT]:
 								normal_rooms[RoomConstants.exit_dir.RIGHT].append(room)
 
-			RoomConstants.room_types.START:
-				start_rooms.append(room)
+			_:
+				special_rooms[room.room_type].append(room)
 
-			RoomConstants.room_types.POWER:
-				power_rooms.append(room)
-
-			RoomConstants.room_types.BONUS:
-				bonus_rooms.append(room)
-
-			RoomConstants.room_types.GATE:
-				gate_rooms.append(room)
+#			RoomConstants.room_types.START:
+#				start_rooms.append(room)
+#
+#			RoomConstants.room_types.POWER:
+#				power_rooms.append(room)
+#
+#			RoomConstants.room_types.BONUS:
+#				bonus_rooms.append(room)
+#
+#			RoomConstants.room_types.GATE:
+#				gate_rooms.append(room)
 
 	if print_analytics:
 		print("Normal Room Direction Distribution:")
@@ -89,20 +100,23 @@ func prepare_rooms(path : String):
 func prepare_room_list(type: int, dir : int = RoomConstants.exit_dir.UP) -> void:
 	match(type):
 
-		RoomConstants.room_types.START:
-			room_queue.list = start_rooms
+#		RoomConstants.room_types.START:
+#			room_queue.list = start_rooms
 
 		RoomConstants.room_types.NORMAL:
 			room_queue.list = normal_rooms[dir]
+#
+#		RoomConstants.room_types.POWER:
+#			room_queue.list = power_rooms
+#
+#		RoomConstants.room_types.BONUS:
+#			room_queue.list = bonus_rooms
+#
+#		RoomConstants.room_types.GATE:
+#			room_queue.list = gate_rooms
 
-		RoomConstants.room_types.POWER:
-			room_queue.list = power_rooms
-
-		RoomConstants.room_types.BONUS:
-			room_queue.list = bonus_rooms
-
-		RoomConstants.room_types.GATE:
-			room_queue.list = gate_rooms
+		_:
+			room_queue.list = special_rooms[type]
 
 	room_queue.list.shuffle()
 	room_queue.pointer = 0

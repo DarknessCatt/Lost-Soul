@@ -261,6 +261,7 @@ __meta__ = {
 
 [node name="Left_Opening" parent="Variants/Opening" instance=ExtResource( 2 )]
 polygon = PoolVector2Array( 144, 128, 152, 176, 168, 200, 176, 192, 184, 224, 216, 256, 224, 232, 240, 208, 248, 216, 264, 184, 280, 176, 280, 128, 224, 112 )
+type = 0
 
 [node name="Cloud" parent="Variants/Opening/Left_Opening" instance=ExtResource( 2 )]
 color = Color( 0.627451, 0.737255, 0.784314, 1 )
@@ -269,6 +270,7 @@ type = 1
 
 [node name="Middle_Opening" parent="Variants/Opening" instance=ExtResource( 2 )]
 polygon = PoolVector2Array( 504, 272, 528, 240, 536, 208, 544, 224, 552, 144, 576, 208, 584, 200, 592, 248, 608, 272 )
+type = 0
 
 [node name="Grass" parent="Variants/Opening/Middle_Opening" instance=ExtResource( 2 )]
 color = Color( 0.556863, 0.513726, 0.101961, 1 )
@@ -277,6 +279,7 @@ type = 5
 
 [node name="Right_Opening" parent="Variants/Opening" instance=ExtResource( 2 )]
 polygon = PoolVector2Array( 744, 120, 776, 128, 792, 136, 800, 128, 816, 136, 824, 144, 832, 160, 840, 152, 856, 192, 880, 232, 888, 240, 896, 232, 912, 272, 912, 224, 896, 160, 832, 104 )
+type = 0
 
 [node name="Cloud" parent="Variants/Opening/Right_Opening" instance=ExtResource( 2 )]
 color = Color( 0.627451, 0.737255, 0.784314, 1 )
