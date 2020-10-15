@@ -117,7 +117,7 @@ func _on_Tween_tween_all_completed():
 		respawn_monsters()
 		$Hero.position = respawn_pos
 		$Hero._refresh()
-		$Hero.on_cutscene = false
+		$Hero.cutscene = $Hero.cutscene_type.NONE
 		$Tween.interpolate_property($Hero/Player_Camera/Blackout, "custom_styles/panel:bg_color:a",
 									1, 0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Tween.start()
@@ -157,13 +157,13 @@ func _on_Tween_tween_all_completed():
 			state = BEGIN
 			$Hero/Player_Camera.current = true
 			$Hero/Player_Camera.show()
-			$Hero.on_cutscene = false
+			$Hero.cutscene = $Hero.cutscene_type.NONE
 
 func _input(event):
 	if event.is_action_pressed("hero_jump") and (state == INTRO1 or state == INTRO2):
 		$Tween.remove_all()
 
-		$Hero.on_cutscene = false
+		$Hero.cutscene = $Hero.cutscene_type.NONE
 		$Hero/Player_Camera.current = true
 		$Hero/Player_Camera.show()
 
@@ -193,7 +193,7 @@ func _ready():
 		5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 	$BG_Music.playing = true
-	$Hero.on_cutscene = true
+	$Hero.cutscene = $Hero.cutscene_type.FULL
 
 func _on_Intro_entered(_body):
 	dialogue.change_dialogue(dil_intro)
@@ -337,7 +337,7 @@ func _on_The_Gate_Guardian_dead():
 	$Tween.start()
 
 func _on_End_entered(_body):
-	$Hero.on_cutscene = true
+	$Hero.cutscene = $Hero.cutscene_type.FULL
 	$Ending_Panel/End_Area.call_deferred("set", "monitoring", false)
 	$Tween.interpolate_property($Ending_Panel/Panel, "custom_styles/panel:bg_color",
 								Color("ffffff"), Color("000000"),

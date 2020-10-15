@@ -6,7 +6,7 @@ func _process(_delta):
 	$Hero.energy = $Hero.max_energy
 
 func _on_intro_body_entered(_body):
-	$Hero.on_cutscene = true
+	$Hero.cutscene = $Hero.cutscene_type.PHYSICS
 	$Dialogue1/Dialogue_Trigger.call_deferred("set", "monitoring", false)
 	$Animation.play("Intro")
 	$Dialogue1/DialogueBox.begin_dialogue()
@@ -17,10 +17,10 @@ func _on_Intro_end():
 	$Animation.play_backwards("Intro")
 
 func _on_Anim_timeout():
-	$Hero.on_cutscene = false
+	$Hero.cutscene = $Hero.cutscene_type.NONE
 
 func _on_outro_body_entered(_body):
-	$Hero.on_cutscene = true
+	$Hero.cutscene = $Hero.cutscene_type.PHYSICS
 	$Dialogue2/Dialogue_Trigger.call_deferred("set", "monitoring", false)
 	$Dialogue2/DialogueBox.begin_dialogue()
 

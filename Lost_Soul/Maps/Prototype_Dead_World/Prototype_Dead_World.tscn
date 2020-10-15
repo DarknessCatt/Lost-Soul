@@ -20,16 +20,16 @@ extents = Vector2( 69.7646, 146.222 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 17.7515, 535.225 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 131.368, 225.783 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 431.827, 258.417 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 40.2529, 39.5746 )
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=7]
 emission_shape = 1
 emission_sphere_radius = 14.0
 flag_disable_z = true
@@ -42,19 +42,19 @@ scale = 20.0
 scale_random = 0.5
 color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 26.5804, 71.5447 )
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=10]
 size = 350
 outline_size = 8
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 
 [node name="Prototype_Dead_World" type="Node2D"]
@@ -191,7 +191,7 @@ position = Vector2( 1730, 360 )
 action = "hero_jump"
 
 [node name="Area" type="CollisionShape2D" parent="Tutorial_Jump"]
-shape = SubResource( 11 )
+shape = SubResource( 4 )
 
 [node name="Middle" type="Area2D" parent="."]
 position = Vector2( 562.102, 81.2445 )
@@ -208,7 +208,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="area" type="CollisionShape2D" parent="Church"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="End" type="Area2D" parent="."]
 position = Vector2( -2994.14, 692.668 )
@@ -226,7 +226,7 @@ collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Chaos"]
 position = Vector2( -2.81348, -0.272827 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Chaos"]
 position = Vector2( -2.81348, -0.272827 )
@@ -237,7 +237,7 @@ polygon = PoolVector2Array( -24, 0, -16, -16, 0, -24, 16, -16, 24, 0, 16, 16, 0,
 amount = 40
 lifetime = 5.0
 explosiveness = 1.0
-process_material = SubResource( 6 )
+process_material = SubResource( 7 )
 
 [node name="Souls_1" parent="." instance=ExtResource( 8 )]
 modulate = Color( 0.28, 0.736, 1, 1 )
@@ -250,7 +250,7 @@ position = Vector2( 697, 677 )
 
 [node name="Trigger" type="CollisionShape2D" parent="Hidden_Area_1"]
 position = Vector2( 159.943, -3.86957 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="Black" type="Polygon2D" parent="Hidden_Area_1"]
 position = Vector2( -697.249, -677.881 )
@@ -272,7 +272,7 @@ position = Vector2( -7082, 629 )
 
 [node name="Trigger" type="CollisionShape2D" parent="Hidden_Area_2"]
 position = Vector2( 159.943, -3.86957 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="Black" type="Polygon2D" parent="Hidden_Area_2"]
 position = Vector2( -694, -661 )
@@ -291,7 +291,7 @@ margin_left = 2943.02
 margin_top = -203.987
 margin_right = 5443.02
 margin_bottom = 796.013
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 9 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -308,7 +308,7 @@ current = true
 margin_top = -40.0
 margin_right = 1025.0
 margin_bottom = 360.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.976471, 0.376471, 0.376471, 1 )
 text = "Dialogo"
 align = 1
@@ -334,7 +334,7 @@ margin_left = -6223.39
 margin_top = -24.4492
 margin_right = -3723.39
 margin_bottom = 975.551
-custom_styles/panel = SubResource( 10 )
+custom_styles/panel = SubResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -40,7 +40,7 @@ func _on_attack_hit(energy_restored):
 	energy = min(max_energy, energy)
 
 func _hit(damage : int, _force : int, _direction : Vector2) -> void:
-	if not invencible and not on_cutscene:
+	if not invencible and cutscene == cutscene_type.NONE:
 		if not blocking:
 			if health > 0:
 				health -= damage
@@ -146,12 +146,13 @@ var speed : Vector2 = Vector2(0,0)
 
 #FSM
 var cur_state : Node
-export(bool) var on_cutscene : bool = false setget set_cutscene
+enum cutscene_type {NONE, PHYSICS, FULL}
+export(bool) var cutscene : int = false setget set_cutscene
 
-func set_cutscene(new_value : bool):
-	on_cutscene = new_value
+func set_cutscene(new_value : int):
+	cutscene = new_value
 	
-	if new_value:
+	if cutscene == cutscene_type.PHYSICS:
 		self._change_state($States/Cutscene)
 
 	else:
@@ -174,13 +175,15 @@ func _disable_hitboxes() -> void:
 				collision.call_deferred("set", "disabled", true)
 
 func _input(event):
-	if event.is_action_pressed("hero_heart"):
-		self._use_heart()
-	else:
-		cur_state.input(self, event)
+	if cutscene == cutscene_type.NONE:
+		if event.is_action_pressed("hero_heart"):
+			self._use_heart()
+		else:
+			cur_state.input(self, event)
 
 func _physics_process(delta):
-	cur_state.update(self, delta)
+	if cutscene != cutscene_type.FULL:
+		cur_state.update(self, delta)
 
 func _change_state(new_state : Node):
 	cur_state.exit(self)

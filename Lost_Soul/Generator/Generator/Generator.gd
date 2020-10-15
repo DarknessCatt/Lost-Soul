@@ -492,7 +492,7 @@ var spawn_point : Vector2
 
 func _room_exited(exit_id : int):
 	if change_state == READY:
-		$Player.on_cutscene = true
+		$Player.cutscene = $Player.cutscene_type.FULL
 
 		var cur_room = map_data[cur_pos.x][cur_pos.y]
 
@@ -500,8 +500,6 @@ func _room_exited(exit_id : int):
 			if exit_data.exit.id == exit_id:
 				change_room(exit_data.to, exit_data.exit, exit_data.entrance)
 				return
-
-		$Player.on_cutscene = false
 
 func change_room(next_room : Vector2, entrance : Exit, exit : Exit):
 	change_state = FADE_OUT
@@ -546,4 +544,4 @@ func _on_Tween_tween_all_completed():
 
 func _on_change_timer_timeout():
 	change_state = READY
-	$Player.on_cutscene = false
+	$Player.cutscene = $Player.cutscene_type.NONE
