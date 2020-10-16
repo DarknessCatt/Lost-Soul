@@ -3,7 +3,7 @@ extends Node2D
 var MAP_SIZE : Vector2 = Vector2(20, 20)
 var START_POS : Vector2 = Vector2(10, 10)
 
-var gen_seed : int = 9162325
+var gen_seed : int = 6874070
 
 var map_data : Array
 
@@ -427,7 +427,6 @@ func choose_exit(new_room : Dictionary, room_placement_pos : Vector2) -> Diction
 			RoomConstants.exit_dir.UP:
 				if (room_pos.y - 1) < 0 or map_data[room_pos.x][room_pos.y-1] != null:
 					valid = false
-					continue
 
 				dir = RoomConstants.exit_dir.DOWN
 				to = Vector2.UP
@@ -435,7 +434,6 @@ func choose_exit(new_room : Dictionary, room_placement_pos : Vector2) -> Diction
 			RoomConstants.exit_dir.DOWN:
 				if (room_pos.y + 1) >= MAP_SIZE.y or map_data[room_pos.x][room_pos.y+1] != null:
 					valid = false
-					continue
 
 				dir = RoomConstants.exit_dir.UP
 				to = Vector2.DOWN
@@ -443,7 +441,6 @@ func choose_exit(new_room : Dictionary, room_placement_pos : Vector2) -> Diction
 			RoomConstants.exit_dir.LEFT:
 				if (room_pos.x - 1) < 0 or map_data[room_pos.x-1][room_pos.y] != null:
 					valid = false
-					continue
 
 				dir = RoomConstants.exit_dir.RIGHT
 				to = Vector2.LEFT
@@ -451,7 +448,6 @@ func choose_exit(new_room : Dictionary, room_placement_pos : Vector2) -> Diction
 			RoomConstants.exit_dir.RIGHT:
 				if (room_pos.x + 1) >= MAP_SIZE.y or map_data[room_pos.x+1][room_pos.y] != null:
 					valid = false
-					continue
 
 				dir = RoomConstants.exit_dir.LEFT
 				to = Vector2.RIGHT
@@ -471,7 +467,6 @@ func place_room(room_data : Dictionary) -> void:
 	for pos in new_room.room_positions:
 		var map_pos : Vector2 = room_placement_pos + pos
 		map_data[map_pos.x][map_pos.y] = room_data
-		#print("\t\t"+str(map_pos))
 
 func remove_room(room_data : Dictionary) -> void:
 	var old_room = room_data.node
@@ -484,7 +479,7 @@ func remove_room(room_data : Dictionary) -> void:
 
 	old_room.call_deferred("free")
 
-# Tudo isso ficaria em um Game Manager
+# Tudo isso a seguir ficaria em um Game Manager
 enum {READY, FADE_OUT, FADE_IN, REVEAL}
 var cur_pos : Vector2 = START_POS
 var change_state : int = READY
