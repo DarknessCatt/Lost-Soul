@@ -26,27 +26,26 @@ func _ready():
 
 	generator.call_deferred("free")
 
-	#Coloca o jogador na posição inicial
-	screen_room.add_child(map_data[cur_pos.x][cur_pos.y].node)
-	map_data[cur_pos.x][cur_pos.y].node.connect("player_exited", self, "_room_exited")
-	hero.global_position = map_data[cur_pos.x][cur_pos.y].node.get_start_point()
-	camera.limit_right = map_data[cur_pos.x][cur_pos.y].node.camera_limits.x
-	camera.limit_bottom = map_data[cur_pos.x][cur_pos.y].node.camera_limits.y
+	enter_room(map_data[cur_pos.x][cur_pos.y].node)
+	hero.position = map_data[cur_pos.x][cur_pos.y].node.get_start_point()
 
-func _room_exited(exit_id : int):
-	if change_state == READY:
-		hero.cutscene = hero.cutscene_type.FULL
+func enter_room(room : Base_Room):
+	screen_room.call_deferred("add_child", room)
+	room.call_deferred("connect", "player_exited", self, "_room_exited")
 
-		var cur_room = map_data[cur_pos.x][cur_pos.y]
+	camera.offset = Vector2.ZERO
+	# warning-ignore:narrowing_conversion
+	camera.limit_right = room.camera_limits.x
+	# warning-ignore:narrowing_conversion
+	camera.limit_bottom = room.camera_limits.y
 
-		for exit_data in cur_room.exits:
-			if exit_data.exit.id == exit_id:
-				change_room(exit_data.to, exit_data.exit, exit_data.entrance)
-				return
+	hero.position = spawn_point
 
-func change_room(next_room : Vector2, entrance : Exit, exit : Exit):
+	yield(room, "tree_entered")
+
+func leave_room(next_room : Vector2, entrance : Exit, exit : Exit):
 	change_state = FADE_OUT
-# warning-ignore:return_value_discarded
+	#warning-ignore:return_value_discarded
 	hero.move_and_slide(Vector2.ZERO)
 
 	var room : Base_Room = map_data[cur_pos.x][cur_pos.y].node
@@ -67,23 +66,24 @@ func change_room(next_room : Vector2, entrance : Exit, exit : Exit):
 	$Room_Transition/Tween.interpolate_property(camera, "offset", Vector2.ZERO, norm_player_pos-norm_spawn_pos, 0.7)
 	$Room_Transition/Tween.start()
 
+func _room_exited(exit_id : int):
+	if change_state == READY:
+		hero.cutscene = hero.cutscene_type.FULL
+
+		var cur_room = map_data[cur_pos.x][cur_pos.y]
+
+		for exit_data in cur_room.exits:
+			if exit_data.exit.id == exit_id:
+				leave_room(exit_data.to, exit_data.exit, exit_data.entrance)
+				return
+
 func _on_Tween_tween_all_completed():
 	if change_state == FADE_OUT:
 		change_state = FADE_IN
 		$Room_Transition/change_timer.start()
 		var room : Base_Room = map_data[cur_pos.x][cur_pos.y].node
 
-		camera.offset = Vector2.ZERO
-		# warning-ignore:narrowing_conversion
-		camera.limit_right = room.camera_limits.x
-		# warning-ignore:narrowing_conversion
-		camera.limit_bottom = room.camera_limits.y
-
-		hero.position = spawn_point
-
-		screen_room.call_deferred("add_child", room)
-		room.call_deferred("connect", "player_exited", self, "_room_exited")
-		yield(room, "tree_entered")
+		enter_room(room)
 
 		$Room_Transition/Tween.interpolate_property($Room_Transition/Blackout, "modulate:a", 1, 0, 0.1)
 		$Room_Transition/Tween.start()

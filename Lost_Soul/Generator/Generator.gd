@@ -1,5 +1,3 @@
-extends Node2D
-
 class_name Map_Generator
 
 var MAP_SIZE : Vector2 = Vector2(20, 20)

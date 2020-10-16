@@ -49,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Classes/JoyButtonSpriter.gd"
 }, {
-"base": "Node2D",
+"base": "Reference",
 "class": "Map_Generator",
 "language": "GDScript",
 "path": "res://Generator/Generator.gd"
