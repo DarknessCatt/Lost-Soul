@@ -1,4 +1,4 @@
-extends Node2D
+class_name Room_Manager
 
 var print_analytics : bool = false
 

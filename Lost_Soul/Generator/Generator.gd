@@ -1,24 +1,25 @@
 extends Node2D
 
+class_name Map_Generator
+
 var MAP_SIZE : Vector2 = Vector2(20, 20)
 var START_POS : Vector2 = Vector2(10, 10)
+
+var room_manager 
 
 var gen_seed : int = 6874070
 
 var map_data : Array
 
-func _ready():
-	$Room_Manager.prepare_rooms("res://Maps/Procedural_Maps/Mountain/")
-	generate()
-
 #Atualmente gera o mapa
-func generate():
+func generate(Room_Path : String = "res://Maps/Procedural_Maps/Mountain/"):
+
+	room_manager = Room_Manager.new()
+	room_manager.prepare_rooms(Room_Path)
 
 	if gen_seed == 0:
 		randomize()
 		gen_seed = randi()%9999999
-
-	$Seed.text += str(gen_seed)
 
 	print("Seed: "+str(gen_seed))
 	seed(gen_seed)
@@ -78,14 +79,6 @@ func generate():
 		map += "\n"
 
 	print(map)
-
-	#Provavelmente mover isso para quem chamar a função para gerar o mapa
-	$Room.add_child(map_data[cur_pos.x][cur_pos.y].node)
-	map_data[cur_pos.x][cur_pos.y].node.connect("player_exited", self, "_room_exited")
-	#Revisar essa posição inicial
-	$Player.global_position = map_data[cur_pos.x][cur_pos.y].node.get_start_point()
-	$Player/Camera.limit_right = map_data[cur_pos.x][cur_pos.y].node.camera_limits.x
-	$Player/Camera.limit_bottom = map_data[cur_pos.x][cur_pos.y].node.camera_limits.y
 
 #Faz os ciclos,
 #Com faz eu digo que ele olha as saidas ainda não usadas
@@ -214,12 +207,12 @@ func make_path(start_data : Dictionary, path_rank : int = 0, path_limit : int = 
 	var room_pos : Vector2 = start_data.to
 
 	#Create Normal Rooms
-	$Room_Manager.prepare_room_list(RoomConstants.room_types.NORMAL, previous_room.exit_dir)
+	room_manager.prepare_room_list(RoomConstants.room_types.NORMAL, previous_room.exit_dir)
 
 	while rooms_list.size() < path_limit:
 		#print("Attempting room in "+str(room_pos))
 		var new_room : Dictionary = {}
-		new_room["node"] = $Room_Manager.get_room()
+		new_room["node"] = room_manager.get_room()
 
 		if new_room.node == null:
 			#print("\tRoom List Empty!")
@@ -282,7 +275,7 @@ func make_path(start_data : Dictionary, path_rank : int = 0, path_limit : int = 
 
 		room_pos = exit_data.to
 
-		$Room_Manager.prepare_room_list(RoomConstants.room_types.NORMAL, previous_room.exit_dir)
+		room_manager.prepare_room_list(RoomConstants.room_types.NORMAL, previous_room.exit_dir)
 
 	#Adding Final Room
 	var final_room = make_special_room(room_pos, final_room_type, previous_room)
@@ -299,12 +292,12 @@ func make_path(start_data : Dictionary, path_rank : int = 0, path_limit : int = 
 func make_special_room(position : Vector2, type : int, from : Dictionary = {}) -> Dictionary:
 	var new_room_data : Dictionary = {"room":{}, "exit":{}}
 
-	$Room_Manager.prepare_room_list(type)
+	room_manager.prepare_room_list(type)
 
 	match(type):
 
 		RoomConstants.room_types.START:
-			new_room_data.room["node"] = $Room_Manager.get_room()
+			new_room_data.room["node"] = room_manager.get_room()
 			new_room_data.room["map_position"] = position
 			new_room_data.room["exits"] = []
 
@@ -312,7 +305,7 @@ func make_special_room(position : Vector2, type : int, from : Dictionary = {}) -
 
 		RoomConstants.room_types.POWER, RoomConstants.room_types.BONUS, RoomConstants.room_types.CHECKPOINT:
 			while true:
-				new_room_data.room["node"] = $Room_Manager.get_room()
+				new_room_data.room["node"] = room_manager.get_room()
 
 				if new_room_data.room.node == null:
 					new_room_data = {}
@@ -352,7 +345,7 @@ func make_special_room(position : Vector2, type : int, from : Dictionary = {}) -
 
 		RoomConstants.room_types.GATE:
 			while true:
-				new_room_data.room["node"] = $Room_Manager.get_room()
+				new_room_data.room["node"] = room_manager.get_room()
 
 				if new_room_data.room["node"] == null:
 					#print("Gate Queue Empty!")
@@ -479,64 +472,6 @@ func remove_room(room_data : Dictionary) -> void:
 
 	old_room.call_deferred("free")
 
-# Tudo isso a seguir ficaria em um Game Manager
-enum {READY, FADE_OUT, FADE_IN, REVEAL}
-var cur_pos : Vector2 = START_POS
-var change_state : int = READY
-var spawn_point : Vector2
-
-func _room_exited(exit_id : int):
-	if change_state == READY:
-		$Player.cutscene = $Player.cutscene_type.FULL
-
-		var cur_room = map_data[cur_pos.x][cur_pos.y]
-
-		for exit_data in cur_room.exits:
-			if exit_data.exit.id == exit_id:
-				change_room(exit_data.to, exit_data.exit, exit_data.entrance)
-				return
-
-func change_room(next_room : Vector2, entrance : Exit, exit : Exit):
-	change_state = FADE_OUT
-	$Player.move_and_slide(Vector2.ZERO)
-
-	var room : Base_Room = map_data[cur_pos.x][cur_pos.y].node
-	room.call_deferred("disconnect", "player_exited", self, "_room_exited")
-	$Room.call_deferred("remove_child", room)
-	yield(room, "tree_exited")
-
-	cur_pos = next_room
-	room = map_data[cur_pos.x][cur_pos.y].node
-	spawn_point = room.get_spawn_point(exit.id)
-
-	var norm_player_pos : Vector2 = \
-		Vector2($Player.position.x - 1024*entrance.position.x, $Player.position.y - 600*entrance.position.y)
-	var norm_spawn_pos : Vector2 = \
-		Vector2(spawn_point.x - 1024*exit.position.x, spawn_point.y - 600*exit.position.y)
-
-	$Tween.interpolate_property($Player/Blackout, "modulate:a", 0, 1, 0.1)
-	$Tween.interpolate_property($Player/Camera, "offset", Vector2.ZERO, norm_player_pos-norm_spawn_pos, 0.7)
-	$Tween.start()
-
-func _on_Tween_tween_all_completed():
-	if change_state == FADE_OUT:
-		change_state = FADE_IN
-		$change_timer.start()
-		var room : Base_Room = map_data[cur_pos.x][cur_pos.y].node
-
-		$Player/Camera.offset = Vector2.ZERO
-		$Player/Camera.limit_right = room.camera_limits.x
-		$Player/Camera.limit_bottom = room.camera_limits.y
-
-		$Player.position = spawn_point
-
-		$Room.call_deferred("add_child", room)
-		room.call_deferred("connect", "player_exited", self, "_room_exited")
-		yield(room, "tree_entered")
-
-		$Tween.interpolate_property($Player/Blackout, "modulate:a", 1, 0, 0.1)
-		$Tween.start()
-
-func _on_change_timer_timeout():
-	change_state = READY
-	$Player.cutscene = $Player.cutscene_type.NONE
+func free():
+	room_manager.call_deferred("free")
+	.free()

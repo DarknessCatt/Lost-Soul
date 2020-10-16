@@ -49,10 +49,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Classes/JoyButtonSpriter.gd"
 }, {
+"base": "Node2D",
+"class": "Map_Generator",
+"language": "GDScript",
+"path": "res://Generator/Generator.gd"
+}, {
 "base": "Reference",
 "class": "RoomConstants",
 "language": "GDScript",
 "path": "res://Classes/Rooms_Constants.gd"
+}, {
+"base": "Reference",
+"class": "Room_Manager",
+"language": "GDScript",
+"path": "res://Generator/Room_Manager.gd"
 }, {
 "base": "Node",
 "class": "State",
@@ -68,14 +78,16 @@ _global_script_class_icons={
 "Exit": "",
 "FSM": "",
 "JoyButtonSpriter": "",
+"Map_Generator": "",
 "RoomConstants": "",
+"Room_Manager": "",
 "State": ""
 }
 
 [application]
 
 config/name="Lost Soul"
-run/main_scene="res://Generator/Generator/Generator.tscn"
+run/main_scene="res://Menus/Game_Controller/Game_Controller.tscn"
 boot_splash/bg_color=Color( 0.01, 0.01, 0.01, 1 )
 config/icon="res://icon.png"
 
