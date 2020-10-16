@@ -49,7 +49,7 @@ extents = Vector2( 8, 64 )
 [sub_resource type="CircleShape2D" id=9]
 radius = 112.704
 
-[sub_resource type="RectangleShape2D" id=27]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 120, 130 )
 
 [sub_resource type="RectangleShape2D" id=11]
@@ -61,7 +61,7 @@ extents = Vector2( 224, 112 )
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 10, 88 )
 
-[sub_resource type="RectangleShape2D" id=28]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 220, 180 )
 
 [sub_resource type="RectangleShape2D" id=15]
@@ -324,7 +324,7 @@ action = "hero_attack"
 disabled = true
 
 [node name="area" type="CollisionShape2D" parent="Dialogue_Triggers/Tutorial_Attack"]
-shape = SubResource( 27 )
+shape = SubResource( 10 )
 
 [node name="Wander_Enemy" type="Area2D" parent="Dialogue_Triggers"]
 position = Vector2( 6912, 1216 )
@@ -356,7 +356,7 @@ action = "hero_block"
 
 [node name="area" type="CollisionShape2D" parent="Dialogue_Triggers/Tutorial_Block"]
 position = Vector2( -40, 70 )
-shape = SubResource( 28 )
+shape = SubResource( 14 )
 
 [node name="Before_Eyes" type="Area2D" parent="Dialogue_Triggers"]
 position = Vector2( 15664, 160 )

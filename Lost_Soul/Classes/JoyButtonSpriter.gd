@@ -1,5 +1,3 @@
-extends Node
-
 class_name JoyButtonSpriter
 
 const joysprite_folder = "res://Assets/controller/"

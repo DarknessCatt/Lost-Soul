@@ -44,12 +44,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Classes/FSM.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "JoyButtonSpriter",
 "language": "GDScript",
 "path": "res://Classes/JoyButtonSpriter.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "RoomConstants",
 "language": "GDScript",
 "path": "res://Classes/Rooms_Constants.gd"

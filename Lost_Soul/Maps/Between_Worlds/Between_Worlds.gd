@@ -248,6 +248,9 @@ func _on_checkpoint_reached(checkpoint : Area2D):
 	blk_con_event.button_index = 5
 	InputMap.action_add_event("hero_block", blk_con_event)
 
+	$Dialogue_Triggers/Tutorial_Attack.update_buttons()
+	$Dialogue_Triggers/Tutorial_Block.update_buttons()
+
 func _on_Souls_Tutorial_entered(_body):
 	dialogue.change_dialogue(dil_soul)
 	dialogue.begin()
