@@ -6,8 +6,8 @@ var screen_room : Node2D
 
 var map_data : Array
 
-# Tudo isso a seguir ficaria em um Game Manager
-enum {READY, FADE_OUT, FADE_IN, REVEAL}
+# Room Control
+enum {READY, FADE_OUT, FADE_IN}
 var cur_pos : Vector2
 var change_state : int = READY
 var spawn_point : Vector2
@@ -62,7 +62,7 @@ func leave_room(next_room : Vector2, entrance : Exit, exit : Exit):
 	var norm_spawn_pos : Vector2 = \
 		Vector2(spawn_point.x - 1024*exit.position.x, spawn_point.y - 600*exit.position.y)
 
-	$Room_Transition/Tween.interpolate_property($Room_Transition/Blackout, "modulate:a", 0, 1, 0.1)
+	$Room_Transition/Tween.interpolate_property(screen_room, "modulate:a", 1, 0, 0.1)
 	$Room_Transition/Tween.interpolate_property(camera, "offset", Vector2.ZERO, norm_player_pos-norm_spawn_pos, 0.7)
 	$Room_Transition/Tween.start()
 
@@ -85,7 +85,7 @@ func _on_Tween_tween_all_completed():
 
 		enter_room(room)
 
-		$Room_Transition/Tween.interpolate_property($Room_Transition/Blackout, "modulate:a", 1, 0, 0.1)
+		$Room_Transition/Tween.interpolate_property(screen_room, "modulate:a", 0, 1, 0.1)
 		$Room_Transition/Tween.start()
 
 func _on_change_timer_timeout():
