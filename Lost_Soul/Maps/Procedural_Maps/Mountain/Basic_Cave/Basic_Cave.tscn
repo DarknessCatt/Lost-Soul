@@ -76,7 +76,7 @@ type = 3
 
 [node name="Soft_Rock" parent="Room/Left_Ceiling" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 0, 288, 8, 320, 24, 256, 48, 224, 56, 208, 64, 168, 128, 128, 136, 200, 144, 128, 224, 112, 304, 136, 320, 192, 328, 136, 392, 120, 440, 88, 464, 0, 432, 0, 400, 72, 320, 104, 224, 88, 56, 80, 16, 232 )
+polygon = PoolVector2Array( 0, 288, 8, 320, 24, 256, 48, 224, 56, 208, 64, 168, 96, 144, 144, 128, 224, 112, 280, 128, 304, 136, 312, 152, 320, 136, 392, 120, 440, 88, 464, 0, 432, 0, 400, 72, 320, 104, 224, 88, 56, 80, 16, 232 )
 type = 4
 
 [node name="Right_Floor" parent="Room" instance=ExtResource( 2 )]
@@ -96,12 +96,13 @@ type = 3
 
 [node name="Soft_Rock" parent="Room/Right_Ceiling" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 600, 0, 608, 56, 680, 88, 728, 120, 736, 168, 744, 120, 832, 104, 896, 160, 912, 224, 912, 296, 968, 328, 976, 360, 984, 328, 1008, 352, 1024, 352, 1024, 336, 944, 264, 960, 152, 848, 56, 744, 88, 704, 32, 640, 0 )
+polygon = PoolVector2Array( 600, 0, 608, 56, 680, 88, 728, 120, 736, 168, 744, 120, 816, 104, 880, 120, 896, 160, 920, 232, 920, 296, 944, 336, 1008, 352, 1024, 352, 1024, 336, 944, 264, 960, 152, 848, 56, 744, 88, 704, 32, 640, 0 )
 type = 4
 
 [node name="Plataform" parent="Room" instance=ExtResource( 2 )]
+position = Vector2( 0, 16 )
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 384, 328, 424, 296, 504, 272, 608, 272, 672, 288, 704, 320, 696, 336, 656, 336, 608, 320, 600, 344, 592, 320, 552, 312, 520, 312, 496.707, 336, 488, 360, 479.992, 336, 464, 328, 432, 328, 408, 352, 392, 352, 384, 344 )
+polygon = PoolVector2Array( 408, 288, 432, 272, 504, 264, 608, 264, 664, 272, 680, 280, 680, 296, 656, 320, 640, 304, 592, 296, 552, 304, 544, 312, 536, 352, 528, 312, 496, 296, 464, 296, 432, 312, 424, 328, 408, 304 )
 type = 4
 
 [node name="Walls" type="StaticBody2D" parent="Room"]
@@ -117,10 +118,11 @@ polygon = PoolVector2Array( 0, 288, 48, 224, 64, 168, 224, 112, 304, 136, 392, 1
 polygon = PoolVector2Array( 608, 600, 616, 552, 640, 544, 696, 536, 768, 536, 856, 528, 1000, 528, 1024, 520, 1024, 600 )
 
 [node name="Right_Ceiling" type="CollisionPolygon2D" parent="Room/Walls"]
-polygon = PoolVector2Array( 1024, 352, 1008, 352, 912, 296, 912, 224, 896, 160, 832, 104, 728, 120, 608, 56, 600, 0, 1024, 0 )
+polygon = PoolVector2Array( 1024, 352, 1008, 352, 944, 336, 920, 296, 920, 232, 896, 160, 880, 120, 816, 104, 736, 120, 608, 56, 600, 0, 1024, 0 )
 
 [node name="Plataform" type="CollisionPolygon2D" parent="Room/Walls"]
-polygon = PoolVector2Array( 384, 328, 424, 296, 504, 272, 608, 272, 672, 288, 704, 320, 696, 336, 656, 336, 544, 312, 464, 328, 432, 328, 408, 352, 384, 344 )
+position = Vector2( 0, 16 )
+polygon = PoolVector2Array( 408, 288, 432, 272, 504, 264, 608, 264, 664, 272, 680, 280, 680, 296, 656, 312, 640, 304, 592, 296, 536, 312, 480, 296, 424, 312, 408, 304 )
 
 [node name="Left_Exit" type="CollisionPolygon2D" parent="Room/Walls"]
 polygon = PoolVector2Array( 0, 512, -40, 512, -40, 288, 0, 288, 0, 280, -48, 280, -48, 520, 0, 520 )
@@ -155,19 +157,19 @@ polygon = PoolVector2Array( 255.014, 528, 135.014, 488, 47.0142, 312, 39.0142, 2
 
 [node name="1" parent="Blocks" instance=ExtResource( 2 )]
 color = Color( 0.266667, 0.227451, 0.219608, 1 )
-polygon = PoolVector2Array( 384, 64, 456, 64, 496, 96, 568, 80, 608, 88, 720, 56, 720, 0, 376, 0 )
+polygon = PoolVector2Array( 384, 64, 456, 64, 496, 96, 568, 80, 608, 88, 744, 88, 704, 32, 720, 0, 376, 0 )
 type = 3
 
 [node name="Soft_Rock" parent="Blocks/1" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 384, 80, 440, 104, 472, 128, 488, 176, 504, 120, 544, 112, 584, 120, 592, 152, 600, 120, 648, 104, 672, 104, 696, 112, 744, 88, 720, 56, 608, 88, 568, 80, 496, 96, 456, 56 )
+polygon = PoolVector2Array( 416, 104, 440, 104, 488, 112, 536, 112, 544, 136, 552, 112, 600, 112, 648, 104, 704, 104, 712, 88, 672, 72, 616, 80, 568, 80, 496, 88, 448, 56 )
 type = 4
 
 [node name="Wall" type="StaticBody2D" parent="Blocks/1"]
 collision_layer = 16
 
 [node name="area" type="CollisionPolygon2D" parent="Blocks/1/Wall"]
-polygon = PoolVector2Array( 424, 96, 440, 104, 472, 128, 544, 112, 584, 120, 648, 104, 696, 112, 712, 104, 712, 96 )
+polygon = PoolVector2Array( 432, 80, 416, 104, 440, 104, 480, 112, 544, 112, 600, 112, 648, 104, 704, 104, 704, 88 )
 
 [node name="2" parent="Blocks" instance=ExtResource( 2 )]
 color = Color( 0.266667, 0.227451, 0.219608, 1 )
@@ -176,14 +178,14 @@ type = 3
 
 [node name="Soft_Rock" parent="Blocks/2" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 912, 296, 920, 320, 952, 352, 960, 408, 960, 456, 952, 496, 936, 528, 888, 544, 920, 552, 960, 520, 976, 448, 976, 352, 944, 264 )
+polygon = PoolVector2Array( 920, 296, 952, 352, 960, 408, 960, 456, 952, 496, 936, 528, 888, 544, 920, 552, 960, 520, 976, 448, 976, 352, 944, 264 )
 type = 4
 
 [node name="Wall" type="StaticBody2D" parent="Blocks/2"]
 collision_layer = 16
 
 [node name="area" type="CollisionPolygon2D" parent="Blocks/2/Wall"]
-polygon = PoolVector2Array( 936, 528, 952, 496, 960, 456, 960, 408, 952, 352, 920, 320, 912, 296, 976, 296, 976, 528 )
+polygon = PoolVector2Array( 936, 528, 952, 496, 960, 456, 960, 408, 952, 352, 920, 296, 976, 296, 976, 528 )
 
 [node name="3" parent="Blocks" instance=ExtResource( 2 )]
 color = Color( 0.266667, 0.227451, 0.219608, 1 )
@@ -272,17 +274,17 @@ type = 1
 
 [node name="Middle_Opening" parent="Variants/Opening" instance=ExtResource( 2 )]
 color = Color( 0.509804, 0.635294, 0.686275, 1 )
-polygon = PoolVector2Array( 504, 272, 528, 240, 536, 208, 544, 224, 552, 144, 576, 208, 584, 200, 592, 248, 608, 272 )
+polygon = PoolVector2Array( 504, 280, 528, 240, 536, 208, 544, 224, 552, 144, 576, 208, 584, 200, 592, 248, 608, 280 )
 type = 0
 
 [node name="Grass" parent="Variants/Opening/Middle_Opening" instance=ExtResource( 2 )]
 color = Color( 0.556863, 0.513726, 0.101961, 1 )
-polygon = PoolVector2Array( 504, 272, 608, 272, 672, 288, 616, 280, 496, 280, 448, 288 )
+polygon = PoolVector2Array( 504, 280, 608, 280, 664, 288, 680, 296, 657.775, 290.666, 616, 296, 564.106, 291.627, 504, 296, 464, 288, 432, 288 )
 type = 5
 
 [node name="Right_Opening" parent="Variants/Opening" instance=ExtResource( 2 )]
 color = Color( 0.509804, 0.635294, 0.686275, 1 )
-polygon = PoolVector2Array( 744, 120, 776, 128, 792, 136, 800, 128, 816, 136, 824, 144, 832, 160, 840, 152, 856, 192, 880, 232, 888, 240, 896, 232, 912, 272, 912, 224, 896, 160, 832, 104 )
+polygon = PoolVector2Array( 744, 120, 776, 128, 792, 136, 800, 128, 816, 136, 824, 144, 832, 160, 840, 152, 856, 192, 880, 232, 888, 240, 896, 232, 920, 296, 920, 232, 896, 160, 880, 120, 816, 104 )
 type = 0
 
 [node name="Cloud" parent="Variants/Opening/Right_Opening" instance=ExtResource( 2 )]
@@ -294,11 +296,11 @@ type = 1
 
 [node name="Plataform" parent="Variants/Extended_Plataform" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 408, 352, 400, 368, 392, 352, 368, 336, 352, 336, 312, 352, 296, 344, 296, 328, 312, 312, 336, 304, 424, 296 )
+polygon = PoolVector2Array( 280, 312, 216, 288, 256, 280, 320, 280, 360, 280, 432, 288, 424, 344, 408, 320, 336, 304 )
 type = 4
 
 [node name="Col" type="CollisionPolygon2D" parent="Variants/Extended_Plataform"]
-polygon = PoolVector2Array( 424, 296, 336, 304, 312, 312, 296, 328, 296, 344, 312, 352, 352, 336, 368, 336, 392, 352, 408, 352 )
+polygon = PoolVector2Array( 432, 288, 360, 280, 256, 280, 216, 288, 280, 312, 336, 304, 408, 320, 424, 328 )
 
 [node name="Hill" type="StaticBody2D" parent="Variants"]
 collision_layer = 16
@@ -311,7 +313,7 @@ type = 4
 
 [node name="Hard_Rock" parent="Variants/Hill/Soft_Rock" instance=ExtResource( 2 )]
 color = Color( 0.266667, 0.227451, 0.219608, 1 )
-polygon = PoolVector2Array( 648, 560, 680, 520, 720, 504, 744, 464, 752, 424, 792, 416, 824, 424, 856, 464, 872, 504, 904, 528, 920, 552, 768, 568, 704, 576 )
+polygon = PoolVector2Array( 608, 600, 680, 520, 720, 504, 744, 464, 752, 424, 792, 416, 824, 424, 856, 464, 872, 504, 904, 528, 920, 552, 768, 568, 704, 576 )
 type = 3
 
 [node name="Col" type="CollisionPolygon2D" parent="Variants/Hill"]
@@ -326,7 +328,7 @@ look_direction = 1
 look_distance = 850
 
 [node name="Spitter_Right" parent="Objects" instance=ExtResource( 6 )]
-position = Vector2( 904, 256 )
+position = Vector2( 912, 264 )
 max_health = 5
 look_direction = -1
 look_distance = 850
