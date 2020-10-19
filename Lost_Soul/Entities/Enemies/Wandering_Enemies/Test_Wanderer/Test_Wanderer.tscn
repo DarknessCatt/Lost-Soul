@@ -299,14 +299,13 @@ tracks/0/keys = {
 
 [sub_resource type="CapsuleShape2D" id=7]
 radius = 11.2519
-height = 40.0
+height = 9.49623
 
 [sub_resource type="CapsuleShape2D" id=8]
 radius = 14.0
 height = 38.0
 
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 27.1245, 8 )
+[sub_resource type="CircleShape2D" id=9]
 
 [node name="Test_Wanderer" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -326,7 +325,7 @@ next/Falling = "Falling Loop"
 anims/hit = SubResource( 6 )
 
 [node name="Walking" parent="States" index="0"]
-path_checker_dist = 32
+path_checker_dist = 35
 ACCEL = 200
 FRICTION = 0.8
 
@@ -376,7 +375,9 @@ rotation = 1.5708
 shape = SubResource( 8 )
 
 [node name="Collision" type="CollisionShape2D" parent="." index="5"]
+position = Vector2( 0, -3 )
 shape = SubResource( 9 )
 
 [node name="Path_Checker" parent="Perception" index="0"]
-cast_to = Vector2( 0, 10 )
+position = Vector2( 0, -16 )
+cast_to = Vector2( 0, 30 )

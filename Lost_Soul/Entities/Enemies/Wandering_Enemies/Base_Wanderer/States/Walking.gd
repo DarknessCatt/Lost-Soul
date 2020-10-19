@@ -15,7 +15,7 @@ onready var path_checker : RayCast2D = $"../../Perception/Path_Checker"
 #Functions
 func enter(Wanderer : KinematicBody2D) -> void:
 	Wanderer.change_animation(state_anim)
-	Wanderer.speed.y = 10
+	Wanderer.speed.y = 100
 
 # warning-ignore:narrowing_conversion
 	dir = sign(Wanderer.speed.x)
@@ -56,7 +56,7 @@ func update(Wanderer: KinematicBody2D, delta : float) -> void:
 	Wanderer.speed.x = spdx
 
 	# warning-ignore:return_value_discarded
-	Wanderer.move_and_slide(Wanderer.speed, NORMAL)
+	Wanderer.move_and_slide(Wanderer.speed, NORMAL, true, 2)
 
 	if not Wanderer.is_on_floor():
 		Wanderer._change_state($"../Falling")
@@ -67,6 +67,15 @@ func update(Wanderer: KinematicBody2D, delta : float) -> void:
 	elif Wanderer.is_on_wall():
 		Wanderer.speed.x = 0
 		self.change_direction()
+
+	else:
+		var total_normal : Vector2 = Vector2.ZERO
+
+		for i in Wanderer.get_slide_count():
+			total_normal += Wanderer.get_slide_collision(i).normal
+
+		Wanderer.body.rotation = total_normal.angle() + 1.57
+		path_checker.get_parent().rotation = total_normal.angle() + 1.57
 
 func change_direction() -> void:
 	dir *= -1

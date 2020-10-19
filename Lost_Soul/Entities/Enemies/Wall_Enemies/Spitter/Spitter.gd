@@ -1,16 +1,25 @@
+tool
 extends Enemy_FSM
 
 const BULLET_RES : Resource = preload("res://Entities/Enemies/Wall_Enemies/Spitter/Components/Spitter_Shoot.tscn")
 
 enum dir {LEFT = -1, RIGHT = 1}
-export(dir) var look_direction = dir.RIGHT
-export(int) var look_distance = 20
+export(dir) var look_direction = dir.RIGHT setget set_direction
+export(int) var look_distance = 20 setget set_dist
+
+##Editor
+func set_direction(new_dir : int):
+	$Body.scale.x = new_dir
+	look_direction = new_dir
+	$Vision.cast_to.x = look_distance*look_direction
+
+func set_dist(new_dist : int):
+	$Vision.cast_to.x = new_dist*look_direction
+	look_distance = new_dist
 
 onready var vision : RayCast2D = $Vision
 
 func _ready():
-	vision.cast_to.x = look_distance*look_direction
-	$Body.scale.x *= look_direction
 	cur_state = $States/Idle
 	cur_state.enter(self)
 

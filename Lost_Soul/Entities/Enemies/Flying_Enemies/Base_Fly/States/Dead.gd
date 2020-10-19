@@ -24,6 +24,7 @@ func update(base_fly: KinematicBody2D, _delta : float) -> void:
 	base_fly.speed.y += GRAVITY*_delta
 	if base_fly.speed.y > MAX_GRAV: base_fly.speed.y = MAX_GRAV
 
+	# warning-ignore:return_value_discarded
 	base_fly.move_and_slide(base_fly.speed, NORMAL)
 
 	if base_fly.is_on_wall():

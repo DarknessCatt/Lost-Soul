@@ -21,7 +21,8 @@ onready var cur_state : Node
 
 ##Functions
 func _physics_process(delta) -> void:
-	cur_state.update(self, delta)
+	if not Engine.editor_hint:
+		cur_state.update(self, delta)
 
 func _change_state(new_state : Node) -> void:
 	cur_state.exit(self)
