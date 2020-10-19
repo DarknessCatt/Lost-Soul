@@ -15,4 +15,6 @@ func change_animation(anim : String) -> void:
 
 func respawn() -> void:
 	self._change_state($States/Walking)
+	self.body.rotation = 0
+	$Perception.rotation = 0
 	.respawn()

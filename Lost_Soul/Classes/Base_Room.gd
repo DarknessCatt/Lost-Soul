@@ -8,12 +8,18 @@ export(RoomConstants.room_types) var room_type : int = RoomConstants.room_types.
 export(Array, Vector2) var room_positions : Array = [Vector2(0,0)]
 export(Array, Resource) var exits : Array = []
 
+var exits_verified : bool = false
+
 # warning-ignore:unused_signal
 signal player_exited(exit)
 
 func _ready():
-	for exit in exits:
-		assert(exit.position in room_positions)
+	if not exits_verified:
+		for exit in exits:
+			assert(exit.position in room_positions)
+		exits_verified = true
+
+	refresh_room()
 
 func open_exits(_exits : Array):
 	pass
@@ -22,5 +28,5 @@ func get_spawn_point(_exit_id : int) -> Vector2:
 	return Vector2(528, 200)
 
 #Game_Controller
-func room_entered():
+func refresh_room():
 	pass

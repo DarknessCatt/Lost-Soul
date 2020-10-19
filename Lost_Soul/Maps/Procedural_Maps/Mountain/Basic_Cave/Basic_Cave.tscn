@@ -321,18 +321,21 @@ polygon = PoolVector2Array( 640, 544, 656, 496, 696, 480, 720, 456, 736, 408, 76
 
 [node name="Spitter_Left" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 64, 200 )
+max_health = 5
+look_direction = 1
 look_distance = 850
 
 [node name="Spitter_Right" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 904, 256 )
+max_health = 5
 look_direction = -1
 look_distance = 850
 
 [node name="Slime_Left" parent="Objects" instance=ExtResource( 8 )]
-position = Vector2( 216, 136 )
+position = Vector2( 224, 136 )
 
 [node name="Slime_Right" parent="Objects" instance=ExtResource( 8 )]
-position = Vector2( 744, 136 )
+position = Vector2( 792, 136 )
 [connection signal="exit_entered" from="Exits/Left" to="." method="_on_exit_entered"]
 [connection signal="exit_entered" from="Exits/Top" to="." method="_on_exit_entered"]
 [connection signal="exit_entered" from="Exits/Right" to="." method="_on_exit_entered"]

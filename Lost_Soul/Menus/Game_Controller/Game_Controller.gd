@@ -41,7 +41,7 @@ func enter_room(room : Base_Room):
 
 	hero.position = spawn_point
 
-	yield(room, "tree_entered")
+	yield(room, "ready")
 
 func leave_room(next_room : Vector2, entrance : Exit, exit : Exit):
 	change_state = FADE_OUT
@@ -52,6 +52,8 @@ func leave_room(next_room : Vector2, entrance : Exit, exit : Exit):
 	room.call_deferred("disconnect", "player_exited", self, "_room_exited")
 	screen_room.call_deferred("remove_child", room)
 	yield(room, "tree_exited")
+
+	room.request_ready()
 
 	cur_pos = next_room
 	room = map_data[cur_pos.x][cur_pos.y].node
@@ -89,6 +91,5 @@ func _on_Tween_tween_all_completed():
 		$Room_Transition/Tween.start()
 
 func _on_change_timer_timeout():
-	map_data[cur_pos.x][cur_pos.y].node.room_entered()
 	change_state = READY
 	hero.cutscene = hero.cutscene_type.NONE
