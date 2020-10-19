@@ -26,6 +26,7 @@ func _hit(damage : int, force : int, direction : Vector2) -> void:
 	cur_state.hit(damage, force, direction)
 
 func _ready():
+	randomize()
 	body = $Body
 	cur_state = $States/Idle
 	original_position = self.position
@@ -85,7 +86,6 @@ func rain_shot() -> void:
 # Called by "Dead" animation
 func spawn_souls() -> void:
 	emit_signal("dead")
-	randomize()
 	for i in 25:
 		var new_soul = SOUL_RES.instance()
 		new_soul.Soul_Value = 2

@@ -43,7 +43,6 @@ func enter(Guardian : KinematicBody2D) -> void:
 	horizontal_space = Guardian.horizontal_space
 	downwards_space = Guardian.downwards_space
 
-	randomize()
 	point_to_seek = Vector2(horizontal_space, downwards_space)
 	atk_cooldown = atk_base_cooldown \
 					+ rand_range(-atk_variance, atk_variance)

@@ -30,12 +30,11 @@ func _change_state(new_state : Node) -> void:
 	cur_state.enter(self)
 
 func spawn_souls() -> void:
-	randomize()
 	for i in souls:
 		var new_soul = SOUL_RES.instance()
-		var pos = Vector2(0, -30)
+		var pos = Vector2(0, -60)
 		pos.x += rand_range(-soul_x, soul_x)
-		pos.y += rand_range(-20, 20)
+		#pos.y += rand_range(-5, 5)
 		new_soul.position = self.position + pos
 		self.get_parent().call_deferred("add_child", new_soul)
 		yield(get_tree().create_timer(0.05), "timeout")

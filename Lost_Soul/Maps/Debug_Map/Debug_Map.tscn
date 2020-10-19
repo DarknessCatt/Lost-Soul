@@ -104,7 +104,8 @@ Character = NodePath("../..")
 Character = NodePath("../..")
 
 [node name="Spitter" parent="." instance=ExtResource( 12 )]
-position = Vector2( 660.041, 335.069 )
+position = Vector2( 655, 336 )
+max_health = 5
 look_direction = -1
 look_distance = 475
 [connection signal="checkpoint_reached" from="Checkpoint" to="." method="_on_Checkpoint_reached"]
