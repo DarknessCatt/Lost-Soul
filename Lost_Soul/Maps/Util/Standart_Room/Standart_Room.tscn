@@ -14,3 +14,5 @@ collision_layer = 16
 [node name="Exits" type="Node2D" parent="."]
 
 [node name="Entrances" type="Node2D" parent="."]
+
+[node name="Objects" type="Node2D" parent="."]

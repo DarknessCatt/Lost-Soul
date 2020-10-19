@@ -318,7 +318,7 @@ __meta__ = {
 "_gizmo_extents_": 50.0
 }
 
-[node name="Map_Limit" type="Position2D" parent="." index="5"]
+[node name="Map_Limit" type="Position2D" parent="." index="6"]
 position = Vector2( 2048, 1200 )
 __meta__ = {
 "_gizmo_extents_": 2048.0

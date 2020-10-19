@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Maps/Procedural_Maps/Mountain/Basic_Cave/Basic_Cave.gd" type="Script" id=1]
 [ext_resource path="res://Maps/Util/Mountain_Polygon/Mountain_Polygon.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/Map_Elements/One_Way_Platform/One_Way_Platform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Maps/Util/Room_Exit/RoomExit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Classes/Exit.gd" type="Script" id=5]
+[ext_resource path="res://Entities/Enemies/Wall_Enemies/Spitter/Spitter.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Enemies/Wandering_Enemies/Test_Wanderer/Test_Wanderer.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 5 )
@@ -74,7 +76,7 @@ type = 3
 
 [node name="Soft_Rock" parent="Room/Left_Ceiling" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 0, 288, 8, 320, 24, 256, 64, 168, 128, 128, 136, 200, 144, 128, 224, 112, 304, 136, 320, 192, 328, 136, 392, 120, 440, 88, 464, 0, 432, 0, 400, 72, 320, 104, 224, 88, 56, 80, 16, 232 )
+polygon = PoolVector2Array( 0, 288, 8, 320, 24, 256, 48, 224, 56, 208, 64, 168, 128, 128, 136, 200, 144, 128, 224, 112, 304, 136, 320, 192, 328, 136, 392, 120, 440, 88, 464, 0, 432, 0, 400, 72, 320, 104, 224, 88, 56, 80, 16, 232 )
 type = 4
 
 [node name="Right_Floor" parent="Room" instance=ExtResource( 2 )]
@@ -84,7 +86,7 @@ type = 3
 
 [node name="Soft_Rock" parent="Room/Right_Floor" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 608, 600, 616, 552, 640, 544, 696, 536, 768, 536, 856, 520, 1000, 528, 1024, 520, 1024, 552, 976, 560, 888, 544, 768, 568, 672, 576 )
+polygon = PoolVector2Array( 608, 600, 616, 552, 640, 544, 696, 536, 768, 536, 856, 528, 1000, 528, 1024, 520, 1024, 552, 976, 560, 888, 544, 768, 568, 672, 576 )
 type = 4
 
 [node name="Right_Ceiling" parent="Room" instance=ExtResource( 2 )]
@@ -109,10 +111,10 @@ collision_layer = 16
 polygon = PoolVector2Array( 0, 512, 96, 528, 248, 528, 368, 536, 448, 536, 472, 552, 480, 600, 0, 600 )
 
 [node name="Left_Ceiling" type="CollisionPolygon2D" parent="Room/Walls"]
-polygon = PoolVector2Array( 0, 288, 64, 168, 224, 112, 304, 136, 392, 120, 440, 88, 464, 0, 0, 0 )
+polygon = PoolVector2Array( 0, 288, 48, 224, 64, 168, 224, 112, 304, 136, 392, 120, 440, 88, 464, 0, 0, 0 )
 
 [node name="Right_Floor" type="CollisionPolygon2D" parent="Room/Walls"]
-polygon = PoolVector2Array( 608, 600, 616, 552, 640, 544, 696, 536, 768, 536, 856, 520, 1000, 528, 1024, 520, 1024, 600 )
+polygon = PoolVector2Array( 608, 600, 616, 552, 640, 544, 696, 536, 768, 536, 856, 528, 1000, 528, 1024, 520, 1024, 600 )
 
 [node name="Right_Ceiling" type="CollisionPolygon2D" parent="Room/Walls"]
 polygon = PoolVector2Array( 1024, 352, 1008, 352, 912, 296, 912, 224, 896, 160, 832, 104, 728, 120, 608, 56, 600, 0, 1024, 0 )
@@ -133,7 +135,6 @@ polygon = PoolVector2Array( 1024, 520, 1064, 520, 1064, 352, 1024, 352, 1024, 34
 polygon = PoolVector2Array( 480, 600, 480, 696, 608, 696, 608, 600, 616, 600, 616, 704, 472, 704, 472, 600 )
 
 [node name="Blocks" type="Node2D" parent="."]
-visible = false
 
 [node name="0" parent="Blocks" instance=ExtResource( 2 )]
 position = Vector2( 0.985809, 0 )
@@ -170,19 +171,19 @@ polygon = PoolVector2Array( 424, 96, 440, 104, 472, 128, 544, 112, 584, 120, 648
 
 [node name="2" parent="Blocks" instance=ExtResource( 2 )]
 color = Color( 0.266667, 0.227451, 0.219608, 1 )
-polygon = PoolVector2Array( 984, 304, 992, 352, 968, 448, 984, 520, 912, 552, 984, 568, 1024, 560, 1024, 272 )
+polygon = PoolVector2Array( 944, 264, 976, 352, 976, 448, 960, 520, 912, 552, 984, 568, 1024, 560, 1024, 272 )
 type = 3
 
 [node name="Soft_Rock" parent="Blocks/2" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 960, 280, 976, 360, 952, 408, 944, 456, 952, 496, 928, 520, 888, 544, 920, 552, 984, 520, 968, 448, 992, 352, 984, 296 )
+polygon = PoolVector2Array( 912, 296, 920, 320, 952, 352, 960, 408, 960, 456, 952, 496, 936, 528, 888, 544, 920, 552, 960, 520, 976, 448, 976, 352, 944, 264 )
 type = 4
 
 [node name="Wall" type="StaticBody2D" parent="Blocks/2"]
 collision_layer = 16
 
 [node name="area" type="CollisionPolygon2D" parent="Blocks/2/Wall"]
-polygon = PoolVector2Array( 920, 528, 952, 496, 944, 456, 952, 408, 976, 360, 968, 328, 984, 328, 976, 528 )
+polygon = PoolVector2Array( 936, 528, 952, 496, 960, 456, 960, 408, 952, 352, 920, 320, 912, 296, 976, 296, 976, 528 )
 
 [node name="3" parent="Blocks" instance=ExtResource( 2 )]
 color = Color( 0.266667, 0.227451, 0.219608, 1 )
@@ -191,14 +192,14 @@ type = 3
 
 [node name="Soft" parent="Blocks/3" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 456, 560, 560, 576, 648, 560, 640, 544, 568, 536, 496, 544, 448, 536, 392, 568 )
+polygon = PoolVector2Array( 456, 560, 560, 576, 648, 560, 640, 544, 568, 544, 496, 544, 448, 536, 392, 568 )
 type = 4
 
 [node name="Wall" type="StaticBody2D" parent="Blocks/3"]
 collision_layer = 16
 
 [node name="area" type="CollisionPolygon2D" parent="Blocks/3/Wall"]
-polygon = PoolVector2Array( 448, 536, 496, 544, 568, 536, 640, 544, 640, 552, 448, 552 )
+polygon = PoolVector2Array( 448, 536, 496, 544, 568, 544, 640, 544, 640, 552, 448, 552 )
 
 [node name="Exits" type="Node2D" parent="."]
 
@@ -260,6 +261,7 @@ __meta__ = {
 [node name="Opening" type="Node2D" parent="Variants"]
 
 [node name="Left_Opening" parent="Variants/Opening" instance=ExtResource( 2 )]
+color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 144, 128, 152, 176, 168, 200, 176, 192, 184, 224, 216, 256, 224, 232, 240, 208, 248, 216, 264, 184, 280, 176, 280, 128, 224, 112 )
 type = 0
 
@@ -269,6 +271,7 @@ polygon = PoolVector2Array( 280, 176, 264, 160, 248, 152, 232, 152, 216, 160, 20
 type = 1
 
 [node name="Middle_Opening" parent="Variants/Opening" instance=ExtResource( 2 )]
+color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 504, 272, 528, 240, 536, 208, 544, 224, 552, 144, 576, 208, 584, 200, 592, 248, 608, 272 )
 type = 0
 
@@ -278,6 +281,7 @@ polygon = PoolVector2Array( 504, 272, 608, 272, 672, 288, 616, 280, 496, 280, 44
 type = 5
 
 [node name="Right_Opening" parent="Variants/Opening" instance=ExtResource( 2 )]
+color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 744, 120, 776, 128, 792, 136, 800, 128, 816, 136, 824, 144, 832, 160, 840, 152, 856, 192, 880, 232, 888, 240, 896, 232, 912, 272, 912, 224, 896, 160, 832, 104 )
 type = 0
 
@@ -297,19 +301,38 @@ type = 4
 polygon = PoolVector2Array( 424, 296, 336, 304, 312, 312, 296, 328, 296, 344, 312, 352, 352, 336, 368, 336, 392, 352, 408, 352 )
 
 [node name="Hill" type="StaticBody2D" parent="Variants"]
+collision_layer = 16
+collision_mask = 0
 
 [node name="Soft_Rock" parent="Variants/Hill" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 696, 536, 712, 480, 728, 456, 768, 448, 816, 456, 856, 472, 880, 512, 904, 528, 864, 520, 840, 496, 800, 472, 760, 480, 728, 504, 720, 536 )
+polygon = PoolVector2Array( 640, 544, 656, 496, 696, 480, 720, 456, 736, 408, 768, 392, 824, 392, 848, 408, 864, 440, 880, 488, 920, 528 )
 type = 4
 
 [node name="Hard_Rock" parent="Variants/Hill/Soft_Rock" instance=ExtResource( 2 )]
 color = Color( 0.266667, 0.227451, 0.219608, 1 )
-polygon = PoolVector2Array( 680, 568, 704, 560, 712, 552, 728, 504, 760, 480, 800, 472, 840, 496, 864, 520, 872, 536, 888, 544, 768, 568, 704, 576 )
+polygon = PoolVector2Array( 648, 560, 680, 520, 720, 504, 744, 464, 752, 424, 792, 416, 824, 424, 856, 464, 872, 504, 904, 528, 920, 552, 768, 568, 704, 576 )
 type = 3
 
 [node name="Col" type="CollisionPolygon2D" parent="Variants/Hill"]
-polygon = PoolVector2Array( 696, 536, 712, 480, 728, 456, 768, 448, 816, 456, 856, 472, 880, 512, 904, 528 )
+polygon = PoolVector2Array( 640, 544, 656, 496, 696, 480, 720, 456, 736, 408, 768, 392, 824, 392, 848, 408, 864, 440, 880, 488, 920, 528 )
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Spitter_Left" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( 64, 200 )
+look_distance = 850
+
+[node name="Spitter_Right" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( 904, 256 )
+look_direction = -1
+look_distance = 850
+
+[node name="Slime_Left" parent="Objects" instance=ExtResource( 8 )]
+position = Vector2( 216, 136 )
+
+[node name="Slime_Right" parent="Objects" instance=ExtResource( 8 )]
+position = Vector2( 744, 136 )
 [connection signal="exit_entered" from="Exits/Left" to="." method="_on_exit_entered"]
 [connection signal="exit_entered" from="Exits/Top" to="." method="_on_exit_entered"]
 [connection signal="exit_entered" from="Exits/Right" to="." method="_on_exit_entered"]

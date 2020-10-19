@@ -28,5 +28,15 @@ func open_exits(exits : Array):
 
 	if(randi()%3 != 0): $Variants/Hill.call_deferred("free")
 
+	var enemies = $Objects.get_children()
+	enemies.shuffle()
+
+	for i in range(0,2):
+		enemies[i].call_deferred("free")
+
 func get_spawn_point(exit_id : int) -> Vector2:
 	return $Entrances.get_child(exit_id).position
+
+func room_entered():
+	for enemy in $Objects.get_children():
+		enemy.respawn()

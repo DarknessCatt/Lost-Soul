@@ -89,5 +89,6 @@ func _on_Tween_tween_all_completed():
 		$Room_Transition/Tween.start()
 
 func _on_change_timer_timeout():
+	map_data[cur_pos.x][cur_pos.y].node.room_entered()
 	change_state = READY
 	hero.cutscene = hero.cutscene_type.NONE
