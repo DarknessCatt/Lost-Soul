@@ -71,12 +71,12 @@ type = 4
 
 [node name="Left_Ceiling" parent="Room" instance=ExtResource( 2 )]
 color = Color( 0.266667, 0.227451, 0.219608, 1 )
-polygon = PoolVector2Array( 0, 296, 16, 232, 56, 80, 224, 88, 320, 104, 400, 72, 432, 0, 0, 0 )
+polygon = PoolVector2Array( 0, 296, 16, 232, 80, 112, 224, 88, 320, 104, 400, 72, 432, 0, 0, 0 )
 type = 3
 
 [node name="Soft_Rock" parent="Room/Left_Ceiling" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 0, 288, 8, 320, 24, 256, 48, 224, 56, 208, 64, 168, 96, 144, 144, 128, 224, 112, 280, 128, 304, 136, 312, 152, 320, 136, 392, 120, 440, 88, 464, 0, 432, 0, 400, 72, 320, 104, 224, 88, 56, 80, 16, 232 )
+polygon = PoolVector2Array( 0, 288, 8, 320, 24, 256, 48, 224, 56, 208, 64, 168, 96, 144, 144, 128, 224, 112, 280, 128, 304, 136, 312, 152, 320, 136, 392, 120, 440, 88, 464, 0, 432, 0, 400, 72, 320, 104, 224, 88, 96, 96, 64, 112, 40, 144, 16, 232 )
 type = 4
 
 [node name="Right_Floor" parent="Room" instance=ExtResource( 2 )]
@@ -91,12 +91,12 @@ type = 4
 
 [node name="Right_Ceiling" parent="Room" instance=ExtResource( 2 )]
 color = Color( 0.266667, 0.227451, 0.219608, 1 )
-polygon = PoolVector2Array( 640, 0, 704, 32, 744, 88, 848, 56, 960, 152, 944, 264, 1024, 336, 1024, 0 )
+polygon = PoolVector2Array( 640, 0, 704, 32, 744, 88, 848, 56, 928, 72, 960, 152, 944, 264, 1024, 336, 1024, 0 )
 type = 3
 
 [node name="Soft_Rock" parent="Room/Right_Ceiling" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 600, 0, 608, 56, 680, 88, 728, 120, 736, 168, 744, 120, 816, 104, 880, 120, 896, 160, 920, 232, 920, 296, 944, 336, 1008, 352, 1024, 352, 1024, 336, 944, 264, 960, 152, 848, 56, 744, 88, 704, 32, 640, 0 )
+polygon = PoolVector2Array( 600, 0, 608, 56, 680, 88, 728, 120, 736, 168, 744, 120, 816, 104, 880, 120, 896, 160, 920, 232, 920, 296, 944, 336, 1008, 352, 1024, 352, 1024, 336, 944, 264, 960, 152, 928, 72, 848, 56, 744, 88, 704, 32, 640, 0 )
 type = 4
 
 [node name="Plataform" parent="Room" instance=ExtResource( 2 )]
@@ -106,6 +106,7 @@ polygon = PoolVector2Array( 408, 288, 432, 272, 504, 264, 608, 264, 664, 272, 68
 type = 4
 
 [node name="Walls" type="StaticBody2D" parent="Room"]
+visible = false
 collision_layer = 16
 
 [node name="Left_Floor" type="CollisionPolygon2D" parent="Room/Walls"]

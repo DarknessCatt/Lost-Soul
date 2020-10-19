@@ -14,5 +14,11 @@ func open_exits(exits : Array):
 	if rand_range(0, 1) <= 0.5:
 		$Variants/Branch.call_deferred("free")
 
+	if rand_range(0, 1) <= 0.5:
+		$Variants/Hill.call_deferred("free")
+
+	if rand_range(0, 1) <= 0.5:
+		$Variants/CaveIn.call_deferred("free")
+
 func get_spawn_point(exit_id : int) -> Vector2:
 	return $Entrances.get_child(exit_id).position
