@@ -61,9 +61,6 @@ func update(Wanderer: KinematicBody2D, delta : float) -> void:
 	if not Wanderer.is_on_floor():
 		Wanderer._change_state($"../Falling")
 
-	elif path_checker.get_collider() == null:
-		self.change_direction()
-
 	elif Wanderer.is_on_wall():
 		Wanderer.speed.x = 0
 		self.change_direction()
@@ -76,6 +73,9 @@ func update(Wanderer: KinematicBody2D, delta : float) -> void:
 
 		Wanderer.body.rotation = total_normal.angle() + 1.57
 		path_checker.get_parent().rotation = total_normal.angle() + 1.57
+
+	if path_checker.get_collider() == null:
+		self.change_direction()
 
 func change_direction() -> void:
 	dir *= -1
