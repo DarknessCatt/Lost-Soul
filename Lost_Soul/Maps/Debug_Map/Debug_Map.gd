@@ -16,6 +16,7 @@ func _on_Checkpoint_reached(_checkpoint):
 	$Fly_Test.respawn()
 	$Watcher.respawn()
 	$Spitter.respawn()
+	$Hawk.respawn()
 
 	$Checkpoint/DialogueBox.begin_dialogue()
 	$Hero.cutscene = $Hero.cutscene_type.PHYSICS

@@ -26,7 +26,7 @@ func enter(Hawk : KinematicBody2D) -> void:
 	Hawk.body.scale.x = dir
 
 func update(Hawk: KinematicBody2D, delta : float) -> void:
-	if detected:
+	if detected and Hawk.can_attack:
 		eyes.cast_to = (hero.global_position - eyes.global_position)
 		eyes.force_raycast_update()
 		if eyes.get_collider() == null:
@@ -40,7 +40,7 @@ func update(Hawk: KinematicBody2D, delta : float) -> void:
 	Hawk.speed.x = spd_x
 
 	if abs(Hawk.position.y - Hawk.original_position.y) > 10:
-		Hawk.speed.y = (Hawk.original_position.y - Hawk.position.y )*ACCEL*0.1*delta
+		Hawk.speed.y = (Hawk.original_position.y - Hawk.position.y)*ACCEL*0.1*delta
 
 	else:
 		Hawk.speed.y = 0
@@ -52,6 +52,7 @@ func update(Hawk: KinematicBody2D, delta : float) -> void:
 		dir *= -1
 		Hawk.body.scale.x = dir
 		Hawk.speed.x = 0
+		detected = false
 
 func _on_Player_Detected(body):
 	if rand_range(0, 1) <= 0.5:

@@ -111,7 +111,7 @@ look_direction = -1
 look_distance = 475
 
 [node name="Hawk" parent="." instance=ExtResource( 17 )]
-position = Vector2( -521, 304 )
+position = Vector2( -841, 96 )
 [connection signal="checkpoint_reached" from="Checkpoint" to="." method="_on_Checkpoint_reached"]
 [connection signal="dialogue_end" from="Checkpoint/DialogueBox" to="." method="_on_dialoguebox_end"]
 

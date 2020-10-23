@@ -1,8 +1,5 @@
 extends State
 
-#State info
-export(String) var state_anim : String = "Flying"
-
 #Movement info
 const NORMAL : Vector2 = Vector2(0, -1)
 export(int) var ACCEL : int = 500
@@ -12,7 +9,7 @@ export(Vector2) var Point_To_Seek : Vector2 = Vector2(0,0)
 
 #Functions
 func enter(Flyer : KinematicBody2D) -> void:
-	Flyer.change_animation(state_anim)
+	Flyer.change_animation("Flying")
 	var dirx : float = Flyer.hero.global_position.x + Point_To_Seek.x - Flyer.global_position.x
 	match sign(dirx):
 			-1.0:

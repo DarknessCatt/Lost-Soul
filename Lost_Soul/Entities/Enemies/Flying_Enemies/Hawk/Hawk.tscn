@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Entities/Enemies/Flying_Enemies/Base_Fly/Base_Fly.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Combat/Hurtbox/Hurtbox.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Entities/Enemies/Flying_Enemies/Hawk/Hawk.gd" type="Script" id=4]
 [ext_resource path="res://Entities/Enemies/Flying_Enemies/Hawk/FSM/Idle.gd" type="Script" id=5]
 [ext_resource path="res://Entities/Enemies/Flying_Enemies/Hawk/FSM/Knockback.gd" type="Script" id=6]
+[ext_resource path="res://Entities/Enemies/Flying_Enemies/Hawk/FSM/Flying.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Dead"
@@ -155,6 +156,42 @@ tracks/11/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/12/type = "value"
+tracks/12/path = NodePath(".:collision_layer")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Body/Middle_Body/Hitbox:monitoring")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Body:rotation_degrees")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Diving"
@@ -243,7 +280,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 10.0, -10.0 ]
+"values": [ 0.0, 20.0, -20.0 ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Body/Middle_Body/Wing:color")
@@ -745,6 +782,30 @@ tracks/29/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/30/type = "value"
+tracks/30/path = NodePath(".:collision_layer")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("Body/Middle_Body/Hitbox:monitoring")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "Rising"
@@ -858,6 +919,66 @@ tracks/8/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("Body:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 2, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath(".:collision_layer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 2 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Body/Middle_Body/Hurtbox:monitoring")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Body/Middle_Body/Hurtbox:monitorable")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Body/Middle_Body/Hitbox:monitorable")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="CapsuleShape2D" id=6]
 radius = 20.0
@@ -871,8 +992,19 @@ height = 100.0
 radius = 12.0
 height = 80.0
 
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 16.0
+height = 600.0
+
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 15.9998
+height = 376.0
+
 [node name="Hawk" instance=ExtResource( 1 )]
+collision_layer = 0
 script = ExtResource( 4 )
+max_health = 20
+souls = 8
 
 [node name="Body_Animations" parent="." index="0"]
 autoplay = "Rest"
@@ -884,6 +1016,16 @@ anims/Rising = SubResource( 5 )
 
 [node name="Idle" parent="States" index="0"]
 script = ExtResource( 5 )
+
+[node name="Flying" parent="States" index="1"]
+script = ExtResource( 7 )
+
+[node name="Atk_CD" type="Timer" parent="States/Flying" index="0"]
+process_mode = 0
+one_shot = true
+
+[node name="Dead" parent="States" index="2"]
+FRICTION = 0.8
 
 [node name="Knockback" type="Node" parent="States" index="3"]
 script = ExtResource( 6 )
@@ -937,7 +1079,15 @@ polygon = PoolVector2Array( 8, 0, 0, -16, 0, -48, -24, -56, -48, -32, -16, -24, 
 rotation = 1.5708
 remote_path = NodePath("../../../Col")
 
-[node name="Hurtbox" parent="Body/Middle_Body" index="4" instance=ExtResource( 2 )]
+[node name="Eyes" type="RemoteTransform2D" parent="Body/Middle_Body" index="4"]
+position = Vector2( 48, 0 )
+remote_path = NodePath("../../../Perception/Eyes")
+update_rotation = false
+update_scale = false
+
+[node name="Hurtbox" parent="Body/Middle_Body" index="5" instance=ExtResource( 2 )]
+monitoring = false
+monitorable = false
 Id = 2
 Character = NodePath("../../..")
 hit_effect_dist = 56
@@ -946,7 +1096,9 @@ hit_effect_dist = 56
 rotation = 1.5708
 shape = SubResource( 6 )
 
-[node name="Hitbox" parent="Body/Middle_Body" index="5" instance=ExtResource( 3 )]
+[node name="Hitbox" parent="Body/Middle_Body" index="6" instance=ExtResource( 3 )]
+monitorable = false
+collision_mask = 1
 Body = NodePath("../..")
 Id = 2
 Damage = 10
@@ -955,8 +1107,31 @@ Damage = 10
 rotation = 1.5708
 shape = SubResource( 7 )
 
+[node name="FoV" type="RemoteTransform2D" parent="Body" index="1"]
+position = Vector2( 48, 0 )
+remote_path = NodePath("../../Perception/Player_Detect")
+
 [node name="Col" type="CollisionShape2D" parent="." index="3"]
 visible = false
 rotation = 1.5708
 shape = SubResource( 8 )
+
+[node name="Player_Detect" parent="Perception" index="0"]
+position = Vector2( 48, 0 )
+
+[node name="Area" type="CollisionShape2D" parent="Perception/Player_Detect" index="0"]
+position = Vector2( 252, 264 )
+rotation = -0.785398
+shape = SubResource( 9 )
+
+[node name="Area2" type="CollisionShape2D" parent="Perception/Player_Detect" index="1"]
+position = Vector2( 236, 0 )
+rotation = 1.5708
+shape = SubResource( 10 )
+
+[node name="Eyes" parent="Perception" index="1"]
+position = Vector2( 48, 0 )
+enabled = true
+[connection signal="timeout" from="States/Flying/Atk_CD" to="." method="_on_Atk_CD_timeout"]
 [connection signal="timeout" from="States/Knockback/Timer" to="States/Knockback" method="_on_timeout"]
+[connection signal="body_entered" from="Body/Middle_Body/Hitbox" to="." method="_on_Hero_Hit"]
