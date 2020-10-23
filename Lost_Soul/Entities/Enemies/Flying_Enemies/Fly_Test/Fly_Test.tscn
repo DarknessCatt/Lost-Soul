@@ -222,7 +222,7 @@ radius = 16.0
 [sub_resource type="CircleShape2D" id=10]
 radius = 200.0
 
-[node name="Fly_Test" instance=ExtResource( 1 )]
+[node name="Birb" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
 soul_x = 18.0
 souls = 1
@@ -274,9 +274,6 @@ shape = SubResource( 8 )
 [node name="Collision" type="CollisionShape2D" parent="." index="4"]
 visible = false
 shape = SubResource( 9 )
-
-[node name="Player_Detect" parent="Perception" index="0"]
-visible = false
 
 [node name="Area" type="CollisionShape2D" parent="Perception/Player_Detect" index="0"]
 shape = SubResource( 10 )
