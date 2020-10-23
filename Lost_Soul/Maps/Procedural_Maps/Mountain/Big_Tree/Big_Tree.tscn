@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Maps/Procedural_Maps/Mountain/Big_Tree/Big_Tree.gd" type="Script" id=1]
 [ext_resource path="res://Classes/Exit.gd" type="Script" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Maps/Util/Mountain_Polygon/Mountain_Polygon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Maps/Util/Standart_Room/Standart_Room.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/Map_Elements/One_Way_Platform/One_Way_Platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Enemies/Flying_Enemies/Hawk/Hawk.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Enemies/Wandering_Enemies/Test_Wanderer/Test_Wanderer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemies/Flying_Enemies/Fly_Test/Fly_Test.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
@@ -352,6 +355,24 @@ position = Vector2( 480, 1000 )
 __meta__ = {
 "_gizmo_extents_": 50.0
 }
+
+[node name="Hawk" parent="Objects" index="0" instance=ExtResource( 7 )]
+position = Vector2( 984, 608 )
+
+[node name="Test_Wanderer" parent="Objects" index="1" instance=ExtResource( 8 )]
+position = Vector2( 832, 464 )
+
+[node name="Test_Wanderer2" parent="Objects" index="2" instance=ExtResource( 8 )]
+position = Vector2( 560, 120 )
+
+[node name="Fly_Test" parent="Objects" index="3" instance=ExtResource( 9 )]
+position = Vector2( 1336, 904 )
+
+[node name="Fly_Test2" parent="Objects" index="4" instance=ExtResource( 9 )]
+position = Vector2( 1718, 752 )
+
+[node name="Fly_Test3" parent="Objects" index="5" instance=ExtResource( 9 )]
+position = Vector2( 1254, 461 )
 
 [node name="Map_Limit" type="Position2D" parent="." index="6"]
 position = Vector2( 2048, 1200 )

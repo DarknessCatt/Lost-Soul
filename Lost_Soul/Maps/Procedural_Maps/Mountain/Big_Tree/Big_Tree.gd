@@ -20,5 +20,15 @@ func open_exits(exits : Array):
 	if rand_range(0, 1) <= 0.5:
 		$Variants/CaveIn.call_deferred("free")
 
+	var enemies = $Objects.get_children()
+	enemies.shuffle()
+
+	for i in range(0,3):
+		enemies[i].call_deferred("free")
+
 func get_spawn_point(exit_id : int) -> Vector2:
 	return $Entrances.get_child(exit_id).position
+
+func refresh_room():
+	for enemy in $Objects.get_children():
+		enemy.respawn()
