@@ -15,7 +15,7 @@ func enter(Hawk : KinematicBody2D) -> void:
 	ended = false
 	$Timer.start()
 
-func update(Hawk: KinematicBody2D, delta : float) -> void:
+func update(Hawk: KinematicBody2D, _delta : float) -> void:
 	# warning-ignore:return_value_discarded
 	Hawk.move_and_slide(Hawk.speed, NORMAL)
 	Hawk.speed *= FRICTION

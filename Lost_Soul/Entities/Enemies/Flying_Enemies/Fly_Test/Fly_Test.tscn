@@ -33,19 +33,19 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.67, 0.67, 0.67, 0.6 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Body/Wisp:polygon")
+tracks/2/path = NodePath("Body/Wisp/Hitbox:monitorable")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.4, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ PoolVector2Array( -16, -8, -8, -16, 8, -16, 24, 0, 8, 16, -8, 16, -16, 8 ), PoolVector2Array( -16, -8, -8, -16, 8, -16, 24, 0, 8, 16, -8, 16, -16, 8 ), PoolVector2Array( -16, -8, -8, -16, 8, -16, 24, -7.12034, 8, 9.08081, -8, 9.1867, -16, 1.35085 ) ]
+"times": PoolRealArray( 0, 0.01 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Body/Wisp/Hitbox:monitorable")
+tracks/3/path = NodePath("Body/Wisp/Hurtbox:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -57,40 +57,52 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Body/Wisp/Hurtbox:monitoring")
+tracks/4/path = NodePath(".:collision_layer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.01 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:collision_layer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 0 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body/Wisp/Hurtbox:monitorable")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.01 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 tracks/6/type = "value"
-tracks/6/path = NodePath("Body/Wisp/Hurtbox:monitorable")
+tracks/6/path = NodePath("Body/Wisp:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.01 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Body/Wisp:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 10 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -211,7 +223,6 @@ radius = 16.0
 radius = 200.0
 
 [node name="Fly_Test" instance=ExtResource( 1 )]
-collision_layer = 0
 script = ExtResource( 4 )
 soul_x = 18.0
 souls = 1
@@ -231,10 +242,18 @@ anims/rest = SubResource( 6 )
 ACCEL = 200
 
 [node name="Wisp" type="Polygon2D" parent="Body" index="0"]
-color = Color( 0.69, 0.69, 0.69, 1 )
-polygon = PoolVector2Array( -16, -8, -8, -16, 8, -16, 24, 0, 8, 16, -8, 16, -16, 8 )
+polygon = PoolVector2Array( -16, -8, -8, -16, 8, -16, 8, 16, -8, 16, -16, 8 )
 
-[node name="Hitbox" parent="Body/Wisp" index="0" instance=ExtResource( 2 )]
+[node name="Eye" type="Polygon2D" parent="Body/Wisp" index="0"]
+position = Vector2( -2, 0 )
+color = Color( 0.68, 0.2788, 0.2788, 1 )
+polygon = PoolVector2Array( 0, -8, -8, 0, 0, 8, 8, 0 )
+
+[node name="Beak" type="Polygon2D" parent="Body/Wisp" index="1"]
+color = Color( 0.968, 1, 0.36, 1 )
+polygon = PoolVector2Array( 8, -16, 8, 16, 16, 0 )
+
+[node name="Hitbox" parent="Body/Wisp" index="2" instance=ExtResource( 2 )]
 visible = false
 Body = NodePath("../..")
 Id = 2
@@ -243,7 +262,8 @@ Damage = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Wisp/Hitbox" index="0"]
 shape = SubResource( 7 )
 
-[node name="Hurtbox" parent="Body/Wisp" index="1" instance=ExtResource( 3 )]
+[node name="Hurtbox" parent="Body/Wisp" index="3" instance=ExtResource( 3 )]
+visible = false
 rotation = -1.58654
 Id = 2
 Character = NodePath("../../..")
@@ -254,6 +274,9 @@ shape = SubResource( 8 )
 [node name="Collision" type="CollisionShape2D" parent="." index="4"]
 visible = false
 shape = SubResource( 9 )
+
+[node name="Player_Detect" parent="Perception" index="0"]
+visible = false
 
 [node name="Area" type="CollisionShape2D" parent="Perception/Player_Detect" index="0"]
 shape = SubResource( 10 )
