@@ -20,12 +20,7 @@ func enter(Wanderer : KinematicBody2D) -> void:
 # warning-ignore:narrowing_conversion
 	dir = sign(Wanderer.speed.x)
 	if dir == 0: dir = 1
-
-	match sign(dir):
-		-1.0:
-			Wanderer.body.scale.x = -1
-		1.0:
-			Wanderer.body.scale.x = 1
+	Wanderer.body.scale.x = dir
 
 	path_checker.position.x = path_checker_dist*dir
 	path_checker.enabled = true
@@ -46,12 +41,8 @@ func update(Wanderer: KinematicBody2D, delta : float) -> void:
 	# warning-ignore:integer_division
 	elif abs(spdx) < ACCEL/100: spdx = 0
 
-	if sign(spdx) != sign(Wanderer.speed.x):
-		match sign(spdx):
-			-1.0:
-				Wanderer.body.scale.x = -1
-			1.0:
-				Wanderer.body.scale.x = 1
+	if sign(spdx) != sign(Wanderer.speed.x) and sign(spdx) != 0:
+		Wanderer.body.scale.x = sign(spdx)
 
 	Wanderer.speed.x = spdx
 
@@ -65,17 +56,11 @@ func update(Wanderer: KinematicBody2D, delta : float) -> void:
 		Wanderer.speed.x = 0
 		self.change_direction()
 
-	else:
-		var total_normal : Vector2 = Vector2.ZERO
-
-		for i in Wanderer.get_slide_count():
-			total_normal += Wanderer.get_slide_collision(i).normal
-
-		Wanderer.body.rotation = total_normal.angle() + 1.57
-		path_checker.get_parent().rotation = total_normal.angle() + 1.57
-
-	if path_checker.get_collider() == null:
+	elif path_checker.get_collider() == null:
 		self.change_direction()
+
+	else:
+		Wanderer.align_floor(path_checker)
 
 func change_direction() -> void:
 	dir *= -1

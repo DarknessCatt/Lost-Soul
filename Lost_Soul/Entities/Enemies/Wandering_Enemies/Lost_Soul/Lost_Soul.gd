@@ -24,8 +24,7 @@ func respawn() -> void:
 	$Body/Left_Leg.rotation = 0
 	self.modulate = Color("ffffff")
 	$Body/Hitbox.call_deferred("set", "monitorable", true)
-	$Hurtbox.call_deferred("set", "monitoring", true)
-	$Hurtbox.call_deferred("set", "monitorable", true)
-	$Collision.scale = Vector2(1,1)
-	$Collision.position = Vector2(0,1)
+	$Body/Hurtbox.call_deferred("set", "monitoring", true)
+	$Body/Hurtbox.call_deferred("set", "monitorable", true)
+	$Body/Body_Collision.position = Vector2(0,0)
 	.respawn()

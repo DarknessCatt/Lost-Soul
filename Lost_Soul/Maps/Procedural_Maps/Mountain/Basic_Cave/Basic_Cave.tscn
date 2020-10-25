@@ -106,7 +106,6 @@ polygon = PoolVector2Array( 408, 288, 432, 272, 504, 264, 608, 264, 664, 272, 68
 type = 4
 
 [node name="Walls" type="StaticBody2D" parent="Room"]
-visible = false
 collision_layer = 16
 
 [node name="Left_Floor" type="CollisionPolygon2D" parent="Room/Walls"]
@@ -309,16 +308,16 @@ collision_mask = 0
 
 [node name="Soft_Rock" parent="Variants/Hill" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 640, 544, 656, 496, 696, 480, 720, 456, 736, 408, 768, 392, 824, 392, 848, 408, 864, 440, 880, 488, 920, 528 )
+polygon = PoolVector2Array( 640, 544, 656, 496, 696, 480, 720, 456, 736, 408, 768, 392, 824, 392, 848, 408, 864, 440, 880, 488, 904, 528 )
 type = 4
 
 [node name="Hard_Rock" parent="Variants/Hill/Soft_Rock" instance=ExtResource( 2 )]
 color = Color( 0.266667, 0.227451, 0.219608, 1 )
-polygon = PoolVector2Array( 608, 600, 680, 520, 720, 504, 744, 464, 752, 424, 792, 416, 824, 424, 856, 464, 872, 504, 904, 528, 920, 552, 768, 568, 704, 576 )
+polygon = PoolVector2Array( 608, 600, 680, 520, 720, 504, 744, 464, 752, 424, 792, 416, 824, 424, 856, 464, 864, 512, 888, 536, 936, 544, 920, 552, 768, 568, 704, 576 )
 type = 3
 
 [node name="Col" type="CollisionPolygon2D" parent="Variants/Hill"]
-polygon = PoolVector2Array( 640, 544, 656, 496, 696, 480, 720, 456, 736, 408, 768, 392, 824, 392, 848, 408, 864, 440, 880, 488, 920, 528 )
+polygon = PoolVector2Array( 640, 544, 656, 496, 696, 480, 720, 456, 736, 408, 768, 392, 824, 392, 848, 408, 864, 440, 880, 488, 904, 528 )
 
 [node name="Objects" type="Node2D" parent="."]
 
