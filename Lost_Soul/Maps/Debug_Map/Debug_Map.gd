@@ -11,12 +11,8 @@ func _process(_delta):
 	$Info.set_text(str(status_node.name) + "\nX: " + str(status_node.speed.x) + "\nY: " + str(status_node.speed.y) + "\nS: " + str(status_node.cur_state.name))
 
 func _on_Checkpoint_reached(_checkpoint):
-	$Test_Wanderer.respawn()
-	$Lost_Soul.respawn()
-	$Fly_Test.respawn()
-	$Watcher.respawn()
-	$Spitter.respawn()
-	$Hawk.respawn()
+	for enemy in $Enemies.get_children():
+		enemy.respawn()
 
 	$Checkpoint/DialogueBox.begin_dialogue()
 	$Hero.cutscene = $Hero.cutscene_type.PHYSICS

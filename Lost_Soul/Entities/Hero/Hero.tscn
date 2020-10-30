@@ -4951,8 +4951,8 @@ radius = 52.458
 height = 29.898
 
 [sub_resource type="CapsuleShape2D" id=34]
-radius = 12.9655
-height = 24.8619
+radius = 11.6643
+height = 30.0503
 
 [sub_resource type="CapsuleShape2D" id=35]
 radius = 6.0
@@ -5343,7 +5343,6 @@ offset = Vector2( 0, -16 )
 polygon = PoolVector2Array( -7.99883, 16.1367, 7.99883, 15.8633, 14, -8, 14, -12, 10, -16, -10, -16, -14, -12, -14, -8 )
 
 [node name="Torso_Hurtbox" parent="Body/Hip/Torso" instance=ExtResource( 9 )]
-visible = false
 position = Vector2( 1.90735e-06, -13.0827 )
 Id = 1
 Character = NodePath("../../../..")
@@ -5528,8 +5527,7 @@ __meta__ = {
 color = Color( 1, 0, 0, 1 )
 
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0, 8 )
+position = Vector2( 0, 10.0172 )
 shape = SubResource( 37 )
 
 [node name="Heart_Particles" type="Particles2D" parent="."]
