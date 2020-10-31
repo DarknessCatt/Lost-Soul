@@ -58,7 +58,6 @@ position = Vector2( -121, 480 )
 scale = Vector2( 1.5, 1.5 )
 
 [node name="Mountain_Polygon" parent="Placeholder_White" instance=ExtResource( 18 )]
-visible = false
 position = Vector2( 511, 608 )
 color = Color( 0.172549, 0.133333, 0.129412, 1 )
 polygon = PoolVector2Array( 0, 0, 928, 0, 928, 448, 0, 448 )
@@ -97,6 +96,9 @@ look_distance = 475
 [node name="Hawk" parent="Enemies" instance=ExtResource( 17 )]
 position = Vector2( -841, 96 )
 
+[node name="Spider" parent="Enemies" instance=ExtResource( 19 )]
+position = Vector2( 1375, 1024 )
+
 [node name="Hidden_Area" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1319, 528 )
 
@@ -133,9 +135,6 @@ Character = NodePath("../..")
 
 [node name="Soul_Counter" parent="Hero/Player_Camera" index="1"]
 Character = NodePath("../..")
-
-[node name="Spider" parent="." instance=ExtResource( 19 )]
-position = Vector2( 1375, 1024 )
 [connection signal="checkpoint_reached" from="Checkpoint" to="." method="_on_Checkpoint_reached"]
 [connection signal="dialogue_end" from="Checkpoint/DialogueBox" to="." method="_on_dialoguebox_end"]
 

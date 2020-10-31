@@ -7,6 +7,20 @@ onready var body : Node2D = $Body
 enum surface_positions {Ceiling, Wall, Ground}
 export(surface_positions) var cur_surface : int = surface_positions.Ground
 
+func _hit(damage : int, force : int, direction : Vector2):
+	if not invencible:
+		self.speed = force*direction.normalized()
+		self.speed.y = min(-400, self.speed.y)
+
+		health -= damage
+
+		if health > 0:
+			self._change_state($States/Knockback)
+
+		else:
+			self._change_state($States/Dead)
+			self.spawn_souls()
+
 func _ready():
 	cur_state = $States/Idle
 	cur_state.enter(self)
@@ -29,3 +43,13 @@ func align_floor() -> void:
 	self.body.rotation = total_normal.angle() + 1.57
 
 	self.position += total_normal.normalized()*10
+
+func change_boxes(value : bool) -> void:
+	$Body/Body/Hitbox.call_deferred("set", "monitorable", value)
+	$Body/Body/Hurtbox.call_deferred("set", "monitoring", value)
+	
+func respawn() -> void:
+	$Body.modulate = Color(1,1,1,1)
+	$Body/Body/Head.rotation = 0
+	self._change_state($States/Idle)
+	.respawn()

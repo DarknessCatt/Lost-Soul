@@ -1,10 +1,13 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Entities/Enemies/Wall_Enemies/Spider/FSM/Idle.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/Wall_Enemies/Spider/Spider.gd" type="Script" id=2]
 [ext_resource path="res://Entities/Enemies/Wall_Enemies/Spider/FSM/Jumping.gd" type="Script" id=3]
 [ext_resource path="res://Entities/Enemies/Wall_Enemies/Spider/FSM/Ground.gd" type="Script" id=4]
 [ext_resource path="res://Entities/Combat/Hitbox/Hitbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Enemies/Wall_Enemies/Spider/FSM/Knockback.gd" type="Script" id=6]
+[ext_resource path="res://Entities/Combat/Hurtbox/Hurtbox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Enemies/Wall_Enemies/Spider/FSM/Dead.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Falling"
@@ -321,6 +324,206 @@ tracks/8/keys = {
 }
 
 [sub_resource type="Animation" id=4]
+resource_name = "dead"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Body/Left_Leg:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.35, 0.55, 0.6, 0.75, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 44.9999, 31.5, 62.9999, 49.4999, 79.8749, 64.6874, 89.9999 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Body/Right_Leg:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.35, 0.55, 0.6, 0.75, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -44.9999, -31.5, -62.9999, -49.4999, -79.8749, -64.6874, -89.9999 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Body/Right_Leg/Pincer:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.35, 0.55, 0.6, 0.75, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 37.4999, 26.25, 52.4999, 41.2499, 66.5624, 53.9062, 74.9999 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Body/Head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.49012e-08, 8 ), Vector2( 0, 12 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Body/Head:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body/Body/Left_Leg/Pincer:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.35, 0.55, 0.6, 0.75, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -37.4999, -26.25, -52.4999, -41.2499, -66.5624, -53.9062, -74.9999 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Body:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.63, 0.63, 0.63, 0.501961 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Body/Body/Head/Left_Pincer:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 75.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Body/Body/Head/Right_Pincer:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -74.9999 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Body/Left_Leg:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -30.0, 74.9999, -30.0, 74.9999, -44.9999, 74.9999, -30.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Body/Left_Leg/Pincer:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 74.9999, 0.0, 74.9999, 30.0, 74.9999, 0.0, 74.9999 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Body/Right_Leg:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 30.0, -44.9999, -74.9999, 44.9999, -74.9999, 30.0, -74.9999 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Body/Right_Leg/Pincer:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -74.9999, -74.9999, -15.0, -74.9999, -44.9999, -74.9999, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Body/Head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.49012e-08, 8 ), Vector2( 0, 0 ), Vector2( -1.49012e-08, 8 ), Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body/Body:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.04, 0.12, 0.28, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("States/Knockback:over")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.26, 0.28, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, true ]
+}
+
+[sub_resource type="Animation" id=6]
 length = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Body/Marking:position")
@@ -610,14 +813,29 @@ tracks/23/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
-
-[sub_resource type="CircleShape2D" id=5]
-radius = 24.0
-
-[sub_resource type="CircleShape2D" id=6]
-radius = 16.2721
+tracks/24/type = "value"
+tracks/24/path = NodePath("Body:modulate")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="CircleShape2D" id=7]
+radius = 19.3796
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 16.2721
+
+[sub_resource type="CircleShape2D" id=10]
 radius = 600.0
 
 [node name="Spider" type="KinematicBody2D"]
@@ -632,8 +850,11 @@ souls = 2
 anims/Falling = SubResource( 1 )
 anims/Idle = SubResource( 2 )
 anims/Jump = SubResource( 3 )
-anims/rest = SubResource( 4 )
+anims/dead = SubResource( 4 )
+anims/hit = SubResource( 5 )
+anims/rest = SubResource( 6 )
 next/Jump = "Falling"
+next/hit = "Falling"
 
 [node name="States" type="Node" parent="."]
 
@@ -646,6 +867,13 @@ can_jump = true
 
 [node name="Jumping" type="Node" parent="States"]
 script = ExtResource( 3 )
+
+[node name="Knockback" type="Node" parent="States"]
+script = ExtResource( 6 )
+over = true
+
+[node name="Dead" type="Node" parent="States"]
+script = ExtResource( 8 )
 
 [node name="Body" type="Node2D" parent="."]
 __meta__ = {
@@ -729,19 +957,31 @@ position = Vector2( 4.40209, 8.07249 )
 color = Color( 0.501961, 0.0509804, 0.0509804, 1 )
 polygon = PoolVector2Array( 3.98637, 0.0816536, 7.90495, 4.16145, 3.74455, 12.0792, -0.335244, 15.9978, 3.90576, 4.08084, -0.0128188, 0.00104713 )
 
-[node name="Hitbox" parent="Body" instance=ExtResource( 5 )]
+[node name="Hurtbox" parent="Body/Body" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 0, 4 )
+Id = 2
+Character = NodePath("../../..")
+hit_effect_dist = 30
+
+[node name="area" type="CollisionShape2D" parent="Body/Body/Hurtbox"]
+shape = SubResource( 7 )
+
+[node name="Hitbox" parent="Body/Body" instance=ExtResource( 5 )]
+visible = false
 position = Vector2( 0, 8 )
-Body = NodePath("..")
+Body = NodePath("../..")
 Id = 2
 Damage = 5
 
-[node name="area" type="CollisionShape2D" parent="Body/Hitbox"]
+[node name="area" type="CollisionShape2D" parent="Body/Body/Hitbox"]
 position = Vector2( 0, -8 )
-shape = SubResource( 5 )
+shape = SubResource( 8 )
 
 [node name="Body_Col" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 8 )
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -754,7 +994,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="area" type="CollisionShape2D" parent="Perception/FoV"]
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 
 [node name="LoS" type="RayCast2D" parent="Perception"]
 collision_mask = 16
