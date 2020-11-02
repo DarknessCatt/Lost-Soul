@@ -8,7 +8,7 @@ onready var buffer : Node = $Buffer
 var max_health : int = 100
 var health : int = max_health
 
-var max_energy : int = 30
+var max_energy : int = 99930
 var energy : int = max_energy
 
 var souls : int = 0

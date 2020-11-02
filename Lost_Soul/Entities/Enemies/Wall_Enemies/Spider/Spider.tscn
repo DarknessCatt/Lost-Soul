@@ -959,7 +959,6 @@ color = Color( 0.501961, 0.0509804, 0.0509804, 1 )
 polygon = PoolVector2Array( 3.98637, 0.0816536, 7.90495, 4.16145, 3.74455, 12.0792, -0.335244, 15.9978, 3.90576, 4.08084, -0.0128188, 0.00104713 )
 
 [node name="Hurtbox" parent="Body/Body" instance=ExtResource( 7 )]
-visible = false
 position = Vector2( 0, 4 )
 Id = 2
 Character = NodePath("../../..")
@@ -969,7 +968,6 @@ hit_effect_dist = 30
 shape = SubResource( 7 )
 
 [node name="Hitbox" parent="Body/Body" instance=ExtResource( 5 )]
-visible = false
 position = Vector2( 0, 8 )
 Body = NodePath("../..")
 Id = 2
@@ -980,7 +978,6 @@ position = Vector2( 0, -8 )
 shape = SubResource( 8 )
 
 [node name="Body_Col" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 8 )
 shape = SubResource( 9 )
 __meta__ = {
@@ -988,7 +985,6 @@ __meta__ = {
 }
 
 [node name="Perception" type="Node2D" parent="."]
-visible = false
 
 [node name="FoV" type="Area2D" parent="Perception"]
 monitorable = false

@@ -17,5 +17,15 @@ func open_exits(exits : Array):
 	blockades[0].call_deferred("free")
 	blockades[1].call_deferred("free")
 
+	var enemy_layouts : Array = $Objects.get_children()
+	enemy_layouts.shuffle()
+
+	enemy_layouts[0].call_deferred("free")
+	enemy_layouts[1].call_deferred("free")
+
 func get_spawn_point(exit_id : int) -> Vector2:
 	return $Entrances.get_child(exit_id).position
+
+func refresh_room():
+	for enemy in $Objects.get_child(0).get_children():
+		enemy.respawn()

@@ -20,8 +20,9 @@ func set_dist(new_dist : int):
 onready var vision : RayCast2D = $Vision
 
 func _ready():
-	cur_state = $States/Idle
-	cur_state.enter(self)
+	if not Engine.editor_hint:
+		cur_state = $States/Idle
+		cur_state.enter(self)
 
 func _hit(damage : int, _force : int, _direction : Vector2):
 	health -= damage

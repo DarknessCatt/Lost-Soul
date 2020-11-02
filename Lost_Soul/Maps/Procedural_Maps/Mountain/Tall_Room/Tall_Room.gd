@@ -31,7 +31,7 @@ func refresh_room():
 	for enemy_node in $Objects/Blocked_Enemies.get_children():
 
 		if enemy_node.name == "0":
-			for enemy in enemy_node.get_child(0):
+			for enemy in enemy_node.get_child(0).get_children():
 				enemy.respawn()
 
 		else:

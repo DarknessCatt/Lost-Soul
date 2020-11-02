@@ -230,6 +230,7 @@ collision_layer = 16
 polygon = PoolVector2Array( -8, -8.00006, 64, -6.10352e-05, 112, -8.00006, 80, 7.99994, -8, -6.10352e-05, -64, 7.99994 )
 
 [node name="Hill" type="StaticBody2D" parent="Variants" index="2"]
+collision_layer = 16
 
 [node name="body" parent="Variants/Hill" index="0" instance=ExtResource( 4 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
@@ -250,6 +251,7 @@ type = 5
 polygon = PoolVector2Array( 664, 1088, 680, 936, 688, 912, 728, 912, 736, 832, 752, 736, 784, 696, 872, 696, 904, 712, 912, 744, 920, 848, 952, 848, 976, 880, 992, 1016, 1096, 1048, 1192, 1128 )
 
 [node name="CaveIn" type="StaticBody2D" parent="Variants" index="3"]
+collision_layer = 2147483664
 
 [node name="Body" parent="Variants/CaveIn" index="0" instance=ExtResource( 4 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
