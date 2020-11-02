@@ -7,6 +7,8 @@ onready var body : Node2D = $Body
 enum surface_positions {Ceiling, Wall, Ground}
 export(surface_positions) var cur_surface : int = surface_positions.Ground
 
+var original_rotation : float = 0
+
 func _hit(damage : int, force : int, direction : Vector2):
 	if not invencible:
 		self.speed = force*direction.normalized()
@@ -24,6 +26,9 @@ func _hit(damage : int, force : int, direction : Vector2):
 func _ready():
 	cur_state = $States/Idle
 	cur_state.enter(self)
+	original_rotation = self.rotation
+	self.rotation = 0
+	$Body.rotation = original_rotation
 
 func change_animation(anim : String) -> void:
 	$Animation.play(anim)
@@ -51,5 +56,8 @@ func change_boxes(value : bool) -> void:
 func respawn() -> void:
 	$Body.modulate = Color(1,1,1,1)
 	$Body/Body/Head.rotation = 0
+	$Body.rotation = original_rotation
+	self.Player = null
+	self.move_and_slide(Vector2.ZERO)
 	self._change_state($States/Idle)
 	.respawn()

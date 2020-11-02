@@ -1,6 +1,6 @@
 extends State
 
-export(bool) var over : bool = false
+export(bool) var over : bool = false #set by hit animation
 
 const GRAV : int = 1000
 

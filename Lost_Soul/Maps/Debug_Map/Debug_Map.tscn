@@ -97,7 +97,9 @@ look_distance = 475
 position = Vector2( -841, 96 )
 
 [node name="Spider" parent="Enemies" instance=ExtResource( 19 )]
-position = Vector2( 1375, 1024 )
+position = Vector2( 1415, 912 )
+rotation = -1.57079
+cur_surface = 1
 
 [node name="Hidden_Area" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1319, 528 )

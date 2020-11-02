@@ -863,7 +863,6 @@ script = ExtResource( 1 )
 
 [node name="Attacking" type="Node" parent="States"]
 script = ExtResource( 4 )
-can_jump = true
 
 [node name="Jumping" type="Node" parent="States"]
 script = ExtResource( 3 )
@@ -932,7 +931,7 @@ __meta__ = {
 }
 
 [node name="Head" type="Polygon2D" parent="Body/Body"]
-position = Vector2( -1.49012e-08, 8 )
+position = Vector2( 0, 8 )
 rotation = 0.0201531
 color = Color( 0.670588, 0.0666667, 0.0666667, 1 )
 polygon = PoolVector2Array( -4.1604, -7.91777, -12.0782, -3.75737, -11.8363, 8.2402, 0.322428, 15.9968, 12.1588, 7.75655, 11.917, -4.24101, 3.83797, -8.07898 )
@@ -948,12 +947,14 @@ polygon = PoolVector2Array( -0.0806071, -3.99919, 7.99837, -0.161214, 0.0806074,
 [node name="Left_Pincer" type="Polygon2D" parent="Body/Body/Head"]
 show_behind_parent = true
 position = Vector2( -3.59628, 8.2337 )
+rotation = 0.523599
 color = Color( 0.501961, 0.0509804, 0.0509804, 1 )
 polygon = PoolVector2Array( -3.99919, 0.0806065, -7.91777, 4.1604, -3.75737, 12.0782, 0.322428, 15.9967, -3.91858, 4.07979, 0, 0 )
 
 [node name="Right_Pincer" type="Polygon2D" parent="Body/Body/Head"]
 show_behind_parent = true
 position = Vector2( 4.40209, 8.07249 )
+rotation = -0.523599
 color = Color( 0.501961, 0.0509804, 0.0509804, 1 )
 polygon = PoolVector2Array( 3.98637, 0.0816536, 7.90495, 4.16145, 3.74455, 12.0792, -0.335244, 15.9978, 3.90576, 4.08084, -0.0128188, 0.00104713 )
 
