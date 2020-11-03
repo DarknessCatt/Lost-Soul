@@ -5,7 +5,7 @@ var START_POS : Vector2 = Vector2(10, 10)
 
 var room_manager 
 
-var gen_seed : int = 2441497
+var gen_seed : int = 2898325
 
 var map_data : Array
 

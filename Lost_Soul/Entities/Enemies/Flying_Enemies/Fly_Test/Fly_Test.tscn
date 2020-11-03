@@ -263,7 +263,6 @@ Damage = 5
 shape = SubResource( 7 )
 
 [node name="Hurtbox" parent="Body/Wisp" index="3" instance=ExtResource( 3 )]
-visible = false
 rotation = -1.58654
 Id = 2
 Character = NodePath("../../..")

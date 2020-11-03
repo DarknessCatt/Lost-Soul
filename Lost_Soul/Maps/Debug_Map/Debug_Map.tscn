@@ -89,7 +89,6 @@ position = Vector2( 898.081, 116.71 )
 
 [node name="Spitter" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 1143, 232 )
-max_health = 5
 look_direction = -1
 look_distance = 475
 

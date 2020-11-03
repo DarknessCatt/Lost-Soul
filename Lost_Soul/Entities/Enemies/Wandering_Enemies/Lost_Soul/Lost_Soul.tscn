@@ -781,7 +781,7 @@ anims/hit = SubResource( 9 )
 
 [node name="Walking" parent="States" index="0"]
 script = ExtResource( 4 )
-path_checker_dist = 33
+path_checker_dist = 24
 ACCEL = 2000
 FRICTION = 0.75
 
@@ -856,7 +856,6 @@ Direction = Vector2( 1, -0.2 )
 shape = SubResource( 10 )
 
 [node name="Hurtbox" parent="Body" index="5" instance=ExtResource( 6 )]
-position = Vector2( 0, -2.24009 )
 Id = 2
 Character = NodePath("../..")
 hit_effect_dist = 20
@@ -874,7 +873,7 @@ remote_path = NodePath("../../Collision")
 shape = SubResource( 12 )
 
 [node name="Path_Checker" parent="Perception" index="0"]
-position = Vector2( 0, -20 )
+position = Vector2( 0, -16 )
 cast_to = Vector2( 0, 60 )
 
 [node name="Eyes" type="Area2D" parent="Perception" index="1"]
