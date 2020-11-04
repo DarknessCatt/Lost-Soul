@@ -22,3 +22,7 @@ func open_exits(exits : Array):
 
 func get_spawn_point(exit_id : int) -> Vector2:
 	return $Entrances.get_child(exit_id).position
+
+func refresh_room():
+	for enemy in $Objects.get_child(0).get_children():
+		enemy.respawn()

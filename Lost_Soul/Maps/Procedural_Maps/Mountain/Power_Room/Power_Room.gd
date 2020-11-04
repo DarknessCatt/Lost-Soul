@@ -1,6 +1,7 @@
 extends Base_Room
 
 func _on_exit_entered(_body, id):
+	print(id)
 	self.emit_signal("player_exited", id)
 
 func open_exits(exits : Array):
