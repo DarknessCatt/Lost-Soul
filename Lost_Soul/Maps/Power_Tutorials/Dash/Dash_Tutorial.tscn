@@ -114,7 +114,11 @@ margin_top = -340.0
 margin_right = 1217.0
 margin_bottom = -190.0
 Dialogue = [ "Uma alma...
-perdida?", "Não te preocupes, teu mestre não existe aqui.", "Nenhuma alma deve viver aprisionada...", "Eu lhe concedo o poder da celeridade, para que possas escapar do caos no teu coração!" ]
+perdida?", "Estás longe de casa.
+E do teu mestre.", "Procuras poder para
+se libertar?", "Então, eu lhe concedo a celeridade,
+para que possas escapar
+do caos no teu coração!" ]
 
 [node name="Ghost" type="Polygon2D" parent="Dialogue1"]
 modulate = Color( 1, 1, 1, 0 )
@@ -143,7 +147,11 @@ margin_left = 577.0
 margin_top = -340.0
 margin_right = 1217.0
 margin_bottom = -190.0
-Dialogue = [ "Está na hora de voltar.", "Boa sorte." ]
+Dialogue = [ "Agora,
+Deves voltar para
+o teu mundo.", "Lembre-se quem
+realmente
+controla o teu coração.", "Boa sorte." ]
 
 [node name="Ghost" type="Polygon2D" parent="Dialogue2"]
 position = Vector2( 1128, -128 )

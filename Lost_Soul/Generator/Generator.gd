@@ -10,7 +10,7 @@ var gen_seed : int = 2898325
 var map_data : Array
 
 #Atualmente gera o mapa
-func generate(Room_Path : String = "res://Maps/Procedural_Maps/Mountain/"):
+func generate(Room_Path : String = "res://Maps/Procedural_Maps/Mountain/") -> Array:
 
 	room_manager = Room_Manager.new()
 	room_manager.prepare_rooms(Room_Path)
@@ -37,8 +37,8 @@ func generate(Room_Path : String = "res://Maps/Procedural_Maps/Mountain/"):
 
 	#Rank 0 + caminhos
 #	room_list += make_branch(room_list, 0, 5)
-	room_list += make_branch(room_list, 0, 3, RoomConstants.room_types.CHECKPOINT)
-	room_list += make_branch(room_list, 0, 3)
+#	room_list += make_branch(room_list, 0, 3, RoomConstants.room_types.CHECKPOINT)
+	room_list += make_branch(room_list, 0, 1)
 #	room_list += make_branch(room_list, 0, 3, RoomConstants.room_types.BONUS)
 
 	#Rank 1 + caminhos
@@ -77,6 +77,8 @@ func generate(Room_Path : String = "res://Maps/Procedural_Maps/Mountain/"):
 		map += "\n"
 
 	print(map)
+
+	return room_list
 
 #Faz os ciclos,
 #Com faz eu digo que ele olha as saidas ainda não usadas

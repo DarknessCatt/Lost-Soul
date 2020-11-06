@@ -13,13 +13,17 @@ var change_state : int = READY
 var spawn_point : Vector2
 
 func _ready():
-	hero = $Screen/Viewport/Hero
+	hero = $Normal_Game/Screen/Viewport/Hero
 	camera = hero.get_node("Camera")
-	screen_room = $Screen/Viewport/Room
+	screen_room = $Normal_Game/Screen/Viewport/Room
 
 	var generator = Map_Generator.new()
 
-	generator.generate()
+	for room in generator.generate():
+		match(room.node.room_type):
+
+			RoomConstants.room_types.POWER:
+				room.node.connect("change_tutorial", self, "enter_tutorial")
 
 	map_data = generator.map_data
 	cur_pos = generator.START_POS
@@ -29,6 +33,51 @@ func _ready():
 	enter_room(map_data[cur_pos.x][cur_pos.y].node)
 	hero.position = map_data[cur_pos.x][cur_pos.y].node.get_start_point()
 
+#Special Room Transitions
+
+#Scene control FSM
+enum scenes {play, tutorial, menu}
+var current_scene : int = scenes.play
+
+var temp_screen : Node2D
+var game_screen : Node2D
+
+func enter_tutorial(tutorial : PackedScene):
+	game_screen = $Normal_Game
+	temp_screen = tutorial.instance()
+	hero.cutscene = hero.cutscene_type.PHYSICS
+
+	# warning-ignore:return_value_discarded
+	temp_screen.connect("tutorial_ended", self, "return_game")
+
+	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
+		"modulate", Color(0, 0, 0, 0), Color(0.360784, 0.807843, 1, 1), 1.5)
+	$Scene_Transtition/Tween.start()
+
+func return_game() -> void:
+	temp_screen.disconnect("tutorial_ended", self, "return_game")
+	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
+		"modulate", Color(0, 0, 0, 0), Color(0.360784, 0.807843, 1, 1), 1)
+	$Scene_Transtition/Tween.start()
+	hero.cutscene = hero.cutscene_type.NONE
+
+func _on_Scene_tween_all_completed():
+	$Room_Transition/Tween.interpolate_property($Room_Transition/Blackout, \
+		"modulate:a", 1, 0, 1)
+	$Room_Transition/Tween.start()
+
+	if current_scene == scenes.play:
+		self.call_deferred("remove_child", game_screen)
+		$Temp_Screen/Viewport.call_deferred("add_child", temp_screen)
+		current_scene = scenes.tutorial
+
+	else:
+		$Temp_Screen/Viewport.call_deferred("remove_child",temp_screen)
+		self.call_deferred("add_child", game_screen)
+		current_scene = scenes.play
+		
+
+# General Room Transitions
 func enter_room(room : Base_Room):
 	screen_room.call_deferred("add_child", room)
 	room.call_deferred("connect", "player_exited", self, "_room_exited")
