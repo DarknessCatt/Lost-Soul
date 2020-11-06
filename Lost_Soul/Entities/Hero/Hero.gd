@@ -8,7 +8,7 @@ onready var buffer : Node = $Buffer
 var max_health : int = 100
 var health : int = max_health
 
-var max_energy : int = 99930
+var max_energy : int = 30
 var energy : int = max_energy
 
 var souls : int = 0
@@ -19,6 +19,9 @@ var crystal_heart : int = max_crystal_heart
 var blocking : bool = false
 var invencible : bool = false setget set_invencible
 const KNOCKBACK_STRENGH : int = 1200
+
+#POWERS
+export(Dictionary) var available_powers : Dictionary = {"dash" : false}
 
 const DASH_COST : int = 10
 
@@ -135,7 +138,7 @@ func _use_heart() -> void:
 		emit_signal("heart_used", crystal_heart)
 
 func can_dash() -> bool:
-	if self.energy >= DASH_COST:
+	if self.available_powers.dash and self.energy >= DASH_COST:
 		self.energy -= DASH_COST
 		return true
 

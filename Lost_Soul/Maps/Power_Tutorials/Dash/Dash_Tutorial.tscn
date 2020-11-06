@@ -164,6 +164,9 @@ color = Color( 0.92549, 0.92549, 0.92549, 1 )
 polygon = PoolVector2Array( 0, 8, -8, 0, 0, -8, 8, 0 )
 
 [node name="Hero" parent="." instance=ExtResource( 1 )]
+available_powers = {
+"dash": true
+}
 
 [node name="Camera2D" type="Camera2D" parent="Hero"]
 position = Vector2( 0, -75 )
