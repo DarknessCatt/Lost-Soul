@@ -8,16 +8,21 @@ signal checkpoint_activated(checkpoint_menu)
 var player_in_range : bool = false
 var player : KinematicBody2D = null
 
-func _on_Checkpoint_body_entered(body : KinematicBody2D):
-	player_in_range = true
-	$Close_Particles.emitting = true
-	player._refresh()
+func reset() -> void:
+	$Animation.play("Idle")
+	player = null
+
+func _on_body_entered(body : KinematicBody2D):
 	if player == null:
 		player = body
 		$Animation.play("Activated")
 		self.emit_signal("checkpoint_reached", self)
 
-func _on_Checkpoint_body_exited(_body):
+	player_in_range = true
+	$Close_Particles.emitting = true
+	player._refresh()
+
+func _on_body_exited(_body):
 	player_in_range = false
 	$Close_Particles.emitting = false
 

@@ -97,6 +97,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0, 90.0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Base/Fire:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Base/Fire:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0.5, 0.5, 1 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 0.01
@@ -174,6 +198,8 @@ scale_random = 1.0
 color_ramp = SubResource( 7 )
 
 [node name="Altar" type="Area2D"]
+monitorable = false
+collision_layer = 0
 script = ExtResource( 1 )
 checkpoint_menu = ExtResource( 2 )
 
@@ -208,3 +234,5 @@ polygon = PoolVector2Array( -32, 40, -24, 36, -12, 36, -4, 24, -4, 0, -8, -8, -2
 position = Vector2( 0, -32 )
 color = Color( 1, 0.5, 0.5, 1 )
 polygon = PoolVector2Array( -4, 0, 0, 4, 4, 0, 0, -4 )
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

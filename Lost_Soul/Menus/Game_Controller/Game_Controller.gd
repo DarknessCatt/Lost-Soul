@@ -6,12 +6,6 @@ var screen_room : Node2D
 
 var map_data : Array
 
-# Room Control
-enum {READY, FADE_OUT, FADE_IN}
-var cur_pos : Vector2
-var change_state : int = READY
-var spawn_point : Vector2
-
 func _ready():
 	hero = $Normal_Game/Screen/Viewport/Hero
 	camera = hero.get_node("Camera")
@@ -24,6 +18,9 @@ func _ready():
 
 			RoomConstants.room_types.POWER:
 				room.node.connect("change_tutorial", self, "enter_tutorial")
+
+			RoomConstants.room_types.CHECKPOINT:
+				room.node.connect("checkpoint_activated", self, "enter_levelup")
 
 	map_data = generator.map_data
 	cur_pos = generator.START_POS
@@ -39,7 +36,7 @@ func _ready():
 enum scenes {play, tutorial, menu}
 var current_scene : int = scenes.play
 
-var temp_screen : Node2D
+var temp_screen
 var game_screen : Node2D
 
 func enter_tutorial(tutorial : PackedScene):
@@ -48,18 +45,39 @@ func enter_tutorial(tutorial : PackedScene):
 	hero.cutscene = hero.cutscene_type.PHYSICS
 
 	# warning-ignore:return_value_discarded
-	temp_screen.connect("tutorial_ended", self, "return_game")
+	temp_screen.connect("tutorial_ended", self, "leave_tutorial")
 
 	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
 		"modulate", Color(0, 0, 0, 0), Color(0.360784, 0.807843, 1, 1), 1.5)
 	$Scene_Transtition/Tween.start()
 
-func return_game() -> void:
-	temp_screen.disconnect("tutorial_ended", self, "return_game")
+func leave_tutorial() -> void:
+	temp_screen.disconnect("tutorial_ended", self, "leave_tutorial")
 	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
 		"modulate", Color(0, 0, 0, 0), Color(0.360784, 0.807843, 1, 1), 1)
 	$Scene_Transtition/Tween.start()
 	hero.cutscene = hero.cutscene_type.NONE
+
+func enter_levelup(menu : PackedScene) -> void:
+	game_screen = $Normal_Game
+	temp_screen = menu.instance()
+	temp_screen.hero = self.hero
+	hero.cutscene = hero.cutscene_type.PHYSICS
+
+	# warning-ignore:return_value_discarded
+	temp_screen.connect("menu_exited", self, "leave_levelup")
+
+	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
+		"modulate", Color(0, 0, 0, 0), Color(1, 0.301961, 0.301961), 1.5)
+	$Scene_Transtition/Tween.start()
+
+func leave_levelup() -> void:
+	temp_screen.disconnect("menu_exited", self, "leave_levelup")
+	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
+		"modulate", Color(0, 0, 0, 0), Color(1, 0.301961, 0.301961), 1)
+	$Scene_Transtition/Tween.start()
+	hero.cutscene = hero.cutscene_type.NONE
+	game_screen.get_node("HUD/Player_Status").update_HUD()
 
 func _on_Scene_tween_all_completed():
 	$Room_Transition/Tween.interpolate_property($Room_Transition/Blackout, \
@@ -78,6 +96,12 @@ func _on_Scene_tween_all_completed():
 		
 
 # General Room Transitions
+
+enum {READY, FADE_OUT, FADE_IN}
+var cur_pos : Vector2
+var change_state : int = READY
+var spawn_point : Vector2
+
 func enter_room(room : Base_Room):
 	screen_room.call_deferred("add_child", room)
 	room.call_deferred("connect", "player_exited", self, "_room_exited")

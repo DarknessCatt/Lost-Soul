@@ -40,3 +40,4 @@ func _on_SP_pressed():
 
 func _on_Back_pressed():
 	emit_signal("menu_exited")
+	hero.souls = self.souls

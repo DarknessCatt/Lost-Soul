@@ -15,7 +15,11 @@ func set_total(value : int):
 	total = value
 
 func set_collected(value : int):
-	$Collected.text = "+" + str(value)
+	if value >= 0:
+		$Collected.text = "+" + str(value)
+	else:
+		$Collected.text = str(value)
+
 	collected = value
 
 func _ready():
@@ -54,8 +58,11 @@ func _on_Delay_timeout():
 	$Inc.start()
 
 func _on_Inc_timeout():
-	self.total += 1
-	self.collected -= 1
+	if abs(self.collected) >= 20:
+		self.total = ceil(self.total*0.8+Char_Node.souls*0.2)
+
+	else:
+		self.total += sign(collected)
 
 func _on_End_timeout():
 	self.hide()
