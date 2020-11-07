@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/Props/Altar_Checkpoint/Altar.gd" type="Script" id=1]
+[ext_resource path="res://Menus/LevelUp/LevelUp_Menu.tscn" type="PackedScene" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Activated"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Base/Fire:rotation_degrees")
@@ -53,7 +54,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 0.5, 0.5, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Activated_Loop"
 loop = true
 tracks/0/type = "value"
@@ -81,7 +82,7 @@ tracks/1/keys = {
 "values": [ Vector2( 2, 2 ), Vector2( 1.5, 1.5 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Idle"
 loop = true
 tracks/0/type = "value"
@@ -97,8 +98,7 @@ tracks/0/keys = {
 "values": [ 0.0, 90.0 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "rest"
+[sub_resource type="Animation" id=4]
 length = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Base/Fire:position")
@@ -175,13 +175,14 @@ color_ramp = SubResource( 7 )
 
 [node name="Altar" type="Area2D"]
 script = ExtResource( 1 )
+checkpoint_menu = ExtResource( 2 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Activated = SubResource( 2 )
-anims/Activated_Loop = SubResource( 3 )
-anims/Idle = SubResource( 4 )
-anims/rest = SubResource( 1 )
+anims/Activated = SubResource( 1 )
+anims/Activated_Loop = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/rest = SubResource( 4 )
 next/Activated = "Activated_Loop"
 
 [node name="area" type="CollisionShape2D" parent="."]

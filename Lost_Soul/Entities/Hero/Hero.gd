@@ -12,6 +12,7 @@ var max_energy : int = 30
 var energy : int = max_energy
 
 var souls : int = 0
+var level : int = 1
 
 var max_crystal_heart : int = 0
 var crystal_heart : int = max_crystal_heart
