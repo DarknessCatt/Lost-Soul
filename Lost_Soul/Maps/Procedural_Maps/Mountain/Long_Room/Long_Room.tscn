@@ -41,9 +41,9 @@ room_positions = [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 2, 0 ) ]
 exits = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ]
 
 [node name="Sky" parent="Room" index="0" instance=ExtResource( 2 )]
-position = Vector2( -32, 16 )
 color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 0, 0, 3072, 0, 3072, 600, 0, 600 )
+type = 0
 
 [node name="Hole" parent="Room" index="1" instance=ExtResource( 2 )]
 color = Color( 0.172549, 0.133333, 0.129412, 1 )
@@ -226,6 +226,7 @@ type = 5
 [node name="Sky" parent="Variants/Middle_Cave/BG" index="1" instance=ExtResource( 2 )]
 color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 1294.66, 168, 1422.66, 176, 1486.66, 224, 1510.66, 256, 1523.81, 315.205, 1526.66, 352, 1526.66, 464, 1534.66, 472, 1542.66, 464, 1550.66, 448, 1558.66, 384, 1564.01, 338.604, 1582.66, 264, 1598.66, 248, 1670.66, 224, 1686.66, 200, 1710.66, 104, 1662.66, 192, 1550.66, 256, 1446.66, 144 )
+type = 0
 
 [node name="Wall" type="StaticBody2D" parent="Variants/Middle_Cave" index="1"]
 collision_layer = 16

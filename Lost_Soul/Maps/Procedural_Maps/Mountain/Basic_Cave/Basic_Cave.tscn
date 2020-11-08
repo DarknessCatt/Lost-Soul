@@ -137,6 +137,7 @@ polygon = PoolVector2Array( 1024, 520, 1064, 520, 1064, 352, 1024, 352, 1024, 34
 polygon = PoolVector2Array( 480, 600, 480, 696, 608, 696, 608, 600, 616, 600, 616, 704, 472, 704, 472, 600 )
 
 [node name="Blocks" type="Node2D" parent="."]
+visible = false
 
 [node name="0" parent="Blocks" instance=ExtResource( 2 )]
 position = Vector2( 0.985809, 0 )

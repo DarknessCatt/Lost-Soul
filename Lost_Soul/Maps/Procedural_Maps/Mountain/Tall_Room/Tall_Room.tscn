@@ -147,8 +147,8 @@ polygon = PoolVector2Array( 576, 0, 576, 16, 608, 56, 696, 72, 848, 64, 960, 104
 [node name="Openings" type="Node2D" parent="Variants" index="0"]
 
 [node name="Middle" parent="Variants/Openings" index="0" instance=ExtResource( 2 )]
-color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 392, 792, 480, 768, 528, 688, 536, 712, 568, 648, 568, 608, 576, 632, 568, 664, 576, 688, 624, 728, 632, 712, 640, 728, 688, 768, 760, 792 )
+type = 0
 
 [node name="Cloud" parent="Variants/Openings/Middle" index="0" instance=ExtResource( 2 )]
 color = Color( 0.627451, 0.737255, 0.784314, 1 )
@@ -161,8 +161,8 @@ polygon = PoolVector2Array( 824, 792, 712, 800, 632, 800, 576, 808, 544, 800, 41
 type = 5
 
 [node name="Top" parent="Variants/Openings" index="1" instance=ExtResource( 2 )]
-color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 184, 288, 256, 272, 368, 288, 520, 280, 680, 288, 752, 280, 800, 280, 840, 288, 784, 328, 752, 384, 696, 432, 568, 472, 488, 456, 440, 416, 384, 392, 264, 368, 192, 320 )
+type = 0
 
 [node name="Grass_Left" parent="Variants/Openings/Top" index="0" instance=ExtResource( 2 )]
 color = Color( 0.556863, 0.513726, 0.101961, 1 )
@@ -180,8 +180,8 @@ polygon = PoolVector2Array( 488, 352, 496, 328, 528, 312, 592, 312, 624, 320, 65
 type = 1
 
 [node name="Left" parent="Variants/Openings" index="2" instance=ExtResource( 2 )]
-color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 368, 1016, 312, 1024, 144, 1024, 88, 1048, 56, 1096, 40, 1160, 56, 1264, 96, 1344, 80, 1272, 80, 1224, 96, 1176, 136, 1128, 200, 1104, 272, 1096, 344, 1048, 352, 1064 )
+type = 0
 
 [node name="Grass_Bot" parent="Variants/Openings/Left" index="0" instance=ExtResource( 2 )]
 color = Color( 0.556863, 0.513726, 0.101961, 1 )
@@ -199,8 +199,8 @@ polygon = PoolVector2Array( 56, 1096, 72, 1104, 104, 1096, 136, 1080, 152, 1080,
 type = 1
 
 [node name="Right" parent="Variants/Openings" index="3" instance=ExtResource( 2 )]
-color = Color( 0.509804, 0.635294, 0.686275, 1 )
 polygon = PoolVector2Array( 984, 1032, 968, 1088, 936, 1120, 928, 1104, 888, 1128, 848, 1136, 816, 1128, 808, 1144, 792, 1112, 784, 1152, 784, 1256, 792, 1296, 824, 1384, 840, 1416, 864, 1432, 856, 1416, 840, 1272, 848, 1208, 872, 1200, 976, 1208 )
+type = 0
 
 [node name="Cloud" parent="Variants/Openings/Right" index="0" instance=ExtResource( 2 )]
 color = Color( 0.627451, 0.737255, 0.784314, 1 )

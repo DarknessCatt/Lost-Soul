@@ -478,15 +478,20 @@ position = Vector2( 1688, 697.354 )
 
 [node name="Spitter" parent="Objects/Obstacle_Layout" index="0" instance=ExtResource( 12 )]
 position = Vector2( 496, 400 )
+max_health = 5
+look_direction = 1
 look_distance = 1000
 
 [node name="Spitter2" parent="Objects/Obstacle_Layout" index="1" instance=ExtResource( 12 )]
 position = Vector2( 1968, 888 )
+max_health = 5
 look_direction = -1
 look_distance = 1500
 
 [node name="Spitter3" parent="Objects/Obstacle_Layout" index="2" instance=ExtResource( 12 )]
 position = Vector2( 103.952, 736 )
+max_health = 5
+look_direction = 1
 look_distance = 1500
 
 [node name="Lost_Soul" parent="Objects/Obstacle_Layout" index="3" instance=ExtResource( 13 )]

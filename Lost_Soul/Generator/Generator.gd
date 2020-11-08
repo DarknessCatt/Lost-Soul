@@ -43,6 +43,7 @@ func generate(Room_Path : String = "res://Maps/Procedural_Maps/Mountain/") -> Ar
 
 	#Rank 1 + caminhos
 #	room_list += make_branch(room_list, 1)
+	room_list += make_branch(room_list, 1, 1, RoomConstants.room_types.CHECKPOINT)
 #	room_list += make_branch(room_list, 1, 3, RoomConstants.room_types.BONUS)
 #	room_list += make_branch(room_list, 1, 3, RoomConstants.room_types.BONUS)
 #	room_list += make_branch(room_list, 1, 3, RoomConstants.room_types.BONUS)
@@ -51,7 +52,7 @@ func generate(Room_Path : String = "res://Maps/Procedural_Maps/Mountain/") -> Ar
 	make_cycles(room_list)
 
 	#Abre as saidas que forem ser usadas
-	for room in room_list: room.node.open_exits(room.exits)
+	for room in room_list: room.node.open_exits(room.exits, room.rank)
 
 	#Printa o minimapa, bom para debuggar mas da para tirar no futuro.
 	var map : String = ""
@@ -167,7 +168,7 @@ func make_branch(room_list : Array, branch_rank : int = 0, size : int = 3, final
 					branch_rank = branch_room.rank
 
 				else:
-					var gate_room : Dictionary = make_special_room(branch_data.to, RoomConstants.room_types.GATE, {"pos": branch_data.pos, "exit_data":branch_data.exit, "RoomConstants.exit_dir":branch_data.dir})
+					var gate_room : Dictionary = make_special_room(branch_data.to, RoomConstants.room_types.GATE, {"pos": branch_data.pos, "exit_data":branch_data.exit, "exit_dir":branch_data.dir})
 
 					if gate_room.empty():
 						continue
@@ -359,7 +360,7 @@ func make_special_room(position : Vector2, type : int, from : Dictionary = {}) -
 				new_room_data.room.node.exits.shuffle()
 
 				for entrance in new_room_data.room.node.exits:
-					if entrance.direction == from.RoomConstants.exit_dir:
+					if entrance.direction == from.exit_dir:
 
 						room_placement_pos = position - entrance.position
 						fits = true

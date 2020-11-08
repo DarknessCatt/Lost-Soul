@@ -21,7 +21,7 @@ func _ready():
 
 	refresh_room()
 
-func open_exits(_exits : Array):
+func open_exits(_exits : Array, _rank : int):
 	pass
 
 func get_spawn_point(_exit_id : int) -> Vector2:
