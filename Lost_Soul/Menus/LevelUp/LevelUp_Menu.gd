@@ -22,6 +22,14 @@ func calculate_cost() -> void:
 	cost = hero.level*5 + int(hero.level*hero.level*0.5)
 	$Menu/Upgrades/Cost/Valor.text = str(cost)
 
+	if cost <= souls:
+		$Menu/Upgrades/Cost.modulate = Color(1,1,1,1)
+
+	else:
+		$Menu/Upgrades/Cost.modulate = Color(1,0,0,1)
+		$Menu/Upgrades/HP.disabled = true
+		$Menu/Upgrades/SP.disabled = true
+
 func _on_HP_pressed():
 	if souls >= cost:
 		hero.level += 1

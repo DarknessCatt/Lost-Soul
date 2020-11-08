@@ -58,7 +58,7 @@ func _on_Delay_timeout():
 	$Inc.start()
 
 func _on_Inc_timeout():
-	if abs(self.collected) >= 20:
+	if abs(self.collected) >= 10:
 		self.total = ceil(self.total*0.8+Char_Node.souls*0.2)
 
 	else:
