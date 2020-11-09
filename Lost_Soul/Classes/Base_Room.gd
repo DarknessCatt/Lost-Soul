@@ -24,6 +24,14 @@ func _ready():
 func open_exits(_exits : Array, _rank : int):
 	pass
 
+func clear_enemy_rank(node : Node2D, room_rank : int) -> void:
+	for child in node.get_children():
+
+		if child is Enemy_FSM:
+			if not child.allowed_ranks[room_rank]: child.call_deferred("free")
+
+		else: clear_enemy_rank(child, room_rank)
+
 func get_spawn_point(_exit_id : int) -> Vector2:
 	return Vector2(528, 200)
 

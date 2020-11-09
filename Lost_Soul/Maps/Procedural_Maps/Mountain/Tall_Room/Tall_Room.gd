@@ -3,7 +3,7 @@ extends Base_Room
 func _on_exit_entered(_body, id):
 	self.emit_signal("player_exited", id)
 
-func open_exits(exits : Array, _rank : int):
+func open_exits(exits : Array, rank : int):
 	$Blocks.show()
 	for exit_data in exits: $Blocks.remove_child($Blocks.get_node(str(exit_data.exit.id)))
 
@@ -15,28 +15,22 @@ func open_exits(exits : Array, _rank : int):
 	else:						$Variants/Top_Block/Right.call_deferred("free")
 
 	for block in $Blocks.get_children():
-		$Objects/Blocked_Enemies.get_node(block.name).call_deferred("free")
+		$Objects/Blocked.get_node(block.name).call_deferred("free")
 
-	for enemy_node in $Objects/Blocked_Enemies.get_children():
-		enemy_node.get_child(randi()%enemy_node.get_child_count()).call_deferred("free")
+	for enemy_node in $Objects/Blocked.get_children():
 		enemy_node.get_child(randi()%enemy_node.get_child_count()).call_deferred("free")
 
-	var enemy_node = $Objects/Middle
-	enemy_node.get_child(randi()%enemy_node.get_child_count()).call_deferred("free")
+	$Objects/Middle.get_child(randi()%$Objects/Middle.get_child_count()).call_deferred("free")
+
+	clear_enemy_rank($Objects, rank)
 
 func get_spawn_point(exit_id : int) -> Vector2:
 	return $Entrances.get_child(exit_id).position
 
 func refresh_room():
-	for enemy_node in $Objects/Blocked_Enemies.get_children():
+	for enemy_layout in $Objects/Blocked.get_children():
+		for enemy in enemy_layout.get_child(0).get_children():
+			enemy.respawn()
 
-		if enemy_node.name == "0":
-			for enemy in enemy_node.get_child(0).get_children():
-				enemy.respawn()
-
-		else:
-			for enemy in enemy_node.get_children():
-				enemy.respawn()
-
-	for enemy in $Objects/Middle.get_children():
+	for enemy in $Objects/Middle.get_child(0).get_children():
 		enemy.respawn()

@@ -10,7 +10,7 @@
 [ext_resource path="res://Entities/Enemies/Wandering_Enemies/Test_Wanderer/Test_Wanderer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Entities/Enemies/Wandering_Enemies/Lost_Soul/Lost_Soul.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/Enemies/Flying_Enemies/Hawk/Hawk.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Maps/Util/Rank_Visualizer/Rank_Visualizer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Enemies/Flying_Enemies/Watcher/Watcher.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 4 )
@@ -349,124 +349,181 @@ __meta__ = {
 "_gizmo_extents_": 50.0
 }
 
-[node name="Blocked_Enemies" type="Node2D" parent="Objects" index="0"]
+[node name="Blocked" type="Node2D" parent="Objects" index="0"]
 
-[node name="0" type="Node2D" parent="Objects/Blocked_Enemies" index="0"]
-position = Vector2( 264, 1168 )
+[node name="0" type="Node2D" parent="Objects/Blocked" index="0"]
 
-[node name="Slimes" type="Node2D" parent="Objects/Blocked_Enemies/0" index="0"]
+[node name="Walkers" type="Node2D" parent="Objects/Blocked/0" index="0"]
 
-[node name="Slime" parent="Objects/Blocked_Enemies/0/Slimes" index="0" instance=ExtResource( 8 )]
-visible = false
-position = Vector2( -112, -120 )
+[node name="Lost_Soul" parent="Objects/Blocked/0/Walkers" index="0" instance=ExtResource( 9 )]
+position = Vector2( 320, 1320 )
+allowed_ranks = [ true, true, true ]
 
-[node name="Slime2" parent="Objects/Blocked_Enemies/0/Slimes" index="1" instance=ExtResource( 8 )]
-visible = false
-position = Vector2( 160, -272 )
+[node name="Lost_Soul2" parent="Objects/Blocked/0/Walkers" index="1" instance=ExtResource( 9 )]
+position = Vector2( 320, 944 )
+allowed_ranks = [ true, true, true ]
 
-[node name="Slime3" parent="Objects/Blocked_Enemies/0/Slimes" index="2" instance=ExtResource( 8 )]
-visible = false
-position = Vector2( -96, -568 )
+[node name="Lost_Soul3" parent="Objects/Blocked/0/Walkers" index="2" instance=ExtResource( 9 )]
+position = Vector2( 328, 1112 )
+allowed_ranks = [ false, true, true ]
 
-[node name="Souls" type="Node2D" parent="Objects/Blocked_Enemies/0" index="1"]
+[node name="Test_Wanderer" parent="Objects/Blocked/0/Walkers" index="3" instance=ExtResource( 8 )]
+position = Vector2( 192, 576 )
+allowed_ranks = [ false, false, true ]
 
-[node name="Lost_Soul" parent="Objects/Blocked_Enemies/0/Souls" index="0" instance=ExtResource( 9 )]
-visible = false
-position = Vector2( 56, 152 )
+[node name="Test_Wanderer2" parent="Objects/Blocked/0/Walkers" index="4" instance=ExtResource( 8 )]
+position = Vector2( 152, 1048 )
+allowed_ranks = [ false, false, true ]
 
-[node name="Lost_Soul2" parent="Objects/Blocked_Enemies/0/Souls" index="1" instance=ExtResource( 9 )]
-visible = false
-position = Vector2( 40, -224 )
+[node name="Flyers" type="Node2D" parent="Objects/Blocked/0" index="1"]
 
-[node name="Bribs" type="Node2D" parent="Objects/Blocked_Enemies/0" index="2"]
+[node name="Birb" parent="Objects/Blocked/0/Flyers" index="0" instance=ExtResource( 7 )]
+position = Vector2( 160, 1168 )
+allowed_ranks = [ true, true, true ]
 
-[node name="Birb" parent="Objects/Blocked_Enemies/0/Bribs" index="0" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 184, 88 )
+[node name="Birb2" parent="Objects/Blocked/0/Flyers" index="1" instance=ExtResource( 7 )]
+position = Vector2( 432, 952 )
+allowed_ranks = [ false, true, true ]
 
-[node name="Birb2" parent="Objects/Blocked_Enemies/0/Bribs" index="1" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 24, 136 )
+[node name="Birb3" parent="Objects/Blocked/0/Flyers" index="2" instance=ExtResource( 7 )]
+position = Vector2( 440, 1376 )
+allowed_ranks = [ false, true, true ]
 
-[node name="Birb3" parent="Objects/Blocked_Enemies/0/Bribs" index="2" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 24, -80 )
+[node name="Birb4" parent="Objects/Blocked/0/Flyers" index="3" instance=ExtResource( 7 )]
+position = Vector2( 424, 1256 )
+allowed_ranks = [ false, false, true ]
 
-[node name="Birb4" parent="Objects/Blocked_Enemies/0/Bribs" index="3" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 136, -96 )
+[node name="Birb5" parent="Objects/Blocked/0/Flyers" index="4" instance=ExtResource( 7 )]
+position = Vector2( 312, 896 )
+allowed_ranks = [ false, false, true ]
 
-[node name="Birb5" parent="Objects/Blocked_Enemies/0/Bribs" index="4" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 120, -240 )
+[node name="1" type="Node2D" parent="Objects/Blocked" index="1"]
 
-[node name="Birb6" parent="Objects/Blocked_Enemies/0/Bribs" index="5" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( -56, -288 )
+[node name="Stalkers" type="Node2D" parent="Objects/Blocked/1" index="0"]
 
-[node name="1" type="Node2D" parent="Objects/Blocked_Enemies" index="1"]
-position = Vector2( 520, 624 )
+[node name="Watcher" parent="Objects/Blocked/1/Stalkers" index="0" instance=ExtResource( 12 )]
+position = Vector2( 552, 392 )
+allowed_ranks = [ true, true, false ]
 
-[node name="Birb_L" parent="Objects/Blocked_Enemies/1" index="0" instance=ExtResource( 7 )]
-position = Vector2( -72, -136 )
-allowed_ranks = [ true, false, false ]
+[node name="Watcher2" parent="Objects/Blocked/1/Stalkers" index="1" instance=ExtResource( 12 )]
+position = Vector2( 400, 384 )
+allowed_ranks = [ false, false, true ]
 
-[node name="Birb_M" parent="Objects/Blocked_Enemies/1" index="1" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 24, -232 )
+[node name="Watcher3" parent="Objects/Blocked/1/Stalkers" index="2" instance=ExtResource( 12 )]
+position = Vector2( 704, 384 )
+allowed_ranks = [ false, false, true ]
 
-[node name="Birb_R" parent="Objects/Blocked_Enemies/1" index="2" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 104, -136 )
+[node name="Birb" parent="Objects/Blocked/1/Stalkers" index="3" instance=ExtResource( 7 )]
+position = Vector2( 440, 464 )
+allowed_ranks = [ false, true, false ]
 
-[node name="Slime_L" parent="Objects/Blocked_Enemies/1" index="3" instance=ExtResource( 8 )]
-visible = false
-position = Vector2( -264, -328 )
+[node name="Birb2" parent="Objects/Blocked/1/Stalkers" index="4" instance=ExtResource( 7 )]
+position = Vector2( 672, 456 )
+allowed_ranks = [ false, true, false ]
 
-[node name="Slime_R" parent="Objects/Blocked_Enemies/1" index="4" instance=ExtResource( 8 )]
-visible = false
-position = Vector2( 264, -320 )
+[node name="Walkers" type="Node2D" parent="Objects/Blocked/1" index="1"]
 
-[node name="2" type="Node2D" parent="Objects/Blocked_Enemies" index="2"]
-position = Vector2( 776, 1312 )
+[node name="Lost_Soul" parent="Objects/Blocked/1/Walkers" index="0" instance=ExtResource( 9 )]
+position = Vector2( 320, 416 )
+allowed_ranks = [ true, true, true ]
 
-[node name="Birb" parent="Objects/Blocked_Enemies/2" index="0" instance=ExtResource( 7 )]
-visible = false
+[node name="Lost_Soul2" parent="Objects/Blocked/1/Walkers" index="1" instance=ExtResource( 9 )]
+position = Vector2( 800, 416 )
+allowed_ranks = [ true, true, true ]
 
-[node name="Birb2" parent="Objects/Blocked_Enemies/2" index="1" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 152, -360 )
+[node name="Lost_Soul3" parent="Objects/Blocked/1/Walkers" index="2" instance=ExtResource( 9 )]
+position = Vector2( 144, 408 )
+allowed_ranks = [ false, false, true ]
 
-[node name="Birb3" parent="Objects/Blocked_Enemies/2" index="2" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( -32, -216 )
+[node name="Lost_Soul4" parent="Objects/Blocked/1/Walkers" index="3" instance=ExtResource( 9 )]
+position = Vector2( 904, 416 )
+allowed_ranks = [ false, false, true ]
 
-[node name="Lost_Soul" parent="Objects/Blocked_Enemies/2" index="3" instance=ExtResource( 9 )]
-visible = false
-position = Vector2( 168, -144 )
+[node name="Test_Wanderer" parent="Objects/Blocked/1/Walkers" index="4" instance=ExtResource( 8 )]
+position = Vector2( 240, 416 )
+allowed_ranks = [ false, true, false ]
+
+[node name="Test_Wanderer2" parent="Objects/Blocked/1/Walkers" index="5" instance=ExtResource( 8 )]
+position = Vector2( 856, 424 )
+allowed_ranks = [ false, true, false ]
+
+[node name="2" type="Node2D" parent="Objects/Blocked" index="2"]
+
+[node name="Watcher" type="Node2D" parent="Objects/Blocked/2" index="0"]
+
+[node name="Watcher" parent="Objects/Blocked/2/Watcher" index="0" instance=ExtResource( 12 )]
+position = Vector2( 768, 1192 )
+allowed_ranks = [ true, false, true ]
+
+[node name="Watcher2" parent="Objects/Blocked/2/Watcher" index="1" instance=ExtResource( 12 )]
+position = Vector2( 912, 936 )
+allowed_ranks = [ false, true, true ]
+
+[node name="Annoyances" type="Node2D" parent="Objects/Blocked/2" index="1"]
+
+[node name="Test_Wanderer" parent="Objects/Blocked/2/Annoyances" index="0" instance=ExtResource( 8 )]
+position = Vector2( 904, 1192 )
+allowed_ranks = [ true, false, true ]
+
+[node name="Test_Wanderer2" parent="Objects/Blocked/2/Annoyances" index="1" instance=ExtResource( 8 )]
+position = Vector2( 784, 912 )
+allowed_ranks = [ false, false, true ]
+
+[node name="Birb" parent="Objects/Blocked/2/Annoyances" index="2" instance=ExtResource( 7 )]
+position = Vector2( 800, 1080 )
+allowed_ranks = [ true, true, true ]
+
+[node name="Birb2" parent="Objects/Blocked/2/Annoyances" index="3" instance=ExtResource( 7 )]
+position = Vector2( 712, 1320 )
+allowed_ranks = [ false, true, true ]
+
+[node name="Birb3" parent="Objects/Blocked/2/Annoyances" index="4" instance=ExtResource( 7 )]
+position = Vector2( 936, 896 )
+allowed_ranks = [ false, true, true ]
 
 [node name="Middle" type="Node2D" parent="Objects" index="1"]
-position = Vector2( 536, 616 )
 
-[node name="Hawk" parent="Objects/Middle" index="0" instance=ExtResource( 10 )]
-visible = false
+[node name="Lost_Souls" type="Node2D" parent="Objects/Middle" index="0"]
 
-[node name="Lost_Soul" parent="Objects/Middle" index="1" instance=ExtResource( 9 )]
-visible = false
-position = Vector2( -112, 136 )
+[node name="Lost_Soul" parent="Objects/Middle/Lost_Souls" index="0" instance=ExtResource( 9 )]
+position = Vector2( 542.764, 754.027 )
+allowed_ranks = [ true, true, true ]
 
-[node name="Lost_Soul2" parent="Objects/Middle" index="2" instance=ExtResource( 9 )]
-visible = false
-position = Vector2( 176, 136 )
+[node name="Lost_Soul2" parent="Objects/Middle/Lost_Souls" index="1" instance=ExtResource( 9 )]
+position = Vector2( 770.489, 757.775 )
+allowed_ranks = [ false, true, true ]
+
+[node name="Lost_Soul3" parent="Objects/Middle/Lost_Souls" index="2" instance=ExtResource( 9 )]
+position = Vector2( 315.976, 751.215 )
+allowed_ranks = [ false, false, true ]
+
+[node name="Flyers" type="Node2D" parent="Objects/Middle" index="1"]
+
+[node name="Hawk" parent="Objects/Middle/Flyers" index="0" instance=ExtResource( 10 )]
+position = Vector2( 544, 600 )
+allowed_ranks = [ false, true, true ]
+
+[node name="Birb" parent="Objects/Middle/Flyers" index="1" instance=ExtResource( 7 )]
+position = Vector2( 256, 640 )
+allowed_ranks = [ true, true, true ]
+
+[node name="Birb2" parent="Objects/Middle/Flyers" index="2" instance=ExtResource( 7 )]
+position = Vector2( 832, 640 )
+allowed_ranks = [ true, true, true ]
+
+[node name="Birb3" parent="Objects/Middle/Flyers" index="3" instance=ExtResource( 7 )]
+position = Vector2( 480, 704 )
+allowed_ranks = [ false, false, true ]
+
+[node name="Birb4" parent="Objects/Middle/Flyers" index="4" instance=ExtResource( 7 )]
+position = Vector2( 584, 704 )
+allowed_ranks = [ false, false, true ]
 
 [node name="MapLimits" type="Position2D" parent="." index="6"]
 position = Vector2( 1024, 1800 )
 __meta__ = {
 "_gizmo_extents_": 1800.0
 }
-
-[node name="Rank_Visualizer" parent="." index="7" instance=ExtResource( 11 )]
-enemies_node_path = NodePath("../Objects")
 [connection signal="exit_entered" from="Exits/0" to="." method="_on_exit_entered"]
 [connection signal="exit_entered" from="Exits/1" to="." method="_on_exit_entered"]
 [connection signal="exit_entered" from="Exits/2" to="." method="_on_exit_entered"]
