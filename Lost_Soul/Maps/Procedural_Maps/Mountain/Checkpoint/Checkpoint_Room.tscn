@@ -196,7 +196,7 @@ shape = SubResource( 6 )
 
 [node name="2" parent="Exits" index="2" instance=ExtResource( 5 )]
 position = Vector2( 1056, 256 )
-exit_id = 1
+exit_id = 2
 
 [node name="area" type="CollisionShape2D" parent="Exits/2" index="0"]
 shape = SubResource( 5 )
