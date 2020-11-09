@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 class_name Enemy_FSM
 
+export(Array) var allowed_ranks = [false, false, false]
+
 const SOUL_RES = preload("res://Entities/Pickups/Souls/Souls.tscn")
 export(float) var soul_x = 40
 
