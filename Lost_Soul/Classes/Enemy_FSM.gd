@@ -32,14 +32,19 @@ func _change_state(new_state : Node) -> void:
 	cur_state.enter(self)
 
 func spawn_souls() -> void:
-	for i in souls:
-		var new_soul = SOUL_RES.instance()
-		var pos = Vector2(0, -60)
-		pos.x += rand_range(-soul_x, soul_x)
-		#pos.y += rand_range(-5, 5)
-		new_soul.position = self.position + pos
-		self.get_parent().call_deferred("add_child", new_soul)
-		yield(get_tree().create_timer(0.05), "timeout")
+	if souls%2 == 1:
+		_spawn_single_soul()
+		souls -= 1
+
+	for i in floor(souls/2):
+		_spawn_single_soul(2)
+
+func _spawn_single_soul(value = 1):
+	var new_soul = SOUL_RES.instance()
+	new_soul.Soul_Value = value
+	new_soul.position = self.position + Vector2(rand_range(-soul_x, soul_x), -60)
+	self.get_parent().call_deferred("add_child", new_soul)
+	yield(get_tree().create_timer(0.05), "timeout")
 
 ##Respawn
 onready var original_position : Vector2 = self.position

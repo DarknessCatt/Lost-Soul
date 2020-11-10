@@ -97,7 +97,7 @@ tracks/6/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.52, 0.52, 0.52, 0.72549 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Body/Hurtbox:monitoring")
+tracks/7/path = NodePath("Hurtbox:monitoring")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -133,7 +133,7 @@ tracks/9/keys = {
 "values": [ 0, 0 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Body/Hurtbox:monitorable")
+tracks/10/path = NodePath("Hurtbox:monitorable")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -410,7 +410,7 @@ tracks/6/keys = {
 "values": [ 2 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Body/Hurtbox:monitoring")
+tracks/7/path = NodePath("Hurtbox:monitoring")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -422,7 +422,7 @@ tracks/7/keys = {
 "values": [ true ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Body/Hurtbox:monitorable")
+tracks/8/path = NodePath("Hurtbox:monitorable")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -844,7 +844,6 @@ offset = Vector2( 0, 4 )
 polygon = PoolVector2Array( -4, -4, -4, 20, 0, 24, 4, 20, 4, -4, 0, -8 )
 
 [node name="Hitbox" parent="Body" index="4" instance=ExtResource( 5 )]
-visible = false
 position = Vector2( 0.672028, -2.24009 )
 Body = NodePath("..")
 Id = 2
@@ -855,21 +854,21 @@ Direction = Vector2( 1, -0.2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Hitbox" index="0"]
 shape = SubResource( 10 )
 
-[node name="Hurtbox" parent="Body" index="5" instance=ExtResource( 6 )]
+[node name="Body_Collision" type="RemoteTransform2D" parent="Body" index="5"]
+remote_path = NodePath("../../Collision")
+
+[node name="Hurtbox" parent="." index="4" instance=ExtResource( 6 )]
 Id = 2
-Character = NodePath("../..")
+Character = NodePath("..")
 hit_effect_dist = 20
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Hurtbox" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="1"]
 shape = SubResource( 11 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Body_Collision" type="RemoteTransform2D" parent="Body" index="6"]
-remote_path = NodePath("../../Collision")
-
-[node name="Collision" type="CollisionShape2D" parent="." index="4"]
+[node name="Collision" type="CollisionShape2D" parent="." index="5"]
 shape = SubResource( 12 )
 
 [node name="Path_Checker" parent="Perception" index="0"]

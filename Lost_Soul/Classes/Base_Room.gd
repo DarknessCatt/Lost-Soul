@@ -29,6 +29,7 @@ func clear_enemy_rank(node : Node2D, room_rank : int) -> void:
 
 		if child is Enemy_FSM:
 			if not child.allowed_ranks[room_rank]: child.call_deferred("free")
+			else: child.souls += ceil(room_rank*0.2*child.souls) + room_rank
 
 		else: clear_enemy_rank(child, room_rank)
 

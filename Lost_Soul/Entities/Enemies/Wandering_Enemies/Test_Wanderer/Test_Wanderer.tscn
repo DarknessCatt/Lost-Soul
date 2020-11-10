@@ -364,7 +364,6 @@ rotation = 1.5708
 shape = SubResource( 7 )
 
 [node name="Hurtbox" parent="." index="4" instance=ExtResource( 3 )]
-visible = false
 position = Vector2( 0, -6 )
 Id = 2
 Character = NodePath("..")
