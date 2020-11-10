@@ -137,7 +137,6 @@ polygon = PoolVector2Array( 1024, 520, 1064, 520, 1064, 352, 1024, 352, 1024, 34
 polygon = PoolVector2Array( 480, 600, 480, 696, 608, 696, 608, 600, 616, 600, 616, 704, 472, 704, 472, 600 )
 
 [node name="Blocks" type="Node2D" parent="."]
-visible = false
 
 [node name="0" parent="Blocks" instance=ExtResource( 2 )]
 position = Vector2( 0.985809, 0 )
@@ -324,21 +323,25 @@ polygon = PoolVector2Array( 640, 544, 656, 496, 696, 480, 720, 456, 736, 408, 76
 
 [node name="Spitter_Left" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 64, 200 )
+allowed_ranks = [ true, true, true ]
 max_health = 5
 look_direction = 1
 look_distance = 850
 
 [node name="Spitter_Right" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 912, 264 )
+allowed_ranks = [ true, true, true ]
 max_health = 5
 look_direction = -1
 look_distance = 850
 
 [node name="Slime_Left" parent="Objects" instance=ExtResource( 8 )]
 position = Vector2( 224, 136 )
+allowed_ranks = [ true, true, true ]
 
 [node name="Slime_Right" parent="Objects" instance=ExtResource( 8 )]
 position = Vector2( 792, 136 )
+allowed_ranks = [ true, true, true ]
 [connection signal="exit_entered" from="Exits/Left" to="." method="_on_exit_entered"]
 [connection signal="exit_entered" from="Exits/Top" to="." method="_on_exit_entered"]
 [connection signal="exit_entered" from="Exits/Right" to="." method="_on_exit_entered"]

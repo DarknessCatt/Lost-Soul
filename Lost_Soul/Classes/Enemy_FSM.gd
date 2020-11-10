@@ -34,7 +34,6 @@ func _change_state(new_state : Node) -> void:
 func spawn_souls() -> void:
 	if souls%2 == 1:
 		_spawn_single_soul()
-		souls -= 1
 
 	for i in floor(souls/2):
 		_spawn_single_soul(2)

@@ -44,7 +44,6 @@ room_type = 5
 exits = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ]
 
 [node name="BG" parent="Room" index="0" instance=ExtResource( 3 )]
-position = Vector2( 0, 16 )
 color = Color( 0.172549, 0.133333, 0.129412, 1 )
 polygon = PoolVector2Array( 0, 0, 1024, 0, 1024, 600, 0, 600 )
 type = 2

@@ -1,7 +1,7 @@
 tool
 extends Node2D
 
-export(int) var desired_rank : int = 0 setget change_rank
+export(int, 0 , 2) var desired_rank : int = 0 setget change_rank
 export(NodePath) var enemies_node_path : NodePath setget set_enemies_node
 export(bool) var show_all : bool = false setget show_all_enemies
 
