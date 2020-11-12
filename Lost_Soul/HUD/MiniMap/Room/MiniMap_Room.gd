@@ -5,11 +5,33 @@ export(Color) var door_color : Color = Color(0.45, 0.825, 0.9)
 
 var room_size : int = 25
 
+func clear_icons(room_type : String):
+	for icon in $Icons.get_children():
+		if icon.name != room_type:
+			icon.call_deferred("free")
+
 func create_room(room_data : Dictionary) -> void:
 	#print("creating room at: " + str(room_data.map_position))
 	var room : Base_Room = room_data.node
 	# warning-ignore:narrowing_conversion
 	var room_percentage : float = 0.85
+
+	match(room.room_type):
+
+		RoomConstants.room_types.GATE:
+			clear_icons("Gate")
+
+		RoomConstants.room_types.CHECKPOINT, RoomConstants.room_types.START:
+			clear_icons("Checkpoint")
+
+		RoomConstants.room_types.POWER:
+			clear_icons("Power")
+
+		RoomConstants.room_types.BONUS:
+			clear_icons("Bonus")
+
+		RoomConstants.room_types.NORMAL:
+			$Icons.call_deferred("free")
 
 	for room_positon in room.room_positions:
 		var room_piece = Polygon2D.new()
