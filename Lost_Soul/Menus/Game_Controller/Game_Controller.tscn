@@ -50,10 +50,7 @@ own_world = true
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="MiniMap" parent="Temp_Screen/Viewport" instance=ExtResource( 5 )]
-
 [node name="Normal_Game" type="Node2D" parent="."]
-visible = false
 
 [node name="Screen" type="ViewportContainer" parent="Normal_Game"]
 anchor_right = 1.0
@@ -68,7 +65,7 @@ __meta__ = {
 size = Vector2( 1024, 600 )
 own_world = true
 handle_input_locally = false
-render_target_update_mode = 0
+render_target_update_mode = 3
 
 [node name="Room" type="Node2D" parent="Normal_Game/Screen/Viewport"]
 
@@ -102,6 +99,14 @@ margin_top = 56.0
 margin_right = 100.0
 margin_bottom = 129.0
 Character = NodePath("../../Screen/Viewport/Hero")
+
+[node name="MiniMap" parent="Normal_Game" instance=ExtResource( 5 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+rect_min_size = Vector2( 1024, 600 )
 [connection signal="timeout" from="Room_Transition/change_timer" to="." method="_on_change_timer_timeout"]
 [connection signal="tween_all_completed" from="Room_Transition/Tween" to="." method="_on_Tween_tween_all_completed"]
 [connection signal="tween_all_completed" from="Scene_Transtition/Tween" to="." method="_on_Scene_tween_all_completed"]

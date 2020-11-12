@@ -15,7 +15,7 @@ func _ready():
 	screen_room = $Normal_Game/Screen/Viewport/Room
 
 	var generator = Map_Generator.new()
-	generator.setup(MAP_SIZE, START_POINT)#, 2898325)
+	generator.setup(MAP_SIZE, START_POINT)
 
 	var room_list : Array = generator.generate()
 
@@ -29,15 +29,19 @@ func _ready():
 				room.node.connect("checkpoint_activated", self, "enter_levelup")
 
 	map_data = generator.map_data
-	cur_pos = generator.START_POS
+	cur_pos = START_POINT
 
 	generator.call_deferred("free")
+
+	$Normal_Game/MiniMap.room_size = MAP_SIZE.y
+	$Normal_Game/MiniMap.create_map(room_list)
 
 	enter_room(map_data[cur_pos.x][cur_pos.y].node)
 	hero.position = map_data[cur_pos.x][cur_pos.y].node.get_start_point()
 
-	$Temp_Screen/Viewport/MiniMap.room_size = MAP_SIZE.y
-	$Temp_Screen/Viewport/MiniMap.create_map(room_list)
+func _input(event):
+	if event.is_action_pressed("minimap"):
+		$Normal_Game/MiniMap.visible = not $Normal_Game/MiniMap.visible
 
 #Special Room Transitions
 
@@ -124,6 +128,8 @@ func enter_room(room : Base_Room):
 	hero.position = spawn_point
 
 	yield(room, "ready")
+
+	$Normal_Game/MiniMap.change_room(map_data[cur_pos.x][cur_pos.y].map_position)
 
 func leave_room(next_room : Vector2, entrance : Exit, exit : Exit):
 	change_state = FADE_OUT

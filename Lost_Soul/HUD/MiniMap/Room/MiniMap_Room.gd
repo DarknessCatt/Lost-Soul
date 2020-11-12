@@ -4,6 +4,16 @@ export(Color) var room_color : Color = Color(1, 1, 1)
 export(Color) var door_color : Color = Color(0.45, 0.825, 0.9)
 
 var room_size : int = 25
+var current : bool = false setget change_cur
+
+func change_cur(value : bool) -> void:
+	current = value
+	if current:
+		$Anim.play("current")
+
+	else: 
+		$Anim.stop()
+		self.modulate = Color(1,1,1)
 
 func clear_icons(room_type : String):
 	for icon in $Icons.get_children():
