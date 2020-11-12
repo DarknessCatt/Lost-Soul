@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Maps/Procedural_Maps/Mountain/Big_Tree/Big_Tree.gd" type="Script" id=1]
 [ext_resource path="res://Classes/Exit.gd" type="Script" id=2]
@@ -7,8 +7,11 @@
 [ext_resource path="res://Maps/Util/Standart_Room/Standart_Room.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/Map_Elements/One_Way_Platform/One_Way_Platform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/Enemies/Flying_Enemies/Hawk/Hawk.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Entities/Enemies/Wandering_Enemies/Test_Wanderer/Test_Wanderer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemies/Flying_Enemies/Watcher/Watcher.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Entities/Enemies/Flying_Enemies/Fly_Test/Fly_Test.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Enemies/Wandering_Enemies/Lost_Soul/Lost_Soul.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/Enemies/Wall_Enemies/Spider/Spider.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Enemies/Wandering_Enemies/Test_Wanderer/Test_Wanderer.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
@@ -358,23 +361,115 @@ __meta__ = {
 "_gizmo_extents_": 50.0
 }
 
-[node name="Hawk" parent="Objects" index="0" instance=ExtResource( 7 )]
-position = Vector2( 984, 608 )
+[node name="Flyers" type="Node2D" parent="Objects" index="0"]
 
-[node name="Test_Wanderer" parent="Objects" index="1" instance=ExtResource( 8 )]
-position = Vector2( 832, 464 )
+[node name="Birb" parent="Objects/Flyers" index="0" instance=ExtResource( 9 )]
+position = Vector2( 1328, 800 )
+allowed_ranks = [ true, true, true ]
 
-[node name="Test_Wanderer2" parent="Objects" index="2" instance=ExtResource( 8 )]
-position = Vector2( 560, 120 )
+[node name="Birb2" parent="Objects/Flyers" index="1" instance=ExtResource( 9 )]
+position = Vector2( 1264, 368 )
+allowed_ranks = [ true, true, true ]
 
-[node name="Fly_Test" parent="Objects" index="3" instance=ExtResource( 9 )]
-position = Vector2( 1336, 904 )
+[node name="Birb3" parent="Objects/Flyers" index="2" instance=ExtResource( 9 )]
+position = Vector2( 1736, 630.4 )
+allowed_ranks = [ true, true, true ]
 
-[node name="Fly_Test2" parent="Objects" index="4" instance=ExtResource( 9 )]
-position = Vector2( 1718, 752 )
+[node name="Birb4" parent="Objects/Flyers" index="3" instance=ExtResource( 9 )]
+position = Vector2( 1704, 960 )
+allowed_ranks = [ false, true, true ]
 
-[node name="Fly_Test3" parent="Objects" index="5" instance=ExtResource( 9 )]
-position = Vector2( 1254, 461 )
+[node name="Birb5" parent="Objects/Flyers" index="4" instance=ExtResource( 9 )]
+position = Vector2( 1552, 312 )
+allowed_ranks = [ false, true, true ]
+
+[node name="Birb6" parent="Objects/Flyers" index="5" instance=ExtResource( 9 )]
+position = Vector2( 856, 136 )
+allowed_ranks = [ false, true, true ]
+
+[node name="Hawk" parent="Objects/Flyers" index="6" instance=ExtResource( 7 )]
+position = Vector2( 1264, 592 )
+allowed_ranks = [ false, false, true ]
+
+[node name="SoulStakers" type="Node2D" parent="Objects" index="1"]
+
+[node name="Watcher" parent="Objects/SoulStakers" index="0" instance=ExtResource( 8 )]
+position = Vector2( 1480.2, 712 )
+allowed_ranks = [ true, true, false ]
+
+[node name="Watcher2" parent="Objects/SoulStakers" index="1" instance=ExtResource( 8 )]
+position = Vector2( 1496, 424 )
+allowed_ranks = [ false, true, true ]
+
+[node name="Watcher3" parent="Objects/SoulStakers" index="2" instance=ExtResource( 8 )]
+position = Vector2( 1736, 614.4 )
+allowed_ranks = [ false, false, true ]
+
+[node name="Watcher4" parent="Objects/SoulStakers" index="3" instance=ExtResource( 8 )]
+position = Vector2( 1280, 664 )
+allowed_ranks = [ false, false, true ]
+
+[node name="Lost_Soul" parent="Objects/SoulStakers" index="4" instance=ExtResource( 10 )]
+position = Vector2( 1520, 1056 )
+allowed_ranks = [ true, true, true ]
+
+[node name="Lost_Soul2" parent="Objects/SoulStakers" index="5" instance=ExtResource( 10 )]
+position = Vector2( 896, 280 )
+allowed_ranks = [ true, true, true ]
+
+[node name="Lost_Soul3" parent="Objects/SoulStakers" index="6" instance=ExtResource( 10 )]
+position = Vector2( 1377.6, 1053.76 )
+allowed_ranks = [ false, true, true ]
+
+[node name="Lost_Soul4" parent="Objects/SoulStakers" index="7" instance=ExtResource( 10 )]
+position = Vector2( 1247.67, 472 )
+allowed_ranks = [ false, false, true ]
+
+[node name="SlimySpiders" type="Node2D" parent="Objects" index="2"]
+
+[node name="Spider" parent="Objects/SlimySpiders" index="0" instance=ExtResource( 11 )]
+position = Vector2( 848, 464 )
+rotation = 3.14159
+allowed_ranks = [ true, true, true ]
+cur_surface = 0
+
+[node name="Spider2" parent="Objects/SlimySpiders" index="1" instance=ExtResource( 11 )]
+position = Vector2( 1672, 824 )
+rotation = 3.40339
+allowed_ranks = [ true, true, true ]
+cur_surface = 0
+
+[node name="Spider3" parent="Objects/SlimySpiders" index="2" instance=ExtResource( 11 )]
+position = Vector2( 1176, 568 )
+rotation = 3.40339
+allowed_ranks = [ false, true, true ]
+cur_surface = 0
+
+[node name="Spider4" parent="Objects/SlimySpiders" index="3" instance=ExtResource( 11 )]
+position = Vector2( 1936, 622.431 )
+rotation = 4.71238
+allowed_ranks = [ false, false, true ]
+cur_surface = 1
+
+[node name="Test_Wanderer" parent="Objects/SlimySpiders" index="4" instance=ExtResource( 12 )]
+position = Vector2( 1528, 1080 )
+allowed_ranks = [ true, true, true ]
+
+[node name="Test_Wanderer2" parent="Objects/SlimySpiders" index="5" instance=ExtResource( 12 )]
+position = Vector2( 840, 299.2 )
+allowed_ranks = [ true, true, true ]
+
+[node name="Test_Wanderer3" parent="Objects/SlimySpiders" index="6" instance=ExtResource( 12 )]
+position = Vector2( 848, 513.6 )
+allowed_ranks = [ false, true, true ]
+
+[node name="Test_Wanderer4" parent="Objects/SlimySpiders" index="7" instance=ExtResource( 12 )]
+position = Vector2( 1256, 482 )
+allowed_ranks = [ false, false, true ]
+
+[node name="Test_Wanderer5" parent="Objects/SlimySpiders" index="8" instance=ExtResource( 12 )]
+position = Vector2( 1704, 760 )
+allowed_ranks = [ false, false, true ]
 
 [node name="Map_Limit" type="Position2D" parent="." index="6"]
 position = Vector2( 2048, 1200 )
