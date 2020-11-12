@@ -427,6 +427,8 @@ func make_special_room(position : Vector2, type : int, from : Dictionary = {}) -
 func choose_exit(new_room : Dictionary, room_placement_pos : Vector2) -> Dictionary:
 	var exit_data : Dictionary = {}
 
+	new_room.node.exits.shuffle()
+
 	for exit in new_room.node.exits:
 		#print("\tgetting exit from "+str(room_placement_pos+exit.position)+" in direction "+str(exit[1]))
 		var valid : bool = true
@@ -458,7 +460,7 @@ func choose_exit(new_room : Dictionary, room_placement_pos : Vector2) -> Diction
 				to = Vector2.LEFT
 
 			RoomConstants.exit_dir.RIGHT:
-				if (room_pos.x + 1) >= MAP_SIZE.y or map_data[room_pos.x+1][room_pos.y] != null:
+				if (room_pos.x + 1) >= MAP_SIZE.x or map_data[room_pos.x+1][room_pos.y] != null:
 					valid = false
 
 				dir = RoomConstants.exit_dir.LEFT

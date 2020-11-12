@@ -25,7 +25,7 @@ func _ready():
 			RoomConstants.room_types.POWER:
 				room.node.connect("change_tutorial", self, "enter_tutorial")
 
-			RoomConstants.room_types.CHECKPOINT:
+			RoomConstants.room_types.CHECKPOINT, RoomConstants.room_types.START:
 				room.node.connect("checkpoint_activated", self, "enter_levelup")
 
 	map_data = generator.map_data
