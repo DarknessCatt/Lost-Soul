@@ -1,5 +1,8 @@
 extends Node2D
 
+const MAP_SIZE : Vector2 = Vector2(14,14)
+const START_POINT : Vector2 = Vector2(7, 7)
+
 var hero : KinematicBody2D
 var camera : Camera2D
 var screen_room : Node2D
@@ -12,8 +15,11 @@ func _ready():
 	screen_room = $Normal_Game/Screen/Viewport/Room
 
 	var generator = Map_Generator.new()
+	generator.setup(MAP_SIZE, START_POINT)#, 2898325)
 
-	for room in generator.generate():
+	var room_list : Array = generator.generate()
+
+	for room in room_list:
 		match(room.node.room_type):
 
 			RoomConstants.room_types.POWER:
@@ -29,6 +35,9 @@ func _ready():
 
 	enter_room(map_data[cur_pos.x][cur_pos.y].node)
 	hero.position = map_data[cur_pos.x][cur_pos.y].node.get_start_point()
+
+	$Temp_Screen/Viewport/MiniMap.room_size = MAP_SIZE.y
+	$Temp_Screen/Viewport/MiniMap.create_map(room_list)
 
 #Special Room Transitions
 

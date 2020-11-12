@@ -4,6 +4,7 @@ var print_analytics : bool = false
 
 var room_list : Array = []
 
+var fallback_normal_room : Node2D
 var normal_rooms : Dictionary = {RoomConstants.exit_dir.UP:[], RoomConstants.exit_dir.DOWN:[], RoomConstants.exit_dir.LEFT:[], RoomConstants.exit_dir.RIGHT:[]}
 var special_rooms : Dictionary = {}
 
@@ -35,7 +36,10 @@ func prepare_rooms(path : String):
 
 			while file_name != "":
 				if ".tscn" in file_name:
-					room_list.append(load("%s%s/%s" % [path, room_folder, file_name]).instance())
+					if file_name == "Basic_Cave.tscn":
+						fallback_normal_room = load("%s%s/%s" % [path, room_folder, file_name]).instance()
+					else:
+						room_list.append(load("%s%s/%s" % [path, room_folder, file_name]).instance())
 					break
 				file_name = room_dir.get_next()
 
@@ -80,19 +84,27 @@ func prepare_rooms(path : String):
 		print("LEFT: "+str(normal_rooms[RoomConstants.exit_dir.LEFT].size()))
 		print("RIGHT: "+str(normal_rooms[RoomConstants.exit_dir.RIGHT].size()))
 
+var fallback_used : bool = false
+
 func prepare_room_list(type: int, dir : int = RoomConstants.exit_dir.UP) -> void:
 
 	if type == RoomConstants.room_types.NORMAL:
 		room_queue.list = normal_rooms[dir]
+		fallback_used = false
 
 	else:
 		room_queue.list = special_rooms[type]
+		fallback_used = true
 
 	room_queue.list.shuffle()
 	room_queue.pointer = 0
 
 func get_room():
 	if room_queue.pointer >= room_queue.list.size():
+		if not fallback_used:
+			fallback_used = true
+			return fallback_normal_room.duplicate()
+
 		return null
 
 	var room = room_queue.list[room_queue.pointer].duplicate()

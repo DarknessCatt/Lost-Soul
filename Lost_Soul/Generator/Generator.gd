@@ -1,16 +1,31 @@
 class_name Map_Generator
 
-var MAP_SIZE : Vector2 = Vector2(20, 20)
-var START_POS : Vector2 = Vector2(10, 10)
+var MAP_SIZE : Vector2
+var START_POS : Vector2
 
 var room_manager 
 
-var gen_seed : int = 2898325
+var gen_seed : int
 
 var map_data : Array
 
+func setup(size : Vector2, start : Vector2, new_seed : int = 0) -> void:
+	MAP_SIZE = size
+	START_POS = start
+	gen_seed = new_seed
+
 #Atualmente gera o mapa
+#No map_data, cada quarto é presentado por um dicionario:
+#	node: aponta para o nó do mapa em si
+#	map_position: posição "zero" do mapa (para casos de mapas maiores de 1x1)
+#	exits: array com as saidas do mapa
+#		exit: ponteiro para o recurso da saida
+#		to: Vector2 da posição levada pela saida
+#		entrance: ponteiro para a entrada da sala
+#	rank: rank da sala
 func generate(Room_Path : String = "res://Maps/Procedural_Maps/Mountain/") -> Array:
+	assert(MAP_SIZE != null)
+	assert(START_POS != null)
 
 	room_manager = Room_Manager.new()
 	room_manager.prepare_rooms(Room_Path)
@@ -72,6 +87,9 @@ func generate(Room_Path : String = "res://Maps/Procedural_Maps/Mountain/") -> Ar
 				elif map_data[y][x].node.room_type == RoomConstants.room_types.POWER:
 					map += "[P]"
 
+				elif map_data[y][x].node.room_type == RoomConstants.room_types.CHECKPOINT:
+					map += "[C]"
+
 				else:
 					map += "["+str(map_data[y][x].rank)+"]"
 
@@ -127,7 +145,7 @@ func make_cycles(room_list : Array) -> void:
 						if  (room.rank == other_room.rank) and \
 							(room.node.room_type == RoomConstants.room_types.NORMAL or \
 							other_room.node.room_type == RoomConstants.room_types.NORMAL) and \
-							rand_range(0, 1) < 0.5:
+							rand_range(0, 1) < 1:
 							room.exits.append({"exit": exit, "to": leads_to, "entrance": entrance})
 							other_room.exits.append({"exit": entrance, "to": (room.map_position + exit.position), "entrance": exit})
 
@@ -198,7 +216,7 @@ func make_branch(room_list : Array, branch_rank : int = 0, size : int = 3, final
 #	to = position of the new room
 #	dir = direction it comes from
 # path_limit: o tamanho maximo do caminho,
-# 	mas teoricamente ele pode gerar caminhos menores, mas é bloqueado pelo make_branch.
+# 	mas teoricamente ele pode gerar caminhos menores, que são bloqueados pelo make_branch.
 # final_room_type: se o quarto final vai ser de poder ou bônus.
 func make_path(start_data : Dictionary, path_rank : int = 0, path_limit : int = 4, final_room_type : int = RoomConstants.room_types.POWER) -> Array:
 
