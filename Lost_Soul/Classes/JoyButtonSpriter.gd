@@ -30,6 +30,10 @@ static func get_sprite(button : int) -> Texture:
 			tex = load(joysprite_folder+"controller_LT.png")
 		7:
 			tex = load(joysprite_folder+"controller_RT.png")
+		10:
+			tex = load(joysprite_folder+"controller_view.png") #select
+		11:
+			tex = load(joysprite_folder+"controller_menu.png")#start
 		12:
 			tex = load(joysprite_folder+"controller_digi_up.png")
 		13:

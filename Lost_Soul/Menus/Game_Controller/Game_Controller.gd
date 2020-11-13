@@ -1,5 +1,7 @@
 extends Node2D
 
+export(PackedScene) var settings_menu : PackedScene
+
 const MAP_SIZE : Vector2 = Vector2(14,14)
 const START_POINT : Vector2 = Vector2(7, 7)
 
@@ -44,6 +46,9 @@ func _input(event):
 	if event.is_action_pressed("minimap"):
 		$Normal_Game/MiniMap.visible = not $Normal_Game/MiniMap.visible
 
+	elif event.is_action_pressed("pause"):
+		open_settings()
+
 # Hero's Death and Respawn
 var respawn_room : Vector2
 
@@ -65,10 +70,9 @@ enum scenes {play, respawning, temp_screen}
 var current_scene : int = scenes.play
 
 var temp_screen
-var game_screen : Node2D
+onready var game_screen : Node2D = $Normal_Game
 
 func enter_tutorial(tutorial : PackedScene):
-	game_screen = $Normal_Game
 	temp_screen = tutorial.instance()
 	hero.cutscene = hero.cutscene_type.PHYSICS
 
@@ -87,7 +91,6 @@ func leave_tutorial() -> void:
 	hero.cutscene = hero.cutscene_type.NONE
 
 func enter_levelup(menu : PackedScene) -> void:
-	game_screen = $Normal_Game
 	temp_screen = menu.instance()
 	temp_screen.hero = self.hero
 	hero.cutscene = hero.cutscene_type.PHYSICS
@@ -106,6 +109,20 @@ func leave_levelup() -> void:
 	$Scene_Transtition/Tween.start()
 	hero.cutscene = hero.cutscene_type.NONE
 	game_screen.get_node("HUD/Player_Status").update_HUD()
+
+func open_settings() -> void:
+	temp_screen = settings_menu.instance()
+	temp_screen.connect("menu_exited", self, "close_settings")
+
+	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
+		"modulate", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 0.2)
+	$Scene_Transtition/Tween.start()
+
+func close_settings() -> void:
+	temp_screen.disconnect("menu_exited", self, "close_settings")
+	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
+		"modulate", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 0.2)
+	$Scene_Transtition/Tween.start()
 
 func _on_Scene_tween_all_completed():
 	$Room_Transition/Tween.interpolate_property($Room_Transition/Blackout, \

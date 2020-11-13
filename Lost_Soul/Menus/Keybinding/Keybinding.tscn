@@ -75,7 +75,7 @@ __meta__ = {
 
 [node name="Menu" type="VBoxContainer" parent="Controls"]
 margin_right = 452.0
-margin_bottom = 236.0
+margin_bottom = 360.0
 custom_constants/separation = 12
 alignment = 1
 
@@ -114,6 +114,24 @@ margin_top = 186.0
 margin_right = 452.0
 margin_bottom = 236.0
 action = "hero_dash"
+
+[node name="Keybind_Single_Button5" parent="Controls/Menu" instance=ExtResource( 1 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 248.0
+margin_right = 452.0
+margin_bottom = 298.0
+action = "minimap"
+
+[node name="Keybind_Single_Button6" parent="Controls/Menu" instance=ExtResource( 1 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 310.0
+margin_right = 452.0
+margin_bottom = 360.0
+action = "pause"
 
 [node name="Save and Exit" type="Button" parent="."]
 anchor_left = 0.4
@@ -338,6 +356,8 @@ __meta__ = {
 [connection signal="key_change_request" from="Controls/Menu/Keybind_Single_Button2" to="." method="_on_key_change_request"]
 [connection signal="key_change_request" from="Controls/Menu/Keybind_Single_Button3" to="." method="_on_key_change_request"]
 [connection signal="key_change_request" from="Controls/Menu/Keybind_Single_Button4" to="." method="_on_key_change_request"]
+[connection signal="key_change_request" from="Controls/Menu/Keybind_Single_Button5" to="." method="_on_key_change_request"]
+[connection signal="key_change_request" from="Controls/Menu/Keybind_Single_Button6" to="." method="_on_key_change_request"]
 [connection signal="pressed" from="Save and Exit" to="." method="_on_Save_and_Exit_pressed"]
 [connection signal="pressed" from="Reset" to="." method="_on_Reset"]
 [connection signal="pressed" from="Change_Key/Windows/Window/SaveExit/Salve" to="." method="_on_Salve_pressed"]
