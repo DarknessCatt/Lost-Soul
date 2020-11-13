@@ -20,4 +20,4 @@ func _on_checkpoint_activated(checkpoint_menu):
 	emit_signal("checkpoint_activated", checkpoint_menu)
 
 func _on_checkpoint_reached(_checkpoint):
-	pass
+	emit_signal("checkpoint_reached")

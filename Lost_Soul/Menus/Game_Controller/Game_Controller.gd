@@ -27,6 +27,7 @@ func _ready():
 
 			RoomConstants.room_types.CHECKPOINT, RoomConstants.room_types.START:
 				room.node.connect("checkpoint_activated", self, "enter_levelup")
+				room.node.connect("checkpoint_reached", self, "mark_checkpoint")
 
 	map_data = generator.map_data
 	cur_pos = START_POINT
@@ -43,10 +44,24 @@ func _input(event):
 	if event.is_action_pressed("minimap"):
 		$Normal_Game/MiniMap.visible = not $Normal_Game/MiniMap.visible
 
+# Hero's Death and Respawn
+var respawn_room : Vector2
+
+func mark_checkpoint():
+	respawn_room = cur_pos
+
+func _on_Hero_dead():
+	hero.die()
+	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
+		"modulate", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 2.3)
+	$Scene_Transtition/Tween.start()
+	current_scene = scenes.respawning
+
+
 #Special Room Transitions
 
 #Scene control FSM
-enum scenes {play, tutorial, menu}
+enum scenes {play, respawning, temp_screen}
 var current_scene : int = scenes.play
 
 var temp_screen
@@ -100,13 +115,29 @@ func _on_Scene_tween_all_completed():
 	if current_scene == scenes.play:
 		self.call_deferred("remove_child", game_screen)
 		$Temp_Screen/Viewport.call_deferred("add_child", temp_screen)
-		current_scene = scenes.tutorial
+		current_scene = scenes.temp_screen
 
-	else:
+	elif current_scene == scenes.temp_screen:
 		$Temp_Screen/Viewport.call_deferred("remove_child",temp_screen)
 		self.call_deferred("add_child", game_screen)
 		current_scene = scenes.play
-		
+
+	else:
+		var room : Base_Room = map_data[cur_pos.x][cur_pos.y].node
+		room.call_deferred("disconnect", "player_exited", self, "_room_exited")
+		screen_room.call_deferred("remove_child", room)
+		yield(room, "tree_exited")
+
+		room.request_ready()
+
+		cur_pos = respawn_room
+		room = map_data[cur_pos.x][cur_pos.y].node
+		spawn_point = room.get_start_point()
+
+		enter_room(room)
+		hero.cutscene = hero.cutscene_type.NONE
+
+		current_scene = scenes.play
 
 # General Room Transitions
 

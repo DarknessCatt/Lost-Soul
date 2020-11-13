@@ -11,7 +11,7 @@ var health : int = max_health
 var max_energy : int = 30
 var energy : int = max_energy
 
-var souls : int = 1000
+var souls : int = 0
 var level : int = 1
 
 var max_crystal_heart : int = 0
@@ -53,7 +53,7 @@ func _hit(damage : int, _force : int, _direction : Vector2) -> void:
 					emit_signal("dead")
 
 				else:
-					var kb : Vector2 = calculate_knockback()
+					var kb : Vector2 = _calculate_knockback()
 					var dir = self.global_position - kb
 
 					self.speed = dir.normalized()*KNOCKBACK_STRENGH
@@ -66,7 +66,7 @@ func _hit(damage : int, _force : int, _direction : Vector2) -> void:
 				health += energy
 				energy = 0
 
-				var kb : Vector2 = calculate_knockback()
+				var kb : Vector2 = _calculate_knockback()
 				var dir = self.global_position - kb
 
 				self.speed = dir.normalized()*KNOCKBACK_STRENGH
@@ -75,7 +75,7 @@ func _hit(damage : int, _force : int, _direction : Vector2) -> void:
 			else:
 				$Misc_Animations.play("blocked")
 
-func calculate_knockback() -> Vector2:
+func _calculate_knockback() -> Vector2:
 	var kb : Vector2 = Vector2(0,0)
 	var num : int = 0
 
@@ -116,7 +116,8 @@ func change_hurtboxes(value : bool) -> void:
 func _on_Invencibility_timeout():
 	self.invencible = false
 
-func _die() -> void:
+func die() -> void:
+	self.cutscene = cutscene_type.FULL
 	self._change_anim("Death")
 
 func _soul_collected(quantity : int) -> void:

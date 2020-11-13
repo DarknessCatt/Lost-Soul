@@ -285,6 +285,7 @@ __meta__ = {
 "_gizmo_extents_": 50.0
 }
 [connection signal="checkpoint_activated" from="Room/Altar" to="." method="_on_checkpoint_activated"]
+[connection signal="checkpoint_reached" from="Room/Altar" to="." method="_on_checkpoint_reached"]
 [connection signal="exit_entered" from="Exits/0" to="." method="_on_exit_entered"]
 [connection signal="exit_entered" from="Exits/1" to="." method="_on_exit_entered"]
 [connection signal="exit_entered" from="Exits/2" to="." method="_on_exit_entered"]

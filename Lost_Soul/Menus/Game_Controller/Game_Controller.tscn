@@ -110,3 +110,4 @@ rect_min_size = Vector2( 1024, 600 )
 [connection signal="timeout" from="Room_Transition/change_timer" to="." method="_on_change_timer_timeout"]
 [connection signal="tween_all_completed" from="Room_Transition/Tween" to="." method="_on_Tween_tween_all_completed"]
 [connection signal="tween_all_completed" from="Scene_Transtition/Tween" to="." method="_on_Scene_tween_all_completed"]
+[connection signal="dead" from="Normal_Game/Screen/Viewport/Hero" to="." method="_on_Hero_dead"]
