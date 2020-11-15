@@ -42,12 +42,15 @@ func _ready():
 	enter_room(map_data[cur_pos.x][cur_pos.y].node)
 	hero.position = map_data[cur_pos.x][cur_pos.y].node.get_start_point()
 
-func _input(event):
-	if event.is_action_pressed("minimap"):
-		$Normal_Game/MiniMap.visible = not $Normal_Game/MiniMap.visible
+var game_pausable : bool = true
 
-	elif event.is_action_pressed("pause"):
-		open_settings()
+func _input(event):
+	if game_pausable:
+		if event.is_action_pressed("minimap"):
+			$Normal_Game/MiniMap.visible = not $Normal_Game/MiniMap.visible
+
+		elif event.is_action_pressed("pause"):
+			open_settings()
 
 # Hero's Death and Respawn
 var respawn_room : Vector2
@@ -73,6 +76,7 @@ var temp_screen
 onready var game_screen : Node2D = $Normal_Game
 
 func enter_tutorial(tutorial : PackedScene):
+	game_pausable = false
 	temp_screen = tutorial.instance()
 	hero.cutscene = hero.cutscene_type.PHYSICS
 
@@ -91,6 +95,7 @@ func leave_tutorial() -> void:
 	hero.cutscene = hero.cutscene_type.NONE
 
 func enter_levelup(menu : PackedScene) -> void:
+	game_pausable = false
 	temp_screen = menu.instance()
 	temp_screen.hero = self.hero
 	hero.cutscene = hero.cutscene_type.PHYSICS
@@ -111,6 +116,7 @@ func leave_levelup() -> void:
 	game_screen.get_node("HUD/Player_Status").update_HUD()
 
 func open_settings() -> void:
+	game_pausable = false
 	temp_screen = settings_menu.instance()
 	temp_screen.connect("menu_exited", self, "close_settings")
 
@@ -138,6 +144,7 @@ func _on_Scene_tween_all_completed():
 		$Temp_Screen/Viewport.call_deferred("remove_child",temp_screen)
 		self.call_deferred("add_child", game_screen)
 		current_scene = scenes.play
+		game_pausable = true
 
 	else:
 		var room : Base_Room = map_data[cur_pos.x][cur_pos.y].node
