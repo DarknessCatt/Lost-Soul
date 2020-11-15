@@ -40,6 +40,9 @@ func create_room(room_data : Dictionary) -> void:
 		RoomConstants.room_types.BONUS:
 			clear_icons("Bonus")
 
+		RoomConstants.room_types.BOSS:
+			clear_icons("Boss")
+
 		RoomConstants.room_types.NORMAL:
 			$Icons.call_deferred("free")
 

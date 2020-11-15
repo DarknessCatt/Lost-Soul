@@ -60,7 +60,7 @@ func generate(Room_Path : String = "res://Maps/Procedural_Maps/Mountain/") -> Ar
 #	room_list += make_branch(room_list, 1)
 	room_list += make_branch(room_list, 1, 1, RoomConstants.room_types.CHECKPOINT)
 	room_list += make_branch(room_list, 1, 1, RoomConstants.room_types.BONUS)
-#	room_list += make_branch(room_list, 1, 3, RoomConstants.room_types.BONUS)
+	room_list += make_branch(room_list, 1, 1, RoomConstants.room_types.BOSS)
 #	room_list += make_branch(room_list, 1, 3, RoomConstants.room_types.BONUS)
 
 	#Faz alguns ciclos
@@ -89,6 +89,9 @@ func generate(Room_Path : String = "res://Maps/Procedural_Maps/Mountain/") -> Ar
 
 				elif map_data[y][x].node.room_type == RoomConstants.room_types.CHECKPOINT:
 					map += "[C]"
+
+				elif map_data[y][x].node.room_type == RoomConstants.room_types.BOSS:
+					map += "[D]"
 
 				else:
 					map += "["+str(map_data[y][x].rank)+"]"
@@ -322,7 +325,7 @@ func make_special_room(position : Vector2, type : int, from : Dictionary = {}) -
 
 			place_room(new_room_data.room)
 
-		RoomConstants.room_types.POWER, RoomConstants.room_types.BONUS, RoomConstants.room_types.CHECKPOINT:
+		RoomConstants.room_types.POWER, RoomConstants.room_types.BONUS, RoomConstants.room_types.CHECKPOINT, RoomConstants.room_types.BOSS:
 			while true:
 				new_room_data.room["node"] = room_manager.get_room()
 

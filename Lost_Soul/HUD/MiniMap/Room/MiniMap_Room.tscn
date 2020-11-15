@@ -63,3 +63,12 @@ texture = ExtResource( 2 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 482, 159, 128, 128 )
+
+[node name="Boss" type="Sprite" parent="Icons"]
+modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 0.258, 0.258 )
+z_index = 1
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 128, 128 )
