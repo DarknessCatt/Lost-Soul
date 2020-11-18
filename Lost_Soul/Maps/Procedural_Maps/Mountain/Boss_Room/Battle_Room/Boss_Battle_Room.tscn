@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Maps/Util/Standart_Room/Standart_Room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Util/Mountain_Polygon/Mountain_Polygon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Procedural_Maps/Mountain/Boss_Room/Battle_Room/Boss_Battle_Room.gd" type="Script" id=3]
+[ext_resource path="res://Entities/Enemies/Flying_Enemies/Watcher/Watcher.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 64 )
+
+[node name="Boss_Battle_Room" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+camera_limits = Vector2( 3072, 1200 )
+
+[node name="BG" parent="Room" index="0" instance=ExtResource( 2 )]
+color = Color( 0.172549, 0.133333, 0.129412, 1 )
+polygon = PoolVector2Array( 0, 896, 3072, 896, 3072, 1128, 0, 1128 )
+type = 2
+
+[node name="Sky" parent="Room" index="1" instance=ExtResource( 2 )]
+color = Color( 0.509804, 0.635294, 0.686275, 1 )
+polygon = PoolVector2Array( 640, 0, 1984, 0, 1984, 1120, 640, 1120 )
+type = 0
+
+[node name="Floor" parent="Room" index="2" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 0, 1120, 3072, 1120, 3072, 1200, 0, 1200 )
+type = 4
+
+[node name="Grass" parent="Room/Floor" index="0" instance=ExtResource( 2 )]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 640, 1120, 1984, 1120, 1984, 1152, 640, 1152 )
+type = 5
+
+[node name="Left_Cave" parent="Room" index="3" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 0, 960, 640, 960, 640, 0, 0, 0 )
+type = 4
+
+[node name="Inner" parent="Room/Left_Cave" index="0" instance=ExtResource( 2 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( 0, 896, 576, 896, 576, 0, 0, 0 )
+type = 3
+
+[node name="Leftest" type="Polygon2D" parent="Room/Left_Cave" index="1"]
+color = Color( 0.11, 0.086075, 0.0781, 1 )
+polygon = PoolVector2Array( 256, 960, 256, 1120, 128, 1120, 128, 960 )
+
+[node name="Leftestest" type="Polygon2D" parent="Room/Left_Cave" index="2"]
+color = Color( 0.07, 0.0539583, 0.0525, 1 )
+polygon = PoolVector2Array( 0, 960, 128, 960, 128, 1120, 0, 1120 )
+
+[node name="Right_Cave" parent="Room" index="4" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 1984, 960, 1984, 0, 3072, 0, 3072, 960 )
+type = 4
+
+[node name="Inner" parent="Room/Right_Cave" index="0" instance=ExtResource( 2 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( 2048, 896, 2048, 0, 3072, 0, 3072, 896 )
+type = 3
+
+[node name="Floor" type="CollisionPolygon2D" parent="Room/Wall" index="0"]
+polygon = PoolVector2Array( -48, 952, 0, 952, 0, 960, -40, 960, -40, 1120, 3072, 1120, 3072, 1200, 0, 1200, 0, 1128, -48, 1128 )
+
+[node name="Exit" type="Area2D" parent="Exits" index="0"]
+position = Vector2( -32, 1040 )
+monitorable = false
+collision_layer = 0
+
+[node name="area" type="CollisionShape2D" parent="Exits/Exit" index="0"]
+shape = SubResource( 1 )
+
+[node name="0" type="Position2D" parent="Entrances" index="0"]
+position = Vector2( 64, 1072 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="Watcher" parent="Objects" index="0" instance=ExtResource( 4 )]
+position = Vector2( 840, 896 )
+
+[node name="Limits" type="Position2D" parent="." index="6"]
+position = Vector2( 3072, 1200 )
+__meta__ = {
+"_gizmo_extents_": 3072.0
+}
+[connection signal="body_entered" from="Exits/Exit" to="." method="_on_Exit_entered"]

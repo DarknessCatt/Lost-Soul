@@ -31,6 +31,9 @@ func _ready():
 				room.node.connect("checkpoint_activated", self, "enter_levelup")
 				room.node.connect("checkpoint_reached", self, "mark_checkpoint")
 
+			RoomConstants.room_types.BOSS:
+				room.node.connect("boss_entered", self, "enter_boss")
+
 	map_data = generator.map_data
 	cur_pos = START_POINT
 
@@ -59,7 +62,14 @@ func mark_checkpoint():
 	respawn_room = cur_pos
 
 func _on_Hero_dead():
+	# warning-ignore:return_value_discarded
+	hero.move_and_slide(Vector2.ZERO)
 	hero.die()
+
+	if current_scene == scenes.on_boss:
+		screen_room.call_deferred("remove_child", temp_screen)
+		screen_room.call_deferred("add_child", map_data[cur_pos.x][cur_pos.y].node)
+
 	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
 		"modulate", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 2.3)
 	$Scene_Transtition/Tween.start()
@@ -69,7 +79,7 @@ func _on_Hero_dead():
 #Special Room Transitions
 
 #Scene control FSM
-enum scenes {play, respawning, temp_screen}
+enum scenes {play, respawning, temp_screen, to_boss, on_boss}
 var current_scene : int = scenes.play
 
 var temp_screen
@@ -98,6 +108,8 @@ func enter_levelup(menu : PackedScene) -> void:
 	game_pausable = false
 	temp_screen = menu.instance()
 	temp_screen.hero = self.hero
+	# warning-ignore:return_value_discarded
+	hero.move_and_slide(Vector2.ZERO)
 	hero.cutscene = hero.cutscene_type.PHYSICS
 
 	# warning-ignore:return_value_discarded
@@ -130,38 +142,95 @@ func close_settings() -> void:
 		"modulate", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 0.2)
 	$Scene_Transtition/Tween.start()
 
+func enter_boss(scene : Node2D) -> void:
+
+	# warning-ignore:return_value_discarded
+	hero.move_and_slide(Vector2.ZERO)
+	hero.cutscene = hero.cutscene_type.FULL
+
+	temp_screen = scene
+	temp_screen.connect("room_exited", self, "leave_boss")
+
+	# warning-ignore:narrowing_conversion
+	camera.limit_right = temp_screen.camera_limits.x
+	# warning-ignore:narrowing_conversion
+	camera.limit_bottom = temp_screen.camera_limits.y
+
+	current_scene = scenes.to_boss
+
+	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
+		"modulate", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 0.2)
+	$Scene_Transtition/Tween.start()
+
+func leave_boss() -> void:
+	# warning-ignore:return_value_discarded
+	hero.move_and_slide(Vector2.ZERO)
+	hero.cutscene = hero.cutscene_type.FULL
+
+	temp_screen.disconnect("room_exited", self, "leave_boss")
+
+	current_scene = scenes.on_boss
+
+	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
+		"modulate", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 0.2)
+	$Scene_Transtition/Tween.start()
+ 
 func _on_Scene_tween_all_completed():
 	$Room_Transition/Tween.interpolate_property($Room_Transition/Blackout, \
-		"modulate:a", 1, 0, 1)
+		"modulate:a", 1, 0, 0.5)
 	$Room_Transition/Tween.start()
 
-	if current_scene == scenes.play:
-		self.call_deferred("remove_child", game_screen)
-		$Temp_Screen/Viewport.call_deferred("add_child", temp_screen)
-		current_scene = scenes.temp_screen
+	match(current_scene):
 
-	elif current_scene == scenes.temp_screen:
-		$Temp_Screen/Viewport.call_deferred("remove_child",temp_screen)
-		self.call_deferred("add_child", game_screen)
-		current_scene = scenes.play
-		game_pausable = true
+		scenes.play:
+			self.call_deferred("remove_child", game_screen)
+			$Temp_Screen/Viewport.call_deferred("add_child", temp_screen)
+			current_scene = scenes.temp_screen
 
-	else:
-		var room : Base_Room = map_data[cur_pos.x][cur_pos.y].node
-		room.call_deferred("disconnect", "player_exited", self, "_room_exited")
-		screen_room.call_deferred("remove_child", room)
-		yield(room, "tree_exited")
+		scenes.temp_screen:
+			$Temp_Screen/Viewport.call_deferred("remove_child",temp_screen)
+			self.call_deferred("add_child", game_screen)
+			current_scene = scenes.play
+			game_pausable = true
 
-		room.request_ready()
+		scenes.respawning:
+			var room : Base_Room = map_data[cur_pos.x][cur_pos.y].node
+			room.call_deferred("disconnect", "player_exited", self, "_room_exited")
+			screen_room.call_deferred("remove_child", room)
+			yield(room, "tree_exited")
 
-		cur_pos = respawn_room
-		room = map_data[cur_pos.x][cur_pos.y].node
-		spawn_point = room.get_start_point()
+			room.request_ready()
 
-		enter_room(room)
-		hero.cutscene = hero.cutscene_type.NONE
+			cur_pos = respawn_room
+			room = map_data[cur_pos.x][cur_pos.y].node
+			spawn_point = room.get_start_point()
 
-		current_scene = scenes.play
+			enter_room(room)
+			hero.cutscene = hero.cutscene_type.NONE
+
+			current_scene = scenes.play
+
+		scenes.to_boss:
+			var room : Base_Room =  map_data[cur_pos.x][cur_pos.y].node
+			screen_room.call_deferred("remove_child", room)
+			screen_room.call_deferred("add_child", temp_screen)
+
+			room.request_ready()
+
+			hero.position = temp_screen.get_spawn_point()
+			hero.cutscene = hero.cutscene_type.NONE
+
+			current_scene = scenes.on_boss
+
+		scenes.on_boss:
+			var room : Base_Room =  map_data[cur_pos.x][cur_pos.y].node
+			screen_room.call_deferred("remove_child", temp_screen)
+			screen_room.call_deferred("add_child", room)
+
+			hero.position = room.get_start_point()
+			hero.cutscene = hero.cutscene_type.NONE
+
+			current_scene = scenes.on_boss
 
 # General Room Transitions
 
