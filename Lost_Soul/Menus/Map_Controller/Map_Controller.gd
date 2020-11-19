@@ -1,7 +1,5 @@
 extends Node2D
 
-export(PackedScene) var settings_menu : PackedScene
-
 const MAP_SIZE : Vector2 = Vector2(14,14)
 const START_POINT : Vector2 = Vector2(7, 7)
 
@@ -45,15 +43,9 @@ func _ready():
 	enter_room(map_data[cur_pos.x][cur_pos.y].node)
 	hero.position = map_data[cur_pos.x][cur_pos.y].node.get_start_point()
 
-var game_pausable : bool = true
-
 func _input(event):
-	if game_pausable:
-		if event.is_action_pressed("minimap"):
-			$Normal_Game/MiniMap.visible = not $Normal_Game/MiniMap.visible
-
-		elif event.is_action_pressed("pause"):
-			open_settings()
+	if event.is_action_pressed("minimap") and (current_scene == scenes.play or current_scene == scenes.on_boss):
+		$Normal_Game/MiniMap.visible = not $Normal_Game/MiniMap.visible
 
 # Hero's Death and Respawn
 var respawn_room : Vector2
@@ -75,7 +67,6 @@ func _on_Hero_dead():
 	$Scene_Transtition/Tween.start()
 	current_scene = scenes.respawning
 
-
 #Special Room Transitions
 
 #Scene control FSM
@@ -86,7 +77,6 @@ var temp_screen
 onready var game_screen : Node2D = $Normal_Game
 
 func enter_tutorial(tutorial : PackedScene):
-	game_pausable = false
 	temp_screen = tutorial.instance()
 	hero.cutscene = hero.cutscene_type.PHYSICS
 
@@ -105,7 +95,6 @@ func leave_tutorial() -> void:
 	hero.cutscene = hero.cutscene_type.NONE
 
 func enter_levelup(menu : PackedScene) -> void:
-	game_pausable = false
 	temp_screen = menu.instance()
 	temp_screen.hero = self.hero
 	# warning-ignore:return_value_discarded
@@ -127,23 +116,7 @@ func leave_levelup() -> void:
 	hero.cutscene = hero.cutscene_type.NONE
 	game_screen.get_node("HUD/Player_Status").update_HUD()
 
-func open_settings() -> void:
-	game_pausable = false
-	temp_screen = settings_menu.instance()
-	temp_screen.connect("menu_exited", self, "close_settings")
-
-	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
-		"modulate", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 0.2)
-	$Scene_Transtition/Tween.start()
-
-func close_settings() -> void:
-	temp_screen.disconnect("menu_exited", self, "close_settings")
-	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
-		"modulate", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 0.2)
-	$Scene_Transtition/Tween.start()
-
 func enter_boss(scene : Node2D) -> void:
-
 	# warning-ignore:return_value_discarded
 	hero.move_and_slide(Vector2.ZERO)
 	hero.cutscene = hero.cutscene_type.FULL
@@ -191,7 +164,6 @@ func _on_Scene_tween_all_completed():
 			$Temp_Screen/Viewport.call_deferred("remove_child",temp_screen)
 			self.call_deferred("add_child", game_screen)
 			current_scene = scenes.play
-			game_pausable = true
 
 		scenes.respawning:
 			var room : Base_Room = map_data[cur_pos.x][cur_pos.y].node
@@ -227,10 +199,15 @@ func _on_Scene_tween_all_completed():
 			screen_room.call_deferred("remove_child", temp_screen)
 			screen_room.call_deferred("add_child", room)
 
+			# warning-ignore:narrowing_conversion
+			camera.limit_right = room.camera_limits.x
+			# warning-ignore:narrowing_conversion
+			camera.limit_bottom = room.camera_limits.y
+
 			hero.position = room.get_start_point()
 			hero.cutscene = hero.cutscene_type.NONE
 
-			current_scene = scenes.on_boss
+			current_scene = scenes.play
 
 # General Room Transitions
 

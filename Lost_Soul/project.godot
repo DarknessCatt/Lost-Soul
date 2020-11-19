@@ -87,7 +87,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Lost Soul"
-run/main_scene="res://Menus/Game_Controller/Game_Controller.tscn"
+run/main_scene="res://Menus/Gameplay/Gameplay.tscn"
 boot_splash/bg_color=Color( 0.01, 0.01, 0.01, 1 )
 config/icon="res://icon.png"
 
