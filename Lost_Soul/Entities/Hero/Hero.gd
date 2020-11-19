@@ -152,7 +152,7 @@ var speed : Vector2 = Vector2(0,0)
 #FSM
 var cur_state : Node
 enum cutscene_type {NONE, PHYSICS, FULL}
-export(bool) var cutscene : int = false setget set_cutscene
+export(cutscene_type) var cutscene : int = cutscene_type.NONE setget set_cutscene
 
 func set_cutscene(new_value : int):
 	cutscene = new_value
