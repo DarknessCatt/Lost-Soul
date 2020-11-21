@@ -4,6 +4,7 @@ extends FSM
 const SOUL_RES : Resource = preload("res://Entities/Pickups/Souls/Souls.tscn")
 const BULLET_RES : Resource = preload("res://Entities/Enemies/Bosses/The_Gate_Guardian/Components/Basic_Shoot/Boss_Shoot.tscn")
 const HOMING_RES : Resource = preload("res://Entities/Enemies/Bosses/The_Gate_Guardian/Components/Homing_Shoot/Homing_Shoot.tscn")
+const HEAVY_RES : Resource = preload("res://Entities/Enemies/Bosses/The_Gate_Guardian/Components/Heavy_Shoot/Heavy_Shoot.tscn")
 
 #Information
 var body : Node2D
@@ -64,13 +65,13 @@ func single_shot() -> void:
 
 func homing_shot() -> void:
 	var bullet = HOMING_RES.instance()
-	bullet.SPEED = 300
+	bullet.SPEED = 350
 	bullet.position = self.position + self.body.get_node("Eye/Iris").position.rotated(self.body.rotation)
+	bullet.rotation = self.body.rotation
 	bullet.hero = self.hero
 	self.get_parent().add_child(bullet)
 
 func spread_shot() -> void:
-
 	var inicial_rad : float = -1.04
 	var increment : float = 0.52
 
@@ -80,6 +81,13 @@ func spread_shot() -> void:
 		bullet.position = self.position + self.body.get_node("Eye/Iris").position.rotated(self.body.rotation)
 		bullet.rotation = self.body.rotation + inicial_rad + i*increment
 		self.get_parent().add_child(bullet)
+
+func heavy_shot() -> void:
+	var bullet = HEAVY_RES.instance()
+	bullet.SPEED = 700
+	bullet.position = self.position + self.body.get_node("Eye/Iris").position.rotated(self.body.rotation)
+	bullet.rotation = self.body.rotation + 1.57
+	self.get_parent().add_child(bullet)
 
 func rain_shot() -> void:
 	var inicial_rad : float = -0.12

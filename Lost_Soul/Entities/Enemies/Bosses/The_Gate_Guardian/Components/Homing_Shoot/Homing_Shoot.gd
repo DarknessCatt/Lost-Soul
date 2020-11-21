@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var MAX_SPEED : int = 500
 var SPEED : int = 450
-var ACCEL : int = 20
+var ACCEL : int = 10
 var dir : Vector2 = Vector2(1,0)
 var collided : bool = false
 

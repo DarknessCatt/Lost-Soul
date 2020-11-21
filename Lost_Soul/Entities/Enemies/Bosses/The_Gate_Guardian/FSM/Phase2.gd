@@ -109,12 +109,13 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 		atk_counter += 1
 
 		if atk_counter < 3:
-			animation.travel("Atk_Shoot_Rain")
+			animation.travel("Atk_Shoot_Heavies")
 
 		else:
 			atk_counter = 0
-			$Phase2_Bounce.enter(Guardian)
-			on_bounce = true
+			animation.travel("Atk_Shoot_Quick_Homing")
+#			$Phase2_Bounce.enter(Guardian)
+#			on_bounce = true
 
 func hit(damage : int, force : int, direction : Vector2) -> void:
 	health -= damage
