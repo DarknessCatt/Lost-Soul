@@ -157,7 +157,7 @@ position = Vector2( 1320, 760 )
 [node name="Tween" type="Tween" parent="Objects" index="0"]
 
 [node name="The_Gate_Guardian" parent="Objects" index="1" instance=ExtResource( 4 )]
-horizontal_space = 540
+horizontal_space = 520
 downwards_space = 250
 
 [node name="Intro" type="Node2D" parent="Objects" index="2"]

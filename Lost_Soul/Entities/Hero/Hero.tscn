@@ -4959,7 +4959,7 @@ radius = 6.0
 
 [sub_resource type="CapsuleShape2D" id=36]
 radius = 6.0
-height = 10.0
+height = 14.0
 
 [sub_resource type="CapsuleShape2D" id=37]
 radius = 9.0
@@ -5427,7 +5427,6 @@ __meta__ = {
 }
 
 [node name="L_Leg_Hurtbox" parent="Body/Hip/Left_Leg" instance=ExtResource( 9 )]
-visible = false
 position = Vector2( 0, 12 )
 Id = 1
 Character = NodePath("../../../..")
@@ -5446,7 +5445,6 @@ __meta__ = {
 }
 
 [node name="L_Shin_Hurtbox" parent="Body/Hip/Left_Leg/Left_Shin" instance=ExtResource( 9 )]
-visible = false
 position = Vector2( -0.0730057, 12.054 )
 rotation = -0.00285979
 Id = 1
@@ -5480,7 +5478,6 @@ __meta__ = {
 }
 
 [node name="R_Leg_Hurtbox" parent="Body/Hip/Right_Leg" instance=ExtResource( 9 )]
-visible = false
 position = Vector2( -0.637856, 11.9064 )
 rotation = 0.00976517
 Id = 1
@@ -5498,7 +5495,6 @@ __meta__ = {
 }
 
 [node name="R_Shin_Hurtbox" parent="Body/Hip/Right_Leg/Right_Shin" instance=ExtResource( 9 )]
-visible = false
 position = Vector2( -0.637856, 12.9876 )
 rotation = 0.00976517
 Id = 1
@@ -5527,6 +5523,7 @@ __meta__ = {
 color = Color( 1, 0, 0, 1 )
 
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 10.0172 )
 shape = SubResource( 37 )
 

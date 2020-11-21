@@ -79,6 +79,7 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 	if sign(speed.y) != sign(move_dir.y) : speed.y *= FRICTION
 
 	if speed.length() > MAX_SPEED:
+		# warning-ignore:integer_division
 		if speed.length() - MAX_SPEED < ACCEL/10: speed = MAX_SPEED*speed.normalized()
 		else: speed *= FRICTION
 
@@ -86,6 +87,7 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 		if abs(speed.x) < 1: speed.x = 0
 		if abs(speed.y) < 1: speed.y = 0
 
+	# warning-ignore:return_value_discarded
 	Guardian.move_and_slide(speed, NORMAL)
 
 	#Handling Attacks
@@ -96,11 +98,11 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 		atk_cooldown = atk_base_cooldown \
 						+ rand_range(-atk_variance, atk_variance)
 
-		if rand_range(0, 1) <= 0.5:
+		if rand_range(0, 1) < 0.5:
 			animation.travel("Atk_Shoot_Multi")
 
 		else:
-			animation.travel("Atk_Shoot_Spread")
+			animation.travel("Atk_Shoot_Homing")
 
 func hit(damage : int, force : int, direction : Vector2) -> void:
 	health -= damage

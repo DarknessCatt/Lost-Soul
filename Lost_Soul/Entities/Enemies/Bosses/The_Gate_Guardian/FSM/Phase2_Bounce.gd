@@ -32,6 +32,7 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 
 		speed.x = sign(speed.x)*min(abs(speed.x), MAX_SPEED)
 
+		# warning-ignore:return_value_discarded
 		Guardian.move_and_slide(speed, NORMAL)
 
 		Guardian.body.rotation = speed.angle() - 1.57 #90 deg in rad
@@ -58,11 +59,13 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 
 		speed -= move_dir.normalized()*(ACCEL*20)*delta
 
+		# warning-ignore:return_value_discarded
 		Guardian.move_and_slide(speed, NORMAL)
 
 		Guardian.body.rotation = move_dir.angle() - 1.57
 
 	else:
+		# warning-ignore:return_value_discarded
 		Guardian.move_and_slide(Vector2(0,-25), NORMAL)
 
 # Called by Atk_Bounce_Intro / Outro

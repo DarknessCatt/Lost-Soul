@@ -1,0 +1,100 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Entities/Combat/Hitbox/Hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/Components/Homing_Shoot/Homing_Shoot.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Loop"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.941667, 0.5, 1 ), Color( 1, 0.969667, 0.74, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.75, 0.75 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 20.0
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.7, 0.783333, 1 )
+colors = PoolColorArray( 1, 0.941176, 0.501961, 1, 1, 0.942655, 0.514478, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 16.0
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 100.0
+scale = 3.0
+scale_random = 0.5
+color_ramp = SubResource( 5 )
+
+[node name="Homing_Shoot" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 2147483649
+script = ExtResource( 2 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+autoplay = "Loop"
+anims/Loop = SubResource( 1 )
+
+[node name="Body" type="Polygon2D" parent="."]
+scale = Vector2( 0.968424, 0.968424 )
+color = Color( 1, 0.947892, 0.553358, 1 )
+polygon = PoolVector2Array( 0, 24, -16, 16, -24, 0, -16, -16, 0, -24, 16, -16, 24, 0, 16, 16 )
+
+[node name="Col" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 1 )]
+Body = NodePath("../Body")
+Id = 2
+Damage = 10
+
+[node name="area" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 3 )
+
+[node name="Self_Destruct" type="Timer" parent="."]
+process_mode = 0
+wait_time = 7.0
+one_shot = true
+autostart = true
+
+[node name="Splash" type="Particles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource( 6 )
+[connection signal="timeout" from="Self_Destruct" to="." method="_on_Self_Destruct_timeout"]

@@ -15,7 +15,7 @@ const NORMAL : Vector2 = Vector2(0, -1)
 var speed : Vector2 = Vector2(0,0)
 const ACCEL : int = 300
 const MAX_SPEED : int = 500
-const FRICTION : float = 0.99
+const FRICTION : float = 0.95
 
 #Movement Direction
 var point_to_seek : Vector2 = Vector2(0,-20)
@@ -87,6 +87,7 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 	if sign(speed.y) != sign(move_dir.y) : speed.y *= FRICTION
 
 	if speed.length() > MAX_SPEED:
+		# warning-ignore:integer_division
 		if speed.length() - MAX_SPEED < ACCEL/10: speed = MAX_SPEED*speed.normalized()
 		else: speed *= FRICTION
 
@@ -94,6 +95,7 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 		if abs(speed.x) < 1: speed.x = 0
 		if abs(speed.y) < 1: speed.y = 0
 
+	# warning-ignore:return_value_discarded
 	Guardian.move_and_slide(speed, NORMAL)
 
 	#Handling Attacks

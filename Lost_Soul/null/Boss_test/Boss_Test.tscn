@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Procedural_Maps/Mountain/Boss_Room/Battle_Room/Boss_Battle_Room.tscn" type="PackedScene" id=2]
+
+[node name="Boss_Test" type="Node2D"]
+
+[node name="Boss_Battle_Room" parent="." instance=ExtResource( 2 )]
+
+[node name="Hero" parent="." instance=ExtResource( 1 )]
+position = Vector2( 64, 1056 )
+
+[node name="Camera2D" type="Camera2D" parent="Hero"]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 3072
+limit_bottom = 1200

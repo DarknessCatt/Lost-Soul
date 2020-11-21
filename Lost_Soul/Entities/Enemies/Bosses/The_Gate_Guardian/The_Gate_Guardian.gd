@@ -2,7 +2,8 @@ extends FSM
 
 #Resources
 const SOUL_RES : Resource = preload("res://Entities/Pickups/Souls/Souls.tscn")
-const BULLET_RES : Resource = preload("res://Entities/Enemies/Bosses/The_Gate_Guardian/Components/Boss_Shoot.tscn")
+const BULLET_RES : Resource = preload("res://Entities/Enemies/Bosses/The_Gate_Guardian/Components/Basic_Shoot/Boss_Shoot.tscn")
+const HOMING_RES : Resource = preload("res://Entities/Enemies/Bosses/The_Gate_Guardian/Components/Homing_Shoot/Homing_Shoot.tscn")
 
 #Information
 var body : Node2D
@@ -16,6 +17,7 @@ export(int) var horizontal_space = 0
 export(int) var downwards_space = 0
 
 #Signals
+# warning-ignore:unused_signal
 signal intro_ended
 signal dead
 
@@ -58,6 +60,13 @@ func single_shot() -> void:
 	bullet.SPEED = 700
 	bullet.position = self.position + self.body.get_node("Eye/Iris").position.rotated(self.body.rotation)
 	bullet.rotation = self.body.rotation
+	self.get_parent().add_child(bullet)
+
+func homing_shot() -> void:
+	var bullet = HOMING_RES.instance()
+	bullet.SPEED = 300
+	bullet.position = self.position + self.body.get_node("Eye/Iris").position.rotated(self.body.rotation)
+	bullet.hero = self.hero
 	self.get_parent().add_child(bullet)
 
 func spread_shot() -> void:
