@@ -8,6 +8,7 @@ export(int) var MAX_GRAV : int = 1500
 
 #Functions
 func enter(base_fly : KinematicBody2D) -> void:
+	base_fly._die()
 	base_fly.change_animation("Dead")
 
 func update(base_fly: KinematicBody2D, _delta : float) -> void:

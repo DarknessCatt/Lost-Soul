@@ -42,6 +42,7 @@ func update(Watcher: KinematicBody2D, _delta : float) -> void:
 
 	Watcher.speed = spd
 
+	# warning-ignore:return_value_discarded
 	Watcher.move_and_slide(Watcher.speed, NORMAL)
 
 	if Watcher.is_on_floor() or Watcher.is_on_ceiling():

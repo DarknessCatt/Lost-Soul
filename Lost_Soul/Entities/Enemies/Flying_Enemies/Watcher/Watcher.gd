@@ -1,6 +1,11 @@
 extends Base_Fly
 
 #Attributes
+func _die() -> void:
+	$Hurtbox.call_deferred("set", "monitoring", false)
+	$Body/Eye/Hitbox.call_deferred("set", "monitorable", false)
+	yield(get_tree(), "idle_frame")
+
 func _hit(_damage : int, force : int, direction : Vector2):
 
 	self.speed += force*direction.normalized()
