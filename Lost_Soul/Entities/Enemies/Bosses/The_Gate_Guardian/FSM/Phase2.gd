@@ -4,7 +4,7 @@ var horizontal_space = 0
 var downwards_space = 0
 
 #Attributes
-const MAX_HEALTH : int = 45
+const MAX_HEALTH : int = 60
 var health : int = MAX_HEALTH
 var animation : AnimationNodeStateMachinePlayback
 var effects : AnimationPlayer
@@ -25,7 +25,6 @@ const seek_cooldown : float = 0.5
 
 #Attack Timer
 var atk_timer : float = 0.0
-const atk_variance : float = 0.0
 const atk_base_cooldown : float = 5.0
 var atk_cooldown : float = 0.0
 
@@ -47,8 +46,7 @@ func enter(Guardian : KinematicBody2D) -> void:
 	downwards_space = Guardian.downwards_space
 
 	point_to_seek = Vector2(horizontal_space, 0)
-	atk_cooldown = atk_base_cooldown \
-					+ rand_range(-atk_variance, atk_variance)
+	atk_cooldown = atk_base_cooldown
 
 func exit(Guardian : KinematicBody2D) -> void:
 	Guardian.body.rotation = 0
@@ -59,21 +57,22 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 		Guardian._change_state($"../Dead")
 
 	if on_bounce:
-		$Phase2_Bounce.update(Guardian, delta)
+		$Phase2_Charge.update(Guardian, delta)
 		return
 
 	#Handling Body Rotation
-	var look_dir : Vector2 = Guardian.hero.global_position \
-						- Guardian.global_position
+	var look_dir : Vector2 = Guardian.hero.global_position - Guardian.global_position
 
 	Guardian.body.rotation = look_dir.angle() - 1.57 #90 deg in rad
 
 	#Handling point_to_seek
-	seek_timer += delta
+	point_to_seek.y = look_dir.y - downwards_space*1.5
 
-	if seek_timer >= seek_cooldown:
-		seek_timer = 0.0
-		point_to_seek.y = rand_range(-seek_variance, seek_variance)
+#	seek_timer += delta
+#
+#	if seek_timer >= seek_cooldown:
+#		seek_timer = 0.0
+#		point_to_seek.y += rand_range(-seek_variance, seek_variance)
 
 	var move_dir : Vector2 = (point_to_seek - Guardian.position)
 
@@ -103,19 +102,22 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 
 	if atk_timer > atk_cooldown:
 		atk_timer = 0.0
-		atk_cooldown = atk_base_cooldown \
-						+ rand_range(-atk_variance, atk_variance)
-
 		atk_counter += 1
 
-		if atk_counter < 3:
-			animation.travel("Atk_Shoot_Heavies")
+		if atk_counter <= 3:
+
+			if rand_range(0, 1) < 0.5:
+				atk_cooldown = atk_base_cooldown
+				animation.travel("Atk_Shoot_Heavies")
+
+			else:
+				atk_cooldown = atk_base_cooldown/2 
+				animation.travel("Atk_Shoot_Quick_Homing")
 
 		else:
 			atk_counter = 0
-			animation.travel("Atk_Shoot_Quick_Homing")
-#			$Phase2_Bounce.enter(Guardian)
-#			on_bounce = true
+			$Phase2_Charge.enter(Guardian)
+			on_bounce = true
 
 func hit(damage : int, force : int, direction : Vector2) -> void:
 	health -= damage
@@ -126,7 +128,7 @@ func hit(damage : int, force : int, direction : Vector2) -> void:
 
 # Called by Atk_Bounce_Outro
 
-func bounce_end() -> void:
+func stun_end() -> void:
 	on_bounce = false
 	speed = Vector2(0,-1)*MAX_SPEED
 	point_to_seek = sign(Guardian_Node.position.x)*Vector2(horizontal_space, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/The_Gate_Guardian.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/FSM/Intro.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Assets/Sound_Effects/Space_Magic/238996__qubodup__space-magic.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Assets/Sound_Effects/Spell_Shoot/500908__bertsz__spell-shoot.wav" type="AudioStream" id=13]
 [ext_resource path="res://Assets/Sound_Effects/Hitting_Wall/249814__spookymodem__hitting-wall.wav" type="AudioStream" id=14]
+[ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/FSM/Phase2_Charge.gd" type="Script" id=15]
 
 [sub_resource type="Animation" id=1]
 resource_name = "hit"
@@ -447,10 +448,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 1, 2, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.3, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ), PoolVector2Array( -52, -32, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -32, 32, -44, -32, -44 ), PoolVector2Array( -52, -28, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -28, 32, -40, -32, -40 ), PoolVector2Array( -52, -36, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -36, 32, -48, -32, -48 ), PoolVector2Array( -52, -32, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -32, 32, -44, -32, -44 ) ]
+"values": [ PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ), PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ), PoolVector2Array( -52, -32, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -32, 32, -44, -32, -44 ), PoolVector2Array( -52, -28, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -28, 32, -40, -32, -40 ), PoolVector2Array( -52, -36, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -36, 32, -48, -32, -48 ), PoolVector2Array( -52, -32, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -32, 32, -44, -32, -44 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Body/Eye/Bot_Lid:polygon")
@@ -459,10 +460,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 1, 2, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.3, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ), PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 48, -32, 48 ), PoolVector2Array( -52, 28, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 28, 32, 44, -32, 44 ), PoolVector2Array( -52, 36, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 36, 32, 52, -32, 52 ), PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 48, -32, 48 ) ]
+"values": [ PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ), PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ), PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 48, -32, 48 ), PoolVector2Array( -52, 28, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 28, 32, 44, -32, 44 ), PoolVector2Array( -52, 36, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 36, 32, 52, -32, 52 ), PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 48, -32, 48 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Body/Eye:color")
@@ -547,12 +548,177 @@ tracks/8/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "bounce_end"
+"method": "stun_end"
 } ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Body/Eye/Iris/Inside_Iris:polygon")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -8, 0, 0, -8, 8, 0, 0, 8 ), PoolVector2Array( -8, 0, 0, -8, 8, 0, 0, 8 ) ]
 }
 
 [sub_resource type="Animation" id=5]
-resource_name = "Atk_Shoot_Heavies"
+resource_name = "Atk_Laser_Charge"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Eye/Top_Lid:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.8, 1.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( -52, -24, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -24, 32, -44, -32, -44 ), PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ), PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ), PoolVector2Array( -52, -36, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -36, 32, -52, -32, -52 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Eye/Bot_Lid:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1.8, 1.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 44, -32, 44 ), PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ), PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ), PoolVector2Array( -52, 36, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 36, 32, 52, -32, 52 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Eye:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.65, 0.65, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Eye/Iris/Inside_Iris:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Eye/Iris:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.8, 1.85 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -12, 0, 0, -12, 12, 0, 0, 12 ), PoolVector2Array( -12, 0, 0, -12, 12, 0, 0, 12 ), PoolVector2Array( -52, 0, 0, -32, 12, 0, 0, 32 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body/Eye/Iris:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.8, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 48, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Body/Eye/Iris/Inside_Iris:polygon")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.85 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -8, 0, 0, -8, 8, 0, 0, 8 ), PoolVector2Array( -40.6307, 0, -4, -24.6307, 8, 0, -4, 24.6307 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Atk_Laser_Loop"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Eye/Iris:polygon")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( -52, 0, 0, -32, 12, 0, 0, 32 ), PoolVector2Array( -52, 0, 0, -28, 12, 0, 0, 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Eye/Iris/Inside_Iris:polygon")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( -44, 0, -4, -28, 8, 0, -4, 28 ), PoolVector2Array( -40, 0, -4, -24, 8, 0, -4, 24 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Eye/Top_Lid:polygon")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( -52, -36, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -36, 32, -52, -32, -52 ), PoolVector2Array( -52, -32, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -32, 32, -48, -32, -48 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Eye/Bot_Lid:polygon")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( -52, 36, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 36, 32, 52, -32, 52 ), PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 48, -32, 48 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("States/Phase2/Phase2_Charge:state")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 1 ]
+}
+
+[sub_resource type="Animation" id=7]
 length = 3.05
 step = 0.05
 tracks/0/type = "value"
@@ -681,7 +847,7 @@ tracks/9/keys = {
 "values": [ -80.0, -10.0, -10.0, -20.0, -80.0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 length = 1.5
 step = 0.05
 tracks/0/type = "value"
@@ -807,7 +973,7 @@ tracks/9/keys = {
 "values": [ -80.0, 0.0, -20.0, -80.0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 length = 2.3
 step = 0.05
 tracks/0/type = "value"
@@ -939,8 +1105,7 @@ tracks/9/keys = {
 "values": [ -10.0, -10.0, -20.0, -80.0 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "Atk_Shoot_Quick_Homing"
+[sub_resource type="Animation" id=10]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Eye:color")
@@ -1077,7 +1242,7 @@ tracks/10/keys = {
 "values": [ Color( 1, 0.05, 0.05, 1 ), Color( 1, 0.9525, 0.05, 1 ), Color( 1, 0.9525, 0.05, 1 ), Color( 1, 0.05, 0.05, 1 ), Color( 1, 0.05, 0.05, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=11]
 length = 3.0
 step = 0.05
 tracks/0/type = "value"
@@ -1215,7 +1380,7 @@ tracks/9/keys = {
 "values": [ -80.0, -10.0, -10.0, -20.0, -80.0 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=12]
 length = 1.5
 step = 0.05
 tracks/0/type = "value"
@@ -1341,7 +1506,7 @@ tracks/9/keys = {
 "values": [ -80.0, 0.0, -20.0, -80.0 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=13]
 length = 4.0
 step = 0.05
 tracks/0/type = "value"
@@ -1541,7 +1706,7 @@ tracks/15/keys = {
 "values": [ false, false ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=14]
 length = 2.0
 loop = true
 step = 0.05
@@ -1594,7 +1759,7 @@ tracks/3/keys = {
 "values": [ PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 44, -32, 44 ), PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 48, -32, 48 ), PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 44, -32, 44 ), PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ), PoolVector2Array( -52, 0, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 0, 32, 0, -32, 0 ), PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 44, -32, 44 ), PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 48, -32, 48 ), PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 44, -32, 44 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=15]
 length = 2.0
 loop = true
 step = 0.05
@@ -1707,7 +1872,7 @@ tracks/8/keys = {
 "values": [ PoolVector2Array( -16, 0, 0, -16, 16, 0, 0, 16 ), PoolVector2Array( -16, 0, 0, -16, 16, 0, 0, 16 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=16]
 length = 2.5
 step = 0.05
 tracks/0/type = "value"
@@ -1886,7 +2051,7 @@ tracks/13/keys = {
 "values": [ false, false ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=17]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Eye/Top_Lid:polygon")
@@ -2033,7 +2198,7 @@ tracks/11/keys = {
 "values": [ 0, 0, 2, 2 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=18]
 length = 7.0
 step = 0.05
 tracks/0/type = "value"
@@ -2186,67 +2351,60 @@ tracks/11/keys = {
 "values": [ 0.0, 5.0, 0.0, -80.0 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=17]
-animation = "Atk_Bounce_Intro"
-
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=19]
 animation = "Atk_Bounce_Outro"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
-animation = "Atk_Shoot_Heavies"
-
 [sub_resource type="AnimationNodeAnimation" id=20]
-animation = "Atk_Shoot_Homing"
-
-[sub_resource type="AnimationNodeAnimation" id=22]
-animation = "Atk_Shoot_Multi"
+animation = "Atk_Laser_Charge"
 
 [sub_resource type="AnimationNodeAnimation" id=21]
-animation = "Atk_Shoot_Quick_Homing"
+animation = "Atk_Laser_Loop"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "Atk_Shoot_Heavies"
 
 [sub_resource type="AnimationNodeAnimation" id=23]
-animation = "Dead"
+animation = "Atk_Shoot_Homing"
 
 [sub_resource type="AnimationNodeAnimation" id=24]
-animation = "Idle_1"
+animation = "Atk_Shoot_Multi"
 
 [sub_resource type="AnimationNodeAnimation" id=25]
-animation = "Idle_2"
+animation = "Atk_Shoot_Quick_Homing"
 
 [sub_resource type="AnimationNodeAnimation" id=26]
-animation = "Phase_2"
+animation = "Dead"
 
 [sub_resource type="AnimationNodeAnimation" id=27]
-animation = "Side_Switch"
+animation = "Idle_1"
 
 [sub_resource type="AnimationNodeAnimation" id=28]
-animation = "Spawning"
+animation = "Idle_2"
 
 [sub_resource type="AnimationNodeAnimation" id=29]
+animation = "Phase_2"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "Side_Switch"
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "Spawning"
+
+[sub_resource type="AnimationNodeAnimation" id=32]
 animation = "rest"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
 switch_mode = 2
 auto_advance = true
 xfade_time = 0.1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=32]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=33]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=34]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=35]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=36]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=37]
 
@@ -2257,12 +2415,12 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachineTransition" id=39]
 switch_mode = 2
 auto_advance = true
-xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=40]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=41]
-xfade_time = 0.1
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=42]
 switch_mode = 2
@@ -2270,62 +2428,77 @@ auto_advance = true
 xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=43]
-xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=44]
 xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=45]
-xfade_time = 0.1
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=46]
-switch_mode = 2
-auto_advance = true
-xfade_time = 0.2
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=47]
-xfade_time = 0.3
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=48]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=49]
 switch_mode = 2
 auto_advance = true
 xfade_time = 0.2
 
-[sub_resource type="AnimationNodeStateMachine" id=50]
-states/Atk_Bounce_Intro/node = SubResource( 17 )
-states/Atk_Bounce_Intro/position = Vector2( 1020, 327 )
-states/Atk_Bounce_Outro/node = SubResource( 18 )
-states/Atk_Bounce_Outro/position = Vector2( 1155.69, 225 )
-states/Atk_Shoot_Heavies/node = SubResource( 19 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=49]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=51]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=52]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=53]
+
+[sub_resource type="AnimationNodeStateMachine" id=54]
+states/Atk_Bounce_Outro/node = SubResource( 19 )
+states/Atk_Bounce_Outro/position = Vector2( 1129.69, 238 )
+states/Atk_Laser_Charge/node = SubResource( 20 )
+states/Atk_Laser_Charge/position = Vector2( 888, 328 )
+states/Atk_Laser_Loop/node = SubResource( 21 )
+states/Atk_Laser_Loop/position = Vector2( 1129.69, 328 )
+states/Atk_Shoot_Heavies/node = SubResource( 22 )
 states/Atk_Shoot_Heavies/position = Vector2( 904, -2 )
-states/Atk_Shoot_Homing/node = SubResource( 20 )
+states/Atk_Shoot_Homing/node = SubResource( 23 )
 states/Atk_Shoot_Homing/position = Vector2( 622, -2 )
-states/Atk_Shoot_Multi/node = SubResource( 22 )
+states/Atk_Shoot_Multi/node = SubResource( 24 )
 states/Atk_Shoot_Multi/position = Vector2( 271, -2 )
-states/Atk_Shoot_Quick_Homing/node = SubResource( 21 )
+states/Atk_Shoot_Quick_Homing/node = SubResource( 25 )
 states/Atk_Shoot_Quick_Homing/position = Vector2( 1183.69, -2 )
-states/Dead/node = SubResource( 23 )
+states/Dead/node = SubResource( 26 )
 states/Dead/position = Vector2( 1408.69, 124 )
-states/Idle_1/node = SubResource( 24 )
+states/Idle_1/node = SubResource( 27 )
 states/Idle_1/position = Vector2( 439, 124 )
-states/Idle_2/node = SubResource( 25 )
+states/Idle_2/node = SubResource( 28 )
 states/Idle_2/position = Vector2( 1020, 124 )
-states/Phase_2/node = SubResource( 26 )
+states/Phase_2/node = SubResource( 29 )
 states/Phase_2/position = Vector2( 729, 124 )
-states/Side_Switch/node = SubResource( 27 )
+states/Side_Switch/node = SubResource( 30 )
 states/Side_Switch/position = Vector2( 439, -101 )
-states/Spawning/node = SubResource( 28 )
+states/Spawning/node = SubResource( 31 )
 states/Spawning/position = Vector2( 251, 124 )
-states/rest/node = SubResource( 29 )
+states/rest/node = SubResource( 32 )
 states/rest/position = Vector2( 75, 124 )
-transitions = [ "rest", "Spawning", SubResource( 30 ), "Spawning", "Idle_1", SubResource( 31 ), "Idle_1", "Phase_2", SubResource( 32 ), "Idle_1", "Atk_Shoot_Homing", SubResource( 33 ), "Idle_1", "Atk_Shoot_Multi", SubResource( 34 ), "Atk_Shoot_Multi", "Idle_1", SubResource( 35 ), "Atk_Shoot_Homing", "Idle_1", SubResource( 36 ), "Idle_1", "Side_Switch", SubResource( 37 ), "Side_Switch", "Idle_1", SubResource( 38 ), "Phase_2", "Idle_2", SubResource( 39 ), "Idle_2", "Atk_Shoot_Heavies", SubResource( 40 ), "Idle_2", "Atk_Bounce_Intro", SubResource( 41 ), "Atk_Shoot_Heavies", "Idle_2", SubResource( 42 ), "Atk_Shoot_Homing", "Side_Switch", SubResource( 43 ), "Atk_Shoot_Multi", "Side_Switch", SubResource( 44 ), "Atk_Bounce_Intro", "Atk_Bounce_Outro", SubResource( 45 ), "Atk_Bounce_Outro", "Idle_2", SubResource( 46 ), "Idle_2", "Dead", SubResource( 47 ), "Idle_2", "Atk_Shoot_Quick_Homing", SubResource( 48 ), "Atk_Shoot_Quick_Homing", "Idle_2", SubResource( 49 ) ]
-graph_offset = Vector2( 380.688, -41 )
+transitions = [ "rest", "Spawning", SubResource( 33 ), "Spawning", "Idle_1", SubResource( 34 ), "Idle_1", "Phase_2", SubResource( 35 ), "Idle_1", "Atk_Shoot_Homing", SubResource( 36 ), "Idle_1", "Atk_Shoot_Multi", SubResource( 37 ), "Atk_Shoot_Multi", "Idle_1", SubResource( 38 ), "Atk_Shoot_Homing", "Idle_1", SubResource( 39 ), "Idle_1", "Side_Switch", SubResource( 40 ), "Side_Switch", "Idle_1", SubResource( 41 ), "Phase_2", "Idle_2", SubResource( 42 ), "Idle_2", "Atk_Shoot_Heavies", SubResource( 43 ), "Idle_2", "Atk_Laser_Charge", SubResource( 44 ), "Atk_Shoot_Heavies", "Idle_2", SubResource( 45 ), "Atk_Shoot_Homing", "Side_Switch", SubResource( 46 ), "Atk_Shoot_Multi", "Side_Switch", SubResource( 47 ), "Atk_Bounce_Outro", "Idle_2", SubResource( 48 ), "Idle_2", "Dead", SubResource( 49 ), "Idle_2", "Atk_Shoot_Quick_Homing", SubResource( 50 ), "Atk_Shoot_Quick_Homing", "Idle_2", SubResource( 51 ), "Atk_Laser_Charge", "Atk_Laser_Loop", SubResource( 52 ), "Atk_Laser_Loop", "Atk_Bounce_Outro", SubResource( 53 ) ]
+graph_offset = Vector2( 304.688, 72 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=51]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=55]
 
-[sub_resource type="ParticlesMaterial" id=52]
+[sub_resource type="ParticlesMaterial" id=56]
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
@@ -2335,13 +2508,13 @@ orbit_velocity_random = 0.0
 scale = 15.0
 scale_random = 0.5
 
-[sub_resource type="CircleShape2D" id=53]
+[sub_resource type="CircleShape2D" id=57]
 radius = 55.0066
 
-[sub_resource type="CircleShape2D" id=54]
+[sub_resource type="CircleShape2D" id=58]
 radius = 55.0
 
-[sub_resource type="CircleShape2D" id=55]
+[sub_resource type="CircleShape2D" id=59]
 radius = 50.0
 
 [node name="The_Gate_Guardian" type="KinematicBody2D"]
@@ -2362,36 +2535,39 @@ volume_db = -80.0
 
 [node name="Charge" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
-volume_db = -10.0
+volume_db = -80.0
 
 [node name="Screech" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
-volume_db = -80.0
+volume_db = -69.6346
 
 [node name="Body_Effects" type="AnimationPlayer" parent="."]
 anims/hit = SubResource( 1 )
 
 [node name="Body_Anim" type="AnimationPlayer" parent="."]
+autoplay = "0_rest"
 anims/0_rest = SubResource( 2 )
 anims/Atk_Bounce_Intro = SubResource( 3 )
 anims/Atk_Bounce_Outro = SubResource( 4 )
-anims/Atk_Shoot_Heavies = SubResource( 5 )
-anims/Atk_Shoot_Homing = SubResource( 6 )
-anims/Atk_Shoot_Multi = SubResource( 7 )
-anims/Atk_Shoot_Quick_Homing = SubResource( 8 )
-anims/Atk_Shoot_Rain = SubResource( 9 )
-anims/Atk_Shoot_Spread = SubResource( 10 )
-anims/Dead = SubResource( 11 )
-anims/Idle_1 = SubResource( 12 )
-anims/Idle_2 = SubResource( 13 )
-anims/Phase_2 = SubResource( 14 )
-anims/Side_Switch = SubResource( 15 )
-anims/Spawning = SubResource( 16 )
+anims/Atk_Laser_Charge = SubResource( 5 )
+anims/Atk_Laser_Loop = SubResource( 6 )
+anims/Atk_Shoot_Heavies = SubResource( 7 )
+anims/Atk_Shoot_Homing = SubResource( 8 )
+anims/Atk_Shoot_Multi = SubResource( 9 )
+anims/Atk_Shoot_Quick_Homing = SubResource( 10 )
+anims/Atk_Shoot_Rain = SubResource( 11 )
+anims/Atk_Shoot_Spread = SubResource( 12 )
+anims/Dead = SubResource( 13 )
+anims/Idle_1 = SubResource( 14 )
+anims/Idle_2 = SubResource( 15 )
+anims/Phase_2 = SubResource( 16 )
+anims/Side_Switch = SubResource( 17 )
+anims/Spawning = SubResource( 18 )
 
 [node name="Animation_Player" type="AnimationTree" parent="."]
-tree_root = SubResource( 50 )
+tree_root = SubResource( 54 )
 anim_player = NodePath("../Body_Anim")
-parameters/playback = SubResource( 51 )
+parameters/playback = SubResource( 55 )
 
 [node name="States" type="Node" parent="."]
 
@@ -2413,6 +2589,10 @@ script = ExtResource( 7 )
 [node name="Phase2_Bounce" type="Node" parent="States/Phase2"]
 script = ExtResource( 8 )
 
+[node name="Phase2_Charge" type="Node" parent="States/Phase2"]
+script = ExtResource( 15 )
+state = 1
+
 [node name="Dead" type="Node" parent="States"]
 script = ExtResource( 9 )
 
@@ -2421,7 +2601,7 @@ script = ExtResource( 9 )
 [node name="Death" type="Particles2D" parent="Body"]
 emitting = false
 amount = 30
-process_material = SubResource( 52 )
+process_material = SubResource( 56 )
 
 [node name="Eye" type="Polygon2D" parent="Body"]
 polygon = PoolVector2Array( -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 56, 40, 40, 56, -40, 56, -56, 40 )
@@ -2442,17 +2622,15 @@ color = Color( 0.39, 0.0975, 0.039, 1 )
 polygon = PoolVector2Array( -52, 36, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 36, 32, 48, -36, 48 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 5 )]
-visible = false
 monitoring = false
 Id = 2
 Character = NodePath("..")
 hit_effect_dist = 30
 
 [node name="Area" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource( 53 )
+shape = SubResource( 57 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 10 )]
-visible = false
 monitorable = false
 Body = NodePath("../Body")
 Id = 2
@@ -2460,8 +2638,8 @@ Damage = 10
 Force = 10
 
 [node name="Area" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource( 54 )
+shape = SubResource( 58 )
 
 [node name="Phys_Body" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 55 )
+shape = SubResource( 59 )

@@ -22,6 +22,9 @@ var speed : Vector2 = Vector2(0,0)
 onready var cur_state : Node
 
 ##Functions
+func _die() -> void:
+	pass
+
 func _physics_process(delta) -> void:
 	if not Engine.editor_hint:
 		cur_state.update(self, delta)

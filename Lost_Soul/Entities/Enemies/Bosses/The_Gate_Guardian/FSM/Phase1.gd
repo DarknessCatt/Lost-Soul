@@ -32,7 +32,10 @@ const atk_variance : float = 0.5
 const atk_base_cooldown : float = 3.0
 var atk_cooldown : float = 0.0
 
+var Guardian_Pointer : KinematicBody2D
+
 func enter(Guardian : KinematicBody2D) -> void:
+	Guardian_Pointer = Guardian
 	health = MAX_HEALTH
 	speed = Vector2(0,0)
 	side_damage = 0
@@ -114,6 +117,7 @@ func hit(damage : int, force : int, direction : Vector2) -> void:
 		side_damage = 0
 		point_to_seek.x = -1*sign(point_to_seek.x)*horizontal_space
 		point_to_seek.y = downwards_space
+		Guardian_Pointer._disable_boxes()
 		animation.travel("Side_Switch")
 		speed.x = MAX_SPEED*4*sign(point_to_seek.x)
 

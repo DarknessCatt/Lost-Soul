@@ -79,7 +79,7 @@ shape = SubResource( 2 )
 [node name="Hitbox" parent="." instance=ExtResource( 1 )]
 Body = NodePath("../Body")
 Id = 2
-Damage = 10
+Damage = 15
 
 [node name="area" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 3 )

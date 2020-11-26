@@ -35,6 +35,11 @@ func _ready():
 	original_position = self.position
 	self.modulate.a = 0
 
+func _disable_boxes() -> void:
+	$Hurtbox.call_deferred("set", "monitoring", false)
+	$Hitbox.call_deferred("set", "monitorable", false)
+	yield(get_tree(), "idle_frame")
+
 func intro(player : KinematicBody2D):
 	hero = player
 	cur_state = $States/Intro
@@ -99,6 +104,14 @@ func rain_shot() -> void:
 		bullet.position = self.position + self.body.get_node("Eye/Iris").position.rotated(self.body.rotation)
 		bullet.rotation = self.body.rotation + inicial_rad + i*increment + 1.57 + rand_range(-0.05, 0.05)
 		self.get_parent().add_child(bullet)
+
+func laser_shot() -> void:
+	var bullet = BULLET_RES.instance()
+	bullet.SPEED = 1500
+	bullet.position = self.position + self.body.get_node("Eye/Iris").position.rotated(self.body.rotation)
+	bullet.position.y += rand_range(-30, 30)
+	bullet.rotation = self.body.rotation
+	self.get_parent().add_child(bullet)
 
 # Called by "Dead" animation
 func spawn_souls() -> void:

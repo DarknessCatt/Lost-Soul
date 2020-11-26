@@ -11,7 +11,7 @@
 extents = Vector2( 8, 64 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 40, 200 )
+extents = Vector2( 40, 352 )
 
 [node name="Boss_Battle_Room" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -24,7 +24,7 @@ type = 2
 
 [node name="BG_Right" parent="Room" index="1" instance=ExtResource( 2 )]
 color = Color( 0.172549, 0.133333, 0.129412, 1 )
-polygon = PoolVector2Array( 1992, 936, 2008, 952, 2016, 992, 2016, 1056, 2008, 1104, 2000, 1120, 2000, 1144, 3072, 1144, 3072, 904, 1992, 912 )
+polygon = PoolVector2Array( 1992, 936, 2008, 952, 2016, 992, 2016, 1056, 2008, 1104, 2000, 1120, 2000, 1144, 3072, 1144, 3072, 792, 2256, 792, 2256.4, 910.042, 1992, 912 )
 type = 2
 
 [node name="Sky" parent="Room" index="2" instance=ExtResource( 2 )]
@@ -62,44 +62,27 @@ type = 3
 
 [node name="Right_Cave" parent="Room" index="7" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 1968, 888, 1960, 792, 1968, 688, 1984, 480, 1976, 232, 1952, 56, 1952, 0, 3072, 0, 3072, 960, 3032, 960, 2720, 936, 2504, 936, 2216, 944, 2048, 952, 1992, 936 )
+polygon = PoolVector2Array( 1968, 888, 1960, 792, 1968, 688, 1984, 480, 1976, 232, 1952, 56, 1952, 0, 3072, 0, 3072, 1120, 2960, 1128, 2992, 1120, 3032, 1096, 3040, 1048, 3008, 984, 2936, 896, 2768, 856, 2520, 832, 2344, 872, 2208, 944, 2048, 952, 1992, 936 )
 type = 4
 
 [node name="Inner" parent="Room/Right_Cave" index="0" instance=ExtResource( 2 )]
 color = Color( 0.266667, 0.227451, 0.219608, 1 )
-polygon = PoolVector2Array( 2040, 912, 2000, 848, 1992, 712, 2016, 440, 2016, 240, 2008, 120, 1984, 72, 1976, 32, 1976, 0, 3072, 0, 3072, 896 )
+polygon = PoolVector2Array( 2040, 912, 2000, 848, 1992, 712, 2016, 440, 2016, 240, 2008, 120, 1984, 72, 1976, 32, 1976, 0, 3072, 0, 3072, 1128, 3064, 1064, 3048, 1008, 2992, 904, 2864, 832, 2680, 800, 2440, 800, 2264, 856, 2168, 920 )
 type = 3
 
-[node name="Left" parent="Room" index="8" instance=ExtResource( 6 )]
-position = Vector2( 800, 920 )
-scale = Vector2( 2, 1 )
+[node name="Middle_Plat" parent="Room" index="8" instance=ExtResource( 6 )]
+position = Vector2( 1320, 952 )
+scale = Vector2( 3, 1 )
 
-[node name="Left" parent="Room/Left" index="4" instance=ExtResource( 2 )]
+[node name="Left" parent="Room/Middle_Plat" index="4" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( -72, 16, -48.0449, -3.96442, -48, -8, -72, -8 )
+polygon = PoolVector2Array( -64, 8, -68, 0, -64, -8 )
 type = 4
 
-[node name="Right" parent="Room/Left" index="5" instance=ExtResource( 2 )]
+[node name="Right" parent="Room/Middle_Plat" index="5" instance=ExtResource( 2 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
 polygon = PoolVector2Array( 64, 8, 64, -8, 68, 0 )
 type = 4
-
-[node name="Right" parent="Room" index="9" instance=ExtResource( 6 )]
-position = Vector2( 1856, 920 )
-scale = Vector2( 2, 1 )
-
-[node name="Left" parent="Room/Right" index="4" instance=ExtResource( 2 )]
-color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( -64, 8, -64, -8, -68, 0 )
-type = 4
-
-[node name="Right" parent="Room/Right" index="5" instance=ExtResource( 2 )]
-color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 48, -8, 68, -8, 68, 16, 48, -4.19678 )
-type = 4
-
-[node name="Wall" parent="Room" index="10"]
-visible = false
 
 [node name="Floor" type="CollisionPolygon2D" parent="Room/Wall" index="0"]
 polygon = PoolVector2Array( -48, 952, 0, 952, 0, 960, -40, 960, -40, 1120, 0, 1120, 64, 1128, 256, 1136, 488, 1136, 640, 1120, 2016, 1120, 2360, 1136, 2696, 1136, 2960, 1128, 3040, 1120, 3072, 1120, 3072, 1200, 0, 1200, 0, 1128, -48, 1128 )
@@ -108,7 +91,7 @@ polygon = PoolVector2Array( -48, 952, 0, 952, 0, 960, -40, 960, -40, 1120, 0, 11
 polygon = PoolVector2Array( 0, 0, 680, 0, 680, 24, 648, 192, 640, 456, 656, 744, 680, 824, 680, 904, 656, 952, 616, 960, 560, 944, 448, 936, 296, 936, 80, 960, 0, 960 )
 
 [node name="Right" type="CollisionPolygon2D" parent="Room/Wall" index="2"]
-polygon = PoolVector2Array( 1952, 0, 3072, 0, 3072, 960, 3032, 960, 2728, 936, 2496, 936, 2224, 944, 2048, 952, 1992, 936, 1968, 888, 1960, 784, 1984, 480, 1976, 232, 1952, 56 )
+polygon = PoolVector2Array( 1952, 0, 3072, 0, 3072, 1120, 2960, 1128, 2992, 1120, 3032, 1096, 3040, 1048, 3008, 984, 2936, 896, 2768, 856, 2520, 832, 2344, 872, 2208, 944, 2048, 952, 1992, 936, 1968, 888, 1960, 784, 1984, 480, 1976, 232, 1952, 56 )
 
 [node name="Blocks" parent="." index="2"]
 visible = false
@@ -157,13 +140,14 @@ position = Vector2( 1320, 760 )
 [node name="Tween" type="Tween" parent="Objects" index="0"]
 
 [node name="The_Gate_Guardian" parent="Objects" index="1" instance=ExtResource( 4 )]
+position = Vector2( 0, -16 )
 horizontal_space = 520
 downwards_space = 250
 
 [node name="Intro" type="Node2D" parent="Objects" index="2"]
 
 [node name="Boss_Trigger" type="Area2D" parent="Objects/Intro" index="0"]
-position = Vector2( 15.9999, 160 )
+position = Vector2( 15.9999, 8 )
 monitorable = false
 collision_layer = 0
 
@@ -175,8 +159,10 @@ margin_left = -320.0
 margin_top = -72.0001
 margin_right = 320.0
 margin_bottom = 77.9999
-Dialogue = [ "Oi
-Eu sou o Boss.", "Rawr!" ]
+Dialogue = [ "Abominação!
+", "Achas mesmo que 
+podes escapar?", "Aceite que já estás morto...
+e suma!" ]
 
 [node name="Limits" type="Position2D" parent="." index="6"]
 position = Vector2( 3072, 1200 )
@@ -184,6 +170,7 @@ __meta__ = {
 "_gizmo_extents_": 3072.0
 }
 [connection signal="body_entered" from="Exits/Exit" to="." method="_on_Exit_entered"]
+[connection signal="dead" from="Objects/The_Gate_Guardian" to="." method="_on_Boss_dead"]
 [connection signal="intro_ended" from="Objects/The_Gate_Guardian" to="." method="_on_Boss_intro_ended"]
 [connection signal="body_entered" from="Objects/Intro/Boss_Trigger" to="." method="_on_Boss_Triggered"]
 [connection signal="dialogue_end" from="Objects/Intro/Introduction" to="." method="_on_Introduction_ended"]

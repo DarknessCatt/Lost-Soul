@@ -33,3 +33,14 @@ func _on_Introduction_ended():
 
 func _on_Boss_intro_ended():
 	hero.cutscene = hero.cutscene_type.NONE
+
+func _on_Boss_dead():
+	boss_defeated = true
+
+	$Blocks/Left/col.call_deferred("set", "disabled", true)
+	$Blocks/Right/col.call_deferred("set", "disabled", true)
+
+	$Objects/Tween.interpolate_property($Blocks/Left, "modulate:a", 1, 0, 0.5)
+	$Objects/Tween.interpolate_property($Blocks/Right, "modulate:a", 1, 0, 0.5)
+	$Objects/Tween.interpolate_property($Room/Sky, "modulate:a", 0.5, 1, 1)
+	$Objects/Tween.start()
