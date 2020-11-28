@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilesets/Placeholder_White/Placeholder_White.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Entities/Enemies/Flying_Enemies/Hawk/Hawk.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Maps/Util/Mountain_Polygon/Mountain_Polygon.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Entities/Enemies/Wall_Enemies/Spider/Spider.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Entities/Pickups/Final_Soul/Final_Soul.tscn" type="PackedScene" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 136, 48 )
@@ -79,7 +80,10 @@ __meta__ = {
 position = Vector2( 375, 248 )
 
 [node name="Lost_Soul" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 167, 48 )
+position = Vector2( 167, 44 )
+
+[node name="Lost_Soul2" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 295, 211 )
 
 [node name="Fly_Test" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 1321.46, 327.578 )
@@ -125,6 +129,9 @@ margin_top = -208.0
 margin_right = 341.673
 margin_bottom = -88.0
 Dialogue = [ "Congratulations!", "You activated a checkpoint!", "In the debug map!" ]
+
+[node name="Final_Soul" parent="." instance=ExtResource( 20 )]
+position = Vector2( 383, 384.403 )
 
 [node name="Hero" parent="." instance=ExtResource( 1 )]
 position = Vector2( 75, 515 )

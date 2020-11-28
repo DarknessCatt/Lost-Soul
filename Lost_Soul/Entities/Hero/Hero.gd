@@ -73,6 +73,7 @@ func _hit(damage : int, _force : int, _direction : Vector2) -> void:
 				self._change_state($States/Knockback)
 
 			else:
+				self.change_hurtboxes(false)
 				$Misc_Animations.play("blocked")
 
 func _calculate_knockback() -> Vector2:
@@ -112,6 +113,7 @@ func change_hurtboxes(value : bool) -> void:
 	$Body/Hip/Left_Leg/Left_Shin/L_Shin_Hurtbox.call_deferred("set", "monitoring", value)
 	$Body/Hip/Right_Leg/R_Leg_Hurtbox.call_deferred("set", "monitoring", value)
 	$Body/Hip/Right_Leg/Right_Shin/R_Shin_Hurtbox.call_deferred("set", "monitoring", value)
+	yield(get_tree(), "idle_frame")
 
 func _on_Invencibility_timeout():
 	self.invencible = false

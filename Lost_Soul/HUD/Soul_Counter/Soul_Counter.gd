@@ -59,9 +59,11 @@ func _on_Delay_timeout():
 
 func _on_Inc_timeout():
 	if abs(self.collected) >= 10:
+		# warning-ignore:narrowing_conversion
 		self.total = ceil(self.total*0.8+Char_Node.souls*0.2)
 
 	else:
+		# warning-ignore:narrowing_conversion
 		self.total += sign(collected)
 
 func _on_End_timeout():
