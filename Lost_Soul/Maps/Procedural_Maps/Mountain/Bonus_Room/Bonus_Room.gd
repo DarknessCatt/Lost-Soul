@@ -1,7 +1,5 @@
 extends Base_Room
 
-signal change_tutorial(scene)
-
 func _on_exit_entered(_body, id):
 	self.emit_signal("player_exited", id)
 

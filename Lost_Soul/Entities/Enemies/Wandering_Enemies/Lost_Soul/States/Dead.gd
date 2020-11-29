@@ -23,6 +23,7 @@ func update(Lost_Soul: KinematicBody2D, _delta : float) -> void:
 	Lost_Soul.speed.y += GRAVITY*_delta
 	if Lost_Soul.speed.y > MAX_GRAV: Lost_Soul.speed.y = MAX_GRAV
 
+	# warning-ignore:return_value_discarded
 	Lost_Soul.move_and_slide(Lost_Soul.speed, NORMAL, true, 2)
 
 	if Lost_Soul.is_on_wall():

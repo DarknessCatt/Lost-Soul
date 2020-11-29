@@ -58,6 +58,7 @@ func respawn() -> void:
 	$Body/Body/Head.rotation = 0
 	$Body.rotation = original_rotation
 	self.Player = null
+	# warning-ignore:return_value_discarded
 	self.move_and_slide(Vector2.ZERO)
 	self._change_state($States/Idle)
 	.respawn()

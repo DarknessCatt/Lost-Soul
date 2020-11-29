@@ -21,6 +21,7 @@ func enter(Lost_Soul : KinematicBody2D) -> void:
 	Lost_Soul.change_animation(state_anim)
 	Lost_Soul.speed.y = 100
 
+	# warning-ignore:narrowing_conversion
 	dir = sign(Lost_Soul.speed.x)
 	if dir == 0: dir = 1
 	Lost_Soul.body.scale.x = dir
@@ -44,16 +45,17 @@ func update(Lost_Soul: KinematicBody2D, delta : float) -> void:
 	if sign(spdx) != dir : spdx *= FRICTION
 
 	if abs(spdx) > MAX_SPEED:
-		if abs(spdx) - MAX_SPEED < ACCEL/10 : spdx = MAX_SPEED*dir
+		if abs(spdx) - MAX_SPEED < ACCEL/10.0 : spdx = MAX_SPEED*dir
 		else : spdx *= FRICTION
 
-	elif abs(spdx) < ACCEL/100: spdx = 0
+	elif abs(spdx) < ACCEL/100.0: spdx = 0
 
 	if sign(spdx) != sign(Lost_Soul.speed.x) and sign(spdx) != 0:
 		Lost_Soul.body.scale.x = sign(spdx)
 
 	Lost_Soul.speed.x = spdx
 
+	# warning-ignore:return_value_discarded
 	Lost_Soul.move_and_slide(Lost_Soul.speed, NORMAL, true, 2)
 
 	if not Lost_Soul.is_on_floor():

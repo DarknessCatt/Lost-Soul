@@ -21,11 +21,12 @@ func enter(Lost_Soul : KinematicBody2D) -> void:
 	path_checker.enabled = true
 	eyes.monitoring = true
 
+	# warning-ignore:narrowing_conversion
 	dir = sign(Lost_Soul.body.scale.x)
 
 	state = BEGIN
 
-func exit(Lost_Soul : KinematicBody2D) -> void:
+func exit(_Lost_Soul : KinematicBody2D) -> void:
 	path_checker.enabled = false
 	eyes.monitoring = false
 
@@ -41,7 +42,7 @@ func update(Lost_Soul: KinematicBody2D, _delta : float) -> void:
 		var spdx : float = Lost_Soul.speed.x + dir*ACCEL*_delta
 
 		if abs(spdx) > MAX_SPEED:
-			if abs(spdx) - MAX_SPEED < ACCEL/10 : spdx = MAX_SPEED*dir
+			if abs(spdx) - MAX_SPEED < ACCEL/10.0 : spdx = MAX_SPEED*dir
 			else : spdx *= FRICTION
 
 		Lost_Soul.speed.x = spdx
@@ -49,6 +50,7 @@ func update(Lost_Soul: KinematicBody2D, _delta : float) -> void:
 		if path_checker.get_collider() != null:
 			Lost_Soul.align_floor(path_checker)
 
+			# warning-ignore:return_value_discarded
 			Lost_Soul.move_and_slide(Lost_Soul.speed, NORMAL, true, 2)
 
 			if not Lost_Soul.is_on_floor():
