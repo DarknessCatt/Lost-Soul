@@ -52,15 +52,18 @@ func generate(Room_Path : String = "res://Maps/Procedural_Maps/Mountain/") -> Ar
 
 	#Rank 0 + caminhos
 #	room_list += make_branch(room_list, 0, 5)
-	room_list += make_branch(room_list, 0, 1, RoomConstants.room_types.CHECKPOINT)
-#	room_list += make_branch(room_list, 0, 1)
-#	room_list += make_branch(room_list, 0, 1, RoomConstants.room_types.BONUS)
+#	room_list += make_branch(room_list, 0, 3, RoomConstants.room_types.CHECKPOINT)
+	room_list += make_branch(room_list, 0, 1)
+	room_list += make_branch(room_list, 0, 5, RoomConstants.room_types.BONUS)
 
 	#Rank 1 + caminhos
 #	room_list += make_branch(room_list, 1)
-#	room_list += make_branch(room_list, 1, 1, RoomConstants.room_types.CHECKPOINT)
-#	room_list += make_branch(room_list, 1, 1, RoomConstants.room_types.BONUS)
-	room_list += make_branch(room_list, 1, 1, RoomConstants.room_types.BOSS)
+	var boss_branch : Array = make_branch(room_list, 1, 1, RoomConstants.room_types.CHECKPOINT)
+	boss_branch += make_branch(boss_branch, 1, 1, RoomConstants.room_types.BOSS)
+	room_list += boss_branch
+#	room_list += make_branch(room_list, 1, 3, RoomConstants.room_types.CHECKPOINT)
+	room_list += make_branch(room_list, 1, 1, RoomConstants.room_types.BONUS)
+#	room_list += make_branch(room_list, 1, 1, RoomConstants.room_types.BOSS)
 #	room_list += make_branch(room_list, 1, 3, RoomConstants.room_types.BONUS)
 
 	#Faz alguns ciclos
