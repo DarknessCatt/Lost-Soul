@@ -9,6 +9,8 @@ var screen_room : Node2D
 
 var map_data : Array
 
+export(PackedScene) var initial_tutorial : PackedScene
+
 func _ready():
 	hero = $Normal_Game/Screen/Viewport/Hero
 	camera = hero.get_node("Camera")
@@ -42,6 +44,15 @@ func _ready():
 
 	enter_room(map_data[cur_pos.x][cur_pos.y].node)
 	hero.position = map_data[cur_pos.x][cur_pos.y].node.get_start_point()
+
+	#Add Initial Tutorial
+	temp_screen = initial_tutorial.instance()
+	hero.cutscene = hero.cutscene_type.PHYSICS
+	# warning-ignore:return_value_discarded
+	temp_screen.connect("tutorial_ended", self, "leave_tutorial")
+	self.call_deferred("remove_child", game_screen)
+	$Temp_Screen/Viewport.call_deferred("add_child", temp_screen)
+	current_scene = scenes.temp_screen
 
 func _input(event):
 	if event.is_action_pressed("minimap") and (current_scene == scenes.play or current_scene == scenes.on_boss):

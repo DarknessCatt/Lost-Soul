@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Maps/Util/Mountain_Polygon/Mountain_Polygon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Information/Tutorial_Key/Tutorial_Key.tscn" type="PackedScene" id=2]
@@ -12,8 +12,6 @@
 [ext_resource path="res://Entities/Information/DialogueBox/DialogueBox.tscn" type="PackedScene" id=10]
 [ext_resource path="res://HUD/Player_Status/Player_Status.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/Components/Basic_Shoot/Boss_Shoot.tscn" type="PackedScene" id=12]
-[ext_resource path="res://HUD/Player_Status/Player_Status.gd" type="Script" id=13]
-[ext_resource path="res://HUD/Soul_Counter/Soul_Counter.gd" type="Script" id=14]
 [ext_resource path="res://HUD/Soul_Counter/Soul_Counter.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Assets/Fonts/XenopyreRegular-qd8V.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://Assets/Fonts/BasaltRegular-Jx3o.ttf" type="DynamicFontData" id=17]
@@ -24,20 +22,23 @@ extents = Vector2( 128, 224 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 80, 224 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 152, 128 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 32, 96 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 128, 168 )
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=16]
 radius = 12.5966
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 480, 280 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 56, 76 )
 
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0, 0, 0, 1 )
@@ -171,7 +172,7 @@ action = "hero_attack"
 
 [node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Dir_Attacks"]
 position = Vector2( -40, 40 )
-shape = SubResource( 7 )
+shape = SubResource( 13 )
 
 [node name="Arrow" type="Polygon2D" parent="Objects/Tutorials/Dir_Attacks"]
 modulate = Color( 1, 1, 1, 0 )
@@ -194,7 +195,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Bullet/Bullet_Trigger"]
-shape = SubResource( 3 )
+shape = SubResource( 14 )
 
 [node name="Tutorial_Action" parent="Objects/Tutorials/Bullet" instance=ExtResource( 2 )]
 position = Vector2( -408, 96 )
@@ -202,7 +203,7 @@ action = "hero_block"
 
 [node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Bullet/Tutorial_Action"]
 position = Vector2( 48, 16 )
-shape = SubResource( 4 )
+shape = SubResource( 15 )
 disabled = true
 
 [node name="Walls" type="Node2D" parent="Objects"]
@@ -231,7 +232,7 @@ Id = 4
 Character = NodePath("..")
 
 [node name="area" type="CollisionShape2D" parent="Objects/Walls/Break_1/Hurtbox"]
-shape = SubResource( 5 )
+shape = SubResource( 16 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="Objects/Walls/Break_1"]
 polygon = PoolVector2Array( -32, 96, -24, 88, -8, 56, -16, -16, -24, -56, -32, -96, 32, -96, 0, -24, 8, 40, 8, 80, 24, 88, 32, 96 )
@@ -260,7 +261,7 @@ Id = 4
 Character = NodePath("..")
 
 [node name="area" type="CollisionShape2D" parent="Objects/Walls/Break_2/Hurtbox"]
-shape = SubResource( 5 )
+shape = SubResource( 16 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="Objects/Walls/Break_2"]
 polygon = PoolVector2Array( -32, 96, -16, 88, -8, 80, -8, 72, -16, 48, -24, 0, -24, -40, -32, -96, 32, -96, 24, -40, 24, 0, 0, 72, 0, 80, 8, 88, 32, 96 )
@@ -289,7 +290,7 @@ Id = 4
 Character = NodePath("..")
 
 [node name="area" type="CollisionShape2D" parent="Objects/Walls/Break_3/Hurtbox"]
-shape = SubResource( 5 )
+shape = SubResource( 16 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="Objects/Walls/Break_3"]
 polygon = PoolVector2Array( -32, 96, -24, 64, -16, 16, -16, -40, -24, -80, -32, -96, 32, -96, 24, -80, 16, -48, 8, 8, 16, 64, 32, 96 )
@@ -307,7 +308,7 @@ polygon = PoolVector2Array( -8, 16, -8, 0, -16, 0, 0, -16, 16, 0, 8, 0, 8, 16 )
 
 [node name="Area" type="CollisionShape2D" parent="Objects/Altar_Area"]
 position = Vector2( 0, -32 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Altar_Camera" type="Camera2D" parent="Objects/Altar_Area"]
 position = Vector2( 8, -40 )
@@ -326,6 +327,21 @@ position = Vector2( 336, 184 )
 Soul_Value = 2
 
 [node name="Dialogues" type="Node2D" parent="Objects"]
+
+[node name="Intro" parent="Objects/Dialogues" instance=ExtResource( 10 )]
+modulate = Color( 1, 0.321569, 0.321569, 1 )
+margin_left = 193.0
+margin_top = 136.0
+margin_right = 833.0
+margin_bottom = 286.0
+Dialogue = [ "Te trazer de volta
+do Mundo Dos Mortos
+não foi trivial...", "Mas eu cumpri
+a minha parte
+do acordo.", "Agora, é a tua
+vez de me ajudar.", "Vais precisar de uma
+alma poderosa o suficiente
+para me libertar.", "Encontre-a!" ]
 
 [node name="Souls" parent="Objects/Dialogues" instance=ExtResource( 10 )]
 modulate = Color( 1, 0.321569, 0.321569, 1 )
@@ -349,10 +365,44 @@ se quiseres cumprir tua parte
 do acordo.", "Sacrifique a alma
 dos mais fracos!", "Aumente teu poder!" ]
 
+[node name="Exit" type="Area2D" parent="Objects"]
+position = Vector2( 2837, 292 )
+monitorable = false
+collision_layer = 0
+
+[node name="Hole" type="Polygon2D" parent="Objects/Exit"]
+position = Vector2( -2840, -292 )
+color = Color( 0.15, 0.115625, 0.1125, 1 )
+polygon = PoolVector2Array( 2753, 392, 2921, 392, 2881, 312, 2877, 272, 2853, 232, 2837, 216, 2821, 244, 2801, 316, 2769, 380 )
+
+[node name="Deeper" type="Polygon2D" parent="Objects/Exit/Hole"]
+color = Color( 0.11, 0.0836, 0.0836, 1 )
+polygon = PoolVector2Array( 2777, 392, 2897, 392, 2881, 368, 2865, 316, 2861, 268, 2845, 248, 2837, 240, 2825, 280, 2797, 356, 2793, 380 )
+
+[node name="Deeperer" type="Polygon2D" parent="Objects/Exit/Hole"]
+color = Color( 0.0705882, 0.0509804, 0.0509804, 1 )
+polygon = PoolVector2Array( 2801, 392, 2873, 392, 2865, 384, 2865, 344, 2841, 312, 2837, 272, 2825, 332, 2805, 388 )
+
+[node name="Deepest" type="Polygon2D" parent="Objects/Exit/Hole"]
+color = Color( 0.509804, 0.635294, 0.686275, 1 )
+polygon = PoolVector2Array( 2821, 392, 2853, 392, 2849, 388, 2841, 376, 2837, 352, 2833, 356, 2833, 380, 2829, 388 )
+
+[node name="area" type="CollisionShape2D" parent="Objects/Exit"]
+position = Vector2( 0, 24 )
+shape = SubResource( 12 )
+
+[node name="Arrow" type="Polygon2D" parent="Objects/Exit"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -28 )
+color = Color( 0.976471, 0.376471, 0.376471, 1 )
+polygon = PoolVector2Array( -8, 16, -8, 0, -16, 0, 0, -16, 16, 0, 8, 0, 8, 16 )
+
+[node name="Tween" type="Tween" parent="Objects/Exit"]
+
 [node name="Player" type="Node2D" parent="."]
 
 [node name="Hero" parent="Player" instance=ExtResource( 6 )]
-position = Vector2( 201, 464 )
+position = Vector2( 249, 464.737 )
 
 [node name="Camera2D" type="Camera2D" parent="Player/Hero"]
 current = true
@@ -372,24 +422,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player_Status" type="MarginContainer" parent="HUD/HUD" instance=ExtResource( 11 )]
+[node name="Player_Status" parent="HUD/HUD" instance=ExtResource( 11 )]
 modulate = Color( 1, 1, 1, 0 )
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 100.0
 margin_bottom = 52.0
-script = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 Character = NodePath("../../../Player/Hero")
 
-[node name="Soul_Counter" type="VBoxContainer" parent="HUD/HUD" instance=ExtResource( 15 )]
+[node name="Soul_Counter" parent="HUD/HUD" instance=ExtResource( 15 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 56.0
 margin_right = 100.0
 margin_bottom = 129.0
-script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 Character = NodePath("../../../Player/Hero")
 
 [node name="Menu" type="CanvasLayer" parent="."]
@@ -547,7 +593,10 @@ __meta__ = {
 [connection signal="body_entered" from="Objects/Altar_Area/Altar" to="." method="_on_Altar_entered"]
 [connection signal="body_exited" from="Objects/Altar_Area/Altar" to="." method="_on_Altar_exited"]
 [connection signal="checkpoint_activated" from="Objects/Altar_Area/Altar" to="." method="_on_checkpoint_activated"]
+[connection signal="dialogue_end" from="Objects/Dialogues/Intro" to="." method="_on_Intro_dialogue_end"]
 [connection signal="dialogue_end" from="Objects/Dialogues/Souls" to="." method="_on_Souls_dialogue_end"]
 [connection signal="dialogue_end" from="Objects/Dialogues/Altar" to="." method="_on_Altar_dialogue_end"]
+[connection signal="body_entered" from="Objects/Exit" to="." method="_on_Exit_body_entered"]
+[connection signal="body_exited" from="Objects/Exit" to="." method="_on_Exit_body_exited"]
 [connection signal="pressed" from="Menu/Upgrade_Menu/Menu/Upgrades/Upgrade" to="." method="_on_Upgrade_pressed"]
 [connection signal="pressed" from="Menu/Upgrade_Menu/Menu/Back_Node/Back" to="." method="_on_Back_pressed"]

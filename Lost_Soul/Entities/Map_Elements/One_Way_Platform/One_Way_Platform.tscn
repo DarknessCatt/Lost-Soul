@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Entities/Map_Elements/One_Way_Platform/One_Way_Platform.gd" type="Script" id=1]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 4 )
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -18,11 +18,11 @@ monitorable = false
 collision_layer = 0
 
 [node name="area" type="CollisionShape2D" parent="Player_Detecter"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Drop_Timer" type="Timer" parent="."]
 process_mode = 0
-wait_time = 0.25
+wait_time = 0.2
 one_shot = true
 
 [node name="Body" type="Polygon2D" parent="."]

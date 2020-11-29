@@ -1,16 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Menus/Map_Controller/Map_Controller.gd" type="Script" id=1]
 [ext_resource path="res://HUD/Player_Status/Player_Status.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HUD/Soul_Counter/Soul_Counter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD/MiniMap/MiniMap.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Maps/Tutorial_Room/Tutorial_Room.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
 
 [node name="Map_Controller" type="Node2D"]
 script = ExtResource( 1 )
+initial_tutorial = ExtResource( 6 )
 
 [node name="Room_Transition" type="Node" parent="."]
 
