@@ -15,7 +15,7 @@ func open_exits(exits : Array, rank : int):
 			opening.call_deferred("free")
 
 	var layouts : Array = $Objects.get_children()
-	#layouts.shuffle()
+	layouts.shuffle()
 
 	layouts[1].call_deferred("free")
 	layouts[2].call_deferred("free")

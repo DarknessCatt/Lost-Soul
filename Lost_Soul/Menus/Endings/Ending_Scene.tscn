@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Information/DialogueBox/DialogueBox.tscn" type="PackedScene" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="Ending_Scene" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogueBox" parent="." instance=ExtResource( 1 )]
+show_behind_parent = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -75.0
+margin_right = 320.0
+margin_bottom = 75.0
+text_color = Color( 1, 0.321569, 0.321569, 1 )
+Dialogue = [ "Uma poderosa alma...", "capaz de distorcer
+a realidade...", "É um começo.", "Não penses que acabou.
+Estou longe de ser livre.", "E vais continuar a
+me servir.", "Minha preciosa...
+", "Alma Perdida", "Alma Perdida
+Prótotipo 3
+Obrigado por jogar!" ]
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 0
+one_shot = true
+autostart = true
+[connection signal="timeout" from="Timer" to="DialogueBox" method="begin_dialogue"]

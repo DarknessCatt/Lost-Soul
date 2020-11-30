@@ -36,6 +36,7 @@ margin_bottom = 60.0
 rect_min_size = Vector2( 2460, 480 )
 rect_scale = Vector2( 0.25, 0.25 )
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "X"
 align = 1
 valign = 1

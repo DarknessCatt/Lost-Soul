@@ -2,6 +2,9 @@ extends Panel
 
 signal dialogue_end()
 
+export(bool) var auto_start : bool = false
+export(Color) var text_color : Color = Color.white
+
 enum {talking, waiting, end}
 var state : int
 
@@ -12,6 +15,11 @@ var dialogue_line : int = 0
 
 func _ready():
 	self.clear()
+
+	$Label.add_color_override("font_color", text_color)
+
+	if auto_start:
+		begin_dialogue()
 
 func clear():
 	self.hide()

@@ -134,6 +134,7 @@ func enter_boss(scene : Node2D) -> void:
 
 	temp_screen = scene
 	temp_screen.connect("room_exited", self, "leave_boss")
+	temp_screen.connect("soul_exited", self, "soul_exited")
 
 	# warning-ignore:narrowing_conversion
 	camera.limit_right = temp_screen.camera_limits.x
@@ -159,6 +160,17 @@ func leave_boss() -> void:
 		"modulate", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 0.2)
 	$Scene_Transtition/Tween.start()
  
+func soul_exited() -> void:
+	$Normal_Game/HUD.hide()
+	$Normal_Game/MiniMap.hide()
+	yield(get_tree().create_timer(9), "timeout")
+	$Room_Transition/Tween.interpolate_property($Normal_Game, "modulate:a",
+		1, 0, 1)
+	$Room_Transition/Tween.start()
+	yield($Room_Transition/Tween, "tween_all_completed")
+	# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://Menus/Endings/Ending_Scene.tscn")
+
 func _on_Scene_tween_all_completed():
 	$Room_Transition/Tween.interpolate_property($Room_Transition/Blackout, \
 		"modulate:a", 1, 0, 0.5)

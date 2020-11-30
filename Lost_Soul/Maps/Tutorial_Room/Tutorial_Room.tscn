@@ -22,38 +22,38 @@ extents = Vector2( 128, 224 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 80, 224 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 152, 128 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 32, 96 )
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 128, 168 )
 
-[sub_resource type="CircleShape2D" id=16]
+[sub_resource type="CircleShape2D" id=6]
 radius = 12.5966
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 480, 280 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 56, 76 )
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=10]
 size = 100
 font_data = ExtResource( 17 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=11]
 size = 35
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 16 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=12]
 size = 40
 font_data = ExtResource( 17 )
 
@@ -172,7 +172,7 @@ action = "hero_attack"
 
 [node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Dir_Attacks"]
 position = Vector2( -40, 40 )
-shape = SubResource( 13 )
+shape = SubResource( 3 )
 
 [node name="Arrow" type="Polygon2D" parent="Objects/Tutorials/Dir_Attacks"]
 modulate = Color( 1, 1, 1, 0 )
@@ -195,7 +195,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Bullet/Bullet_Trigger"]
-shape = SubResource( 14 )
+shape = SubResource( 4 )
 
 [node name="Tutorial_Action" parent="Objects/Tutorials/Bullet" instance=ExtResource( 2 )]
 position = Vector2( -408, 96 )
@@ -203,7 +203,7 @@ action = "hero_block"
 
 [node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Bullet/Tutorial_Action"]
 position = Vector2( 48, 16 )
-shape = SubResource( 15 )
+shape = SubResource( 5 )
 disabled = true
 
 [node name="Walls" type="Node2D" parent="Objects"]
@@ -232,7 +232,7 @@ Id = 4
 Character = NodePath("..")
 
 [node name="area" type="CollisionShape2D" parent="Objects/Walls/Break_1/Hurtbox"]
-shape = SubResource( 16 )
+shape = SubResource( 6 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="Objects/Walls/Break_1"]
 polygon = PoolVector2Array( -32, 96, -24, 88, -8, 56, -16, -16, -24, -56, -32, -96, 32, -96, 0, -24, 8, 40, 8, 80, 24, 88, 32, 96 )
@@ -261,7 +261,7 @@ Id = 4
 Character = NodePath("..")
 
 [node name="area" type="CollisionShape2D" parent="Objects/Walls/Break_2/Hurtbox"]
-shape = SubResource( 16 )
+shape = SubResource( 6 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="Objects/Walls/Break_2"]
 polygon = PoolVector2Array( -32, 96, -16, 88, -8, 80, -8, 72, -16, 48, -24, 0, -24, -40, -32, -96, 32, -96, 24, -40, 24, 0, 0, 72, 0, 80, 8, 88, 32, 96 )
@@ -290,7 +290,7 @@ Id = 4
 Character = NodePath("..")
 
 [node name="area" type="CollisionShape2D" parent="Objects/Walls/Break_3/Hurtbox"]
-shape = SubResource( 16 )
+shape = SubResource( 6 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="Objects/Walls/Break_3"]
 polygon = PoolVector2Array( -32, 96, -24, 64, -16, 16, -16, -40, -24, -80, -32, -96, 32, -96, 24, -80, 16, -48, 8, 8, 16, 64, 32, 96 )
@@ -329,11 +329,11 @@ Soul_Value = 2
 [node name="Dialogues" type="Node2D" parent="Objects"]
 
 [node name="Intro" parent="Objects/Dialogues" instance=ExtResource( 10 )]
-modulate = Color( 1, 0.321569, 0.321569, 1 )
 margin_left = 193.0
 margin_top = 136.0
 margin_right = 833.0
 margin_bottom = 286.0
+text_color = Color( 1, 0.321569, 0.321569, 1 )
 Dialogue = [ "Te trazer de volta
 do Mundo Dos Mortos
 não foi trivial...", "Mas eu cumpri
@@ -349,6 +349,7 @@ margin_left = 545.0
 margin_top = 8.0
 margin_right = 1185.0
 margin_bottom = 158.0
+text_color = Color( 1, 0.321569, 0.321569, 1 )
 Dialogue = [ "Um fragmento de alma,
 com pouco poder por si só..." ]
 
@@ -358,6 +359,7 @@ margin_left = 897.0
 margin_top = 624.0
 margin_right = 1537.0
 margin_bottom = 774.0
+text_color = Color( 1, 0.321569, 0.321569, 1 )
 Dialogue = [ "Este é um altar ancião,
 conectado ao mundo
 dos mortos.", "Vais precisar de mais poder
@@ -389,7 +391,7 @@ polygon = PoolVector2Array( 2821, 392, 2853, 392, 2849, 388, 2841, 376, 2837, 35
 
 [node name="area" type="CollisionShape2D" parent="Objects/Exit"]
 position = Vector2( 0, 24 )
-shape = SubResource( 12 )
+shape = SubResource( 8 )
 
 [node name="Arrow" type="Polygon2D" parent="Objects/Exit"]
 modulate = Color( 1, 1, 1, 0 )
@@ -444,7 +446,7 @@ Character = NodePath("../../../Player/Hero")
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -471,7 +473,7 @@ anchor_bottom = 1.0
 margin_right = 515.0
 margin_bottom = 146.0
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 1, 0.301961, 0.301961, 1 )
 text = "Aprimoramento de Alma"
 align = 1
@@ -496,7 +498,7 @@ margin_top = -36.5
 margin_right = 64.0
 margin_bottom = 36.5
 rect_min_size = Vector2( 128, 73 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.670588, 0.878431, 1, 1 )
 text = "1000"
 align = 2
@@ -522,7 +524,7 @@ alignment = 1
 margin_right = 515.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Custo"
 align = 1
@@ -533,7 +535,7 @@ margin_top = 50.0
 margin_right = 515.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 200, 50 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "5"
 align = 1
