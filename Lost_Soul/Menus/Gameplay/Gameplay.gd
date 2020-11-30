@@ -2,7 +2,7 @@ extends Node2D
 
 func _input(event):
 		if event.is_action_pressed("pause"):
-			$Tween.stop_all()
+			$Tween.remove_all()
 
 			if get_tree().paused == true:
 				get_tree().paused = false
@@ -16,6 +16,6 @@ func _input(event):
 
 func _on_Settings_exited():
 	get_tree().paused = false
-	$Tween.stop_all()
+	$Tween.remove_all()
 	$Tween.interpolate_property($Menu, "modulate:a", $Menu.modulate.a, 0, 0.1)
 	$Tween.start()

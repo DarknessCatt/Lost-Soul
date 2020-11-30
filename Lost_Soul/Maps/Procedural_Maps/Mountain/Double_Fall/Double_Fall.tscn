@@ -390,7 +390,7 @@ __meta__ = {
 }
 
 [node name="1" type="Position2D" parent="Entrances" index="1"]
-position = Vector2( 2000, 416 )
+position = Vector2( 1976, 472 )
 __meta__ = {
 "_gizmo_extents_": 50.0
 }

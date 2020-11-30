@@ -27,13 +27,13 @@ func update_buttons() -> void:
 
 func _on_body_entered(_body):
 	if not disabled:
-		$Tween.stop_all()
+		$Tween.remove_all()
 		$Tween.interpolate_property(self, "modulate:a", self.modulate.a, 1, 0.5)
 		$Tween.start()
 
 func _on_body_exited(_body):
 	if not disabled:
-		$Tween.stop_all()
+		$Tween.remove_all()
 		$Tween.interpolate_property(self, "modulate:a", self.modulate.a, 0, 0.5)
 		$Tween.start()
 

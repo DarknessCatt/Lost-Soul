@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Fonts/BasaltRegular-Jx3o.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Entities/Information/DialogueBox/DialogueBox.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Information/Tutorial_Key/Tutorial_Key.tscn" type="PackedScene" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.85098 )
@@ -43,4 +44,9 @@ clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Skip_Button" parent="." instance=ExtResource( 3 )]
+position = Vector2( 608, 120 )
+scale = Vector2( 0.5, 0.5 )
+action = "hero_jump"
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_all_completed"]

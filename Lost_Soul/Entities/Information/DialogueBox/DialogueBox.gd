@@ -28,10 +28,12 @@ func write_line():
 	$Label.text = Dialogue[self.dialogue_line]
 	$Tween.interpolate_property($Label, "percent_visible", 0, 1, $Label.text.length()*Delay_Per_Letter)
 	$Tween.start()
+	$Skip_Button._on_body_exited(self)
 
 func _on_Tween_all_completed():
 	assert(state == talking, "DialogueBox: Tween ended while not talking.")
 	state = waiting
+	$Skip_Button._on_body_entered(self)
 
 func _input(event):
 	if event.is_action_pressed("hero_jump"):
@@ -49,6 +51,7 @@ func _input(event):
 			write_line()
 
 		elif state == talking:
-			$Tween.stop_all()
+			$Tween.remove_all()
 			state = waiting
 			$Label.percent_visible = 1
+			$Skip_Button._on_body_entered(self)
