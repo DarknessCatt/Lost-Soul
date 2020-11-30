@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Fonts/PlatNomor-WyVnn.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/controller/controller.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Information/Tutorial_Key/Tutorial_Action.gd" type="Script" id=3]
+[ext_resource path="res://Assets/controller/arrow_down.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 350
@@ -14,7 +15,9 @@ monitorable = false
 collision_layer = 0
 script = ExtResource( 3 )
 
-[node name="Keyboard" type="Label" parent="."]
+[node name="Keyboard" type="Node2D" parent="."]
+
+[node name="Keyboard_Text" type="Label" parent="Keyboard"]
 margin_left = -37.0
 margin_top = -35.0
 margin_right = 333.0
@@ -29,6 +32,11 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Keyboard_Image" type="Sprite" parent="Keyboard"]
+visible = false
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
 
 [node name="Controller" type="Sprite" parent="."]
 scale = Vector2( 0.25, 0.25 )

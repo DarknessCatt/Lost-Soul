@@ -15,13 +15,19 @@ func update_buttons() -> void:
 	$Action.text = self.action
 
 	for event in InputMap.get_action_list(action):
-		assert(event is InputEventKey or event is InputEventJoypadButton)
+		assert(	event is InputEventKey or\
+				event is InputEventJoypadButton or\
+				event is InputEventJoypadMotion)
 
 		if event is InputEventKey:
 			$Keyboard_Button.text = OS.get_scancode_string(event.scancode)
 
 		elif event is InputEventJoypadButton:
 			$Control_Button/Sprite.texture = JoyButtonSpriter.get_sprite(event.button_index)
+
+		elif event is InputEventJoypadMotion:
+			$Control_Button/Sprite.texture = \
+				JoyButtonSpriter.get_sprite(JoyButtonSpriter.get_motion_id(event))
 
 func _ready():
 	update_buttons()

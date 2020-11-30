@@ -22,7 +22,7 @@ shape = SubResource( 1 )
 
 [node name="Drop_Timer" type="Timer" parent="."]
 process_mode = 0
-wait_time = 0.2
+wait_time = 0.1
 one_shot = true
 
 [node name="Body" type="Polygon2D" parent="."]

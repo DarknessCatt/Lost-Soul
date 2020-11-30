@@ -29,19 +29,12 @@ var on_door : bool = false
 
 func _on_Boss_Door_entered(_body):
 	on_door = true
-	$Objects/Tween.remove_all()
-	$Objects/Tween.interpolate_property($Objects/Arrow, "modulate:a", $Objects/Arrow.modulate.a, 1, 0.3)
-	$Objects/Tween.start()
 
 func _on_Boss_Door_exited(_body):
 	on_door = false
-	if not on_battle_room:
-		$Objects/Tween.remove_all()
-		$Objects/Tween.interpolate_property($Objects/Arrow, "modulate:a", $Objects/Arrow.modulate.a, 0, 0.3)
-		$Objects/Tween.start()
 
 func _input(event):
-	if on_door and event.is_action_pressed("hero_up"):
+	if on_door and event.is_action_pressed("hero_interact"):
 		assert(Boss_Scene != null, "Boss Scene empty!")
 		if battle_room == null: battle_room = Boss_Scene.instance()
 		on_battle_room = true

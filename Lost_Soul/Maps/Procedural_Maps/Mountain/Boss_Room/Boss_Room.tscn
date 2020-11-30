@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Maps/Util/Standart_Room/Standart_Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Maps/Util/Mountain_Polygon/Mountain_Polygon.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Classes/Exit.gd" type="Script" id=5]
 [ext_resource path="res://Maps/Util/Room_Exit/RoomExit.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Maps/Procedural_Maps/Mountain/Boss_Room/Battle_Room/Boss_Battle_Room.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Information/Tutorial_Key/Tutorial_Key.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 5 )
@@ -262,12 +263,13 @@ collision_layer = 0
 [node name="Area" type="CollisionShape2D" parent="Objects/Boss_Door" index="0"]
 shape = SubResource( 7 )
 
-[node name="Arrow" type="Polygon2D" parent="Objects" index="1"]
-modulate = Color( 1, 1, 1, 0 )
-color = Color( 0.996078, 0.054902, 0.00784314, 1 )
-polygon = PoolVector2Array( 504, 224, 504, 184, 488, 184, 512, 160, 536, 184, 520, 184, 520, 224 )
+[node name="Tutorial_Action" parent="Objects" index="1" instance=ExtResource( 8 )]
+position = Vector2( 512, 208 )
+action = "hero_interact"
 
-[node name="Tween" type="Tween" parent="Objects" index="2"]
+[node name="Area2" type="CollisionShape2D" parent="Objects/Tutorial_Action" index="3"]
+position = Vector2( 0, 80 )
+shape = SubResource( 7 )
 [connection signal="exit_entered" from="Exits/0" to="." method="_on_exit_entered"]
 [connection signal="exit_entered" from="Exits/1" to="." method="_on_exit_entered"]
 [connection signal="exit_entered" from="Exits/2" to="." method="_on_exit_entered"]

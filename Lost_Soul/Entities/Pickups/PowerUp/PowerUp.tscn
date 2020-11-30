@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/Pickups/PowerUp/PowerUp.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Information/Tutorial_Key/Tutorial_Key.tscn" type="PackedScene" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Close"
@@ -196,5 +197,13 @@ polygon = PoolVector2Array( 0, -16, -16, 0, 0, 16, 16, 0 )
 [node name="Inner" type="Polygon2D" parent="."]
 color = Color( 0.360784, 0.807843, 1, 1 )
 polygon = PoolVector2Array( 0, -8, -8, 0, 0, 8, 8, 0 )
+
+[node name="Tutorial_Action" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -104 )
+action = "hero_interact"
+
+[node name="area2" type="CollisionShape2D" parent="Tutorial_Action"]
+position = Vector2( 0, 104 )
+shape = SubResource( 4 )
 [connection signal="body_entered" from="." to="." method="_on_PowerUp_entered"]
 [connection signal="body_exited" from="." to="." method="_on_PowerUp_exited"]

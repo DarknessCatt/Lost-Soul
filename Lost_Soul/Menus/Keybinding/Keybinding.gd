@@ -40,10 +40,18 @@ func _input(event):
 			new_event_type = InputEventKey
 			new_event = event
 
-		elif event is InputEventJoypadButton and JoyButtonSpriter.is_key_valid(event.button_index):
+		elif event is InputEventJoypadButton:
 			$Change_Key/Windows/Window/Input/Controller.show()
 			$Change_Key/Windows/Window/Input/Keyboard.hide()
 			$Change_Key/Windows/Window/Input/Controller.texture = JoyButtonSpriter.get_sprite(event.button_index)
+			new_event_type = InputEventJoypadButton
+			new_event = event
+
+		elif event is InputEventJoypadMotion and event.axis_value != 0:
+			$Change_Key/Windows/Window/Input/Controller.show()
+			$Change_Key/Windows/Window/Input/Keyboard.hide()
+			$Change_Key/Windows/Window/Input/Controller.texture = \
+				JoyButtonSpriter.get_sprite(JoyButtonSpriter.get_motion_id(event))
 			new_event_type = InputEventJoypadButton
 			new_event = event
 

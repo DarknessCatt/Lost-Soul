@@ -27,5 +27,5 @@ func _on_body_exited(_body):
 	$Close_Particles.emitting = false
 
 func _input(event):
-	if player_in_range and event.is_action_pressed("hero_up"):
+	if player_in_range and event.is_action_pressed("hero_interact"):
 		self.emit_signal("checkpoint_activated", checkpoint_menu)
