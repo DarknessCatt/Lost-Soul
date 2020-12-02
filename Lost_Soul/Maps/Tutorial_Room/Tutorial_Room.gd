@@ -16,12 +16,12 @@ func _ready():
 	for action in InputMap.get_action_list("hero_attack"):
 		attack_actions.append(action)
 
-	InputMap.action_erase_events("hero_attack")
+	#InputMap.action_erase_events("hero_attack")
 
 	for action in InputMap.get_action_list("hero_block"):
 		defend_actions.append(action)
 
-	InputMap.action_erase_events("hero_block")
+	#InputMap.action_erase_events("hero_block")
 
 	$Player/Hero.cutscene = $Player/Hero.cutscene_type.FULL
 	$Player/Hero._change_anim("StandingUp")
@@ -46,24 +46,25 @@ func _on_Altar_Area_exited(_body):
 
 func _on_Altar_entered(_body):
 	if altar_dialogue:
-		altar_dialogue = false
 		$Objects/Dialogues/Altar.begin_dialogue()
 		$Player/Hero.cutscene = $Player/Hero.cutscene_type.PHYSICS
 
 func _on_Altar_dialogue_end():
 	$Player/Hero.cutscene = $Player/Hero.cutscene_type.NONE
+	altar_dialogue = false
 
 func _on_checkpoint_activated(_checkpoint_menu):
-	$Player/Hero.cutscene = $Player/Hero.cutscene_type.PHYSICS
+	if not altar_dialogue:
+		$Player/Hero.cutscene = $Player/Hero.cutscene_type.PHYSICS
 
-	$Menu/Upgrade_Menu.show()
-	$Menu/Upgrade_Menu/Menu/Soul_Node/Souls.text = str($Player/Hero.souls)
-	if $Player/Hero.souls < 5: $Menu/Upgrade_Menu/Menu/Upgrades/Upgrade.disabled = true
-	else: $Menu/Upgrade_Menu/Menu/Upgrades/Upgrade.disabled = false
+		$Menu/Upgrade_Menu.show()
+		$Menu/Upgrade_Menu/Menu/Soul_Node/Souls.text = str($Player/Hero.souls)
+		if $Player/Hero.souls < 5: $Menu/Upgrade_Menu/Menu/Upgrades/Upgrade.disabled = true
+		else: $Menu/Upgrade_Menu/Menu/Upgrades/Upgrade.disabled = false
 
-	$Menu/Tween.remove_all()
-	$Menu/Tween.interpolate_property($Menu/Upgrade_Menu, "modulate:a", 0, 1, 0.5)
-	$Menu/Tween.start()
+		$Menu/Tween.remove_all()
+		$Menu/Tween.interpolate_property($Menu/Upgrade_Menu, "modulate:a", 0, 1, 0.5)
+		$Menu/Tween.start()
 
 func _on_Back_pressed():
 	$Menu/Upgrade_Menu.hide()
@@ -89,20 +90,6 @@ func _on_Upgrade_pressed():
 
 	for action in defend_actions:
 		InputMap.action_add_event("hero_block", action)
-
-func _on_Dir_Attacks_entered(_body):
-	$Objects/Tutorials/Dir_Attacks/Tween2.remove_all()
-	$Objects/Tutorials/Dir_Attacks/Tween2.interpolate_property(
-			$Objects/Tutorials/Dir_Attacks/Arrow, "modulate:a",
-			$Objects/Tutorials/Dir_Attacks/Arrow.modulate.a, 1, 0.5)
-	$Objects/Tutorials/Dir_Attacks/Tween2.start()
-
-func _on_Dir_Attacks_exited(_body):
-	$Objects/Tutorials/Dir_Attacks/Tween2.remove_all()
-	$Objects/Tutorials/Dir_Attacks/Tween2.interpolate_property(
-			$Objects/Tutorials/Dir_Attacks/Arrow, "modulate:a",
-			$Objects/Tutorials/Dir_Attacks/Arrow.modulate.a, 0, 0.5)
-	$Objects/Tutorials/Dir_Attacks/Tween2.start()
 
 func _on_Bullet_Trigger_body_entered(_body):
 	$Objects/Tutorials/Bullet/Tutorial_Action/area.call_deferred("set", "disabled", false)
