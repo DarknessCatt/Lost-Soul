@@ -88,14 +88,14 @@ color = Color( 0.266667, 0.227451, 0.219608, 1 )
 polygon = PoolVector2Array( 0, 144, 40, 112, 72, 48, 128, 16, 248, 8, 352, 24, 408, 24, 432, 0, 0, 0 )
 type = 3
 
-[node name="Right_Ceiling2" parent="Room" index="5" instance=ExtResource( 3 )]
+[node name="Right_Ceiling" parent="Room" index="5" instance=ExtResource( 3 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 584, 0, 616, 48, 752, 88, 904, 96, 976, 136, 1024, 200, 1024, 0 )
+polygon = PoolVector2Array( 584, 0, 616, 48, 752, 88, 880, 96, 928, 120, 960, 192, 1000, 200, 1024, 200, 1024, 0 )
 type = 4
 
-[node name="Inner" parent="Room/Right_Ceiling2" index="0" instance=ExtResource( 3 )]
+[node name="Inner" parent="Room/Right_Ceiling" index="0" instance=ExtResource( 3 )]
 color = Color( 0.266667, 0.227451, 0.219608, 1 )
-polygon = PoolVector2Array( 632, 0, 680, 24, 776, 24, 808, 64, 840, 72, 904, 40, 992, 104, 1024, 152, 1024, 0 )
+polygon = PoolVector2Array( 632, 0, 680, 24, 776, 24, 808, 64, 840, 72, 912, 64, 952, 96, 960, 152, 1000, 184, 1024, 184, 1024, 0 )
 type = 3
 
 [node name="One_Way_Platform" parent="Room" index="6" instance=ExtResource( 4 )]
@@ -111,7 +111,7 @@ polygon = PoolVector2Array( 440, 600, 440, 704, 584, 704, 584, 600, 1024, 600, 1
 polygon = PoolVector2Array( 0, 192, 72, 144, 128, 72, 272, 32, 376, 48, 440, 40, 448, 0, 448, -104, 584, -104, 584, 0, 592, 0, 592, -112, 440, -112, 440, 0, 0, 0 )
 
 [node name="Right_Ceil" type="CollisionPolygon2D" parent="Room/Wall" index="3"]
-polygon = PoolVector2Array( 584, 0, 616, 48, 752, 88, 904, 96, 976, 136, 1024, 200, 1064, 200, 1064, 320, 1024, 320, 1024, 328, 1072, 328, 1072, 192, 1024, 192, 1024, 0 )
+polygon = PoolVector2Array( 584, 0, 616, 48, 752, 88, 880, 96, 928, 120, 960, 192, 1000, 200, 1024, 200, 1064, 200, 1064, 320, 1024, 320, 1024, 328, 1072, 328, 1072, 192, 1024, 192, 1024, 0 )
 
 [node name="Middle" type="CollisionPolygon2D" parent="Room/Wall" index="4"]
 polygon = PoolVector2Array( 336, 272, 336, 320, 408, 376, 512, 392, 640, 376, 720, 320, 728, 256, 720, 232, 592, 208, 432, 208, 344, 224 )
