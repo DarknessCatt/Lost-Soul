@@ -98,6 +98,22 @@ action = "hero_dash"
 [node name="area" type="CollisionShape2D" parent="Props/Tutorial_Action"]
 shape = SubResource( 2 )
 
+[node name="Double_Dash1" parent="Props" instance=ExtResource( 4 )]
+position = Vector2( 3240, -272 )
+action = "hero_dash"
+
+[node name="area" type="CollisionShape2D" parent="Props/Double_Dash1"]
+position = Vector2( -160, 32 )
+shape = SubResource( 2 )
+
+[node name="Double_Dash2" parent="Props" instance=ExtResource( 4 )]
+position = Vector2( 3168, -272 )
+action = "hero_dash"
+
+[node name="area" type="CollisionShape2D" parent="Props/Double_Dash2"]
+position = Vector2( -88, 32 )
+shape = SubResource( 2 )
+
 [node name="Dialogue1" type="Node2D" parent="."]
 
 [node name="Dialogue_Trigger" type="Area2D" parent="Dialogue1"]
