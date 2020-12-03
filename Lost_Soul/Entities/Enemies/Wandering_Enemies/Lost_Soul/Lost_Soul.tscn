@@ -762,7 +762,7 @@ collision_layer = 0
 script = ExtResource( 2 )
 soul_x = 18.0
 max_health = 15
-souls = 2
+souls = 4
 
 [node name="Body_Animations" parent="." index="0"]
 autoplay = "Rest"

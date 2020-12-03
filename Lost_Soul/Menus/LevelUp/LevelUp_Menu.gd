@@ -2,8 +2,8 @@ extends Control
 
 signal menu_exited()
 
-const HP_INC : int = 30
-const SP_INC : int = 10
+const HP_INC : int = 20
+const SP_INC : int = 15
 
 var hero : KinematicBody2D = null
 var souls : int = 0 setget set_souls

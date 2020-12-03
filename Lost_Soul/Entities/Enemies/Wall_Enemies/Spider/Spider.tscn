@@ -844,7 +844,7 @@ collision_mask = 16
 script = ExtResource( 2 )
 soul_x = 56.0
 max_health = 10
-souls = 2
+souls = 6
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/Falling = SubResource( 1 )

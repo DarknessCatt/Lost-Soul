@@ -1003,7 +1003,7 @@ height = 376.0
 [node name="Hawk" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
 max_health = 20
-souls = 8
+souls = 10
 
 [node name="Body_Animations" parent="." index="0"]
 autoplay = "Rest"

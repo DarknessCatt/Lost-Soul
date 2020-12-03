@@ -225,7 +225,7 @@ radius = 200.0
 [node name="Birb" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
 soul_x = 18.0
-souls = 1
+souls = 2
 
 [node name="Body_Animations" parent="." index="0"]
 autoplay = "Rest"

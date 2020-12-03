@@ -310,7 +310,7 @@ height = 38.0
 [node name="Test_Wanderer" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 soul_x = 32.0
-souls = 1
+souls = 2
 
 [node name="Body_Animations" parent="." index="0"]
 autoplay = "rest"
