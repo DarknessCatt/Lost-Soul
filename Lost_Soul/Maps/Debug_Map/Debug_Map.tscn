@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilesets/Placeholder_White/Placeholder_White.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Maps/Util/Mountain_Polygon/Mountain_Polygon.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Entities/Enemies/Wall_Enemies/Spider/Spider.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Entities/Pickups/Final_Soul/Final_Soul.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/Components/Heavy_Shoot/Heavy_Shoot.tscn" type="PackedScene" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 136, 48 )
@@ -145,6 +146,9 @@ Character = NodePath("../..")
 
 [node name="Soul_Counter" parent="Hero/Player_Camera" index="1"]
 Character = NodePath("../..")
+
+[node name="Heavy_Shoot" parent="." instance=ExtResource( 21 )]
+position = Vector2( -201, 275 )
 [connection signal="checkpoint_reached" from="Checkpoint" to="." method="_on_Checkpoint_reached"]
 [connection signal="dialogue_end" from="Checkpoint/DialogueBox" to="." method="_on_dialoguebox_end"]
 

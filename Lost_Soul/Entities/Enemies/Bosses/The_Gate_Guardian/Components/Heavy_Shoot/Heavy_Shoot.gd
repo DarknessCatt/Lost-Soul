@@ -3,7 +3,7 @@ extends KinematicBody2D
 export(PackedScene) var smaller_shot : PackedScene
 
 const inicial_rad = -1.57
-const increment = 0.785
+const increment = 0.449
 
 var SPEED : int = 250
 var dir : Vector2 = Vector2(1,0)
@@ -18,10 +18,10 @@ func _physics_process(delta):
 		var col : KinematicCollision2D = self.move_and_collide(dir*delta)
 		if col != null:
 
-			for i in 5:
+			for i in 10:
 				var bullet = smaller_shot.instance()
 				bullet.SPEED = 700
-				bullet.position = self.position
+				bullet.position = self.position + col.normal*10
 				bullet.rotation = inicial_rad + i*increment + col.normal.angle()
 				self.get_parent().add_child(bullet)
 
