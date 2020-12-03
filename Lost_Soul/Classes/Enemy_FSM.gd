@@ -48,7 +48,7 @@ func _spawn_single_soul(value = 1):
 	if not Engine.editor_hint:
 		var new_soul = SOUL_RES.instance()
 		new_soul.Soul_Value = value
-		new_soul.position = self.position + Vector2(rand_range(-soul_x, soul_x), -60)
+		new_soul.position = self.position + Vector2(rand_range(-soul_x, soul_x), 0)
 		self.get_parent().call_deferred("add_child", new_soul)
 		yield(get_tree().create_timer(0.05), "timeout")
 
