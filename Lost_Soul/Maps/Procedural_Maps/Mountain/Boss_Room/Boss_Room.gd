@@ -8,6 +8,7 @@ func _ready():
 		battle_room.call_deferred("free")
 
 	on_battle_room = false
+	$Objects/Tutorial_Action.disabled = false
 
 func _on_exit_entered(_body, id):
 	self.emit_signal("player_exited", id)
@@ -36,6 +37,7 @@ func _on_Boss_Door_exited(_body):
 func _input(event):
 	if on_door and event.is_action_pressed("hero_interact"):
 		assert(Boss_Scene != null, "Boss Scene empty!")
+		$Objects/Tutorial_Action.disabled = true
 		if battle_room == null: battle_room = Boss_Scene.instance()
 		on_battle_room = true
 		emit_signal("boss_entered", battle_room)

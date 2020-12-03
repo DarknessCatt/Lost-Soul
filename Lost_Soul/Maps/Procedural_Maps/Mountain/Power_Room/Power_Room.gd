@@ -14,3 +14,4 @@ func get_spawn_point(exit_id : int) -> Vector2:
 
 func _on_PowerUp_activated(scene : PackedScene):
 	self.emit_signal("change_tutorial", scene)
+

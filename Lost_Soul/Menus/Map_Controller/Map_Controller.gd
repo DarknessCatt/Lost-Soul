@@ -153,6 +153,7 @@ func leave_boss() -> void:
 	hero.cutscene = hero.cutscene_type.FULL
 
 	temp_screen.disconnect("room_exited", self, "leave_boss")
+	temp_screen.disconnect("soul_exited", self, "soul_exited")
 
 	current_scene = scenes.on_boss
 

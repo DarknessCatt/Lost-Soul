@@ -21,7 +21,8 @@ func _on_PowerUp_exited(_body):
 
 func _input(event):
 	if not consumed and on_zone and event.is_action_pressed("hero_interact"):
-		assert(hero.available_powers.has(power))
+		assert(hero.available_powers.has(power), "PowerUp has no Power Assigned!")
+		$Tutorial_Action.disabled = true
 		emit_signal("power_activated", tutorial_scene)
 		hero.available_powers[power] = true
 		consumed = true
