@@ -42,6 +42,7 @@ func _on_attack_hit(energy_restored):
 	energy += energy_restored
 	# warning-ignore:narrowing_conversion
 	energy = min(max_energy, energy)
+	$Sounds/Punch.play(0.05)
 
 func _hit(damage : int, _force : int, _direction : Vector2) -> void:
 	if not invencible and cutscene == cutscene_type.NONE:
@@ -134,6 +135,10 @@ func _crystal_heart_collected() -> void:
 	_change_anim("PowerUp")
 	emit_signal("heart_collected")
 
+func _jump_effects() -> void:
+	$Sounds/Jump.play(0.15)
+	$Jump_Particles.restart()
+
 func _use_heart() -> void:
 	if crystal_heart > 0:
 		crystal_heart -= 1
@@ -180,6 +185,8 @@ func _disable_hitboxes() -> void:
 		for hitbox in atk.get_children():
 			for collision in hitbox.get_children():
 				collision.call_deferred("set", "disabled", true)
+
+	yield(get_tree(), "idle_frame")
 
 func _input(event):
 	if cutscene == cutscene_type.NONE:

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/516974__plucinskicasey__normalpunch.wav-0f959fbdc01d545a60421b6a9bb64006.sample"
+
+[deps]
+
+source_file="res://Assets/Sound_Effects/Punch/516974__plucinskicasey__normalpunch.wav"
+dest_files=[ "res://.import/516974__plucinskicasey__normalpunch.wav-0f959fbdc01d545a60421b6a9bb64006.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

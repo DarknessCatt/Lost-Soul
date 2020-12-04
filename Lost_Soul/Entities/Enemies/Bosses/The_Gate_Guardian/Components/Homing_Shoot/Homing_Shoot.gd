@@ -31,6 +31,7 @@ func _on_Self_Destruct_timeout():
 func _die():
 	collided = true
 	$Splash.emitting = true
+	$SFX.stop()
 	$Body.hide()
 	self.call_deferred("set_collision_mask_bit", 0, false)
 	$Hitbox.call_deferred("set", "monitorable", false)

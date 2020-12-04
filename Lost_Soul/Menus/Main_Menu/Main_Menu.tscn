@@ -17,7 +17,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-game_scene = "res://Maps/Prototype_Dead_World/Prototype_Dead_World.tscn"
+game_scene = "res://Menus/Gameplay/Gameplay.tscn"
 credits_scene = "res://Menus/Credits/Credits.tscn"
 
 [node name="Menu" type="VBoxContainer" parent="."]

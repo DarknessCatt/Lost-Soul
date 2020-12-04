@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/Pickups/Souls/Souls.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sound_Effects/Coin/420996__eponn__coin-2.wav" type="AudioStream" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "collect"
-length = 0.2
+length = 0.4
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:scale")
@@ -29,6 +30,30 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0.1, 0.1, 0.1, 1 ), Color( 5, 5, 5, 1 ), Color( 5, 5, 5, 1 ), Color( 0.98, 0.98, 0.98, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Taken:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Taken:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -20.0, -30.0 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -87,6 +112,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -181,5 +218,9 @@ position = Vector2( 0, 24 )
 enabled = true
 cast_to = Vector2( 0, 20 )
 collision_mask = 16
+
+[node name="Taken" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -25.0
 [connection signal="body_entered" from="." to="." method="_on_Souls_body_entered"]
 [connection signal="animation_finished" from="Animation" to="." method="_on_Animation_finished"]

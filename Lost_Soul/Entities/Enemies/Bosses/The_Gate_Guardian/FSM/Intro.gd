@@ -22,6 +22,7 @@ func enter(Guardian : KinematicBody2D) -> void:
 func exit(Guardian : KinematicBody2D) -> void:
 	Guardian.set_collision_layer_bit(1, 1)
 	Guardian.get_node("Hurtbox").call_deferred("set", "monitoring", true)
+	Guardian.get_node("Hurtbox").call_deferred("set", "monitorable", true)
 	Guardian.get_node("Hitbox").call_deferred("set", "monitorable", true)
 
 func update(Guardian: KinematicBody2D, _delta : float) -> void:

@@ -22,7 +22,7 @@ export(int) var downwards_space = 0
 signal intro_ended
 signal dead
 
-const invencible : bool = false
+var invencible : bool = false
 
 ##Functions
 func _hit(damage : int, force : int, direction : Vector2) -> void:

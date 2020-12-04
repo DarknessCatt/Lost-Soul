@@ -121,9 +121,7 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 
 func hit(damage : int, force : int, direction : Vector2) -> void:
 	health -= damage
-
 	speed += (force/1.5)*direction.normalized()
-
 	effects.play("hit")
 
 # Called by Atk_Bounce_Outro

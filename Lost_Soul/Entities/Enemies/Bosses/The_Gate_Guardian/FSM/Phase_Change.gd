@@ -26,6 +26,8 @@ func enter(Guardian : KinematicBody2D) -> void:
 
 	speed = (-Guardian.position).normalized()*MAX_SPEED*5
 
+	Guardian.invencible = true
+
 	Guardian.set_collision_layer_bit(1, 0)
 	Guardian.get_node("Hitbox").call_deferred("set", "monitorable", false)
 	Guardian.get_node("Hurtbox").call_deferred("set", "monitoring", false)
@@ -34,6 +36,7 @@ func exit(Guardian : KinematicBody2D) -> void:
 	Guardian.set_collision_layer_bit(1, 1)
 	Guardian.get_node("Hurtbox").call_deferred("set", "monitoring", true)
 	Guardian.get_node("Hitbox").call_deferred("set", "monitorable", true)
+	Guardian.invencible = false
 
 func update(Guardian: KinematicBody2D, delta : float) -> void:
 	#Handling Movement
