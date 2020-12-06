@@ -25,41 +25,41 @@ extents = Vector2( 80, 224 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 152, 128 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 149.76, 214.855 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 32, 96 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 128, 168 )
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=7]
 radius = 12.5966
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 480, 280 )
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=9]
 radius = 120.0
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 72, 76 )
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=12]
 size = 100
 font_data = ExtResource( 17 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=13]
 size = 35
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 16 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=14]
 size = 40
 font_data = ExtResource( 17 )
 
@@ -93,12 +93,12 @@ type = 1
 
 [node name="Soft_Walls" parent="Room" instance=ExtResource( 1 )]
 color = Color( 0.364706, 0.321569, 0.305882, 1 )
-polygon = PoolVector2Array( 1, 0, 3073, 0, 3073, 600, 1609, 600, 1529, 584, 1361, 584, 1297, 576, 1281, 552, 1281, 520, 1337, 512, 1473, 512, 1537, 512, 1673, 520, 1857, 520, 1985, 512, 2049, 512, 2057, 516, 2065, 548, 2097, 576, 2269, 576, 2321, 564, 2333, 492, 2321, 424, 2305, 408, 2305, 384, 2369, 384, 2465, 376, 2521, 376, 2545, 360, 2577, 288, 2609, 232, 2641, 152, 2657, 176, 2657, 320, 2665, 376, 2753, 392, 2921, 392, 3001, 352, 3033, 240, 2985, 128, 2889, 64, 2681, 40, 2497, 40, 2369, 64, 2361, 112, 2333, 144, 2249, 168, 2177, 160, 2105, 168, 2049, 192, 2033, 248, 2057, 288, 2057, 304, 2049, 320, 1985, 320, 1953, 296, 1881, 280, 1809, 280, 1761, 296, 1713, 272, 1609, 280, 1537, 320, 1473, 320, 1449, 280, 1449, 256, 1465, 208, 1449, 168, 1433, 104, 1385, 64, 1273, 48, 1025, 64, 889, 88, 721, 96, 665, 64, 513, 40, 281, 32, 137, 56, 89, 96, 57, 200, 49, 304, 49, 472, 65, 512, 129, 520, 313, 520, 537, 528, 625, 528, 673, 512, 697, 464, 697, 368, 673, 328, 673, 296, 689, 280, 729, 280, 865, 288, 929, 288, 993, 304, 1017, 328, 1033, 392, 1041, 472, 1073, 496, 1121, 496, 1153, 520, 1153, 568, 1129, 592, 1009, 584, 849, 584, 769, 600, 753, 784, 745, 960, 761, 1096, 801, 1152, 905, 1144, 993, 1144, 1049, 1096, 1065, 928, 1097, 888, 1145, 880, 1281, 880, 1345, 896, 1361, 944, 1377, 1096, 1417, 1120, 1521, 1144, 1617, 1136, 1673, 1104, 1697, 968, 1681, 696, 1673, 640, 1609, 600, 1737, 600, 1737, 1216, 705, 1216, 705, 600, 1, 600 )
+polygon = PoolVector2Array( 1, 0, 3073, 0, 3073, 600, 1609, 600, 1529, 584, 1361, 584, 1297, 576, 1281, 552, 1281, 520, 1337, 512, 1473, 512, 1537, 512, 1673, 520, 1857, 520, 1985, 512, 2049, 512, 2057, 516, 2065, 548, 2097, 560, 2273, 560, 2325, 540, 2333, 492, 2321, 424, 2305, 408, 2305, 384, 2369, 384, 2465, 376, 2521, 376, 2545, 360, 2577, 288, 2609, 232, 2641, 152, 2657, 176, 2657, 320, 2665, 376, 2753, 392, 2921, 392, 3001, 352, 3033, 240, 2985, 128, 2889, 64, 2681, 40, 2497, 40, 2369, 64, 2361, 112, 2333, 144, 2249, 168, 2177, 160, 2105, 168, 2049, 192, 2033, 248, 2057, 288, 2057, 304, 2049, 320, 1985, 320, 1953, 296, 1881, 280, 1809, 280, 1761, 296, 1713, 272, 1609, 280, 1537, 320, 1473, 320, 1449, 280, 1449, 256, 1465, 208, 1449, 168, 1433, 104, 1385, 64, 1273, 48, 1025, 64, 889, 88, 721, 96, 665, 64, 513, 40, 281, 32, 137, 56, 89, 96, 57, 200, 49, 304, 49, 472, 65, 512, 129, 520, 313, 520, 537, 528, 625, 528, 673, 512, 697, 464, 697, 368, 673, 328, 673, 296, 689, 280, 729, 280, 865, 288, 929, 288, 993, 304, 1017, 328, 1033, 392, 1041, 472, 1073, 496, 1121, 496, 1153, 520, 1153, 568, 1129, 592, 1009, 584, 849, 584, 769, 600, 753, 784, 745, 960, 761, 1096, 801, 1152, 905, 1144, 993, 1144, 1049, 1096, 1065, 928, 1097, 888, 1145, 880, 1281, 880, 1345, 896, 1361, 944, 1377, 1096, 1417, 1120, 1521, 1144, 1617, 1136, 1673, 1104, 1697, 968, 1681, 696, 1673, 640, 1609, 600, 1737, 600, 1737, 1216, 705, 1216, 705, 600, 1, 600 )
 type = 4
 
 [node name="Hard_Walls" parent="Room/Soft_Walls" instance=ExtResource( 1 )]
 color = Color( 0.266667, 0.227451, 0.219608, 1 )
-polygon = PoolVector2Array( 1, 0, 3073, 0, 3073, 600, 1737, 600, 1625, 592, 1537, 568, 1369, 568, 1305, 560, 1297, 536, 1345, 520, 1425, 520, 1521, 528, 1649, 536, 1809, 544, 1953, 536, 2041, 520, 2045, 548, 2069, 584, 2269, 588, 2325, 576, 2353, 504, 2345, 456, 2329, 408, 2337, 392, 2393, 400, 2481, 384, 2545, 384, 2577, 352, 2585, 296, 2617, 248, 2641, 168, 2649, 192, 2641, 320, 2649, 392, 2673, 408, 2793, 424, 2929, 432, 2993, 408, 3025, 376, 3049, 296, 3057, 176, 3017, 120, 2937, 56, 2761, 16, 2505, 16, 2357, 36, 2333, 72, 2333, 116, 2269, 144, 2197, 132, 2105, 136, 2041, 152, 2009, 192, 2017, 248, 2041, 288, 2033, 312, 2001, 312, 1977, 280, 1921, 264, 1825, 264, 1745, 272, 1705, 248, 1657, 248, 1585, 264, 1537, 304, 1489, 304, 1465, 264, 1489, 200, 1465, 144, 1457, 96, 1417, 48, 1265, 24, 1049, 40, 897, 72, 729, 80, 709.871, 57.2178, 577, 24, 281, 16, 113, 32, 49, 80, 25, 264, 25, 440, 49, 544, 161, 568, 337, 560, 569, 576, 697, 552, 729, 496, 737, 416, 713, 352, 753, 328, 833, 328, 929, 336, 985, 368, 1017, 432, 1033, 504, 1081, 520, 1121, 512, 1145, 544, 1121, 576, 1057, 560, 945, 552, 809, 552, 753, 584, 729, 688, 721, 880, 737, 1096, 753, 1152, 801, 1176, 905, 1168, 1025, 1168, 1065, 1120, 1081, 968, 1113, 920, 1161, 904, 1273, 904, 1321, 928, 1353, 1064, 1385, 1144, 1537, 1176, 1657, 1160, 1705, 1096, 1721, 944, 1705, 688, 1681, 624, 1625, 592, 1737, 592, 1737, 1216, 705, 1216, 705, 600, 1, 600 )
+polygon = PoolVector2Array( 1, 0, 3073, 0, 3073, 600, 1737, 600, 1625, 592, 1537, 568, 1369, 568, 1305, 560, 1297, 536, 1345, 520, 1425, 520, 1521, 528, 1649, 536, 1809, 544, 1953, 536, 2041, 520, 2045, 548, 2077, 572, 2273, 576, 2333, 564, 2353, 504, 2345, 456, 2329, 408, 2337, 392, 2393, 400, 2481, 384, 2545, 384, 2577, 352, 2585, 296, 2617, 248, 2641, 168, 2649, 192, 2641, 320, 2649, 392, 2673, 408, 2793, 424, 2929, 432, 2993, 408, 3025, 376, 3049, 296, 3057, 176, 3017, 120, 2937, 56, 2761, 16, 2505, 16, 2357, 36, 2333, 72, 2333, 116, 2269, 144, 2197, 132, 2105, 136, 2041, 152, 2009, 192, 2017, 248, 2041, 288, 2033, 312, 2001, 312, 1977, 280, 1921, 264, 1825, 264, 1745, 272, 1705, 248, 1657, 248, 1585, 264, 1537, 304, 1489, 304, 1465, 264, 1489, 200, 1465, 144, 1457, 96, 1417, 48, 1265, 24, 1049, 40, 897, 72, 729, 80, 709.871, 57.2178, 577, 24, 281, 16, 113, 32, 49, 80, 25, 264, 25, 440, 49, 544, 161, 568, 337, 560, 569, 576, 697, 552, 729, 496, 737, 416, 713, 352, 753, 328, 833, 328, 929, 336, 985, 368, 1017, 432, 1033, 504, 1081, 520, 1121, 512, 1145, 544, 1121, 576, 1057, 560, 945, 552, 809, 552, 753, 584, 729, 688, 721, 880, 737, 1096, 753, 1152, 801, 1176, 905, 1168, 1025, 1168, 1065, 1120, 1081, 968, 1113, 920, 1161, 904, 1273, 904, 1321, 928, 1353, 1064, 1385, 1144, 1537, 1176, 1657, 1160, 1705, 1096, 1721, 944, 1705, 688, 1681, 624, 1625, 592, 1737, 592, 1737, 1216, 705, 1216, 705, 600, 1, 600 )
 type = 3
 
 [node name="Grass1" parent="Room/Soft_Walls" instance=ExtResource( 1 )]
@@ -115,7 +115,7 @@ type = 5
 collision_layer = 16
 
 [node name="Walls" type="CollisionPolygon2D" parent="Room/Walls"]
-polygon = PoolVector2Array( 1, 0, 1, 600, 705, 600, 705, 1216, 1737, 1216, 1737, 600, 1609, 600, 1673, 640, 1681, 704, 1697, 968, 1673, 1104, 1617, 1136, 1521, 1144, 1417, 1120, 1377, 1096, 1361, 944, 1345, 896, 1281, 880, 1145, 880, 1097, 888, 1065, 928, 1049, 1096, 993, 1144, 905, 1144, 801, 1152, 761, 1096, 745, 960, 753, 784, 769, 600, 849, 584, 1129, 592, 1153, 568, 1153, 520, 1121, 496, 1073, 496, 1041, 472, 1033, 392, 1017, 328, 993, 304, 929, 288, 865, 288, 737, 280, 689, 280, 673, 296, 673, 328, 697, 368, 697, 464, 673, 512, 625, 528, 329, 520, 129, 520, 65, 512, 49, 472, 49, 304, 57, 200, 89, 96, 137, 56, 281, 32, 513, 40, 665, 64, 721, 96, 889, 88, 1025, 64, 1273, 48, 1385, 64, 1433, 104, 1449, 168, 1465, 208, 1449, 256, 1449, 280, 1473, 320, 1537, 320, 1609, 280, 1713, 272, 1761, 296, 1809, 280, 1881, 280, 1953, 296, 1985, 320, 2049, 320, 2057, 304, 2057, 288, 2033, 248, 2049, 192, 2105, 168, 2177, 160, 2249, 168, 2333, 144, 2361, 112, 2369, 64, 2497, 40, 2689, 40, 2889, 64, 2985, 128, 3033, 240, 3001, 352, 2921, 392, 2753, 392, 2665, 376, 2657, 320, 2657, 176, 2641, 152, 2609, 232, 2577, 288, 2545, 360, 2521, 376, 2465, 376, 2369, 384, 2305, 384, 2305, 408, 2321, 424, 2333, 496, 2321, 564, 2273, 576, 2097, 576, 2065, 548, 2057, 516, 2049, 512, 1977, 512, 1857, 520, 1673, 520, 1537, 512, 1337, 512, 1281, 520, 1281, 552, 1297, 576, 1361, 584, 1529, 584, 1609, 600, 3073, 600, 3073, 0 )
+polygon = PoolVector2Array( 1, 0, 1, 600, 705, 600, 705, 1216, 1737, 1216, 1737, 600, 1609, 600, 1673, 640, 1681, 704, 1697, 968, 1673, 1104, 1617, 1136, 1521, 1144, 1417, 1120, 1377, 1096, 1361, 944, 1345, 896, 1281, 880, 1145, 880, 1097, 888, 1065, 928, 1049, 1096, 993, 1144, 905, 1144, 801, 1152, 761, 1096, 745, 960, 753, 784, 769, 600, 849, 584, 1129, 592, 1153, 568, 1153, 520, 1121, 496, 1073, 496, 1041, 472, 1033, 392, 1017, 328, 993, 304, 929, 288, 865, 288, 737, 280, 689, 280, 673, 296, 673, 328, 697, 368, 697, 464, 673, 512, 625, 528, 329, 520, 129, 520, 65, 512, 49, 472, 49, 304, 57, 200, 89, 96, 137, 56, 281, 32, 513, 40, 665, 64, 721, 96, 889, 88, 1025, 64, 1273, 48, 1385, 64, 1433, 104, 1449, 168, 1465, 208, 1449, 256, 1449, 280, 1473, 320, 1537, 320, 1609, 280, 1713, 272, 1761, 296, 1809, 280, 1881, 280, 1953, 296, 1985, 320, 2049, 320, 2057, 304, 2057, 288, 2033, 248, 2049, 192, 2105, 168, 2177, 160, 2249, 168, 2333, 144, 2361, 112, 2369, 64, 2497, 40, 2689, 40, 2889, 64, 2985, 128, 3033, 240, 3001, 352, 2921, 392, 2753, 392, 2665, 376, 2657, 320, 2657, 176, 2641, 152, 2609, 232, 2577, 288, 2545, 360, 2521, 376, 2465, 376, 2369, 384, 2305, 384, 2305, 408, 2321, 424, 2333, 496, 2325, 540, 2273, 560, 2097, 560, 2065, 548, 2057, 516, 2049, 512, 1977, 512, 1857, 520, 1673, 520, 1537, 512, 1337, 512, 1281, 520, 1281, 552, 1297, 576, 1361, 584, 1529, 584, 1609, 600, 3073, 600, 3073, 0 )
 
 [node name="Top_Platform" parent="Room" instance=ExtResource( 7 )]
 position = Vector2( 1217, 528 )
@@ -190,11 +190,11 @@ action = "hero_up"
 
 [node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Up_Tilt/Up"]
 position = Vector2( 36, 12 )
-shape = SubResource( 14 )
+shape = SubResource( 4 )
 
 [node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Up_Tilt"]
 position = Vector2( -40, 12 )
-shape = SubResource( 14 )
+shape = SubResource( 4 )
 
 [node name="Bullet" type="Position2D" parent="Objects/Tutorials"]
 position = Vector2( 2905, 96 )
@@ -209,7 +209,7 @@ monitorable = false
 collision_layer = 0
 
 [node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Bullet/Bullet_Trigger"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="Tutorial_Action" parent="Objects/Tutorials/Bullet" instance=ExtResource( 2 )]
 position = Vector2( -408, 96 )
@@ -217,7 +217,7 @@ action = "hero_block"
 
 [node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Bullet/Tutorial_Action"]
 position = Vector2( 48, 16 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 disabled = true
 
 [node name="Walls" type="Node2D" parent="Objects"]
@@ -246,7 +246,7 @@ Id = 4
 Character = NodePath("..")
 
 [node name="area" type="CollisionShape2D" parent="Objects/Walls/Break_1/Hurtbox"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="Objects/Walls/Break_1"]
 polygon = PoolVector2Array( -32, 96, -24, 88, -8, 56, -16, -16, -24, -56, -32, -96, 32, -96, 0, -24, 8, 40, 8, 80, 24, 88, 32, 96 )
@@ -275,7 +275,7 @@ Id = 4
 Character = NodePath("..")
 
 [node name="area" type="CollisionShape2D" parent="Objects/Walls/Break_2/Hurtbox"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="Objects/Walls/Break_2"]
 polygon = PoolVector2Array( -32, 96, -16, 88, -8, 80, -8, 72, -16, 48, -24, 0, -24, -40, -32, -96, 32, -96, 24, -40, 24, 0, 0, 72, 0, 80, 8, 88, 32, 96 )
@@ -295,7 +295,7 @@ type = 3
 
 [node name="Weak_Spot" type="Polygon2D" parent="Objects/Walls/Break_3/Soft_Rock"]
 color = Color( 0.82, 0.0907467, 0.0656, 1 )
-polygon = PoolVector2Array( -65.2654, -105.335, -62.8855, -102.843, -60.1462, -100.183, -57.6216, -99.2685, -55.0452, -96.5273, -57.1973, -101.155, -57.6172, -103.785, -60.0166, -107.934, -59.0266, -102.015 )
+polygon = PoolVector2Array( -64.9204, -104.61, -63.1038, -102.793, -59.4099, -102.573, -55.5769, -94.7866, -56.7744, -102.692, -58.1084, -105.064, -61.5847, -107.261, -62.9902, -113.011, -78.0618, -115.607, -66.0708, -110.786 )
 
 [node name="Hurtbox" parent="Objects/Walls/Break_3" instance=ExtResource( 5 )]
 visible = false
@@ -305,9 +305,10 @@ Character = NodePath("..")
 
 [node name="area" type="CollisionShape2D" parent="Objects/Walls/Break_3/Hurtbox"]
 position = Vector2( 0.0437012, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="Objects/Walls/Break_3"]
+visible = false
 polygon = PoolVector2Array( -32, 96, -28, 88, -28, 48, -36, -20, -40, -52, -60, -100, -68, -108, -72, -108, -108, -92, -164, -108, -232, -120, -4, -144, -12, -124, -40, -124, -60, -108, -48, -88, -36, -76, -20, -48, 4, 64, 32, 96 )
 
 [node name="Altar_Area" type="Area2D" parent="Objects"]
@@ -317,7 +318,7 @@ collision_layer = 0
 
 [node name="Area" type="CollisionShape2D" parent="Objects/Altar_Area"]
 position = Vector2( 0, -32 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="Altar_Camera" type="Camera2D" parent="Objects/Altar_Area"]
 position = Vector2( 8, -40 )
@@ -329,7 +330,7 @@ action = "hero_interact"
 
 [node name="area" type="CollisionShape2D" parent="Objects/Altar_Area/Arrow"]
 position = Vector2( 0, 136 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="Altar" parent="Objects/Altar_Area" instance=ExtResource( 3 )]
 position = Vector2( 0, -64 )
@@ -405,7 +406,7 @@ action = "hero_interact"
 
 [node name="area" type="CollisionShape2D" parent="Objects/Exit"]
 position = Vector2( 0, 108 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="Player" type="Node2D" parent="."]
 
@@ -453,7 +454,7 @@ visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 10 )
+custom_styles/panel = SubResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -480,7 +481,7 @@ anchor_bottom = 1.0
 margin_right = 515.0
 margin_bottom = 146.0
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 1, 0.301961, 0.301961, 1 )
 text = "Aprimoramento de Alma"
 align = 1
@@ -505,7 +506,7 @@ margin_top = -36.5
 margin_right = 64.0
 margin_bottom = 36.5
 rect_min_size = Vector2( 128, 73 )
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0.670588, 0.878431, 1, 1 )
 text = "1000"
 align = 2
@@ -531,7 +532,7 @@ alignment = 1
 margin_right = 515.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Custo"
 align = 1
@@ -542,7 +543,7 @@ margin_top = 50.0
 margin_right = 515.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 200, 50 )
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "5"
 align = 1

@@ -21,4 +21,6 @@ limit_left = 0
 limit_top = 0
 limit_right = 3072
 limit_bottom = 1200
+
+[node name="BG" type="AudioStreamPlayer" parent="."]
 [connection signal="dead" from="Hero" to="." method="_on_Hero_dead"]

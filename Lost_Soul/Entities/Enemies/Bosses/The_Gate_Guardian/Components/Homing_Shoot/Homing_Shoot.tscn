@@ -99,9 +99,10 @@ one_shot = true
 explosiveness = 0.9
 process_material = SubResource( 6 )
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+[node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -25.0
 pitch_scale = 1.5
 autoplay = true
+bus = "SFX"
 [connection signal="timeout" from="Self_Destruct" to="." method="_on_Self_Destruct_timeout"]

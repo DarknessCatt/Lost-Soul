@@ -1,5 +1,9 @@
 extends Node2D
 
+export(AudioStream) var BG_Music : AudioStream
+export(AudioStream) var Tutorial_Music : AudioStream
+const MUSIC_VOLUME : float = -20.0
+
 const MAP_SIZE : Vector2 = Vector2(14,14)
 const START_POINT : Vector2 = Vector2(7, 7)
 
@@ -10,8 +14,11 @@ var screen_room : Node2D
 var map_data : Array
 
 export(PackedScene) var initial_tutorial : PackedScene
+export(PackedScene) var ending_screen : PackedScene
 
 func _ready():
+	MusicHandler.MusicPlayer = $BGMusic
+
 	hero = $Normal_Game/Screen/Viewport/Hero
 	camera = hero.get_node("Camera")
 	screen_room = $Normal_Game/Screen/Viewport/Room
@@ -54,6 +61,8 @@ func _ready():
 	$Temp_Screen/Viewport.call_deferred("add_child", temp_screen)
 	current_scene = scenes.temp_screen
 
+	MusicHandler.play_music(BG_Music, MUSIC_VOLUME, 0.01)
+
 func _input(event):
 	if event.is_action_pressed("minimap") and (current_scene == scenes.play or current_scene == scenes.on_boss):
 		$Normal_Game/MiniMap.visible = not $Normal_Game/MiniMap.visible
@@ -70,6 +79,7 @@ func _on_Hero_dead():
 	hero.die()
 
 	if current_scene == scenes.on_boss:
+		MusicHandler.play_music(BG_Music, MUSIC_VOLUME, 0.5)
 		screen_room.call_deferred("remove_child", temp_screen)
 		screen_room.call_deferred("add_child", map_data[cur_pos.x][cur_pos.y].node)
 
@@ -97,6 +107,7 @@ func enter_tutorial(tutorial : PackedScene):
 	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
 		"modulate", Color(0, 0, 0, 0), Color(0.360784, 0.807843, 1, 1), 1.5)
 	$Scene_Transtition/Tween.start()
+	MusicHandler.play_music(Tutorial_Music, MUSIC_VOLUME, 0.75)
 
 func leave_tutorial() -> void:
 	temp_screen.disconnect("tutorial_ended", self, "leave_tutorial")
@@ -104,6 +115,7 @@ func leave_tutorial() -> void:
 		"modulate", Color(0, 0, 0, 0), Color(0.360784, 0.807843, 1, 1), 1)
 	$Scene_Transtition/Tween.start()
 	hero.cutscene = hero.cutscene_type.NONE
+	MusicHandler.play_music(BG_Music, MUSIC_VOLUME, 0.5)
 
 func enter_levelup(menu : PackedScene) -> void:
 	temp_screen = menu.instance()
@@ -160,6 +172,7 @@ func leave_boss() -> void:
 	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
 		"modulate", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 0.2)
 	$Scene_Transtition/Tween.start()
+	MusicHandler.play_music(BG_Music, MUSIC_VOLUME, 0.1)
  
 func soul_exited() -> void:
 	$Normal_Game/HUD.hide()
@@ -170,7 +183,8 @@ func soul_exited() -> void:
 	$Room_Transition/Tween.start()
 	yield($Room_Transition/Tween, "tween_all_completed")
 	# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://Menus/Endings/Ending_Scene.tscn")
+	self.call_deferred("remove_child", game_screen)
+	$Temp_Screen/Viewport.call_deferred("add_child", ending_screen.instance())
 
 func _on_Scene_tween_all_completed():
 	$Room_Transition/Tween.interpolate_property($Room_Transition/Blackout, \

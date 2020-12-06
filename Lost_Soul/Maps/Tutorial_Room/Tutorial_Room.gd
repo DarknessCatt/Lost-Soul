@@ -16,12 +16,12 @@ func _ready():
 	for action in InputMap.get_action_list("hero_attack"):
 		attack_actions.append(action)
 
-	#InputMap.action_erase_events("hero_attack")
+	InputMap.action_erase_events("hero_attack")
 
 	for action in InputMap.get_action_list("hero_block"):
 		defend_actions.append(action)
 
-	#InputMap.action_erase_events("hero_block")
+	InputMap.action_erase_events("hero_block")
 
 	$Player/Hero.cutscene = $Player/Hero.cutscene_type.FULL
 	$Player/Hero._change_anim("StandingUp")
@@ -46,12 +46,12 @@ func _on_Altar_Area_exited(_body):
 
 func _on_Altar_entered(_body):
 	if altar_dialogue:
+		altar_dialogue = false
 		$Objects/Dialogues/Altar.begin_dialogue()
 		$Player/Hero.cutscene = $Player/Hero.cutscene_type.PHYSICS
 
 func _on_Altar_dialogue_end():
 	$Player/Hero.cutscene = $Player/Hero.cutscene_type.NONE
-	altar_dialogue = false
 
 func _on_checkpoint_activated(_checkpoint_menu):
 	if not altar_dialogue:

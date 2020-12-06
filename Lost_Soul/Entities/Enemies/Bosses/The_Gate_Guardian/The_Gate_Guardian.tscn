@@ -2671,21 +2671,19 @@ process_material = SubResource( 56 )
 polygon = PoolVector2Array( -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 56, 40, 40, 56, -40, 56, -56, 40 )
 
 [node name="Iris" type="Polygon2D" parent="Body/Eye"]
-position = Vector2( 50, 0 )
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( -12, 0, 0, -12, 12, 0, 0, 12 )
 
 [node name="Inside_Iris" type="Polygon2D" parent="Body/Eye/Iris"]
-position = Vector2( 4, 0 )
 polygon = PoolVector2Array( -4, 0, 0, -4, 4, 0, 0, 4 )
 
 [node name="Top_Lid" type="Polygon2D" parent="Body/Eye"]
 color = Color( 0.39, 0.0975, 0.039, 1 )
-polygon = PoolVector2Array( -52, -24, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -24, 32, -44, -32, -44 )
+polygon = PoolVector2Array( -52, -32, -60, 0, -64, 0, -56, -40, -36, -56, 36, -56, 56, -40, 64, 0, 60, 0, 52, -32, 32, -48, -32, -48 )
 
 [node name="Bot_Lid" type="Polygon2D" parent="Body/Eye"]
 color = Color( 0.39, 0.0975, 0.039, 1 )
-polygon = PoolVector2Array( -52, 32, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 32, 32, 44, -32, 44 )
+polygon = PoolVector2Array( -52, 36, -60, 0, -64, 0, -56, 40, -40, 56, 40, 56, 56, 40, 64, 0, 60, 0, 52, 36, 32, 48, -36, 48 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 5 )]
 monitoring = false

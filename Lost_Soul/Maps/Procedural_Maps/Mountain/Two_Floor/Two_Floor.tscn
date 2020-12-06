@@ -372,9 +372,6 @@ __meta__ = {
 "_gizmo_extents_": 50.0
 }
 
-[node name="Objects" parent="." index="5"]
-visible = false
-
 [node name="Spiderful_Layout" type="Node2D" parent="Objects" index="0"]
 
 [node name="Spider" parent="Objects/Spiderful_Layout" index="0" instance=ExtResource( 7 )]

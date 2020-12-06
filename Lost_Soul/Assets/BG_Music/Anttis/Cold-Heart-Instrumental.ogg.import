@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Cold-Heart-Instrumental.ogg-9b3221cccc0ef946ac3e50a5b78ada2b.oggstr"
+
+[deps]
+
+source_file="res://Assets/BG_Music/Anttis/Cold-Heart-Instrumental.ogg"
+dest_files=[ "res://.import/Cold-Heart-Instrumental.ogg-9b3221cccc0ef946ac3e50a5b78ada2b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

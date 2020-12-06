@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Glitch-In-Super-Mario.ogg-77f29567f8c4609c94e7fd9742f1fdd9.oggstr"
+
+[deps]
+
+source_file="res://Assets/BG_Music/Anttis/Glitch-In-Super-Mario.ogg"
+dest_files=[ "res://.import/Glitch-In-Super-Mario.ogg-77f29567f8c4609c94e7fd9742f1fdd9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

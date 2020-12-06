@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Cubes-Of-H2O.ogg-59778116b5b50f502140f400c2665ca0.oggstr"
+
+[deps]
+
+source_file="res://Assets/BG_Music/Anttis/Cubes-Of-H2O.ogg"
+dest_files=[ "res://.import/Cubes-Of-H2O.ogg-59778116b5b50f502140f400c2665ca0.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

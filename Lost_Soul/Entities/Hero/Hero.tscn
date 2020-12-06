@@ -5641,18 +5641,18 @@ radius = 6.0
 radius = 6.0
 height = 14.0
 
-[sub_resource type="CapsuleShape2D" id=46]
+[sub_resource type="CapsuleShape2D" id=39]
 radius = 9.0
 height = 72.0
 
-[sub_resource type="Gradient" id=47]
+[sub_resource type="Gradient" id=40]
 offsets = PoolRealArray( 0, 0.219251, 0.385027, 0.73262, 0.941176 )
 colors = PoolColorArray( 1, 1, 1, 0.478431, 1, 0.61, 0.61, 1, 1, 0.57, 0.57, 1, 1, 0, 0, 1, 1, 0, 0, 0.0117647 )
 
-[sub_resource type="GradientTexture" id=48]
-gradient = SubResource( 47 )
+[sub_resource type="GradientTexture" id=41]
+gradient = SubResource( 40 )
 
-[sub_resource type="ParticlesMaterial" id=49]
+[sub_resource type="ParticlesMaterial" id=42]
 emission_shape = 1
 emission_sphere_radius = 100.0
 flag_disable_z = true
@@ -5664,7 +5664,7 @@ orbit_velocity_random = 0.0
 radial_accel = -300.0
 scale = 6.0
 scale_random = 0.3
-color_ramp = SubResource( 48 )
+color_ramp = SubResource( 41 )
 
 [sub_resource type="Gradient" id=43]
 offsets = PoolRealArray( 0, 0.726852, 1 )
@@ -5727,12 +5727,12 @@ anims/inv = SubResource( 23 )
 
 [node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 16 )
-volume_db = -10.0
+volume_db = -15.0
 bus = "SFX"
 
 [node name="Punch" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 17 )
-volume_db = -17.0
+volume_db = -20.0
 
 [node name="Buffer" type="Node" parent="."]
 script = ExtResource( 5 )
@@ -6244,7 +6244,7 @@ color = Color( 1, 0, 0, 1 )
 [node name="Body_Collision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 10.0172 )
-shape = SubResource( 46 )
+shape = SubResource( 39 )
 
 [node name="Heart_Particles" type="Particles2D" parent="."]
 position = Vector2( 1.90735e-06, -11.8787 )
@@ -6252,7 +6252,7 @@ emitting = false
 amount = 40
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 49 )
+process_material = SubResource( 42 )
 
 [node name="Jump_Particles" type="Particles2D" parent="."]
 position = Vector2( 0, 56 )
