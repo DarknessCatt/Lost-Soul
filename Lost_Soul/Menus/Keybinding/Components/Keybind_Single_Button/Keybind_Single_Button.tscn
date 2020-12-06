@@ -17,9 +17,8 @@ __meta__ = {
 
 [node name="Action" type="Label" parent="."]
 margin_left = 286.0
-margin_top = -1.0
 margin_right = 421.0
-margin_bottom = 49.0
+margin_bottom = 50.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 135, 50 )

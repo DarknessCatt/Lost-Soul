@@ -6,6 +6,7 @@ signal tutorial_ended
 
 #Flags
 var altar_dialogue : bool = true
+var on_altar : bool = false
 var on_exit : bool = false
 
 #Inputs
@@ -45,19 +46,21 @@ func _on_Altar_Area_exited(_body):
 	$Player/Hero/Camera2D.current = true
 
 func _on_Altar_entered(_body):
-	if altar_dialogue:
-		altar_dialogue = false
+	if altar_dialogue and not $Objects/Dialogues/Altar.started:
 		$Objects/Dialogues/Altar.begin_dialogue()
 		$Player/Hero.cutscene = $Player/Hero.cutscene_type.PHYSICS
 
 func _on_Altar_dialogue_end():
 	$Player/Hero.cutscene = $Player/Hero.cutscene_type.NONE
+	altar_dialogue = false
 
 func _on_checkpoint_activated(_checkpoint_menu):
-	if not altar_dialogue:
+	if not on_altar and not altar_dialogue:
+		on_altar = true
 		$Player/Hero.cutscene = $Player/Hero.cutscene_type.PHYSICS
 
 		$Menu/Upgrade_Menu.show()
+		$Menu/Upgrade_Menu/Menu/Upgrades/Upgrade.grab_focus()
 		$Menu/Upgrade_Menu/Menu/Soul_Node/Souls.text = str($Player/Hero.souls)
 		if $Player/Hero.souls < 5: $Menu/Upgrade_Menu/Menu/Upgrades/Upgrade.disabled = true
 		else: $Menu/Upgrade_Menu/Menu/Upgrades/Upgrade.disabled = false
@@ -67,14 +70,15 @@ func _on_checkpoint_activated(_checkpoint_menu):
 		$Menu/Tween.start()
 
 func _on_Back_pressed():
+	on_altar = false
 	$Menu/Upgrade_Menu.hide()
+	$Menu/Upgrade_Menu.release_focus()
 	$Player/Hero.cutscene = $Player/Hero.cutscene_type.NONE
 	$Menu/Tween.remove_all()
 	$Menu/Tween.interpolate_property($Menu/Upgrade_Menu, "modulate:a", 1, 0, 0.5)
 	$Menu/Tween.start()
 
 func _on_Upgrade_pressed():
-	$Menu/Upgrade_Menu.hide()
 	self._on_Back_pressed()
 
 	$Player/Hero.souls -= 5

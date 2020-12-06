@@ -68,35 +68,35 @@ func generate(Room_Path : String = "res://Maps/Procedural_Maps/Mountain/") -> Ar
 	for room in room_list: room.node.open_exits(room.exits, room.rank)
 
 	#Printa o minimapa, bom para debuggar mas da para tirar no futuro.
-	var map : String = ""
-
-	for x in range(MAP_SIZE.x):
-		for y in range(MAP_SIZE.y):
-			if x == START_POS.x and y == START_POS.y:
-				map += "[S]"
-
-			elif map_data[y][x] == null:
-				map += "   "
-
-			else:
-				if map_data[y][x].node.room_type == RoomConstants.room_types.BONUS:
-					map += "[B]"
-
-				elif map_data[y][x].node.room_type == RoomConstants.room_types.POWER:
-					map += "[P]"
-
-				elif map_data[y][x].node.room_type == RoomConstants.room_types.CHECKPOINT:
-					map += "[C]"
-
-				elif map_data[y][x].node.room_type == RoomConstants.room_types.BOSS:
-					map += "[D]"
-
-				else:
-					map += "["+str(map_data[y][x].rank)+"]"
-
-		map += "\n"
-
-	print(map)
+#	var map : String = ""
+#
+#	for x in range(MAP_SIZE.x):
+#		for y in range(MAP_SIZE.y):
+#			if x == START_POS.x and y == START_POS.y:
+#				map += "[S]"
+#
+#			elif map_data[y][x] == null:
+#				map += "   "
+#
+#			else:
+#				if map_data[y][x].node.room_type == RoomConstants.room_types.BONUS:
+#					map += "[B]"
+#
+#				elif map_data[y][x].node.room_type == RoomConstants.room_types.POWER:
+#					map += "[P]"
+#
+#				elif map_data[y][x].node.room_type == RoomConstants.room_types.CHECKPOINT:
+#					map += "[C]"
+#
+#				elif map_data[y][x].node.room_type == RoomConstants.room_types.BOSS:
+#					map += "[D]"
+#
+#				else:
+#					map += "["+str(map_data[y][x].rank)+"]"
+#
+#		map += "\n"
+#
+#	print(map)
 
 	return room_list
 

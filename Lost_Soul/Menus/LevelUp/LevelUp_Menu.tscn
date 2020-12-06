@@ -99,6 +99,9 @@ margin_left = 53.0
 margin_right = 153.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
+focus_neighbour_right = NodePath("../SP")
+focus_neighbour_bottom = NodePath("../../Back_Node/Back")
+focus_next = NodePath("../SP")
 text = "Vida"
 
 [node name="Cost" type="VBoxContainer" parent="Menu/Upgrades"]
@@ -135,6 +138,10 @@ margin_left = 361.0
 margin_right = 461.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
+focus_neighbour_left = NodePath("../HP")
+focus_neighbour_bottom = NodePath("../../Back_Node/Back")
+focus_next = NodePath("../../Back_Node/Back")
+focus_previous = NodePath("../HP")
 text = "Energia"
 
 [node name="Back_Node" type="Control" parent="Menu"]
@@ -153,6 +160,9 @@ margin_top = -22.5
 margin_right = 35.0
 margin_bottom = 22.5
 rect_min_size = Vector2( 70, 45 )
+focus_neighbour_top = NodePath("../../Upgrades/HP")
+focus_next = NodePath("../../Upgrades/SP")
+focus_previous = NodePath("../../Upgrades/HP")
 text = "Sair"
 __meta__ = {
 "_edit_use_anchors_": false

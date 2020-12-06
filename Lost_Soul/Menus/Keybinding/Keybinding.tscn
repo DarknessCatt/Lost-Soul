@@ -86,6 +86,7 @@ anchor_bottom = 0.0
 margin_top = 0.0
 margin_right = 452.0
 margin_bottom = 50.0
+focus_mode = 2
 action = "hero_up"
 
 [node name="Keybind_Single_Button8" parent="Controls/Menu" instance=ExtResource( 1 )]

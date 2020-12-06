@@ -2,7 +2,7 @@ extends Control
 
 signal menu_exited()
 
-const HP_INC : int = 20
+const HP_INC : int = 10
 const SP_INC : int = 15
 
 var hero : KinematicBody2D = null
@@ -17,6 +17,7 @@ func _ready():
 	assert(hero != null)
 	self.souls = hero.souls
 	calculate_cost()
+	$Menu/Upgrades/HP.grab_focus()
 
 func calculate_cost() -> void:
 	cost = hero.level*5 + int(hero.level*hero.level*0.5)

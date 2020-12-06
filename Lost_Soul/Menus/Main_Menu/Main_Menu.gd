@@ -3,6 +3,9 @@ extends Control
 export(String) var game_scene : String
 export(String) var credits_scene : String
 
+func _ready():
+	$"Menu/Buttons/New Game".grab_focus()
+
 func _on_New_Game_pressed():
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene(game_scene)

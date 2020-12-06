@@ -2,6 +2,8 @@ extends Panel
 
 signal dialogue_end()
 
+var started : bool = false
+
 export(bool) var auto_start : bool = false
 export(Color) var text_color : Color = Color.white
 
@@ -24,10 +26,12 @@ func _ready():
 func clear():
 	self.hide()
 	state = end
+	started = false
 
 func begin_dialogue():
 	assert(state == end, "DialogueBox: Beginning unfinished dialogue.")
 	self.show()
+	started = true
 	state = talking
 	self.dialogue_line = 0
 	write_line()

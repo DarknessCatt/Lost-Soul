@@ -98,16 +98,17 @@ var temp_screen
 onready var game_screen : Node2D = $Normal_Game
 
 func enter_tutorial(tutorial : PackedScene):
-	temp_screen = tutorial.instance()
-	hero.cutscene = hero.cutscene_type.PHYSICS
+	if not $Scene_Transtition/Tween.is_active():
+		temp_screen = tutorial.instance()
+		hero.cutscene = hero.cutscene_type.PHYSICS
 
-	# warning-ignore:return_value_discarded
-	temp_screen.connect("tutorial_ended", self, "leave_tutorial")
+		# warning-ignore:return_value_discarded
+		temp_screen.connect("tutorial_ended", self, "leave_tutorial")
 
-	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
-		"modulate", Color(0, 0, 0, 0), Color(0.360784, 0.807843, 1, 1), 1.5)
-	$Scene_Transtition/Tween.start()
-	MusicHandler.play_music(Tutorial_Music, MUSIC_VOLUME, 0.75)
+		$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
+			"modulate", Color(0, 0, 0, 0), Color(0.360784, 0.807843, 1, 1), 1.5)
+		$Scene_Transtition/Tween.start()
+		MusicHandler.play_music(Tutorial_Music, MUSIC_VOLUME, 0.75)
 
 func leave_tutorial() -> void:
 	temp_screen.disconnect("tutorial_ended", self, "leave_tutorial")
@@ -118,18 +119,19 @@ func leave_tutorial() -> void:
 	MusicHandler.play_music(BG_Music, MUSIC_VOLUME, 0.5)
 
 func enter_levelup(menu : PackedScene) -> void:
-	temp_screen = menu.instance()
-	temp_screen.hero = self.hero
-	# warning-ignore:return_value_discarded
-	hero.move_and_slide(Vector2.ZERO)
-	hero.cutscene = hero.cutscene_type.PHYSICS
+	if not $Scene_Transtition/Tween.is_active():
+		temp_screen = menu.instance()
+		temp_screen.hero = self.hero
+		# warning-ignore:return_value_discarded
+		hero.move_and_slide(Vector2.ZERO)
+		hero.cutscene = hero.cutscene_type.PHYSICS
 
-	# warning-ignore:return_value_discarded
-	temp_screen.connect("menu_exited", self, "leave_levelup")
+		# warning-ignore:return_value_discarded
+		temp_screen.connect("menu_exited", self, "leave_levelup")
 
-	$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
-		"modulate", Color(0, 0, 0, 0), Color(1, 0.301961, 0.301961), 1.5)
-	$Scene_Transtition/Tween.start()
+		$Scene_Transtition/Tween.interpolate_property($Room_Transition/Blackout, \
+			"modulate", Color(0, 0, 0, 0), Color(1, 0.301961, 0.301961), 1.5)
+		$Scene_Transtition/Tween.start()
 
 func leave_levelup() -> void:
 	temp_screen.disconnect("menu_exited", self, "leave_levelup")
