@@ -9,6 +9,9 @@ var gen_seed : int
 
 var map_data : Array
 
+func abort(room_list : Array):
+	for room in room_list: room.node.call_deferred("free")
+
 func setup(size : Vector2, start : Vector2, new_seed : int = 0) -> void:
 	MAP_SIZE = size
 	START_POS = start
@@ -49,16 +52,33 @@ func generate(Room_Path : String = "res://Maps/Procedural_Maps/Mountain/") -> Ar
 	start_room.room["rank"] = 0
 
 	var room_list : Array = [start_room.room]
+	var test_branch : Array = []
 
 	#Rank 0 + caminhos
 	room_list += make_branch(room_list, 0, 2, RoomConstants.room_types.CHECKPOINT)
-	room_list += make_branch(room_list, 0, 1)
+	test_branch += make_branch(room_list, 0, 1)
+
+	if test_branch.empty():
+		abort(room_list)
+		return []
+
+	room_list += test_branch
 	room_list += make_branch(room_list, 0, 2, RoomConstants.room_types.BONUS)
 
 	#Rank 1 + caminhos
 	var boss_branch : Array = make_branch(room_list, 1, 2, RoomConstants.room_types.CHECKPOINT)
-	boss_branch += make_branch(boss_branch, 1, 1, RoomConstants.room_types.BOSS)
-	room_list += boss_branch
+
+	if boss_branch.empty():
+		abort(room_list)
+		return []
+
+	test_branch = make_branch(boss_branch, 1, 1, RoomConstants.room_types.BOSS)
+
+	if test_branch.empty():
+		abort(room_list+boss_branch)
+		return []
+
+	room_list += boss_branch + test_branch
 	room_list += make_branch(room_list, 1, 2, RoomConstants.room_types.BONUS)
 
 	#Fecha os ciclos
@@ -68,35 +88,35 @@ func generate(Room_Path : String = "res://Maps/Procedural_Maps/Mountain/") -> Ar
 	for room in room_list: room.node.open_exits(room.exits, room.rank)
 
 	#Printa o minimapa, bom para debuggar mas da para tirar no futuro.
-#	var map : String = ""
-#
-#	for x in range(MAP_SIZE.x):
-#		for y in range(MAP_SIZE.y):
-#			if x == START_POS.x and y == START_POS.y:
-#				map += "[S]"
-#
-#			elif map_data[y][x] == null:
-#				map += "   "
-#
-#			else:
-#				if map_data[y][x].node.room_type == RoomConstants.room_types.BONUS:
-#					map += "[B]"
-#
-#				elif map_data[y][x].node.room_type == RoomConstants.room_types.POWER:
-#					map += "[P]"
-#
-#				elif map_data[y][x].node.room_type == RoomConstants.room_types.CHECKPOINT:
-#					map += "[C]"
-#
-#				elif map_data[y][x].node.room_type == RoomConstants.room_types.BOSS:
-#					map += "[D]"
-#
-#				else:
-#					map += "["+str(map_data[y][x].rank)+"]"
-#
-#		map += "\n"
-#
-#	print(map)
+	var map : String = ""
+
+	for x in range(MAP_SIZE.x):
+		for y in range(MAP_SIZE.y):
+			if x == START_POS.x and y == START_POS.y:
+				map += "[S]"
+
+			elif map_data[y][x] == null:
+				map += "   "
+
+			else:
+				if map_data[y][x].node.room_type == RoomConstants.room_types.BONUS:
+					map += "[B]"
+
+				elif map_data[y][x].node.room_type == RoomConstants.room_types.POWER:
+					map += "[P]"
+
+				elif map_data[y][x].node.room_type == RoomConstants.room_types.CHECKPOINT:
+					map += "[C]"
+
+				elif map_data[y][x].node.room_type == RoomConstants.room_types.BOSS:
+					map += "[D]"
+
+				else:
+					map += "["+str(map_data[y][x].rank)+"]"
+
+		map += "\n"
+
+	print(map)
 
 	return room_list
 

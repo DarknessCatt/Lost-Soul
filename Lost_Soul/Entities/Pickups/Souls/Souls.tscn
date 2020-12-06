@@ -214,9 +214,8 @@ shape = SubResource( 5 )
 polygon = PoolVector2Array( 0, -12, 8, -4, 8, 4, 0, 12, -8, 4, -8, -4 )
 
 [node name="Float_Checker" type="RayCast2D" parent="."]
-position = Vector2( 0, 24 )
 enabled = true
-cast_to = Vector2( 0, 20 )
+cast_to = Vector2( 0, 30 )
 collision_mask = 16
 
 [node name="Taken" type="AudioStreamPlayer" parent="."]

@@ -24,9 +24,13 @@ func _ready():
 	screen_room = $Normal_Game/Screen/Viewport/Room
 
 	var generator = Map_Generator.new()
-	generator.setup(MAP_SIZE, START_POINT)
+	var room_list : Array = []
 
-	var room_list : Array = generator.generate()
+	while room_list.empty():
+		generator.call_deferred("free")
+		generator = Map_Generator.new()
+		generator.setup(MAP_SIZE, START_POINT)
+		room_list = generator.generate()
 
 	for room in room_list:
 		match(room.node.room_type):
