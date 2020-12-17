@@ -1,0 +1,189 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Maps/Util/Standart_Room/Standart_Room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Util/Mountain_Polygon/Mountain_Polygon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Procedural_Maps/Mountain/Boss_Room/Battle_Room/Boss_Battle_Room.gd" type="Script" id=3]
+[ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/The_Gate_Guardian.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Information/DialogueBox/DialogueBox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Map_Elements/One_Way_Platform/One_Way_Platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Pickups/Final_Soul/Final_Soul.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/BG_Music/Anttis/Cold-Heart-Instrumental.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Assets/BG_Music/Anttis/Glitch-In-Super-Mario.ogg" type="AudioStream" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 64 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 40, 352 )
+
+[node name="Boss_Battle_Room" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+Boss_Music = ExtResource( 8 )
+End_Music = ExtResource( 9 )
+camera_limits = Vector2( 3072, 1200 )
+
+[node name="BG_Left" parent="Room" index="0" instance=ExtResource( 2 )]
+color = Color( 0.172549, 0.133333, 0.129412, 1 )
+polygon = PoolVector2Array( 0, 896, 665.322, 896, 632, 992, 632, 1048, 640, 1096, 656, 1120, 656.331, 1152, 0, 1152 )
+type = 2
+
+[node name="BG_Right" parent="Room" index="1" instance=ExtResource( 2 )]
+color = Color( 0.172549, 0.133333, 0.129412, 1 )
+polygon = PoolVector2Array( 1992, 936, 2008, 952, 2016, 992, 2016, 1056, 2008, 1104, 2000, 1120, 2000, 1144, 3072, 1144, 3072, 792, 2256, 792, 2256.4, 910.042, 1992, 912 )
+type = 2
+
+[node name="Sky" parent="Room" index="2" instance=ExtResource( 2 )]
+color = Color( 0.509804, 0.635294, 0.686275, 1 )
+polygon = PoolVector2Array( 640, 0, 1984, 0, 2000, 432, 1968, 888, 1992, 936, 2008, 952, 2016, 992, 2016, 1056, 2008, 1104, 2000, 1120, 656, 1120, 640, 1096, 632, 1048, 632, 992, 648, 952, 632, 432 )
+type = 0
+
+[node name="Leftest" type="Polygon2D" parent="Room" index="3"]
+color = Color( 0.11, 0.086075, 0.0781, 1 )
+polygon = PoolVector2Array( 256, 928, 256, 1152, 128, 1152, 128, 928 )
+
+[node name="Leftestest" type="Polygon2D" parent="Room" index="4"]
+color = Color( 0.07, 0.0539583, 0.0525, 1 )
+polygon = PoolVector2Array( 0, 928, 128, 928, 128, 1144, 0, 1144 )
+
+[node name="Floor" parent="Room" index="5" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 0, 1120, 64, 1128, 256, 1136, 488, 1136, 640, 1120, 2008, 1120, 2152, 1128, 2368, 1136, 2688, 1136, 2960, 1128, 3040, 1120, 3072, 1120, 3072, 1200, 0, 1200 )
+type = 4
+
+[node name="Grass" parent="Room/Floor" index="0" instance=ExtResource( 2 )]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 640, 1120, 1984, 1120, 2008, 1120, 2044.61, 1121.63, 1976, 1128, 1960, 1144, 1944, 1136, 1904, 1136, 1864, 1152, 1840, 1144, 1784, 1136, 1712, 1144, 1576, 1136, 1504, 1136, 1352, 1144, 1320, 1136, 1208, 1136, 1080, 1152, 984, 1136, 912, 1136, 856, 1152, 816, 1144, 720, 1136, 688, 1128, 608.777, 1123.29 )
+type = 5
+
+[node name="Left_Cave" parent="Room" index="6" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 0, 960, 80, 960, 304, 936, 448, 936, 560, 944, 616, 960, 656, 952, 680, 904, 680, 824, 656, 744, 640, 464, 648, 192, 680, 24, 680, 0, 0, 0 )
+type = 4
+
+[node name="Inner" parent="Room/Left_Cave" index="0" instance=ExtResource( 2 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( 0, 928, 24, 936, 72, 944, 200, 928, 336, 920, 480, 912, 592, 936, 616, 944, 648, 936, 656, 896, 656, 816, 632, 728, 616, 512, 616, 448, 624, 184, 656, 24, 656, 0, 0, 0 )
+type = 3
+
+[node name="Right_Cave" parent="Room" index="7" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 1968, 888, 1960, 792, 1968, 688, 1984, 480, 1976, 232, 1952, 56, 1952, 0, 3072, 0, 3072, 1120, 2960, 1128, 2992, 1120, 3032, 1096, 3040, 1048, 3008, 984, 2936, 896, 2768, 856, 2520, 832, 2344, 872, 2208, 944, 2048, 952, 1992, 936 )
+type = 4
+
+[node name="Inner" parent="Room/Right_Cave" index="0" instance=ExtResource( 2 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( 2040, 912, 2000, 848, 1992, 712, 2016, 440, 2016, 240, 2008, 120, 1984, 72, 1976, 32, 1976, 0, 3072, 0, 3072, 1128, 3064, 1064, 3048, 1008, 2992, 904, 2864, 832, 2680, 800, 2440, 800, 2264, 856, 2168, 920 )
+type = 3
+
+[node name="Middle_Plat" parent="Room" index="8" instance=ExtResource( 6 )]
+position = Vector2( 1320, 952 )
+scale = Vector2( 3, 1 )
+
+[node name="Left" parent="Room/Middle_Plat" index="4" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( -64, 8, -68, 0, -64, -8 )
+type = 4
+
+[node name="Right" parent="Room/Middle_Plat" index="5" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 64, 8, 64, -8, 68, 0 )
+type = 4
+
+[node name="Floor" type="CollisionPolygon2D" parent="Room/Wall" index="0"]
+polygon = PoolVector2Array( -48, 952, 0, 952, 0, 960, -40, 960, -40, 1120, 0, 1120, 64, 1128, 256, 1136, 488, 1136, 640, 1120, 2016, 1120, 2360, 1136, 2696, 1136, 2960, 1128, 3040, 1120, 3072, 1120, 3072, 1200, 0, 1200, 0, 1128, -48, 1128 )
+
+[node name="Left" type="CollisionPolygon2D" parent="Room/Wall" index="1"]
+polygon = PoolVector2Array( 0, 0, 680, 0, 680, 24, 648, 192, 640, 456, 656, 744, 680, 824, 680, 904, 656, 952, 616, 960, 560, 944, 448, 936, 296, 936, 80, 960, 0, 960 )
+
+[node name="Right" type="CollisionPolygon2D" parent="Room/Wall" index="2"]
+polygon = PoolVector2Array( 1952, 0, 3072, 0, 3072, 1120, 2960, 1128, 2992, 1120, 3032, 1096, 3040, 1048, 3008, 984, 2936, 896, 2768, 856, 2520, 832, 2344, 872, 2208, 944, 2048, 952, 1992, 936, 1968, 888, 1960, 784, 1984, 480, 1976, 232, 1952, 56 )
+
+[node name="Blocks" parent="." index="2"]
+visible = false
+
+[node name="Left" type="StaticBody2D" parent="Blocks" index="0"]
+position = Vector2( 640, 1032 )
+collision_layer = 16
+
+[node name="Barrier" type="Polygon2D" parent="Blocks/Left" index="0"]
+color = Color( 1, 0, 0, 1 )
+polygon = PoolVector2Array( 40, -128, 16, -80, 8, -56, 0, 0, 0, 32, 16, 88, 40, 112, 16, 96, 8, 96, -8, 112, 0, 96, -24, 104, -32, 120, -24, 96, -48.6626, 93.1224, -21.0029, 90.2109, -8, 64, -8, -32, -16, -72, -24, -72, -56, -80, -80, -96, -40, -80, -24, -80, -32, -104, -24, -88, -7.82993, -80, 0, -80, 16, -96 )
+
+[node name="col" type="CollisionPolygon2D" parent="Blocks/Left" index="1"]
+polygon = PoolVector2Array( 40, -128, 16, -80, 8, -56, 0, 0, 0, 32, 16, 88, -16, 88, -16, -128 )
+disabled = true
+
+[node name="Right" type="StaticBody2D" parent="Blocks" index="1"]
+position = Vector2( 2024, 1024 )
+collision_layer = 16
+
+[node name="Barrier" type="Polygon2D" parent="Blocks/Right" index="0"]
+color = Color( 1, 0, 0, 1 )
+polygon = PoolVector2Array( 56.3352, -73.241, 24, -72, 13.5265, -66.8057, 8, -56, 0, -16, 0, 40, 8, 88, 16, 96, 29.3008, 99.6389, -1.6532, 98.0398, 18.3356, 114.031, -8, 104, -16, 96, -40, 112, -24, 96, -16, 80, -8, 32, -8, -32, -16, -72, -32, -88, -56, -136, -24, -88, -8.75415, -82.4652, -16, -120, 0, -88, 8, -80 )
+
+[node name="col" type="CollisionPolygon2D" parent="Blocks/Right" index="1"]
+polygon = PoolVector2Array( 8, -88, 0, 96, -24, 96, -16, 80, -8, 32, -8, -32, -16, -72, -32, -88 )
+disabled = true
+
+[node name="Exit" type="Area2D" parent="Exits" index="0"]
+position = Vector2( -32, 1040 )
+monitorable = false
+collision_layer = 0
+
+[node name="area" type="CollisionShape2D" parent="Exits/Exit" index="0"]
+shape = SubResource( 1 )
+
+[node name="0" type="Position2D" parent="Entrances" index="0"]
+position = Vector2( 64, 1072 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="Objects" parent="." index="5"]
+position = Vector2( 1320, 760 )
+
+[node name="Tween" type="Tween" parent="Objects" index="0"]
+
+[node name="The_Gate_Guardian" parent="Objects" index="1" instance=ExtResource( 4 )]
+position = Vector2( 0, -16 )
+horizontal_space = 520
+downwards_space = 250
+
+[node name="Intro" type="Node2D" parent="Objects" index="2"]
+
+[node name="Boss_Trigger" type="Area2D" parent="Objects/Intro" index="0"]
+position = Vector2( 15.9999, 8 )
+monitorable = false
+collision_layer = 0
+
+[node name="area" type="CollisionShape2D" parent="Objects/Intro/Boss_Trigger" index="0"]
+shape = SubResource( 2 )
+
+[node name="Introduction" parent="Objects/Intro" index="1" instance=ExtResource( 5 )]
+margin_left = -320.0
+margin_top = -72.0001
+margin_right = 320.0
+margin_bottom = 77.9999
+Dialogue = [ "Abominação!
+", "Achas mesmo que 
+podes escapar?", "Aceite que já estás morto...
+e suma!" ]
+
+[node name="Final_Soul" parent="Objects" index="3" instance=ExtResource( 7 )]
+position = Vector2( 1272, 168 )
+
+[node name="Camera" type="Camera2D" parent="Objects/Final_Soul" index="4"]
+limit_right = 3072
+limit_bottom = 1200
+
+[node name="Limits" type="Position2D" parent="." index="6"]
+position = Vector2( 3072, 1200 )
+__meta__ = {
+"_gizmo_extents_": 3072.0
+}
+[connection signal="body_entered" from="Exits/Exit" to="." method="_on_Exit_entered"]
+[connection signal="dead" from="Objects/The_Gate_Guardian" to="." method="_on_Boss_dead"]
+[connection signal="intro_ended" from="Objects/The_Gate_Guardian" to="." method="_on_Boss_intro_ended"]
+[connection signal="body_entered" from="Objects/Intro/Boss_Trigger" to="." method="_on_Boss_Triggered"]
+[connection signal="dialogue_end" from="Objects/Intro/Introduction" to="." method="_on_Introduction_ended"]
+[connection signal="body_entered" from="Objects/Final_Soul" to="." method="_on_Final_Soul_entered"]

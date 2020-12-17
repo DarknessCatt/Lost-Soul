@@ -1,0 +1,607 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Maps/Util/Mountain_Polygon/Mountain_Polygon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Information/Tutorial_Key/Tutorial_Key.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Props/Altar_Checkpoint/Altar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Props/Breakable_Wall2/Breakable_Wall2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Combat/Hurtbox/Hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Map_Elements/One_Way_Platform/One_Way_Platform.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Maps/Tutorial_Room/Tutorial_Room.gd" type="Script" id=8]
+[ext_resource path="res://Entities/Pickups/Souls/Souls.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Information/DialogueBox/DialogueBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://HUD/Player_Status/Player_Status.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Enemies/Bosses/The_Gate_Guardian/Components/Basic_Shoot/Boss_Shoot.tscn" type="PackedScene" id=12]
+[ext_resource path="res://HUD/Soul_Counter/Soul_Counter.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/Fonts/XenopyreRegular-qd8V.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://Assets/Fonts/BasaltRegular-Jx3o.ttf" type="DynamicFontData" id=17]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 128, 224 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 80, 224 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 152, 128 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 149.76, 214.855 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 32, 96 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 128, 168 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 12.5966
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 480, 280 )
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 120.0
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 72, 76 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 100
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 40
+font_data = ExtResource( 17 )
+
+[node name="Tutorial_Room" type="Node2D"]
+position = Vector2( -1, 0 )
+script = ExtResource( 8 )
+bullet_res = ExtResource( 12 )
+
+[node name="Room" type="Node2D" parent="."]
+
+[node name="BG" parent="Room" instance=ExtResource( 1 )]
+position = Vector2( 1, 4 )
+color = Color( 0.172549, 0.133333, 0.129412, 1 )
+polygon = PoolVector2Array( 0, 0, 3072, 0, 3072, 600, 0, 600 )
+type = 2
+
+[node name="Altar_Bg" parent="Room" instance=ExtResource( 1 )]
+color = Color( 0.172549, 0.133333, 0.129412, 1 )
+polygon = PoolVector2Array( 1737, 576, 705, 576, 705, 1216, 1737, 1216 )
+type = 2
+
+[node name="Sky_Left" parent="Room" instance=ExtResource( 1 )]
+color = Color( 0.509804, 0.635294, 0.686275, 1 )
+polygon = PoolVector2Array( 41, 16, 41, 440, 73, 296, 113, 248, 177, 280, 337, 296, 497, 264, 601, 208, 625, 144, 641, 168, 777, 128, 833, 80, 833, 16 )
+type = 0
+
+[node name="Cloud" parent="Room/Sky_Left" instance=ExtResource( 1 )]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 89, 96, 113, 112, 177, 120, 241, 112, 289, 120, 345, 96, 369, 56, 345.833, 34.2356, 281, 32, 137, 56 )
+type = 1
+
+[node name="Soft_Walls" parent="Room" instance=ExtResource( 1 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 1, 0, 3073, 0, 3073, 600, 1609, 600, 1529, 584, 1361, 584, 1297, 576, 1281, 552, 1281, 520, 1337, 512, 1473, 512, 1537, 512, 1673, 520, 1857, 520, 1985, 512, 2049, 512, 2057, 516, 2065, 548, 2097, 560, 2273, 560, 2325, 540, 2333, 492, 2321, 424, 2305, 408, 2305, 384, 2369, 384, 2465, 376, 2521, 376, 2545, 360, 2577, 288, 2609, 232, 2641, 152, 2657, 176, 2657, 320, 2665, 376, 2753, 392, 2921, 392, 3001, 352, 3033, 240, 2985, 128, 2889, 64, 2681, 40, 2497, 40, 2369, 64, 2361, 112, 2333, 144, 2249, 168, 2177, 160, 2105, 168, 2049, 192, 2033, 248, 2057, 288, 2057, 304, 2049, 320, 1985, 320, 1953, 296, 1881, 280, 1809, 280, 1761, 296, 1713, 272, 1609, 280, 1537, 320, 1473, 320, 1449, 280, 1449, 256, 1465, 208, 1449, 168, 1433, 104, 1385, 64, 1273, 48, 1025, 64, 889, 88, 721, 96, 665, 64, 513, 40, 281, 32, 137, 56, 89, 96, 57, 200, 49, 304, 49, 472, 65, 512, 129, 520, 313, 520, 537, 528, 625, 528, 673, 512, 697, 464, 697, 368, 673, 328, 673, 296, 689, 280, 729, 280, 865, 288, 929, 288, 993, 304, 1017, 328, 1033, 392, 1041, 472, 1073, 496, 1121, 496, 1153, 520, 1153, 568, 1129, 592, 1009, 584, 849, 584, 769, 600, 753, 784, 745, 960, 761, 1096, 801, 1152, 905, 1144, 993, 1144, 1049, 1096, 1065, 928, 1097, 888, 1145, 880, 1281, 880, 1345, 896, 1361, 944, 1377, 1096, 1417, 1120, 1521, 1144, 1617, 1136, 1673, 1104, 1697, 968, 1681, 696, 1673, 640, 1609, 600, 1737, 600, 1737, 1216, 705, 1216, 705, 600, 1, 600 )
+type = 4
+
+[node name="Hard_Walls" parent="Room/Soft_Walls" instance=ExtResource( 1 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( 1, 0, 3073, 0, 3073, 600, 1737, 600, 1625, 592, 1537, 568, 1369, 568, 1305, 560, 1297, 536, 1345, 520, 1425, 520, 1521, 528, 1649, 536, 1809, 544, 1953, 536, 2041, 520, 2045, 548, 2077, 572, 2273, 576, 2333, 564, 2353, 504, 2345, 456, 2329, 408, 2337, 392, 2393, 400, 2481, 384, 2545, 384, 2577, 352, 2585, 296, 2617, 248, 2641, 168, 2649, 192, 2641, 320, 2649, 392, 2673, 408, 2793, 424, 2929, 432, 2993, 408, 3025, 376, 3049, 296, 3057, 176, 3017, 120, 2937, 56, 2761, 16, 2505, 16, 2357, 36, 2333, 72, 2333, 116, 2269, 144, 2197, 132, 2105, 136, 2041, 152, 2009, 192, 2017, 248, 2041, 288, 2033, 312, 2001, 312, 1977, 280, 1921, 264, 1825, 264, 1745, 272, 1705, 248, 1657, 248, 1585, 264, 1537, 304, 1489, 304, 1465, 264, 1489, 200, 1465, 144, 1457, 96, 1417, 48, 1265, 24, 1049, 40, 897, 72, 729, 80, 709.871, 57.2178, 577, 24, 281, 16, 113, 32, 49, 80, 25, 264, 25, 440, 49, 544, 161, 568, 337, 560, 569, 576, 697, 552, 729, 496, 737, 416, 713, 352, 753, 328, 833, 328, 929, 336, 985, 368, 1017, 432, 1033, 504, 1081, 520, 1121, 512, 1145, 544, 1121, 576, 1057, 560, 945, 552, 809, 552, 753, 584, 729, 688, 721, 880, 737, 1096, 753, 1152, 801, 1176, 905, 1168, 1025, 1168, 1065, 1120, 1081, 968, 1113, 920, 1161, 904, 1273, 904, 1321, 928, 1353, 1064, 1385, 1144, 1537, 1176, 1657, 1160, 1705, 1096, 1721, 944, 1705, 688, 1681, 624, 1625, 592, 1737, 592, 1737, 1216, 705, 1216, 705, 600, 1, 600 )
+type = 3
+
+[node name="Grass1" parent="Room/Soft_Walls" instance=ExtResource( 1 )]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 65, 512, 129, 520, 321, 520, 625, 528, 673, 512, 681, 496, 681, 520, 665, 536, 601, 552, 313, 536, 177, 544, 65, 536, 49, 472 )
+type = 5
+
+[node name="Grass2" parent="Room/Soft_Walls" instance=ExtResource( 1 )]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 689, 280, 673, 296, 673, 328, 689, 304, 705, 296, 745, 304, 793, 296, 857, 304, 897, 296, 945, 296, 993, 312, 1017, 328, 993, 304, 929, 288, 865, 288, 737, 280 )
+type = 5
+
+[node name="Walls" type="StaticBody2D" parent="Room"]
+collision_layer = 16
+
+[node name="Walls" type="CollisionPolygon2D" parent="Room/Walls"]
+polygon = PoolVector2Array( 1, 0, 1, 600, 705, 600, 705, 1216, 1737, 1216, 1737, 600, 1609, 600, 1673, 640, 1681, 704, 1697, 968, 1673, 1104, 1617, 1136, 1521, 1144, 1417, 1120, 1377, 1096, 1361, 944, 1345, 896, 1281, 880, 1145, 880, 1097, 888, 1065, 928, 1049, 1096, 993, 1144, 905, 1144, 801, 1152, 761, 1096, 745, 960, 753, 784, 769, 600, 849, 584, 1129, 592, 1153, 568, 1153, 520, 1121, 496, 1073, 496, 1041, 472, 1033, 392, 1017, 328, 993, 304, 929, 288, 865, 288, 737, 280, 689, 280, 673, 296, 673, 328, 697, 368, 697, 464, 673, 512, 625, 528, 329, 520, 129, 520, 65, 512, 49, 472, 49, 304, 57, 200, 89, 96, 137, 56, 281, 32, 513, 40, 665, 64, 721, 96, 889, 88, 1025, 64, 1273, 48, 1385, 64, 1433, 104, 1449, 168, 1465, 208, 1449, 256, 1449, 280, 1473, 320, 1537, 320, 1609, 280, 1713, 272, 1761, 296, 1809, 280, 1881, 280, 1953, 296, 1985, 320, 2049, 320, 2057, 304, 2057, 288, 2033, 248, 2049, 192, 2105, 168, 2177, 160, 2249, 168, 2333, 144, 2361, 112, 2369, 64, 2497, 40, 2689, 40, 2889, 64, 2985, 128, 3033, 240, 3001, 352, 2921, 392, 2753, 392, 2665, 376, 2657, 320, 2657, 176, 2641, 152, 2609, 232, 2577, 288, 2545, 360, 2521, 376, 2465, 376, 2369, 384, 2305, 384, 2305, 408, 2321, 424, 2333, 496, 2325, 540, 2273, 560, 2097, 560, 2065, 548, 2057, 516, 2049, 512, 1977, 512, 1857, 520, 1673, 520, 1537, 512, 1337, 512, 1281, 520, 1281, 552, 1297, 576, 1361, 584, 1529, 584, 1609, 600, 3073, 600, 3073, 0 )
+
+[node name="Top_Platform" parent="Room" instance=ExtResource( 7 )]
+position = Vector2( 1217, 528 )
+
+[node name="Bot_Platform" parent="Room" instance=ExtResource( 7 )]
+position = Vector2( 1217, 712 )
+
+[node name="Left" parent="Room/Bot_Platform" instance=ExtResource( 1 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( -64, 8, -72, 0, -64, -8 )
+type = 4
+
+[node name="Right" parent="Room/Bot_Platform" instance=ExtResource( 1 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 64, 8, 72, 0, 64, -8 )
+type = 4
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Tutorials" type="Node2D" parent="Objects"]
+
+[node name="Jump" parent="Objects/Tutorials" instance=ExtResource( 2 )]
+position = Vector2( 577, 344 )
+action = "hero_jump"
+
+[node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Jump"]
+position = Vector2( 0, -56 )
+shape = SubResource( 1 )
+
+[node name="Souls" parent="Objects/Tutorials" instance=ExtResource( 9 )]
+position = Vector2( 865, 224 )
+
+[node name="Drop_Down" parent="Objects/Tutorials" instance=ExtResource( 2 )]
+position = Vector2( 1217, 344 )
+action = "hero_down"
+
+[node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Drop_Down"]
+shape = SubResource( 2 )
+
+[node name="Attack" parent="Objects/Tutorials" instance=ExtResource( 2 )]
+position = Vector2( 1409, 344 )
+action = "hero_attack"
+disabled = true
+
+[node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Attack"]
+position = Vector2( 0, -56 )
+shape = SubResource( 1 )
+
+[node name="Down_Tilt" parent="Objects/Tutorials" instance=ExtResource( 2 )]
+position = Vector2( 1889, 352 )
+action = "hero_attack"
+
+[node name="Down" parent="Objects/Tutorials/Down_Tilt" instance=ExtResource( 2 )]
+position = Vector2( -76, 0 )
+action = "hero_down"
+
+[node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Down_Tilt/Down"]
+position = Vector2( 36, 40 )
+shape = SubResource( 3 )
+
+[node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Down_Tilt"]
+position = Vector2( -40, 40 )
+shape = SubResource( 3 )
+
+[node name="Up_Tilt" parent="Objects/Tutorials" instance=ExtResource( 2 )]
+position = Vector2( 2225, 348 )
+action = "hero_attack"
+
+[node name="Up" parent="Objects/Tutorials/Up_Tilt" instance=ExtResource( 2 )]
+position = Vector2( -76, 0 )
+action = "hero_up"
+
+[node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Up_Tilt/Up"]
+position = Vector2( 36, 12 )
+shape = SubResource( 4 )
+
+[node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Up_Tilt"]
+position = Vector2( -40, 12 )
+shape = SubResource( 4 )
+
+[node name="Bullet" type="Position2D" parent="Objects/Tutorials"]
+position = Vector2( 2905, 96 )
+
+[node name="Marking" type="Polygon2D" parent="Objects/Tutorials/Bullet"]
+color = Color( 0.82, 0.0907467, 0.0656, 1 )
+polygon = PoolVector2Array( 0, -24, -8, -32, -32, -48, -8, -40, 8, -24, 16, -32, 40, -48, 32, -40, 16, -24, 16, -16, 24, -8, 32, -8, 48, -16, 40, -8, 24, 0, 8, 8, 0, 8, -8, 0, -8, -16 )
+
+[node name="Bullet_Trigger" type="Area2D" parent="Objects/Tutorials/Bullet"]
+position = Vector2( -312, 40 )
+monitorable = false
+collision_layer = 0
+
+[node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Bullet/Bullet_Trigger"]
+shape = SubResource( 5 )
+
+[node name="Tutorial_Action" parent="Objects/Tutorials/Bullet" instance=ExtResource( 2 )]
+position = Vector2( -408, 96 )
+action = "hero_block"
+
+[node name="area" type="CollisionShape2D" parent="Objects/Tutorials/Bullet/Tutorial_Action"]
+position = Vector2( 48, 16 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="Walls" type="Node2D" parent="Objects"]
+
+[node name="Break_1" parent="Objects/Walls" instance=ExtResource( 4 )]
+position = Vector2( 1505, 416 )
+
+[node name="Soft_Rock" parent="Objects/Walls/Break_1" instance=ExtResource( 1 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( -32, -96, -24, -56, -16, -16, -8, 56, -24, 88, -32, 96, 32, 96, 24, 88, 8, 80, 8, 40, 0, -24, 16, -64, 32, -96 )
+type = 4
+
+[node name="Inner" parent="Objects/Walls/Break_1/Soft_Rock" instance=ExtResource( 1 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( -16, -112, -8, -88, -16, -56, -8, 0, 0, 56, -16, 88, -40, 112, 32, 120, 16, 96, 0, 88, 4.59505, 72.1654, 0, 40, 0, -8, -8, -48, 8, -80, 32, -112 )
+type = 3
+
+[node name="Weak_Spot" type="Polygon2D" parent="Objects/Walls/Break_1/Soft_Rock"]
+color = Color( 0.82, 0.0907467, 0.0656, 1 )
+polygon = PoolVector2Array( -19.2004, -32.1873, -10.098, -12.5095, -0.712769, -6.56107, 4.71973, 14.1668, 5.45239, 18.6955, -2.56335, -4.31387, -12.0808, -9.33701, -18.2347, -27.2102 )
+
+[node name="Hurtbox" parent="Objects/Walls/Break_1" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( -5.82385, -8.93265 )
+Id = 4
+Character = NodePath("..")
+
+[node name="area" type="CollisionShape2D" parent="Objects/Walls/Break_1/Hurtbox"]
+shape = SubResource( 7 )
+
+[node name="Collision" type="CollisionPolygon2D" parent="Objects/Walls/Break_1"]
+polygon = PoolVector2Array( -32, 96, -24, 88, -8, 56, -16, -16, -24, -56, -32, -96, 32, -96, 0, -24, 8, 40, 8, 80, 24, 88, 32, 96 )
+
+[node name="Break_2" parent="Objects/Walls" instance=ExtResource( 4 )]
+position = Vector2( 2017, 416 )
+
+[node name="Soft_Rock" parent="Objects/Walls/Break_2" instance=ExtResource( 1 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( -32, -96, -24, -40, -24, 0, -16, 48, -8, 72, -8, 80, -16, 88, -32, 96, 32, 96, 8, 88, 0, 80, 0, 72, 8, 48, 24, 0, 24, -40, 32, -96 )
+type = 4
+
+[node name="Inner" parent="Objects/Walls/Break_2/Soft_Rock" instance=ExtResource( 1 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( -16, -104, -24, -80, -16, -24, -16, 8, -8, 56, -4.88123, 72.576, -8, 88, -24, 104, -56, 120, 24, 104, 8, 96, 0, 88, -2.81445, 78.317, 0, 40, 16, -8, 24, -80, 24, -88, 16, -104 )
+type = 3
+
+[node name="Weak_Spot" type="Polygon2D" parent="Objects/Walls/Break_2/Soft_Rock"]
+color = Color( 0.82, 0.0907467, 0.0656, 1 )
+polygon = PoolVector2Array( -13.1813, 56.274, -12.3278, 59.9016, -6.24622, 65.1295, -6.03284, 77.3993, -3.04541, 85.4014, 8.05078, 88.2821, 5.5968, 85.5081, -0.378052, 84.9746, -4.21899, 75.6922, -3.1521, 62.9957 )
+
+[node name="Hurtbox" parent="Objects/Walls/Break_2" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( -3.86475, 74.0677 )
+Id = 4
+Character = NodePath("..")
+
+[node name="area" type="CollisionShape2D" parent="Objects/Walls/Break_2/Hurtbox"]
+shape = SubResource( 7 )
+
+[node name="Collision" type="CollisionPolygon2D" parent="Objects/Walls/Break_2"]
+polygon = PoolVector2Array( -32, 96, -16, 88, -8, 80, -8, 72, -16, 48, -24, 0, -24, -40, -32, -96, 32, -96, 24, -40, 24, 0, 0, 72, 0, 80, 8, 88, 32, 96 )
+
+[node name="Break_3" parent="Objects/Walls" instance=ExtResource( 4 )]
+position = Vector2( 2337, 288 )
+
+[node name="Soft_Rock" parent="Objects/Walls/Break_3" instance=ExtResource( 1 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( -160, -128, -232, -120, -196, -116, -168, -104, -120, -96, -92, -108, -68, -108, -60, -100, -40, -52, -36, -20, -28, 48, -28, 88, -32, 96, -32, 120, 0, 96, 32, 96, 4, 64, -20, -48, -36, -76, -48, -88, -60, -108, -40, -124, -12, -124, -4, -144, -88, -120 )
+type = 4
+
+[node name="Inner" parent="Objects/Walls/Break_3/Soft_Rock" instance=ExtResource( 1 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( -228, -152, -180, -124, -128, -104, -96, -116, -68, -116, -60, -104, -48, -76, -32, -52, -28, -20, -24, -4, -20, 48, -20, 100, -8, 120, 28, 108, 0, 88, -12, 28, -16, -16, -28, -48, -40, -76, -52, -88, -56.894, -99.3235, -64, -112, -64, -120, -40, -136, -16, -136, -4, -172 )
+type = 3
+
+[node name="Weak_Spot" type="Polygon2D" parent="Objects/Walls/Break_3/Soft_Rock"]
+color = Color( 0.82, 0.0907467, 0.0656, 1 )
+polygon = PoolVector2Array( -64.9204, -104.61, -63.1038, -102.793, -59.4099, -102.573, -55.5769, -94.7866, -56.7744, -102.692, -58.1084, -105.064, -61.5847, -107.261, -62.9902, -113.011, -78.0618, -115.607, -66.0708, -110.786 )
+
+[node name="Hurtbox" parent="Objects/Walls/Break_3" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( -56, -96 )
+Id = 4
+Character = NodePath("..")
+
+[node name="area" type="CollisionShape2D" parent="Objects/Walls/Break_3/Hurtbox"]
+position = Vector2( 0.0437012, 0 )
+shape = SubResource( 7 )
+
+[node name="Collision" type="CollisionPolygon2D" parent="Objects/Walls/Break_3"]
+visible = false
+polygon = PoolVector2Array( -32, 96, -28, 88, -28, 48, -36, -20, -40, -52, -60, -100, -68, -108, -72, -108, -108, -92, -164, -108, -232, -120, -4, -144, -12, -124, -40, -124, -60, -108, -48, -88, -36, -76, -20, -48, 4, 64, 32, 96 )
+
+[node name="Altar_Area" type="Area2D" parent="Objects"]
+position = Vector2( 1217, 904 )
+monitorable = false
+collision_layer = 0
+
+[node name="Area" type="CollisionShape2D" parent="Objects/Altar_Area"]
+position = Vector2( 0, -32 )
+shape = SubResource( 8 )
+
+[node name="Altar_Camera" type="Camera2D" parent="Objects/Altar_Area"]
+position = Vector2( 8, -40 )
+
+[node name="Arrow" parent="Objects/Altar_Area" instance=ExtResource( 2 )]
+position = Vector2( 0, -132 )
+scale = Vector2( 0.5, 0.5 )
+action = "hero_interact"
+
+[node name="area" type="CollisionShape2D" parent="Objects/Altar_Area/Arrow"]
+position = Vector2( 0, 136 )
+shape = SubResource( 9 )
+
+[node name="Altar" parent="Objects/Altar_Area" instance=ExtResource( 3 )]
+position = Vector2( 0, -64 )
+
+[node name="Souls" parent="Objects/Altar_Area" instance=ExtResource( 9 )]
+position = Vector2( -320, 184 )
+Soul_Value = 2
+
+[node name="Souls2" parent="Objects/Altar_Area" instance=ExtResource( 9 )]
+position = Vector2( 336, 184 )
+Soul_Value = 2
+
+[node name="Dialogues" type="Node2D" parent="Objects"]
+
+[node name="Intro" parent="Objects/Dialogues" instance=ExtResource( 10 )]
+margin_left = 193.0
+margin_top = 136.0
+margin_right = 833.0
+margin_bottom = 286.0
+text_color = Color( 1, 0.321569, 0.321569, 1 )
+Dialogue = [ "Te trazer de volta
+do Mundo Dos Mortos
+não foi trivial...", "Mas eu cumpri
+a minha parte
+do acordo.", "Agora, é a tua
+vez de me ajudar.", "Vais precisar de uma
+alma poderosa o suficiente
+para me libertar.", "Encontre-a!" ]
+
+[node name="Souls" parent="Objects/Dialogues" instance=ExtResource( 10 )]
+margin_left = 545.0
+margin_top = 8.0
+margin_right = 1185.0
+margin_bottom = 158.0
+text_color = Color( 1, 0.321569, 0.321569, 1 )
+Dialogue = [ "Um fragmento de alma,
+com pouco poder por si só..." ]
+
+[node name="Altar" parent="Objects/Dialogues" instance=ExtResource( 10 )]
+margin_left = 897.0
+margin_top = 624.0
+margin_right = 1537.0
+margin_bottom = 774.0
+text_color = Color( 1, 0.321569, 0.321569, 1 )
+Dialogue = [ "Este é um altar ancião,
+conectado ao mundo
+dos mortos.", "Vais precisar de mais poder
+se quiseres cumprir tua parte
+do acordo.", "Sacrifique a alma
+dos mais fracos!", "Aumente teu poder!" ]
+
+[node name="Hole" type="Polygon2D" parent="Objects"]
+color = Color( 0.15, 0.115625, 0.1125, 1 )
+polygon = PoolVector2Array( 2753, 392, 2921, 392, 2881, 312, 2877, 272, 2853, 232, 2837, 216, 2821, 244, 2801, 316, 2769, 380 )
+
+[node name="Deeper" type="Polygon2D" parent="Objects/Hole"]
+color = Color( 0.11, 0.0836, 0.0836, 1 )
+polygon = PoolVector2Array( 2777, 392, 2897, 392, 2881, 368, 2865, 316, 2861, 268, 2845, 248, 2837, 240, 2825, 280, 2797, 356, 2793, 380 )
+
+[node name="Deeperer" type="Polygon2D" parent="Objects/Hole"]
+color = Color( 0.0705882, 0.0509804, 0.0509804, 1 )
+polygon = PoolVector2Array( 2801, 392, 2873, 392, 2865, 384, 2865, 344, 2841, 312, 2837, 272, 2825, 332, 2805, 388 )
+
+[node name="Deepest" type="Polygon2D" parent="Objects/Hole"]
+position = Vector2( 2837, 304 )
+color = Color( 0.509804, 0.635294, 0.686275, 1 )
+offset = Vector2( -2837, -304 )
+polygon = PoolVector2Array( 2821, 392, 2853, 392, 2849, 388, 2841, 376, 2837, 352, 2833, 356, 2833, 380, 2829, 388 )
+
+[node name="Exit" parent="Objects" instance=ExtResource( 2 )]
+position = Vector2( 2837, 208 )
+action = "hero_interact"
+
+[node name="area" type="CollisionShape2D" parent="Objects/Exit"]
+position = Vector2( 0, 108 )
+shape = SubResource( 10 )
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Hero" parent="Player" instance=ExtResource( 6 )]
+position = Vector2( 249, 464.737 )
+
+[node name="Camera2D" type="Camera2D" parent="Player/Hero"]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 3072
+limit_bottom = 600
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="VBoxContainer" parent="HUD"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 100.0
+margin_bottom = 129.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player_Status" parent="HUD/HUD" instance=ExtResource( 11 )]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 100.0
+margin_bottom = 52.0
+Character = NodePath("../../../Player/Hero")
+
+[node name="Soul_Counter" parent="HUD/HUD" instance=ExtResource( 15 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 56.0
+margin_right = 100.0
+margin_bottom = 129.0
+Character = NodePath("../../../Player/Hero")
+
+[node name="Menu" type="CanvasLayer" parent="."]
+
+[node name="Upgrade_Menu" type="Panel" parent="Menu"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="Menu/Upgrade_Menu"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -257.5
+margin_right = 257.5
+margin_bottom = -222.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title_Node" type="Control" parent="Menu/Upgrade_Menu/Menu"]
+margin_right = 515.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 515, 100 )
+
+[node name="Title" type="Label" parent="Menu/Upgrade_Menu/Menu/Title_Node"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 515.0
+margin_bottom = 146.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 1, 0.301961, 0.301961, 1 )
+text = "Aprimoramento de Alma"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Soul_Node" type="Control" parent="Menu/Upgrade_Menu/Menu"]
+margin_top = 104.0
+margin_right = 515.0
+margin_bottom = 244.0
+rect_min_size = Vector2( 515, 140 )
+
+[node name="Souls" type="Label" parent="Menu/Upgrade_Menu/Menu/Soul_Node"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -36.5
+margin_right = 64.0
+margin_bottom = 36.5
+rect_min_size = Vector2( 128, 73 )
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.670588, 0.878431, 1, 1 )
+text = "1000"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Polygon2D" parent="Menu/Upgrade_Menu/Menu/Soul_Node/Souls"]
+position = Vector2( 12, 34.5 )
+color = Color( 0.670588, 0.878431, 1, 1 )
+polygon = PoolVector2Array( -8, 4, -8, -4, 0, -12, 8, -4, 8, 4, 0, 12 )
+
+[node name="Cost" type="VBoxContainer" parent="Menu/Upgrade_Menu/Menu"]
+margin_top = 248.0
+margin_right = 515.0
+margin_bottom = 348.0
+rect_min_size = Vector2( 200, 100 )
+custom_constants/separation = 0
+alignment = 1
+
+[node name="Custo" type="Label" parent="Menu/Upgrade_Menu/Menu/Cost"]
+margin_right = 515.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Custo"
+align = 1
+valign = 1
+
+[node name="Valor" type="Label" parent="Menu/Upgrade_Menu/Menu/Cost"]
+margin_top = 50.0
+margin_right = 515.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 50 )
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "5"
+align = 1
+valign = 1
+
+[node name="Upgrades" type="Control" parent="Menu/Upgrade_Menu/Menu"]
+margin_top = 352.0
+margin_right = 515.0
+margin_bottom = 452.0
+rect_min_size = Vector2( 515, 100 )
+
+[node name="Upgrade" type="Button" parent="Menu/Upgrade_Menu/Menu/Upgrades"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 100 )
+text = "Aprimorar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back_Node" type="Control" parent="Menu/Upgrade_Menu/Menu"]
+margin_top = 456.0
+margin_right = 515.0
+margin_bottom = 556.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Back" type="Button" parent="Menu/Upgrade_Menu/Menu/Back_Node"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -35.0
+margin_top = -22.5
+margin_right = 35.0
+margin_bottom = 22.5
+rect_min_size = Vector2( 70, 45 )
+text = "Sair"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Menu"]
+[connection signal="body_entered" from="Objects/Tutorials/Souls" to="." method="_on_Souls_entered"]
+[connection signal="body_entered" from="Objects/Tutorials/Bullet/Bullet_Trigger" to="." method="_on_Bullet_Trigger_body_entered"]
+[connection signal="body_entered" from="Objects/Altar_Area" to="." method="_on_Altar_Area_entered"]
+[connection signal="body_exited" from="Objects/Altar_Area" to="." method="_on_Altar_Area_exited"]
+[connection signal="body_entered" from="Objects/Altar_Area/Altar" to="." method="_on_Altar_entered"]
+[connection signal="checkpoint_activated" from="Objects/Altar_Area/Altar" to="." method="_on_checkpoint_activated"]
+[connection signal="dialogue_end" from="Objects/Dialogues/Intro" to="." method="_on_Intro_dialogue_end"]
+[connection signal="dialogue_end" from="Objects/Dialogues/Souls" to="." method="_on_Souls_dialogue_end"]
+[connection signal="dialogue_end" from="Objects/Dialogues/Altar" to="." method="_on_Altar_dialogue_end"]
+[connection signal="body_entered" from="Objects/Exit" to="." method="_on_Exit_body_entered"]
+[connection signal="body_exited" from="Objects/Exit" to="." method="_on_Exit_body_exited"]
+[connection signal="pressed" from="Menu/Upgrade_Menu/Menu/Upgrades/Upgrade" to="." method="_on_Upgrade_pressed"]
+[connection signal="pressed" from="Menu/Upgrade_Menu/Menu/Back_Node/Back" to="." method="_on_Back_pressed"]

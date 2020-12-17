@@ -7,26 +7,27 @@ export(int) var GRAVITY : int = 3500
 export(int) var MAX_GRAV : int = 2000
 
 #Functions
-func enter(_Player : KinematicBody2D) -> void:
-	_Player.change_animation("Dead")
+func enter(Lost_Soul : KinematicBody2D) -> void:
+	Lost_Soul.change_animation("Dead")
 
-func update(_Player: KinematicBody2D, _delta : float) -> void:
-	var spdx : float = _Player.speed.x
+func update(Lost_Soul: KinematicBody2D, _delta : float) -> void:
+	var spdx : float = Lost_Soul.speed.x
 
-	if _Player.is_on_floor():
+	if Lost_Soul.is_on_floor():
 		spdx *= FRICTION
 
 	if abs(spdx) < 10: spdx = 0
 
-	_Player.speed.x = spdx
+	Lost_Soul.speed.x = spdx
 
-	_Player.speed.y += GRAVITY*_delta
-	if _Player.speed.y > MAX_GRAV: _Player.speed.y = MAX_GRAV
+	Lost_Soul.speed.y += GRAVITY*_delta
+	if Lost_Soul.speed.y > MAX_GRAV: Lost_Soul.speed.y = MAX_GRAV
 
-	_Player.move_and_slide(_Player.speed, NORMAL)
+	# warning-ignore:return_value_discarded
+	Lost_Soul.move_and_slide(Lost_Soul.speed, NORMAL, true, 2)
 
-	if _Player.is_on_wall():
-		_Player.speed.x *= -FRICTION
+	if Lost_Soul.is_on_wall():
+		Lost_Soul.speed.x *= -FRICTION
 
-	if _Player.is_on_ceiling():
-		_Player.speed.y = 0
+	if Lost_Soul.is_on_ceiling():
+		Lost_Soul.speed.y = 0

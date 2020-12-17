@@ -4,7 +4,7 @@ var horizontal_space = 0
 var downwards_space = 0
 
 #Attributes
-const MAX_HEALTH : int = 45
+const MAX_HEALTH : int = 80
 var health : int = MAX_HEALTH
 var animation : AnimationNodeStateMachinePlayback
 var effects : AnimationPlayer
@@ -13,9 +13,9 @@ var Guardian_Node : KinematicBody2D
 #Movement Speed
 const NORMAL : Vector2 = Vector2(0, -1)
 var speed : Vector2 = Vector2(0,0)
-const ACCEL : int = 400
-const MAX_SPEED : int = 600
-const FRICTION : float = 0.99
+const ACCEL : int = 300
+const MAX_SPEED : int = 500
+const FRICTION : float = 0.95
 
 #Movement Direction
 var point_to_seek : Vector2 = Vector2(0,-20)
@@ -25,8 +25,7 @@ const seek_cooldown : float = 0.5
 
 #Attack Timer
 var atk_timer : float = 0.0
-const atk_variance : float = 1.0
-const atk_base_cooldown : float = 4.0
+const atk_base_cooldown : float = 5.0
 var atk_cooldown : float = 0.0
 
 #"FSM"
@@ -46,10 +45,8 @@ func enter(Guardian : KinematicBody2D) -> void:
 	horizontal_space = Guardian.horizontal_space
 	downwards_space = Guardian.downwards_space
 
-	randomize()
 	point_to_seek = Vector2(horizontal_space, 0)
-	atk_cooldown = atk_base_cooldown \
-					+ rand_range(-atk_variance, atk_variance)
+	atk_cooldown = atk_base_cooldown
 
 func exit(Guardian : KinematicBody2D) -> void:
 	Guardian.body.rotation = 0
@@ -60,21 +57,22 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 		Guardian._change_state($"../Dead")
 
 	if on_bounce:
-		$Phase2_Bounce.update(Guardian, delta)
+		$Phase2_Charge.update(Guardian, delta)
 		return
 
 	#Handling Body Rotation
-	var look_dir : Vector2 = Guardian.hero.global_position \
-						- Guardian.global_position
+	var look_dir : Vector2 = Guardian.hero.global_position - Guardian.global_position
 
 	Guardian.body.rotation = look_dir.angle() - 1.57 #90 deg in rad
 
 	#Handling point_to_seek
-	seek_timer += delta
+	point_to_seek.y = look_dir.y - downwards_space*1.5
 
-	if seek_timer >= seek_cooldown:
-		seek_timer = 0.0
-		point_to_seek.y = rand_range(-seek_variance, seek_variance)
+#	seek_timer += delta
+#
+#	if seek_timer >= seek_cooldown:
+#		seek_timer = 0.0
+#		point_to_seek.y += rand_range(-seek_variance, seek_variance)
 
 	var move_dir : Vector2 = (point_to_seek - Guardian.position)
 
@@ -88,6 +86,7 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 	if sign(speed.y) != sign(move_dir.y) : speed.y *= FRICTION
 
 	if speed.length() > MAX_SPEED:
+		# warning-ignore:integer_division
 		if speed.length() - MAX_SPEED < ACCEL/10: speed = MAX_SPEED*speed.normalized()
 		else: speed *= FRICTION
 
@@ -95,6 +94,7 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 		if abs(speed.x) < 1: speed.x = 0
 		if abs(speed.y) < 1: speed.y = 0
 
+	# warning-ignore:return_value_discarded
 	Guardian.move_and_slide(speed, NORMAL)
 
 	#Handling Attacks
@@ -102,29 +102,31 @@ func update(Guardian: KinematicBody2D, delta : float) -> void:
 
 	if atk_timer > atk_cooldown:
 		atk_timer = 0.0
-		atk_cooldown = atk_base_cooldown \
-						+ rand_range(-atk_variance, atk_variance)
-
 		atk_counter += 1
 
-		if atk_counter < 3:
-			animation.travel("Atk_Shoot_Rain")
+		if atk_counter <= 3:
+
+			if rand_range(0, 1) < 0.5:
+				atk_cooldown = atk_base_cooldown
+				animation.travel("Atk_Shoot_Heavies")
+
+			else:
+				atk_cooldown = atk_base_cooldown/2 
+				animation.travel("Atk_Shoot_Quick_Homing")
 
 		else:
 			atk_counter = 0
-			$Phase2_Bounce.enter(Guardian)
+			$Phase2_Charge.enter(Guardian)
 			on_bounce = true
 
 func hit(damage : int, force : int, direction : Vector2) -> void:
 	health -= damage
-
 	speed += (force/1.5)*direction.normalized()
-
 	effects.play("hit")
 
 # Called by Atk_Bounce_Outro
 
-func bounce_end() -> void:
+func stun_end() -> void:
 	on_bounce = false
 	speed = Vector2(0,-1)*MAX_SPEED
 	point_to_seek = sign(Guardian_Node.position.x)*Vector2(horizontal_space, 0)

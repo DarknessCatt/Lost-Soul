@@ -1,0 +1,342 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="Animation" id=4]
+resource_name = "Activated"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Soul:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 10 ),
+"transitions": PoolRealArray( 1, 1.8, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 3600.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Soul/Inner:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 10 ),
+"transitions": PoolRealArray( 1, 1.2, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -3240.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Soul/Inner/Innerest:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 3600.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Soul/Inner/Innerest/Core:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 90.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Soul/Inner:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 6.5, 7.5, 9.5, 10 ),
+"transitions": PoolRealArray( 1, 1.5, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.9, 0.9 ), Vector2( 0.9, 0.9 ), Vector2( 0.5, 0.5 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.05, 0.05 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Soul/Inner/Innerest:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1, 6.5, 7.5, 8.5 ),
+"transitions": PoolRealArray( 1, 1, 0.7, 0.7, 0.7 ),
+"update": 0,
+"values": [ Vector2( 0.4, 0.4 ), Vector2( 0.4, 0.4 ), Vector2( 0.8, 0.8 ), Vector2( 0.5, 0.5 ), Vector2( 1.2, 1.2 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Soul/Inner/Innerest/Core:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1, 7.5, 8.5, 9.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 0.5, 0.5 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Soul:color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0.31, 0.31, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Soul/Inner:color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.66, 0.3762, 0.3762, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Soul/Inner/Innerest:color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.69, 0.2139, 0.2139, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Soul/Inner/Innerest/Core:color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 0.853, 0.82, 1 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Soul:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Soul/Inner:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Soul:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 0.9, 0.9 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Soul/Inner:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.7, 0.7 ), Vector2( 1.1, 1.1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Soul:modulate")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.52, 0.52, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Soul/Inner:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.89, 0.5073, 0.5073, 1 ), Color( 0.43, 0.2451, 0.2451, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Soul/Inner/Innerest:rotation_degrees")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 450.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Soul/Inner/Innerest:scale")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.3, 0.9, 1.1, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 1.3, 1.3 ), Vector2( 1.3, 1.3 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Soul/Inner/Innerest:color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.69, 0.2139, 0.2139, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Soul/Inner/Innerest/Core:rotation_degrees")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -810.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Soul/Inner/Innerest/Core:scale")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Soul/Inner/Innerest/Core:color")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.853, 0.82, 1 ), Color( 1, 0.451, 0.39, 1 ) ]
+}
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 1
+emission_sphere_radius = 32.0
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 180.0
+gravity = Vector3( 0, -50, 0 )
+initial_velocity = 30.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+scale_random = 0.5
+color = Color( 1, 0, 0, 1 )
+hue_variation = 0.13
+hue_variation_random = 0.5
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 32.0
+
+[node name="Final_Soul" type="Area2D"]
+monitorable = false
+collision_layer = 0
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Activated = SubResource( 4 )
+anims/Idle = SubResource( 1 )
+
+[node name="Particles" type="Particles2D" parent="."]
+amount = 50
+lifetime = 2.0
+process_material = SubResource( 2 )
+
+[node name="Soul" type="Polygon2D" parent="."]
+scale = Vector2( 0.75, 0.75 )
+color = Color( 1, 0.31, 0.31, 1 )
+polygon = PoolVector2Array( -40, 0, -32, -24, -24, -32, 0, -40, 24, -32, 32, -24, 40, 0, 32, 24, 24, 32, 0, 40, -24, 32, -32, 24 )
+
+[node name="Inner" type="Polygon2D" parent="Soul"]
+scale = Vector2( 0.9, 0.9 )
+color = Color( 0.66, 0.3762, 0.3762, 1 )
+polygon = PoolVector2Array( -32, 0, -24, -24, 0, -32, 24, -24, 32, 0, 24, 24, 0, 32, -24, 24 )
+
+[node name="Innerest" type="Polygon2D" parent="Soul/Inner"]
+scale = Vector2( 0.4, 0.4 )
+color = Color( 0.69, 0.2139, 0.2139, 1 )
+polygon = PoolVector2Array( -17.7778, -8.88889, -8.88889, -17.7778, 8.88889, -17.7778, 17.7778, -8.88889, 17.7778, 8.88889, 8.88889, 17.7778, -8.88889, 17.7778, -17.7778, 8.88889 )
+
+[node name="Core" type="Polygon2D" parent="Soul/Inner/Innerest"]
+color = Color( 1, 0.853, 0.82, 1 )
+polygon = PoolVector2Array( 0, -8.88889, -8.88889, 0, 0, 8.88889, 8.88889, 0 )
+
+[node name="area" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 3 )

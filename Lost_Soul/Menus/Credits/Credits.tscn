@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Fonts/PlatNomor-WyVnn.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Menus/Credits/Credits.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 1 )
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -285.0
+margin_right = 350.0
+margin_bottom = 285.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits_Scroller" type="ScrollContainer" parent="List"]
+margin_right = 700.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 700, 500 )
+
+[node name="Credits" type="Label" parent="List/Credits_Scroller"]
+margin_right = 690.0
+margin_bottom = 977.0
+rect_min_size = Vector2( 690, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "
+Creditos
+
+Um jogo de
+Matheus Lima Cunha
+
+Space Magic
+(http://freesound.org/people/qubodup/sounds/238996)
+by Iwan ‘qubodup’ Gabovitch
+(http://freesound.org/people/qubodup)
+under CC-BY 3.0 License
+
+Musica por
+Anttis Instrumentals
+
+
+
+Agradecimentos especiais
+
+Minha familia
+por me criar.
+
+Thalia Laura Chacolla Yujra
+por me ajudar com a parte visual e ambientação.
+
+Ricardo Nakamura
+Por me orientar durante este projeto.
+
+A USPGameDev
+por ser um otimo grupo sobre o desenvolvimento de jogos e pelo seu suporte.
+
+Todos as pessoras que me deram feedback para dar forma ao jogo.
+
+"
+align = 1
+autowrap = true
+
+[node name="Voltar" type="Button" parent="List"]
+margin_top = 550.0
+margin_right = 700.0
+margin_bottom = 570.0
+text = "Voltar"
+[connection signal="pressed" from="List/Voltar" to="." method="_on_Voltar"]

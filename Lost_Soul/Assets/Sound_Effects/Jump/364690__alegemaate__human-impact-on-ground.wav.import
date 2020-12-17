@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/364690__alegemaate__human-impact-on-ground.wav-10ded5c098502d1a7764b47d8f0767f9.sample"
+
+[deps]
+
+source_file="res://Assets/Sound_Effects/Jump/364690__alegemaate__human-impact-on-ground.wav"
+dest_files=[ "res://.import/364690__alegemaate__human-impact-on-ground.wav-10ded5c098502d1a7764b47d8f0767f9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

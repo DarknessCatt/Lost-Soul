@@ -13,37 +13,43 @@ export(int) var MAX_GRAV : int = 2000
 var dir : int = 1
 
 #Functions
-func enter(_Player : KinematicBody2D) -> void:
-	_Player.change_animation(state_anim)
-	dir = sign(_Player.speed.x)
+func enter(Wanderer : KinematicBody2D) -> void:
+	Wanderer.change_animation(state_anim)
+	# warning-ignore:narrowing_conversion
+	dir = sign(Wanderer.speed.x)
 
-func update(_Player: KinematicBody2D, _delta : float) -> void:
-	var spdx : float = _Player.speed.x + dir*ACCEL*_delta
+func update(Wanderer: KinematicBody2D, _delta : float) -> void:
+#	var spdx : float = Wanderer.speed.x + dir*ACCEL*_delta
+#
+#	if sign(spdx) != dir : spdx *= FRICTION
+#
+#	if abs(spdx) > MAX_SPEED:
+#		# warning-ignore:integer_division
+#		if abs(spdx) - MAX_SPEED < ACCEL/10 : spdx = MAX_SPEED*dir
+#		else : spdx *= FRICTION
+#
+#	# warning-ignore:integer_division
+#	elif abs(spdx) < ACCEL/100: spdx = 0
+#
+#	if sign(spdx) != sign(Wanderer.speed.x):
+#		match sign(spdx):
+#			-1.0:
+#				Wanderer.body.scale.x = -1
+#			1.0:
+#				Wanderer.body.scale.x = 1
+#
+#	Wanderer.speed.x = spdx
 
-	if sign(spdx) != dir : spdx *= FRICTION
+	Wanderer.speed.x *= FRICTION
 
-	if abs(spdx) > MAX_SPEED:
-		if abs(spdx) - MAX_SPEED < ACCEL/10 : spdx = MAX_SPEED*dir
-		else : spdx *= FRICTION
+	Wanderer.speed.y += GRAVITY*_delta
+	if Wanderer.speed.y > MAX_GRAV: Wanderer.speed.y = MAX_GRAV
 
-	elif abs(spdx) < 10: spdx = 0
+	# warning-ignore:return_value_discarded
+	Wanderer.move_and_slide(Wanderer.speed, NORMAL)
 
-	if sign(spdx) != sign(_Player.speed.x):
-		match sign(spdx):
-			-1.0:
-				_Player.body.scale.x = -1
-			1.0:
-				_Player.body.scale.x = 1
+	if Wanderer.is_on_wall():
+		Wanderer.speed.x *= -1
 
-	_Player.speed.x = spdx
-
-	_Player.speed.y += GRAVITY*_delta
-	if _Player.speed.y > MAX_GRAV: _Player.speed.y = MAX_GRAV
-
-	_Player.move_and_slide(_Player.speed, NORMAL)
-
-	if _Player.is_on_wall():
-		_Player.speed.x *= -1
-
-	if _Player.is_on_floor():
-		_Player._change_state($"../Walking")
+	if Wanderer.is_on_floor():
+		Wanderer._change_state($"../Walking")

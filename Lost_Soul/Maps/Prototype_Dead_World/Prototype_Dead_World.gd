@@ -37,14 +37,15 @@ const church_camera_zoom : Vector2 = Vector2(6,6)
 onready var dialogue : Label = $Hero/Camera/Dialogue
 
 func _input(event):
-	if $Hero.on_cutscene == true and event.is_action_pressed("hero_jump"):
-		$Hero.on_cutscene = false
+	if $Hero.cutscene != $Hero.cutscene_type.NONE and event.is_action_pressed("hero_jump"):
+		$Hero.cutscene = $Hero.cutscene_type.NONE
 		$Tween.seek(10)
 
 func _ready():
 	InputMap.action_erase_events("hero_attack")
+	InputMap.action_erase_events("hero_block")
 
-	$Hero.on_cutscene = true
+	$Hero.cutscene = $Hero.cutscene_type.FULL
 	$Hero._change_anim("StandingUp")
 	$Tween.interpolate_property($Hero/Camera, "zoom", Vector2(0.3,0.3), Vector2(1,1), 10, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$Tween.interpolate_property($Hero/Camera, "position", Vector2(0, 0), Vector2(0, -75), 10, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
@@ -54,7 +55,7 @@ func _ready():
 	$Characters/DeadManager/Manager_Text.begin()
 
 func _on_Manager_Text_ended():
-	$Hero.on_cutscene = false
+	$Hero.cutscene = $Hero.cutscene_type.NONE
 
 func _on_Line_body_entered(_body):
 	$Tween.stop_all()
@@ -80,12 +81,12 @@ func _on_Left_body_entered(body):
 
 func _on_Jump_body_entered(_body):
 	$Tween.stop_all()
-	$Tween.interpolate_property($Jump/Z, "color:a", 0, 0.8, 1, Tween.TRANS_SINE, Tween.EASE_IN)
+	$Tween.interpolate_property($Jump/Tutorial_Button, "modulate:a", 0, 1, 0.5, Tween.TRANS_SINE, Tween.EASE_IN)
 	$Tween.start()
 
 func _on_Jump_body_exited(_body):
 	dialogue.clear()
-	$Jump/Z.color.a = 0
+	$Jump/Tutorial_Button.modulate.a = 0
 
 func _on_Souls_1_body_entered(body):
 	dialogue.change_dialogue(soul_dialogue)
@@ -127,7 +128,7 @@ func _on_Chaos_body_entered(_body):
 	$Tween.interpolate_property($BG_Outro, "modulate:a", 0, 1, 2.5, Tween.TRANS_SINE, Tween.EASE_IN)
 	$Tween.start()
 	$Outro.start()
-	$Hero.on_cutscene = true
+	$Hero.cutscene = $Hero.cutscene_type.FULL
 	$Hero._change_anim("Death")
 
 func _on_Outro_timeout():

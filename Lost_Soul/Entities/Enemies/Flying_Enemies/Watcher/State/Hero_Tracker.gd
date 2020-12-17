@@ -9,12 +9,13 @@ onready var Flying : State = $"../Flying"
 
 var swap : bool = true
 
-func update(_Player: KinematicBody2D, _delta : float) -> void:
-	var dir : Vector2 = _Player.hero.global_position - _Player.global_position
-	_Player.body.rotation = dir.angle()
+func update(Watcher: KinematicBody2D, _delta : float) -> void:
+	var dir : Vector2 = Watcher.hero.global_position - Watcher.global_position
+	Watcher.body.rotation = dir.angle()
 
 	if swap:
 
+		# warning-ignore:integer_division
 		if abs(dir.x) < dist/3:
 			Flying.Point_To_Seek = UP
 		elif sign(dir.x) > 0:

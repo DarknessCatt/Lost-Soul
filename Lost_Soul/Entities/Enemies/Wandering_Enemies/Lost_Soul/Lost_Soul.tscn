@@ -11,7 +11,7 @@
 [sub_resource type="Animation" id=1]
 resource_name = "Dead"
 length = 0.4
-step = 0.01
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Right_Leg:rotation_degrees")
 tracks/0/interp = 1
@@ -103,7 +103,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.02, 0.4 ),
+"times": PoolRealArray( 0, 0.01, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, false ]
@@ -115,48 +115,46 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.02, 0.4 ),
+"times": PoolRealArray( 0, 0.01, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, false ]
 }
-tracks/9/type = "method"
-tracks/9/path = NodePath(".")
+tracks/9/type = "value"
+tracks/9/path = NodePath(".:collision_layer")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0.28 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "spawn_souls"
-} ]
+"times": PoolRealArray( 0.01, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 0 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Collision:scale")
+tracks/10/path = NodePath("Hurtbox:monitorable")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.19, 0.4 ),
+"times": PoolRealArray( 0, 0.01, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 0.5 ) ]
+"update": 1,
+"values": [ true, false, false ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Collision:position")
+tracks/11/path = NodePath("Body/Body_Collision:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.19, 0.4 ),
+"times": PoolRealArray( 0, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, -5 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -25 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -398,6 +396,42 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:collision_layer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Hurtbox:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hurtbox:monitorable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -710,25 +744,28 @@ tracks/0/keys = {
 
 [sub_resource type="CapsuleShape2D" id=10]
 radius = 17.3604
-height = 33.1042
+height = 39.6779
 
 [sub_resource type="CapsuleShape2D" id=11]
 radius = 19.4993
-height = 31.2991
+height = 35.4001
 
-[sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 12.6826, 34.2189 )
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 11.1514
+height = 41.6972
 
 [sub_resource type="CircleShape2D" id=13]
 radius = 30.0
 
 [node name="Lost_Soul" instance=ExtResource( 1 )]
+collision_layer = 0
 script = ExtResource( 2 )
 soul_x = 18.0
-max_health = 20
-souls = 2
+max_health = 15
+souls = 4
 
 [node name="Body_Animations" parent="." index="0"]
+autoplay = "Rest"
 anims/Dead = SubResource( 1 )
 anims/Falling = SubResource( 2 )
 anims/Knockback = SubResource( 3 )
@@ -744,14 +781,15 @@ anims/hit = SubResource( 9 )
 
 [node name="Walking" parent="States" index="0"]
 script = ExtResource( 4 )
-path_checker_dist = 22
-ACCEL = 1000
-MAX_SPEED = 50
-FRICTION = 0.5
+path_checker_dist = 24
+ACCEL = 2000
+FRICTION = 0.75
 
 [node name="Falling" parent="States" index="1"]
-FRICTION = 0.8
-GRAVITY = 4000
+ACCEL = 0
+FRICTION = 0.95
+GRAVITY = 2700
+MAX_GRAV = 1000
 
 [node name="Attacking" type="Node" parent="States" index="2"]
 script = ExtResource( 3 )
@@ -806,7 +844,7 @@ offset = Vector2( 0, 4 )
 polygon = PoolVector2Array( -4, -4, -4, 20, 0, 24, 4, 20, 4, -4, 0, -8 )
 
 [node name="Hitbox" parent="Body" index="4" instance=ExtResource( 5 )]
-visible = false
+position = Vector2( 0.672028, -2.24009 )
 Body = NodePath("..")
 Id = 2
 Damage = 10
@@ -815,6 +853,9 @@ Direction = Vector2( 1, -0.2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Hitbox" index="0"]
 shape = SubResource( 10 )
+
+[node name="Body_Collision" type="RemoteTransform2D" parent="Body" index="5"]
+remote_path = NodePath("../../Collision")
 
 [node name="Hurtbox" parent="." index="4" instance=ExtResource( 6 )]
 Id = 2
@@ -828,14 +869,11 @@ __meta__ = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="." index="5"]
-position = Vector2( 0, 1 )
 shape = SubResource( 12 )
 
-[node name="Perception" parent="." index="6"]
-visible = false
-
 [node name="Path_Checker" parent="Perception" index="0"]
-cast_to = Vector2( 0, 40 )
+position = Vector2( 0, -16 )
+cast_to = Vector2( 0, 60 )
 
 [node name="Eyes" type="Area2D" parent="Perception" index="1"]
 position = Vector2( 40.9954, 1.2051 )

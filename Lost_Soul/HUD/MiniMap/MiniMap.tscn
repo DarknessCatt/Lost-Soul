@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://HUD/MiniMap/MiniMap.gd" type="Script" id=1]
+[ext_resource path="res://HUD/MiniMap/Room/MiniMap_Room.tscn" type="PackedScene" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.7 )
+
+[node name="MiniMap" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+minimap_room = ExtResource( 2 )
+
+[node name="Map" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -250.0
+margin_right = 250.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 500, 500 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

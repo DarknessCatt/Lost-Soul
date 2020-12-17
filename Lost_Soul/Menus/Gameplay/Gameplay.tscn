@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Menus/Map_Controller/Map_Controller.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Menus/Gameplay/Gameplay.gd" type="Script" id=2]
+[ext_resource path="res://Menus/Settings/Settings.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="Gameplay" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Map_Controller" parent="." instance=ExtResource( 1 )]
+pause_mode = 1
+
+[node name="Menu" type="Panel" parent="."]
+pause_mode = 2
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1024, 600 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" parent="Menu" instance=ExtResource( 3 )]
+[connection signal="menu_exited" from="Menu/Settings" to="." method="_on_Settings_exited"]

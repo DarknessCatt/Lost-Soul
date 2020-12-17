@@ -23,6 +23,7 @@ func _on_Animation_finished(_anim_name):
 
 func _physics_process(delta):
 
+	# warning-ignore:return_value_discarded
 	move_and_slide(self.speed, NORMAL)
 
 	if abs(self.speed.x) < 10: self.speed.x = 0

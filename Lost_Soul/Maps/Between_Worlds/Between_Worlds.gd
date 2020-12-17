@@ -20,7 +20,7 @@ const dil_soul : Array = [
 "Este é um\nfragmento\nde alma,",
 "deixado por\nalguma alma\nperdida.",
 "Podemos usá-lo\ncomo fonte\nde poder,",
-"no futuro.",
+"quando sairmos\ndeste local.",
 ""
 ]
 
@@ -36,6 +36,12 @@ const dil_lost_souls : Array = [
 "mas se perderam\nna passagem do tempo,",
 "deformando-se em\nsuas próprias\nloucuras.",
 "De uma maneira\nou de outra,\nsão todos iguais.",
+""
+]
+
+const dil_block : Array = [
+"Não esqueças\nde bloquear,",
+"Mas tenhas cuidado\npara não\nse cansar.",
 ""
 ]
 
@@ -111,12 +117,14 @@ func _on_Tween_tween_all_completed():
 		respawn_monsters()
 		$Hero.position = respawn_pos
 		$Hero._refresh()
-		$Hero.on_cutscene = false
+		$Hero.cutscene = $Hero.cutscene_type.NONE
 		$Tween.interpolate_property($Hero/Player_Camera/Blackout, "custom_styles/panel:bg_color:a",
 									1, 0, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Tween.start()
 		if on_boss:
 			on_boss = false
+			$Boss/The_Gate_Guardian.respawn()
+			$Boss_Music.playing = false
 			$Walls.set_cell(680, 6, -1)
 			$Walls.set_cell(680, 7, -1)
 			$Walls.set_cell(680, 8, -1)
@@ -125,9 +133,8 @@ func _on_Tween_tween_all_completed():
 			$Walls.set_cell(651, -10, -1)
 			$Walls.set_cell(652, -10, -1)
 			$Walls.set_cell(653, -10, -1)
+			yield(get_tree().create_timer(0.1), "timeout")
 			$Boss/Close_Arena.call_deferred("set", "monitoring", true)
-			$Boss/The_Gate_Guardian.respawn()
-			$Boss_Music.playing = false
 
 		respawning = false
 		return
@@ -150,12 +157,13 @@ func _on_Tween_tween_all_completed():
 			state = BEGIN
 			$Hero/Player_Camera.current = true
 			$Hero/Player_Camera.show()
+			$Hero.cutscene = $Hero.cutscene_type.NONE
 
 func _input(event):
 	if event.is_action_pressed("hero_jump") and (state == INTRO1 or state == INTRO2):
 		$Tween.remove_all()
 
-		$Hero.on_cutscene = false
+		$Hero.cutscene = $Hero.cutscene_type.NONE
 		$Hero/Player_Camera.current = true
 		$Hero/Player_Camera.show()
 
@@ -185,7 +193,7 @@ func _ready():
 		5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 	$BG_Music.playing = true
-	$Hero.on_cutscene = true
+	$Hero.cutscene = $Hero.cutscene_type.FULL
 
 func _on_Intro_entered(_body):
 	dialogue.change_dialogue(dil_intro)
@@ -220,31 +228,28 @@ func _on_checkpoint_reached(checkpoint : Area2D):
 		0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 
-	first_check = true
+	$Dialogue_Triggers/Tutorial_Attack.disabled = false
 	dialogue.change_dialogue(dil_check)
 	dialogue.begin()
 
-	var atk_event = InputEventKey.new()
-	atk_event.scancode = 67
-	InputMap.action_add_event("hero_attack", atk_event)
+	var atk_key_event = InputEventKey.new()
+	atk_key_event.scancode = 67
+	InputMap.action_add_event("hero_attack", atk_key_event)
 
-func _on_Attack_entered(_body):
-	if first_check:
-		$Tween.remove_all()
-		$Tween.interpolate_property(
-			$Dialogue_Triggers/Attack/C, "modulate:a",
-			$Dialogue_Triggers/Attack/C.modulate.a, 1,
-			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		$Tween.start()
+	var atk_con_event = InputEventJoypadButton.new()
+	atk_con_event.button_index = 2
+	InputMap.action_add_event("hero_attack", atk_con_event)
 
-func _on_Attack_exited(_body):
-	if first_check:
-		$Tween.remove_all()
-		$Tween.interpolate_property(
-			$Dialogue_Triggers/Attack/C, "modulate:a",
-			$Dialogue_Triggers/Attack/C.modulate.a, 0,
-			0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		$Tween.start()
+	var blk_key_event = InputEventKey.new()
+	blk_key_event.scancode = 68
+	InputMap.action_add_event("hero_block", blk_key_event)
+
+	var blk_con_event = InputEventJoypadButton.new()
+	blk_con_event.button_index = 5
+	InputMap.action_add_event("hero_block", blk_con_event)
+
+	$Dialogue_Triggers/Tutorial_Attack.update_buttons()
+	$Dialogue_Triggers/Tutorial_Block.update_buttons()
 
 func _on_Souls_Tutorial_entered(_body):
 	dialogue.change_dialogue(dil_soul)
@@ -256,6 +261,10 @@ func _on_Wander_Enemy_entered(_body):
 
 func _on_About_Lost_entered(_body):
 	dialogue.change_dialogue(dil_lost_souls)
+	dialogue.begin()
+
+func _on_Blocking_entered(_body):
+	dialogue.change_dialogue(dil_block)
 	dialogue.begin()
 
 func _on_Before_Eyes_entered(_body):
@@ -331,7 +340,7 @@ func _on_The_Gate_Guardian_dead():
 	$Tween.start()
 
 func _on_End_entered(_body):
-	$Hero.on_cutscene = true
+	$Hero.cutscene = $Hero.cutscene_type.FULL
 	$Ending_Panel/End_Area.call_deferred("set", "monitoring", false)
 	$Tween.interpolate_property($Ending_Panel/Panel, "custom_styles/panel:bg_color",
 								Color("ffffff"), Color("000000"),

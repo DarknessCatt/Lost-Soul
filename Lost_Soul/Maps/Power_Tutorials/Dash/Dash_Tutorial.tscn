@@ -1,0 +1,194 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Entities/Hero/Hero.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Map_Elements/Dash_Barrier/Dash_Barrier.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Power_Tutorials/Dash/Dash_Tutorial.gd" type="Script" id=3]
+[ext_resource path="res://Entities/Information/Tutorial_Key/Tutorial_Key.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Information/DialogueBox/DialogueBox.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Intro"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Dialogue1/Ghost:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 232, 224 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10, 192 )
+
+[node name="Dash_Tutorial" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/Intro = SubResource( 1 )
+
+[node name="Anim_Timer" type="Timer" parent="."]
+wait_time = 1.75
+one_shot = true
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="BG" type="Polygon2D" parent="Walls"]
+color = Color( 0.1435, 0.258983, 0.41, 1 )
+polygon = PoolVector2Array( -875, 380, 5550, 380, 5550, -900, -875, -900 )
+
+[node name="Crack" type="Polygon2D" parent="Walls/BG"]
+color = Color( 0.075, 0.525, 0.75, 1 )
+polygon = PoolVector2Array( -512, -136, -440, -152, -392, -152, -376, -56, -360, -152, -232, -168, -56, -136, -24, -104, -8, 72, 32, -144, 144, -184, 272, -176, 368, -144, 392, -32, 408, -144, 448, -168, 488, -160, 512, -112, 528, -184, 576, -208, 680, -232, 704, -224, 720, -144, 736, -224, 760, -256, 840, -240, 944, -240, 976, -216, 1000, -184, 1024, -208, 1056, -216, 1104, -200, 1144, -136, 1152, -80, 1168, -168, 1192, -192, 1224, -192, 1392, -232, 1440, -200, 1480, -64, 1504, -128, 1488, -192, 1536, -216, 1512, -280, 1376, -336, 1304, -264, 1224, -232, 1152, -216, 1080, -240, 1008, -280, 976, -376, 968, -304, 928, -280, 824, -288, 720, -264, 704, -288, 704, -344, 672, -408, 720, -448, 736, -560, 688, -448, 664, -432, 600, -464, 528, -448, 616, -440, 648, -408, 680, -360, 672, -304, 680, -256, 656, -240, 512, -208, 480, -216, 464, -240, 448, -216, 408, -192, 296, -200, 216, -224, 176, -320, 160, -216, 16, -168, -76.6828, -178.77, -88, -272, -24, -392, -104, -296, -112, -176, -208, -208, -280, -184, -408, -168, -480, -192, -488, -256, -512, -200 )
+
+[node name="Crack2" type="Polygon2D" parent="Walls/BG"]
+color = Color( 0.075, 0.525, 0.75, 1 )
+polygon = PoolVector2Array( 2376, 320, 2480, 208, 2432, 136, 2360, 128, 2328, 192, 2344, 128, 2312, 120, 2416, 104, 2368, 40, 2424, -120, 2416, -176, 2360, -192, 2280, -192, 2208, -128, 2200, -48, 2176, -112, 1976, -64, 1944, -72, 2008, -80, 2184, -144, 2256, -224, 2240, -288, 2280, -232, 2416, -216, 2368, -400, 2440, -600, 2440, -752, 2472, -600, 2408, -432, 2432, -280, 2472, -232, 2528, -264, 2544, -312, 2536, -360, 2560, -320, 2560, -272, 2840, -264, 2952.18, -278.022, 3032, -424, 2944, -536, 3048, -432, 2968, -280, 3072, -264, 3112, -232, 3216, -200, 3249.92, -167.627, 3328, -216, 3376, -200, 3310.46, -194.782, 3271.24, -147.326, 3296, -104, 3432, -216, 3376, -384, 3464, -552, 3392, -384, 3456, -224, 3304, -88, 3424, 32, 3568, 32, 3418.56, 45.5012, 3296, -72, 3240, 16, 3120, 96, 3264, -32, 3280, -88, 3248, -136, 3104, -232, 2968, -256, 2754.61, -256, 2768, -192, 2752, -232, 2712, -256, 2552, -248, 2472, -184, 2464, -160, 2520, -128, 2568, -120, 2520, -104, 2456, -136, 2416, -40, 2416, -8, 2464, 8, 2416, 0, 2408, 48, 2512, 192, 2600, 160, 2640, 160, 2512, 216, 2472, 304 )
+
+[node name="Crack3" type="Polygon2D" parent="Walls/BG"]
+color = Color( 0.075, 0.525, 0.75, 1 )
+polygon = PoolVector2Array( 4168, -280, 4024, -392, 3952, -512, 3888, -768, 3880, -728, 3944, -472, 4072, -312, 4024, -344, 3771.78, -334.781, 3688, -400, 3753.33, -323.622, 3648, -128, 3704, -184, 3776, -328, 4016, -328, 4040, -248, 4056, -136, 4058.1, -228.306, 4032, -320, 4168, -240, 4472.82, -321.78, 4610.31, -213.646, 4584, -32, 4688, -184, 4540.42, -362.056, 4736, -512, 5040, -376, 5136, -376, 4760, -560, 4704, -624, 4616, -816, 4624, -672, 4711.57, -531.204, 4592, -480, 4496, -368, 4368, -352 )
+
+[node name="Floor" type="Polygon2D" parent="Walls"]
+color = Color( 0.36, 0.808, 1, 1 )
+polygon = PoolVector2Array( -424, -8, -384, 16, -352, 80, -304, 80, -280, 56, -248, 104, -184, 128, -96, 96, -72, 48, -48, 96, 72, 120, 128, 120, 208, 80, 416, 88, 440, 112, 456, 88, 456, 56, 496, 48, 520, 16, 576, 0, 1192, 0, 1240, 72, 1256, 48, 1272, 112, 1344, 176, 1368, 160, 1384, 120, 1408, 160, 1472, 184, 1528, 168, 1544, 144, 1560, 168, 1584, 176, 1616, 168, 1792.59, 168, 1904, 128, 1928, 96, 2056, 96, 2144, 56, 2208, 56, 2192, 120, 2224, 192, 2288, 192, 2296, 216, 2264, 288, 2288, 328, 2320, 304, 2552, 280, 2632, 304, 2680, 288, 2656, 56, 2672, -40, 2752, -40, 2816, 0, 2920, -16, 3008, -64, 3136, -64, 3136, -24, 3072, 40, 3080, 128, 3128, 160, 3176, 136, 3248, 136, 3288, 256, 3392, 288, 3624, 280, 3824, 296, 3896, 360, 3944, 144, 3920, 48, 3904, 120, 3888, 0, 3832, 24, 3816, 80, 3800, 24, 3776, -8, 3760, -80, 3800, -112, 4032, -112, 4160, -56, 4288, -56, 4368, -96, 4832, -96, 5072, -168, 5296, -96, 5336, -248, 5272, -512, 5160, -640, 5088, -568, 5064, -448, 5048, -576, 4984, -648, 4960, -848, 5032, -928, 5136, -1024, 5400, -984, 5632, -1024, 5624, -904, 5560, -784, 5512, -880, 5384, -880, 5336, -824, 5280, -888, 5184, -800, 5272, -696, 5400, -688, 5496, -528, 5504, -432, 5472, -464, 5416, -256, 5416, 408, 5360, 320, 5344, 176, 5262.07, 46.271, 5240, 128, 5224.42, 2.56641, 5160, -56, 5000, -72, 4912, 24, 4784, 40, 4704, 192, 4672, 320, 4640, 192, 4576, 48, 4504, 80, 4464, 120, 4392, 32, 4304, 104, 4152, 144, 4104, 240, 4088, 408, 4064, 352, 4024, 464, 3848, 480, 3720, 408, 3696, 448, 3688, 552, 3672, 448, 3656, 400, 3472, 368, 3424, 432, 3400, 384, 3336, 360, 3248, 368, 3176, 456, 3136, 608, 3104, 456, 3040, 312, 3016, 368, 2976, 136, 2896, 104, 2832, 144, 2816, 192, 2800, 144, 2768, 136, 2776, 248, 2736, 328, 2736, 440, 2696, 384, 2688, 328, 2608, 336, 2528, 400, 2496, 360, 2448, 336, 2416, 352, 2392, 440, 2360, 352, 2288, 352, 2216, 384, 2168, 504, 2120, 432, 2112, 320, 2176, 248, 2152, 184, 2088, 144, 1968, 168, 1904, 264, 1872, 216, 1752, 200, 1680, 216, 1640, 288, 1608, 216, 1512, 224, 1400, 208, 1352, 216, 1336, 272, 1312, 216, 1280, 176, 1240, 160, 1216, 192, 1192, 128, 1152, 72, 1112, 72, 1104, 104, 1096, 72, 1032, 48, 904, 56, 888, 120, 872, 56, 752, 40, 688, 56, 672, 88, 656, 56, 600, 64, 536, 112, 512, 184, 496, 152, 440, 168, 432, 216, 424, 168, 344, 136, 256, 136, 240, 184, 224, 136, 160, 168, 88, 152, 64, 200, 48, 152, -56, 120, -104, 128, -136, 168, -216, 176, -240, 144, -320, 136, -376, 96, -400, 120, -424, 192, -440, 96, -464, 64, -504, 48, -544, -136, -576, -96, -608, -136, -616, -320, -656, -368, -672, -328, -688, -376, -720, -440, -760, -576, -784, -512, -792, -400, -808, -512, -840, -576, -872, -832, -704, -832, -736, -696, -712, -568, -640, -448, -624, -392, -568, -360, -520, -384, -504, -424, -424, -424, -392, -360, -400, -216, -432, -144, -464, -200, -488, -136, -472, -64 )
+
+[node name="Inner" type="Polygon2D" parent="Walls/Floor"]
+show_behind_parent = true
+color = Color( 0.041, 0.612267, 0.82, 1 )
+polygon = PoolVector2Array( -768, -616, -864, -832, -1145, -832, -1145, 550, 5610, 550, 5610, -952, 5368, -944, 5120, -848, 5352, -552, 5376, 8, 5104, -120, 4912, -48, 4184, 8, 3984, 352, 3648, 352, 3096, 264, 3040, 40, 2824, 32, 2768, 120, 2712, 320, 2224, 336, 2152, 128, 1752, 200, 1336, 200, 1256, 144, 1216, 40, 568, 24, 456, 120, 384, 120, 224, 96, 96, 144, -56, 120, -168, 136, -256, 128, -360, 104, -400, 48, -480, -16, -584, -320 )
+
+[node name="Ceiling" type="Polygon2D" parent="Walls"]
+color = Color( 0.36, 0.808, 1, 1 )
+polygon = PoolVector2Array( 1080, -384, 1136, -360, 1152, -312, 1160, -240, 1168, -312, 1176, -360, 1248, -352, 1296, -328, 1320, -280, 1328, -184, 1344, -256, 1368, -288, 1392, -288, 1456, -256, 1464, -232, 1472, -256, 1504, -248, 1520, -208, 1520, -168, 1536, -152, 1552, -128, 1552, -72, 1560, -40, 1568, -72, 1600, -80, 1624, -56, 1640, -32, 1656, -24, 1752, -24, 1800, -48, 1824, -8, 1840, -88, 1896, -96, 1960, -208, 1984, -136, 2008, -248, 2072, -408, 2096, -680, 2120, -656, 2168, -832, 2040, -832, 2056, -640, 2000, -416, 1976, -456, 1960, -384, 1968, -304, 1928, -208, 1896, -184, 1864, -208, 1848, -272, 1840, -168, 1816, -120, 1752, -72, 1720, -104, 1704, -144, 1672, -136, 1624, -152, 1600, -208, 1600, -272, 1592, -312, 1576, -272, 1544, -264, 1512, -288, 1496, -320, 1480, -360, 1448, -320, 1408, -312, 1368, -344, 1360, -376, 1344, -352, 1264, -384, 1200, -448, 1176, -512, 1152, -440, 1104, -488, 976, -560, 928, -656, 896, -608, 832, -648, 760, -768, 768, -832, 552, -832, 608, -784, 640, -720, 632, -624, 664, -544, 696, -624, 744, -632, 792, -592, 824, -528, 856, -560, 944, -520, 968, -440, 1000, -392, 1016, -480, 1048, -480, 1064, -456 )
+
+[node name="Inner" type="Polygon2D" parent="Walls/Ceiling"]
+show_behind_parent = true
+color = Color( 0.041, 0.612267, 0.82, 1 )
+polygon = PoolVector2Array( 1232, -360, 1504, -264, 1592, -152, 1712, -80, 1768, -56, 1832, -104, 1960, -216, 2056, -544, 2072, -832, 712, -832, 816, -640 )
+
+[node name="Wall" type="StaticBody2D" parent="Walls"]
+visible = false
+collision_layer = 16
+collision_mask = 2147483648
+
+[node name="Floor" type="CollisionPolygon2D" parent="Walls/Wall"]
+polygon = PoolVector2Array( -96, 96, -48, 96, 72, 120, 128, 120, 208, 80, 416, 88, 456, 88, 456, 56, 496, 48, 520, 16, 576, 0, 1192, 0, 1240, 72, 1272, 112, 1344, 176, 1368, 160, 1408, 160, 1472, 184, 1528, 168, 1560, 168, 1584, 176, 1616, 168, 1784, 168, 1904, 128, 1928, 96, 2056, 96, 2144, 56, 2208, 56, 2192, 120, 2224, 192, 2288, 192, 2296, 216, 2264, 288, 2288, 328, 2320, 304, 2552, 280, 2632, 304, 2680, 288, 2656, 48, 2672, -40, 2752, -40, 2816, 0, 2920, -16, 3008, -64, 3136, -64, 3136, -24, 3072, 40, 3080, 128, 3128, 160, 3176, 136, 3248, 136, 3288, 256, 3392, 288, 3624, 280, 3824, 296, 3896, 360, 3944, 144, 3920, 48, 3888, 0, 3832, 24, 3800, 24, 3776, -8, 3760, -80, 3800, -112, 4032, -112, 4160, -56, 4288, -56, 4368, -96, 4840, -96, 5072, -168, 5296, -96, 5336, -248, 5272, -512, 5208, -576, 5048, -576, 4984, -648, 4952, -864, 5608, -872, 5608, 432, -568, 472, -568, -704, -448, -704, -392, -360, -400, -216, -432, -144, -464, -200, -488, -136, -472, -64, -424, -8, -384, 16, -352, 80, -304, 80, -248, 104, -184, 128 )
+
+[node name="Ceiling" type="CollisionPolygon2D" parent="Walls/Wall"]
+polygon = PoolVector2Array( 552, -832, 608, -784, 640, -720, 696, -624, 744, -632, 944, -520, 1016, -480, 1048, -480, 1080, -384, 1136, -360, 1176, -360, 1248, -352, 1296, -328, 1320, -280, 1392, -288, 1504, -248, 1520, -208, 1520, -168, 1536, -152, 1552, -128, 1552, -72, 1600, -80, 1624, -56, 1640, -32, 1656, -24, 1752, -24, 1800, -48, 1840, -88, 1896, -96, 1960, -208, 2008, -248, 2072, -408, 2096, -680, 2168, -832 )
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Dash_Barrier" parent="Props" instance=ExtResource( 2 )]
+position = Vector2( 1696, 72 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Tutorial_Action" parent="Props" instance=ExtResource( 4 )]
+position = Vector2( 1496, -8 )
+action = "hero_dash"
+
+[node name="area" type="CollisionShape2D" parent="Props/Tutorial_Action"]
+shape = SubResource( 2 )
+
+[node name="Double_Dash1" parent="Props" instance=ExtResource( 4 )]
+position = Vector2( 3240, -272 )
+action = "hero_dash"
+
+[node name="area" type="CollisionShape2D" parent="Props/Double_Dash1"]
+position = Vector2( -160, 32 )
+shape = SubResource( 2 )
+
+[node name="Double_Dash2" parent="Props" instance=ExtResource( 4 )]
+position = Vector2( 3168, -272 )
+action = "hero_dash"
+
+[node name="area" type="CollisionShape2D" parent="Props/Double_Dash2"]
+position = Vector2( -88, 32 )
+shape = SubResource( 2 )
+
+[node name="Dialogue1" type="Node2D" parent="."]
+
+[node name="Dialogue_Trigger" type="Area2D" parent="Dialogue1"]
+position = Vector2( 896, -192 )
+monitorable = false
+collision_layer = 0
+
+[node name="area" type="CollisionShape2D" parent="Dialogue1/Dialogue_Trigger"]
+shape = SubResource( 3 )
+
+[node name="DialogueBox" parent="Dialogue1" instance=ExtResource( 5 )]
+margin_left = 577.0
+margin_top = -340.0
+margin_right = 1217.0
+margin_bottom = -190.0
+Dialogue = [ "Uma alma...
+perdida?", "Estás longe de casa.
+E do teu mestre.", "Procuras poder para
+se libertar?", "Então, eu lhe concedo a celeridade,
+para que possas escapar
+do caos no teu coração!" ]
+
+[node name="Ghost" type="Polygon2D" parent="Dialogue1"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 1128, -128 )
+color = Color( 0.027451, 0.847059, 0.980392, 1 )
+polygon = PoolVector2Array( 0, 24, -16, 16, -24, 0, -16, -16, 0, -24, 16, -16, 24, 0, 16, 16 )
+
+[node name="Iris" type="Polygon2D" parent="Dialogue1/Ghost"]
+position = Vector2( -16, 0 )
+color = Color( 0.92549, 0.92549, 0.92549, 1 )
+polygon = PoolVector2Array( 0, 8, -8, 0, 0, -8, 8, 0 )
+
+[node name="Dialogue2" type="Node2D" parent="."]
+position = Vector2( 3744, -96 )
+
+[node name="Dialogue_Trigger" type="Area2D" parent="Dialogue2"]
+position = Vector2( 896, -192 )
+monitorable = false
+collision_layer = 0
+
+[node name="area" type="CollisionShape2D" parent="Dialogue2/Dialogue_Trigger"]
+shape = SubResource( 3 )
+
+[node name="DialogueBox" parent="Dialogue2" instance=ExtResource( 5 )]
+margin_left = 577.0
+margin_top = -340.0
+margin_right = 1217.0
+margin_bottom = -190.0
+Dialogue = [ "Agora,
+Deves voltar para
+o teu mundo.", "Lembre-se quem
+realmente
+controla o teu coração.", "Boa sorte." ]
+
+[node name="Ghost" type="Polygon2D" parent="Dialogue2"]
+position = Vector2( 1128, -128 )
+color = Color( 0.027451, 0.847059, 0.980392, 1 )
+polygon = PoolVector2Array( 0, 24, -16, 16, -24, 0, -16, -16, 0, -24, 16, -16, 24, 0, 16, 16 )
+
+[node name="Iris" type="Polygon2D" parent="Dialogue2/Ghost"]
+position = Vector2( -16, 0 )
+color = Color( 0.92549, 0.92549, 0.92549, 1 )
+polygon = PoolVector2Array( 0, 8, -8, 0, 0, -8, 8, 0 )
+
+[node name="Hero" parent="." instance=ExtResource( 1 )]
+available_powers = {
+"dash": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="Hero"]
+position = Vector2( 0, -75 )
+current = true
+[connection signal="timeout" from="Anim_Timer" to="." method="_on_Anim_timeout"]
+[connection signal="body_entered" from="Dialogue1/Dialogue_Trigger" to="." method="_on_intro_body_entered"]
+[connection signal="dialogue_end" from="Dialogue1/DialogueBox" to="." method="_on_Intro_end"]
+[connection signal="body_entered" from="Dialogue2/Dialogue_Trigger" to="." method="_on_outro_body_entered"]
+[connection signal="dialogue_end" from="Dialogue2/DialogueBox" to="." method="_on_outro_dialogue_end"]

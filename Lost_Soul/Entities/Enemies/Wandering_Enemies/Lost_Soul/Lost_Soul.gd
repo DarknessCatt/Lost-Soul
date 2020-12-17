@@ -13,8 +13,10 @@ func _hit(_damage : int, force : int, direction : Vector2):
 
 	if health <= 0:
 		self._change_state($States/Dead)
+		self.spawn_souls()
 
 func respawn() -> void:
+	self.set_collision_layer_bit(1, 1)
 	$Body/Torso/Head.rotation = 0
 	$Body/Torso/Left_Arm.rotation = 0
 	$Body/Torso/Right_Arm.rotation = 0
@@ -23,6 +25,6 @@ func respawn() -> void:
 	self.modulate = Color("ffffff")
 	$Body/Hitbox.call_deferred("set", "monitorable", true)
 	$Hurtbox.call_deferred("set", "monitoring", true)
-	$Collision.scale = Vector2(1,1)
-	$Collision.position = Vector2(0,1)
+	$Hurtbox.call_deferred("set", "monitorable", true)
+	$Body/Body_Collision.position = Vector2(0,0)
 	.respawn()

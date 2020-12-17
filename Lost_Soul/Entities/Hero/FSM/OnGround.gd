@@ -1,40 +1,19 @@
 extends "BasicMove.gd"
 
-onready var buffer : Node = $"../Buffer"
+func enter(Machine : Node, Player : KinematicBody2D) -> void:
+	Player.speed.y = 200
+	.enter(Machine, Player)
 
-func _ready():
-	#Overridable Vars
-	##Animation Vars
-	MOVE_ANIMATION = "Walking"
-	REST_ANIMATION = "Rest"
+func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
 
-func enter(_Player : KinematicBody2D) -> void:
-	_Player.speed.y = 10
-	.enter(_Player)
+	.update(Machine, Player, delta)
 
-func update(_Player: KinematicBody2D, delta : float) -> void:
-
-	.update(_Player, delta)
-
-	if buffer.attack_buffered and buffer.can_attack:
-		_Player._change_state($"../GroundAttack")
-
-	elif not _Player.is_on_floor():
-		buffer._coyote_timer()
-		_Player._change_state($"../Falling")
+	if not Player.is_on_floor():
+		Player.buffer._coyote_timer()
+		Machine.change_move_state($"../Falling")
 
 
-func input(_Player: KinematicBody2D, event : InputEvent) -> void:
+func input(Machine : Node, _Player: KinematicBody2D, event : InputEvent) -> void:
 
 	if event.is_action_pressed("hero_jump"):
-		_Player._change_state($"../Jumping")
-
-	elif event.is_action_pressed("hero_attack"):
-		if buffer.can_attack:
-			_Player._change_state($"../GroundAttack")
-
-		else:
-			buffer._buffer_attack()
-
-	else:
-		.input(_Player, event)
+		Machine.change_move_state($"../Jumping")

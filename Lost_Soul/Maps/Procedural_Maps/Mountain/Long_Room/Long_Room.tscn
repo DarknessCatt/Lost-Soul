@@ -1,0 +1,467 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Maps/Util/Standart_Room/Standart_Room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Maps/Util/Mountain_Polygon/Mountain_Polygon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Maps/Procedural_Maps/Mountain/Long_Room/Long_Room.gd" type="Script" id=3]
+[ext_resource path="res://Maps/Util/Room_Exit/RoomExit.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Classes/Exit.gd" type="Script" id=5]
+[ext_resource path="res://Entities/Map_Elements/One_Way_Platform/One_Way_Platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Enemies/Wandering_Enemies/Test_Wanderer/Test_Wanderer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Enemies/Wandering_Enemies/Lost_Soul/Lost_Soul.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemies/Flying_Enemies/Fly_Test/Fly_Test.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Enemies/Flying_Enemies/Hawk/Hawk.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/Enemies/Flying_Enemies/Watcher/Watcher.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Enemies/Wall_Enemies/Spider/Spider.tscn" type="PackedScene" id=12]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 5 )
+id = 0
+direction = 2
+position = Vector2( 0, 0 )
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 5 )
+id = 1
+direction = 3
+position = Vector2( 2, 0 )
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 5 )
+id = 2
+direction = 1
+position = Vector2( 1, 0 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8, 104 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 48, 8 )
+
+[node name="Long_Room" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+camera_limits = Vector2( 3072, 600 )
+room_positions = [ Vector2( 0, 0 ), Vector2( 1, 0 ), Vector2( 2, 0 ) ]
+exits = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ]
+
+[node name="Sky" parent="Room" index="0" instance=ExtResource( 2 )]
+color = Color( 0.509804, 0.635294, 0.686275, 1 )
+polygon = PoolVector2Array( 0, 0, 3072, 0, 3072, 600, 0, 600 )
+type = 0
+
+[node name="Hole" parent="Room" index="1" instance=ExtResource( 2 )]
+color = Color( 0.172549, 0.133333, 0.129412, 1 )
+polygon = PoolVector2Array( 1480, 528, 1488, 544, 1504, 560, 1520, 568, 1536, 560, 1552, 568, 1584, 560, 1592, 552, 1600, 536, 1600, 600, 1480, 600 )
+type = 2
+
+[node name="One_Way_Platform" parent="Room" index="2" instance=ExtResource( 6 )]
+position = Vector2( 1540, 578 )
+scale = Vector2( 0.9, 1 )
+
+[node name="Left" parent="Room" index="3" instance=ExtResource( 2 )]
+color = Color( 0.172549, 0.133333, 0.129412, 1 )
+polygon = PoolVector2Array( 344, 472, 304, 456, 240, 432, 224, 408, 216, 376, 216, 352, 240, 336, 264, 352, 272, 320, 288, 280, 320, 256, 336, 288, 344, 208, 0, 208, 0, 448, 216, 448 )
+type = 2
+
+[node name="Upper" parent="Room/Left" index="0" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 336, 256, 344, 264, 352, 264, 368, 240, 368, 200, 320, 184, 216, 168, 152, 168, 88, 136, 72, 96, 72, 0, 0, 0, 0, 224, 24, 240, 72, 248, 152, 232, 240, 224 )
+type = 4
+
+[node name="Hard" parent="Room/Left/Upper" index="0" instance=ExtResource( 2 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( 336, 240, 352, 232, 344, 208, 296, 192, 192, 184, 128, 184, 72, 176, 48, 152, 32, 104, 32, 72, 40, 56, 32, 24, 32, 8, 40, 0, 0, 0, 0, 192, 32, 208, 72, 216, 120, 216, 176, 208, 232, 208, 296, 224 )
+type = 3
+
+[node name="Grass" parent="Room/Left/Upper" index="1" instance=ExtResource( 2 )]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 368, 248, 368, 200, 320, 184, 280, 184, 216, 168, 184, 176, 152, 168, 120, 160, 88, 136, 72, 120, 64, 88, 72, 56, 80, 104, 136, 144, 208, 144, 288, 160, 352, 168, 376, 192, 376, 208 )
+type = 5
+
+[node name="Lower" parent="Room/Left" index="1" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 0, 448, 56, 440, 168, 440, 216, 448, 344, 472, 456, 480, 736, 464, 1096, 464, 1424, 496, 1472, 512, 1480, 528, 1488, 600, 1186.35, 601.019, 0, 600 )
+type = 4
+
+[node name="Hard_Rock" parent="Room/Left/Lower" index="0" instance=ExtResource( 2 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( 0, 504, 72, 480, 136, 472, 216, 480, 368, 528, 456, 520, 568, 528, 736, 504, 800, 504, 920, 520, 960, 520, 1096, 496, 1424, 536, 1456, 568, 1464, 600, 0, 600 )
+type = 3
+
+[node name="Grass" parent="Room/Left/Lower" index="1" instance=ExtResource( 2 )]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 256, 456, 344, 472, 384, 480, 448, 480, 528, 488, 632, 480, 736, 464, 936, 472, 1096, 464, 1208, 480, 1360, 496, 1392, 504, 1424, 496, 1472, 512, 1480, 528, 1480, 512, 1432, 488, 1320, 464, 1216, 456, 1088, 440, 864, 448, 712, 448, 584, 464, 464, 464, 336, 464 )
+type = 5
+
+[node name="Right" parent="Room" index="4" instance=ExtResource( 2 )]
+color = Color( 0.172549, 0.133333, 0.129412, 1 )
+polygon = PoolVector2Array( 2696, 504, 2752, 472, 2776, 440, 2816, 424, 2832, 400, 2808, 368, 2768, 328, 2752, 288, 2744, 312, 2720, 288, 2704, 256, 2696, 216, 2760, 216, 2824, 224, 2920, 240, 2984, 240, 3072, 208, 3072, 488 )
+type = 2
+
+[node name="Lower" parent="Room/Right" index="0" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 3072, 456, 3008, 456, 2864, 464, 2696, 504, 2504, 512, 2328, 496, 2104, 480, 1920, 496, 1696, 488, 1624, 504, 1600, 536, 1592, 600, 1720.37, 600, 1815.56, 600, 3072, 600 )
+type = 4
+
+[node name="Hard_Rock" parent="Room/Right/Lower" index="0" instance=ExtResource( 2 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( 3072, 520, 3040, 496, 3000, 488, 2888, 504, 2824, 528, 2760, 552, 2688, 552, 2592, 536, 2488, 544, 2296, 528, 2104, 528, 1992, 552, 1864, 544, 1720, 520, 1664, 544, 1648, 584, 1624, 600, 1711.67, 600, 3072, 600 )
+type = 3
+
+[node name="Grass" parent="Room/Right/Lower" index="1" instance=ExtResource( 2 )]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 1600, 536, 1624, 504, 1696, 488, 1808, 504, 1920, 496, 2040, 488, 2104, 496, 2160, 488, 2352, 512, 2504, 512, 2640, 520, 2704, 512, 2742.66, 496, 2864, 464, 2640, 504, 2528, 496, 2408, 488, 2224, 472, 2128, 464, 2048, 464, 1920, 472, 1720, 472, 1656, 480, 1608, 504 )
+type = 5
+
+[node name="Upper" parent="Room/Right" index="1" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 3072, 208, 2984, 240, 2920, 240, 2840, 232, 2776, 224, 2744, 216, 2712, 224, 2688, 216, 2680, 192, 2688, 160, 2720, 136, 2832, 120, 2928, 136, 2968, 104, 2976, 32, 2968, 0, 3072, 0 )
+type = 4
+
+[node name="Hard_Rock" parent="Room/Right/Upper" index="0" instance=ExtResource( 2 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( 3008, 0, 3016, 64, 3016, 112, 2992, 160, 2960, 168, 2912, 168, 2872, 160, 2832, 144, 2752, 152, 2728, 160, 2712, 176, 2720, 192, 2736, 200, 2752, 192, 2784, 184, 2816, 184, 2872, 208, 2928, 216, 2992, 208, 3048, 184, 3072, 168, 3072, 0 )
+type = 3
+
+[node name="Grass" parent="Room/Right/Upper" index="1" instance=ExtResource( 2 )]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 2680, 192, 2696, 160, 2720, 144, 2776, 136, 2832, 120, 2880, 136, 2928, 136, 2960, 120, 2968, 104, 2976, 64, 2960, 104, 2896, 120, 2840, 104, 2760, 104, 2720, 120, 2688, 144 )
+type = 5
+
+[node name="Left_Up" type="CollisionPolygon2D" parent="Room/Wall" index="0"]
+polygon = PoolVector2Array( 72, -96, 72, 56, 80, 104, 136, 144, 216, 144, 352, 168, 360, 176, 376, 192, 368, 240, 352, 264, 344, 264, 248, 224, 72, 248, 0, 224, -40, 224, -40, 448, 0, 448, 0, 456, -48, 456, -48, 216, 0, 216, 0, -96 )
+
+[node name="Left_Down" type="CollisionPolygon2D" parent="Room/Wall" index="1"]
+polygon = PoolVector2Array( 1488, 600, 1480, 528, 1480, 512, 1432, 488, 1320, 464, 1088, 440, 864, 448, 712, 448, 584, 464, 336, 464, 256, 456, 168, 440, 48, 440, 0, 448, 0, 600 )
+
+[node name="Right_Up" type="CollisionPolygon2D" parent="Room/Wall" index="2"]
+polygon = PoolVector2Array( 2680, 192, 2688, 144, 2720, 120, 2760, 104, 2840, 104, 2896, 120, 2960, 104, 2976, 32, 2968, 0, 2968, -104, 3072, -104, 3072, 200, 3120, 200, 3120, 464, 3072, 464, 3072, 456, 3112, 456, 3112, 208, 3072, 208, 2984, 240, 2840, 232, 2744, 216, 2712, 224, 2688, 216 )
+
+[node name="Right_Down" type="CollisionPolygon2D" parent="Room/Wall" index="3"]
+polygon = PoolVector2Array( 3072, 456, 3008, 456, 2864, 464, 2640, 504, 2136, 464, 2040, 464, 1928, 472, 1720, 472, 1656, 480, 1608, 504, 1600, 536, 1592, 600, 3072, 600 )
+
+[node name="Down" type="CollisionPolygon2D" parent="Room/Wall" index="4"]
+polygon = PoolVector2Array( 1488, 600, 1488, 704, 1592, 704, 1592, 600, 1600, 600, 1600, 712, 1480, 712, 1480, 600 )
+
+[node name="Clouds" type="Node2D" parent="Variants" index="0"]
+
+[node name="Cloud1" parent="Variants/Clouds" index="0" instance=ExtResource( 2 )]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 640, 144, 664, 168, 704, 184, 744, 184, 792, 168, 816, 136, 768, 104, 712, 96, 664, 104 )
+type = 1
+
+[node name="Cloud2" parent="Variants/Clouds" index="1" instance=ExtResource( 2 )]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 384, 288, 408, 320, 448, 336, 504, 320, 536, 336, 584, 320, 608, 296, 608, 256, 560, 232, 496, 232, 408, 248 )
+type = 1
+
+[node name="Cloud3" parent="Variants/Clouds" index="2" instance=ExtResource( 2 )]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 800, 400, 832, 376, 888, 368, 928, 384, 928, 408, 888, 416, 856, 408, 832, 408, 816, 416 )
+type = 1
+
+[node name="Cloud4" parent="Variants/Clouds" index="3" instance=ExtResource( 2 )]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 1024, 200, 984, 216, 952, 264, 992, 312, 1048, 320, 1104, 296, 1136, 272, 1176, 280, 1216, 296, 1248, 272, 1256, 224, 1216, 176, 1144, 144, 1088, 160, 1056, 200 )
+type = 1
+
+[node name="Cloud5" parent="Variants/Clouds" index="4" instance=ExtResource( 2 )]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 1408, 360, 1440, 384, 1512, 384, 1552, 360, 1600, 360, 1640, 384, 1688, 392, 1720, 392, 1760, 368, 1776, 336, 1728, 304, 1656, 304, 1616, 320, 1576, 320, 1528, 312, 1472, 312, 1424, 328 )
+type = 1
+
+[node name="Cloud6" parent="Variants/Clouds" index="5" instance=ExtResource( 2 )]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 1632, 96, 1584, 128, 1568, 160, 1584, 184, 1624, 200, 1680, 208, 1736, 200, 1768, 168, 1744, 120, 1656, 96 )
+type = 1
+
+[node name="Cloud7" parent="Variants/Clouds" index="6" instance=ExtResource( 2 )]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 1880, 256, 1920, 288, 1968, 304, 2008, 296, 2040, 272, 2056, 248, 2064, 224, 2064, 168, 2032, 160, 2000, 184, 1968, 224, 1912, 224, 1880, 240 )
+type = 1
+
+[node name="Cloud8" parent="Variants/Clouds" index="7" instance=ExtResource( 2 )]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 2096, 464, 2120, 416, 2168, 392, 2200, 392, 2256, 408, 2288, 432, 2312.06, 478.102, 2136, 464 )
+type = 1
+
+[node name="Cloud9" parent="Variants/Clouds" index="8" instance=ExtResource( 2 )]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 2192, 264, 2224, 296, 2264, 304, 2312, 312, 2360, 296, 2376, 280, 2400, 288, 2424, 272, 2424, 232, 2376, 192, 2336, 200, 2304, 224, 2224, 208, 2184, 224 )
+type = 1
+
+[node name="Cloud10" parent="Variants/Clouds" index="9" instance=ExtResource( 2 )]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 2480, 104, 2504, 152, 2552, 160, 2600, 168, 2632, 160, 2648, 128, 2640, 80, 2600, 72, 2536, 80, 2488, 72, 2472, 96 )
+type = 1
+
+[node name="Cloud11" parent="Variants/Clouds" index="10" instance=ExtResource( 2 )]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 2672, 336, 2592, 352, 2544, 368, 2544, 408, 2576, 432, 2632, 448, 2704, 440, 2736, 408, 2712, 360 )
+type = 1
+
+[node name="Cloud12" parent="Variants/Clouds" index="11" instance=ExtResource( 2 )]
+color = Color( 0.627451, 0.737255, 0.784314, 1 )
+polygon = PoolVector2Array( 1368, 136, 1336, 152, 1336, 184, 1352, 200, 1384, 216, 1440, 208, 1472, 192, 1488, 152, 1432, 120 )
+type = 1
+
+[node name="Middle_Cave" type="Node2D" parent="Variants" index="1"]
+
+[node name="BG" parent="Variants/Middle_Cave" index="0" instance=ExtResource( 2 )]
+color = Color( 0.172549, 0.133333, 0.129412, 1 )
+polygon = PoolVector2Array( 1480, 528, 1480, 512, 1432, 488, 1320, 464, 1214.66, 456, 1086.66, 440, 1142.66, 392, 1158.66, 280, 1118.66, 192, 1046.66, 136, 1030.66, 64, 1966.66, 64, 1950.66, 136, 1878.66, 176, 1814.66, 296, 1822.66, 416, 1902.66, 472, 1784, 472, 1720, 472, 1656, 480, 1608, 504, 1600, 536, 1600, 568, 1480, 568 )
+type = 2
+
+[node name="Upper" parent="Variants/Middle_Cave/BG" index="0" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 1030.66, 64, 1030.66, 112, 1086.66, 80, 1222.66, 72, 1518.66, 80, 1646.66, 72, 1902.66, 88, 1958.66, 104, 1982.66, 72, 1966.66, 40, 1950.66, 0, 1038.66, 0, 1030.66, 32 )
+type = 4
+
+[node name="Hard_Rock" parent="Variants/Middle_Cave/BG/Upper" index="0" instance=ExtResource( 2 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( 1086.66, 0, 1062.66, 64, 1126.66, 32, 1286.66, 40, 1510.66, 40, 1638.66, 24, 1854.66, 48, 1918.66, 72, 1910.66, 24, 1918.66, 0 )
+type = 3
+
+[node name="Grass" parent="Variants/Middle_Cave/BG/Upper" index="1" instance=ExtResource( 2 )]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 1030.66, 64, 1022.66, 32, 1030.66, 0, 1030.66, -24, 1950.66, -24, 1966.66, 8, 1990.66, 80, 1982.66, 72, 1950.66, 16, 1950.66, 0, 1038.66, 0 )
+type = 5
+
+[node name="Sky" parent="Variants/Middle_Cave/BG" index="1" instance=ExtResource( 2 )]
+color = Color( 0.509804, 0.635294, 0.686275, 1 )
+polygon = PoolVector2Array( 1294.66, 168, 1422.66, 176, 1486.66, 224, 1510.66, 256, 1523.81, 315.205, 1526.66, 352, 1526.66, 464, 1534.66, 472, 1542.66, 464, 1550.66, 448, 1558.66, 384, 1564.01, 338.604, 1582.66, 264, 1598.66, 248, 1670.66, 224, 1686.66, 200, 1710.66, 104, 1662.66, 192, 1550.66, 256, 1446.66, 144 )
+type = 0
+
+[node name="Wall" type="StaticBody2D" parent="Variants/Middle_Cave" index="1"]
+collision_layer = 16
+
+[node name="Col" type="CollisionPolygon2D" parent="Variants/Middle_Cave/Wall" index="0"]
+polygon = PoolVector2Array( 1030.66, 0, 1022.66, 32, 1030.66, 64, 1030.66, 112, 1086.66, 80, 1230.66, 72, 1518.66, 80, 1646.66, 72, 1902.66, 88, 1958.66, 104, 1982.66, 72, 1966.66, 0 )
+
+[node name="Blocks" parent="." index="2"]
+visible = false
+
+[node name="0" parent="Blocks" index="0" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 1096, 472, 1008, 392, 976, 336, 960, 264, 952, 200, 960, 136, 976, 64, 976, 8, 968, -24, 832, -24, 832, 480 )
+type = 4
+
+[node name="Hard" parent="Blocks/0" index="0" instance=ExtResource( 2 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( 1096, 496, 968, 440, 904, 384, 864, 280, 848, 184, 864, 80, 896, 16, 904, -24, 400, -24, 400, 544, 1096, 528 )
+type = 3
+
+[node name="Grass" parent="Blocks/0" index="1" instance=ExtResource( 2 )]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 1080, 464, 1008, 416, 976, 336, 1016, 400, 1064, 440, 1208, 480 )
+type = 5
+
+[node name="Wall" type="StaticBody2D" parent="Blocks/0" index="2"]
+collision_layer = 16
+
+[node name="col" type="CollisionPolygon2D" parent="Blocks/0/Wall" index="0"]
+polygon = PoolVector2Array( 1064, 440, 1016, 400, 976, 336, 960, 264, 952, 200, 976, 64, 976, 0, 920, 0, 920, 480, 1208, 480 )
+
+[node name="1" parent="Blocks" index="1" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 1896, 504, 1928, 480, 2016, 440, 2032, 376, 2048, 272, 2048, 160, 2064, 40, 2080, -16, 2176, -16, 2176, 512 )
+type = 4
+
+[node name="Hard" parent="Blocks/1" index="0" instance=ExtResource( 2 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( 1896, 552, 1936, 528, 1952, 504, 2008, 488, 2048, 472, 2080, 424, 2104, 328, 2096, 232, 2112, 152, 2120, 88, 2112, 48, 2128, 0, 2592, 0, 2600, 568 )
+type = 3
+
+[node name="Grass" parent="Blocks/1" index="1" instance=ExtResource( 2 )]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 1904, 472, 2000, 440, 2016, 416, 2032, 376, 2024, 440, 1984, 464, 1952, 488, 1904, 496, 1808, 504 )
+type = 5
+
+[node name="Wall" type="StaticBody2D" parent="Blocks/1" index="2"]
+collision_layer = 16
+
+[node name="col" type="CollisionPolygon2D" parent="Blocks/1/Wall" index="0"]
+polygon = PoolVector2Array( 1904, 472, 2000, 440, 2016, 416, 2032, 376, 2048, 272, 2048, 152, 2080, -16, 2072, 472 )
+
+[node name="2" parent="Blocks" index="2" instance=ExtResource( 2 )]
+color = Color( 0.364706, 0.321569, 0.305882, 1 )
+polygon = PoolVector2Array( 1424, 504, 1488, 528, 1520, 536, 1560, 536, 1608, 520, 1632, 504, 1632, 600, 1424, 600 )
+type = 4
+
+[node name="Hard" parent="Blocks/2" index="0" instance=ExtResource( 2 )]
+color = Color( 0.266667, 0.227451, 0.219608, 1 )
+polygon = PoolVector2Array( 1424, 536, 1456, 552, 1512, 560, 1544, 568, 1576, 560, 1664, 544, 1664, 600, 1424, 600 )
+type = 3
+
+[node name="Grass" parent="Blocks/2" index="1" instance=ExtResource( 2 )]
+color = Color( 0.556863, 0.513726, 0.101961, 1 )
+polygon = PoolVector2Array( 1486.66, 496, 1590.66, 496, 1656, 480, 1656, 496, 1608, 520, 1566.66, 536, 1518.66, 536, 1462.66, 520, 1390.66, 504, 1430.66, 488 )
+type = 5
+
+[node name="Wall" type="StaticBody2D" parent="Blocks/2" index="2"]
+collision_layer = 16
+
+[node name="col" type="CollisionPolygon2D" parent="Blocks/2/Wall" index="0"]
+polygon = PoolVector2Array( 1486.66, 496, 1590.66, 496, 1656, 480, 1654.66, 504, 1430.66, 504, 1432, 488 )
+
+[node name="0" parent="Exits" index="0" instance=ExtResource( 4 )]
+position = Vector2( -32, 320 )
+
+[node name="area" type="CollisionShape2D" parent="Exits/0" index="0"]
+shape = SubResource( 4 )
+
+[node name="1" parent="Exits" index="1" instance=ExtResource( 4 )]
+position = Vector2( 3104, 328 )
+exit_id = 1
+
+[node name="area" type="CollisionShape2D" parent="Exits/1" index="0"]
+shape = SubResource( 4 )
+
+[node name="2" parent="Exits" index="2" instance=ExtResource( 4 )]
+position = Vector2( 1536, 656 )
+exit_id = 2
+
+[node name="area" type="CollisionShape2D" parent="Exits/2" index="0"]
+shape = SubResource( 5 )
+
+[node name="0" type="Position2D" parent="Entrances" index="0"]
+position = Vector2( 32, 392 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="1" type="Position2D" parent="Entrances" index="1"]
+position = Vector2( 3040, 400 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="2" type="Position2D" parent="Entrances" index="2"]
+position = Vector2( 1536, 512 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="Blocked" type="Node2D" parent="Objects" index="0"]
+
+[node name="0" type="Node2D" parent="Objects/Blocked" index="0"]
+
+[node name="Walkers" type="Node2D" parent="Objects/Blocked/0" index="0"]
+
+[node name="Lost_Soul" parent="Objects/Blocked/0/Walkers" index="0" instance=ExtResource( 8 )]
+position = Vector2( 384, 424 )
+allowed_ranks = [ true, true, true ]
+
+[node name="Lost_Soul2" parent="Objects/Blocked/0/Walkers" index="1" instance=ExtResource( 8 )]
+position = Vector2( 808, 416 )
+allowed_ranks = [ false, true, true ]
+
+[node name="Lost_Soul3" parent="Objects/Blocked/0/Walkers" index="2" instance=ExtResource( 8 )]
+position = Vector2( 1176, 416 )
+allowed_ranks = [ false, false, true ]
+
+[node name="Test_Wanderer" parent="Objects/Blocked/0/Walkers" index="3" instance=ExtResource( 7 )]
+position = Vector2( 640, 440 )
+allowed_ranks = [ false, true, false ]
+
+[node name="Flyers" type="Node2D" parent="Objects/Blocked/0" index="1"]
+
+[node name="Birb" parent="Objects/Blocked/0/Flyers" index="0" instance=ExtResource( 9 )]
+position = Vector2( 576, 232 )
+allowed_ranks = [ true, true, true ]
+
+[node name="Birb2" parent="Objects/Blocked/0/Flyers" index="1" instance=ExtResource( 9 )]
+position = Vector2( 984, 232 )
+allowed_ranks = [ true, true, true ]
+
+[node name="Birb3" parent="Objects/Blocked/0/Flyers" index="2" instance=ExtResource( 9 )]
+position = Vector2( 400, 208 )
+allowed_ranks = [ false, true, false ]
+
+[node name="Birb4" parent="Objects/Blocked/0/Flyers" index="3" instance=ExtResource( 9 )]
+position = Vector2( 1096, 216 )
+allowed_ranks = [ false, true, false ]
+
+[node name="Hawk" parent="Objects/Blocked/0/Flyers" index="4" instance=ExtResource( 10 )]
+position = Vector2( 760, 160 )
+allowed_ranks = [ false, false, true ]
+
+[node name="1" type="Node2D" parent="Objects/Blocked" index="1"]
+
+[node name="Walkers" type="Node2D" parent="Objects/Blocked/1" index="0"]
+
+[node name="Lost_Soul" parent="Objects/Blocked/1/Walkers" index="0" instance=ExtResource( 8 )]
+position = Vector2( 2640, 440 )
+allowed_ranks = [ true, true, true ]
+
+[node name="Lost_Soul2" parent="Objects/Blocked/1/Walkers" index="1" instance=ExtResource( 8 )]
+position = Vector2( 1848, 424 )
+allowed_ranks = [ false, true, true ]
+
+[node name="Lost_Soul3" parent="Objects/Blocked/1/Walkers" index="2" instance=ExtResource( 8 )]
+position = Vector2( 2272, 424 )
+allowed_ranks = [ false, false, true ]
+
+[node name="Test_Wanderer" parent="Objects/Blocked/1/Walkers" index="3" instance=ExtResource( 7 )]
+position = Vector2( 2272, 456 )
+allowed_ranks = [ false, true, false ]
+
+[node name="Flyers" type="Node2D" parent="Objects/Blocked/1" index="1"]
+
+[node name="Birb" parent="Objects/Blocked/1/Flyers" index="0" instance=ExtResource( 9 )]
+position = Vector2( 2648, 216 )
+allowed_ranks = [ true, true, true ]
+
+[node name="Birb2" parent="Objects/Blocked/1/Flyers" index="1" instance=ExtResource( 9 )]
+position = Vector2( 1984, 264 )
+allowed_ranks = [ true, true, true ]
+
+[node name="Birb3" parent="Objects/Blocked/1/Flyers" index="2" instance=ExtResource( 9 )]
+position = Vector2( 1904, 280 )
+allowed_ranks = [ false, true, false ]
+
+[node name="Birb4" parent="Objects/Blocked/1/Flyers" index="3" instance=ExtResource( 9 )]
+position = Vector2( 2568, 248 )
+allowed_ranks = [ false, true, false ]
+
+[node name="Hawk" parent="Objects/Blocked/1/Flyers" index="4" instance=ExtResource( 10 )]
+position = Vector2( 2272, 184 )
+allowed_ranks = [ false, false, true ]
+
+[node name="Middle" type="Node2D" parent="Objects" index="1"]
+
+[node name="Stalker" type="Node2D" parent="Objects/Middle" index="0"]
+
+[node name="Watcher" parent="Objects/Middle/Stalker" index="0" instance=ExtResource( 11 )]
+position = Vector2( 1536, 208 )
+allowed_ranks = [ true, false, false ]
+
+[node name="Watcher2" parent="Objects/Middle/Stalker" index="1" instance=ExtResource( 11 )]
+position = Vector2( 1344, 240 )
+allowed_ranks = [ false, true, false ]
+
+[node name="Watcher3" parent="Objects/Middle/Stalker" index="2" instance=ExtResource( 11 )]
+position = Vector2( 1704, 248 )
+allowed_ranks = [ false, true, false ]
+
+[node name="Hawk" parent="Objects/Middle/Stalker" index="3" instance=ExtResource( 10 )]
+position = Vector2( 1536, 208 )
+allowed_ranks = [ false, false, true ]
+
+[node name="Spiders" type="Node2D" parent="Objects/Middle" index="1"]
+
+[node name="Spider" parent="Objects/Middle/Spiders" index="0" instance=ExtResource( 12 )]
+position = Vector2( 1792, 448 )
+allowed_ranks = [ true, true, true ]
+
+[node name="Spider2" parent="Objects/Middle/Spiders" index="1" instance=ExtResource( 12 )]
+position = Vector2( 1280, 440 )
+allowed_ranks = [ false, true, true ]
+
+[node name="Map_Limits" type="Position2D" parent="." index="6"]
+position = Vector2( 3072, 600 )
+__meta__ = {
+"_gizmo_extents_": 3072.0
+}
+[connection signal="exit_entered" from="Exits/0" to="." method="_on_exit_entered"]
+[connection signal="exit_entered" from="Exits/1" to="." method="_on_exit_entered"]
+[connection signal="exit_entered" from="Exits/2" to="." method="_on_exit_entered"]

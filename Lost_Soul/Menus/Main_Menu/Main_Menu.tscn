@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Fonts/BasaltRegular-Jx3o.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Menus/Main_Menu/Main_Menu.gd" type="Script" id=2]
+[ext_resource path="res://Menus/Settings/Settings.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 1 )
+
+[sub_resource type="ButtonGroup" id=2]
+
+[node name="Main_Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+game_scene = "res://Menus/Gameplay/Gameplay.tscn"
+credits_scene = "res://Menus/Credits/Credits.tscn"
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -275.0
+margin_right = 275.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Space" type="Control" parent="Menu"]
+margin_right = 550.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Title" type="Label" parent="Menu"]
+margin_top = 104.0
+margin_right = 550.0
+margin_bottom = 219.0
+rect_pivot_offset = Vector2( 196, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "Alma Perdida"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Space2" type="Control" parent="Menu"]
+margin_top = 223.0
+margin_right = 550.0
+margin_bottom = 273.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Buttons" type="VBoxContainer" parent="Menu"]
+margin_top = 277.0
+margin_right = 550.0
+margin_bottom = 497.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="New Game" type="Button" parent="Menu/Buttons"]
+margin_right = 550.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+group = SubResource( 2 )
+text = "Novo Jogo"
+
+[node name="Settings" type="Button" parent="Menu/Buttons"]
+margin_top = 60.0
+margin_right = 550.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 40 )
+text = "Configurações"
+
+[node name="Credits" type="Button" parent="Menu/Buttons"]
+margin_top = 120.0
+margin_right = 550.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 0, 40 )
+text = "Creditos"
+
+[node name="Quit" type="Button" parent="Menu/Buttons"]
+margin_top = 180.0
+margin_right = 550.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 0, 40 )
+text = "Sair"
+
+[node name="Settings" parent="." instance=ExtResource( 3 )]
+visible = false
+[connection signal="pressed" from="Menu/Buttons/New Game" to="." method="_on_New_Game_pressed"]
+[connection signal="pressed" from="Menu/Buttons/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Menu/Buttons/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Menu/Buttons/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="menu_exited" from="Settings" to="." method="_on_Settings_exited"]

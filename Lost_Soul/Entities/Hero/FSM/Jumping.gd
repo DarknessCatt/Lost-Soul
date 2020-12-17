@@ -1,48 +1,26 @@
 extends "BasicMove.gd"
 
 const GRAV : int = 2300
-
 const JUMP_FORCE = 1100
 
-onready var buffer : Node = $"../Buffer"
+func enter(Machine : Node, Player : KinematicBody2D) -> void:
+	.enter(Machine, Player)
 
-func _ready():
-	MOVE_ANIMATION = "Jumping"
-	REST_ANIMATION = "Jumping"
+	Player.speed.y = -JUMP_FORCE
+	Player._jump_effects()
 
-func enter(_Player : KinematicBody2D) -> void:
-	.enter(_Player)
+	if not Input.is_action_pressed("hero_jump"):
+		Machine.change_move_state($"../Falling")
 
-	_Player.speed.y = -JUMP_FORCE
+func update(Machine : Node, Player: KinematicBody2D, delta : float) -> void:
+	Player.speed.y += GRAV*delta
 
-	if buffer.attack_buffered and buffer.can_attack:
-		_Player._change_state($"../AirAttack")
+	.update(Machine, Player, delta)
 
-	elif not Input.is_action_pressed("hero_jump"):
-		_Player._change_state($"../Falling")
+	if Player.speed.y > 0 or Player.is_on_ceiling():
+		Player.speed.y = 0
+		Machine.change_move_state($"../Falling")
 
-func update(_Player: KinematicBody2D, delta : float) -> void:
-	_Player.speed.y += GRAV*delta
-
-	.update(_Player, delta)
-
-	if _Player.speed.y > 0 or _Player.is_on_ceiling():
-		_Player.speed.y = 0
-		_Player._change_state($"../Falling")
-
-	elif buffer.attack_buffered and buffer.can_attack:
-		_Player._change_state($"../AirAttack")
-
-func input(_Player: KinematicBody2D, event : InputEvent) -> void:
+func input(Machine : Node, _Player: KinematicBody2D, event : InputEvent) -> void:
 	if event.is_action_released("hero_jump"):
-		_Player._change_state($"../Falling")
-
-	elif event.is_action_pressed("hero_attack"):
-		if buffer.can_attack:
-			_Player._change_state($"../AirAttack")
-
-		else:
-			buffer._buffer_attack()
-
-	else:
-		.input(_Player, event)
+		Machine.change_move_state($"../Falling")
